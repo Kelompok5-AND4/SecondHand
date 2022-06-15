@@ -1,4 +1,4 @@
-package com.IGDev.secondhand.model
+package com.igdev.secondhand.model
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
     companion object{

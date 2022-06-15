@@ -1,10 +1,12 @@
-package com.IGDev.secondhand.di
+package com.igdev.secondhand.di
 
 import android.content.Context
-import com.IGDev.secondhand.service.ApiHelper
-import com.IGDev.secondhand.service.ApiService
+import com.igdev.secondhand.service.ApiHelper
+import com.igdev.secondhand.service.ApiService
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,15 +16,18 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import javax.inject.Singleton
+
+
 
 @InstallIn(SingletonComponent::class)
 @Module
 object NetworkModule {
     @Singleton
     @Provides
-    fun provideLoggingInterceptor():HttpLoggingInterceptor{
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -32,7 +37,7 @@ object NetworkModule {
     @Provides
     fun provideChuckerInterceptor(
         @ApplicationContext context: Context
-    ) :ChuckerInterceptor{
+    ): ChuckerInterceptor {
         return ChuckerInterceptor.Builder(context)
             .collector(ChuckerCollector(context))
             .maxContentLength(250000L)
@@ -46,7 +51,7 @@ object NetworkModule {
     fun provideOkHttp(
         httpLoggingInterceptor: HttpLoggingInterceptor,
         chuckerInterceptor: ChuckerInterceptor
-    ):OkHttpClient{
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(chuckerInterceptor)
@@ -70,7 +75,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit) : ApiService {
+    fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create()
     }
 
@@ -79,4 +84,6 @@ object NetworkModule {
     fun provideApiHelper(apiService: ApiService): ApiHelper {
         return ApiHelper(apiService)
     }
+
 }
+
