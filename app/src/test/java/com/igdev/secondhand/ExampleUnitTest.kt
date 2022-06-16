@@ -1,4 +1,4 @@
-package com.igdev.secondhand
+package com.IGDev.secondhand
 
 import org.junit.Test
 
