@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentRegisterBinding
-import com.igdev.secondhand.model.RegistReq
+import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.ui.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint

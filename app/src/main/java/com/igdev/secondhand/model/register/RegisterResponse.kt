@@ -1,9 +1,9 @@
-package com.igdev.secondhand.model
+package com.igdev.secondhand.model.register
 
 
 import com.google.gson.annotations.SerializedName
 
-data class RegistResponse(
+data class RegisterResponse(
     @SerializedName("address")
     val address: String,
     @SerializedName("createdAt")

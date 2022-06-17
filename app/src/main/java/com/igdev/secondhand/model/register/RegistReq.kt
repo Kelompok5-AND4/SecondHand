@@ -1,4 +1,4 @@
-package com.igdev.secondhand.model
+package com.igdev.secondhand.model.register
 
 
 import com.google.gson.annotations.SerializedName
