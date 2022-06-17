@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.igdev.secondhand.model.RegistResponse
-import com.igdev.secondhand.model.RegisterReq
+import com.igdev.secondhand.model.RegistReq
 import com.igdev.secondhand.model.Resource
 import com.igdev.secondhand.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +18,7 @@ class RegisterViewModel @Inject constructor(private val repository: Repository) 
     val userRegister: LiveData<Resource<RegistResponse>>
         get() = _userRegister
 
-    fun registerPost(requestBody : RegisterReq) {
+    fun registerPost(requestBody : RegistReq) {
         viewModelScope.launch {
             _userRegister.postValue(Resource.loading())
             try {

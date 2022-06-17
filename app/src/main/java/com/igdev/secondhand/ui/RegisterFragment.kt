@@ -1,5 +1,6 @@
 package com.igdev.secondhand.ui
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,8 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import com.igdev.secondhand.RegisterViewModel
+import androidx.navigation.fragment.findNavController
+import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentRegisterBinding
+import com.igdev.secondhand.model.RegistReq
+import com.igdev.secondhand.model.Status
+import com.igdev.secondhand.ui.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,8 +35,30 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val progressDialog = ProgressDialog(requireActivity())
+        viewModel.userRegister.observe(viewLifecycleOwner){ resources ->
+            when(resources.status){
+                Status.LOADING ->{
+                    progressDialog.setMessage("Loading")
+                    progressDialog.show()
+                }
+                Status.SUCCESS ->{
+                    Toast.makeText(requireContext(), "Registrasi berhasil", Toast.LENGTH_SHORT)
+                        .show()
+                    progressDialog.dismiss()
+                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+
+                }
+                Status.ERROR ->{
+                    Toast.makeText(requireContext(), "Registrasi gagal", Toast.LENGTH_SHORT)
+                        .show()
+                    progressDialog.dismiss()
+                }
+            }
+        }
+
         binding.apply {
-            tvMasukDiSini.setOnClickListener {
+            btnRegister.setOnClickListener {
                 signIn()
             }
         }
@@ -39,14 +66,16 @@ class RegisterFragment : Fragment() {
     }
 
     private fun signIn() {
-        val nama = binding.etNamaLengkap.text
-        val email = binding.etEmail.text
-        val password = binding.etBuatPassword.text
-
-        if (nama.isEmpty() || email.isEmpty() || password.isEmpty()){
+        val nama = binding.etNamaLengkap.text.toString()
+        val email = binding.etEmail.text.toString()
+        val password = binding.etBuatPassword.text.toString()
+        val phone = binding.phoneNumber.text.toString()
+        val location = binding.location.text.toString()
+        val image = "no_image"
+        val registerReq = RegistReq(nama,email,password,phone,location,image)
+        viewModel.registerPost(registerReq)
+        if (nama.isEmpty() || email.isEmpty() || password.isEmpty()  || location.isEmpty()){
             Toast.makeText(requireContext(), "lengkapi data", Toast.LENGTH_SHORT).show()
-        }else{
-
         }
     }
 
