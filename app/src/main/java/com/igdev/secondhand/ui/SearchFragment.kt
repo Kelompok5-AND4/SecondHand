@@ -43,6 +43,7 @@ class SearchFragment : Fragment() {
                 }
                 return false
             }
+            //push trigger
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 searchAdapter.filter.filter(newText)
