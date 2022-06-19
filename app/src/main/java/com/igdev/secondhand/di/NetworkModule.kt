@@ -22,13 +22,15 @@ import javax.inject.Singleton
 
 
 
+import retrofit2.create
+import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object NetworkModule {
     @Singleton
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().apply {
+       return HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
     }
@@ -75,7 +77,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): ApiService {
+    fun provideApiService(retrofit: Retrofit) : ApiService {
         return retrofit.create()
     }
 
@@ -84,6 +86,4 @@ object NetworkModule {
     fun provideApiHelper(apiService: ApiService): ApiHelper {
         return ApiHelper(apiService)
     }
-
 }
-

@@ -7,4 +7,5 @@ import javax.inject.Inject
 class ApiHelper @Inject constructor(private val apiService: ApiService) {
     suspend fun postRegUser(requestBody: RegistReq) = apiService.postRegUser(requestBody)
     suspend fun postLoginUser(requestBody: LoginReq) = apiService.postLogin(requestBody)
+
 }

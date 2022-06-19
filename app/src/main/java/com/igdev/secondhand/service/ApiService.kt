@@ -7,6 +7,10 @@ import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.register.RegisterResponse
 import retrofit2.http.*
 
+import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
+
 interface ApiService {
     @GET("buyer/product")
     suspend fun getAllProduct(): AllProductResponse
@@ -14,5 +18,4 @@ interface ApiService {
     suspend fun postRegUser(@Body requestBody: RegistReq) : RegisterResponse
     @POST("auth/login")
     suspend fun postLogin(@Body requestBody: LoginReq) : LoginResponse
-
 }

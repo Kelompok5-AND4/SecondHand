@@ -1,6 +1,5 @@
 package com.igdev.secondhand.model
 
-
 import com.google.gson.annotations.SerializedName
 
 data class AllProductResponse(

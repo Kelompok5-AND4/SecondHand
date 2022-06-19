@@ -15,4 +15,6 @@ object RepositoryModule {
 @ViewModelScoped
 @Provides
 fun provideRepository(apiHelper : ApiHelper) = Repository(apiHelper)
+=======
+class RepositoryModule {
 }
