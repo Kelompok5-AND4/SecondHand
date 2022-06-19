@@ -41,12 +41,13 @@ class LoginFragment : Fragment() {
                     progressDialog.show()
                 }
                 Status.SUCCESS ->{
-                    Toast.makeText(requireContext(), "Registrasi berhasil", Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(), "Login berhasil", Toast.LENGTH_SHORT)
                         .show()
                     progressDialog.dismiss()
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 }
                 Status.ERROR ->{
-                    Toast.makeText(requireContext(), "Registrasi gagal", Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(), "Login gagal", Toast.LENGTH_SHORT)
                         .show()
                     progressDialog.dismiss()
                 }

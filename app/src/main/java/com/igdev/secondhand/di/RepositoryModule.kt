@@ -12,9 +12,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 @InstallIn(ViewModelComponent::class)
 object RepositoryModule {
 
-@ViewModelScoped
-@Provides
-fun provideRepository(apiHelper : ApiHelper) = Repository(apiHelper)
-=======
-class RepositoryModule {
+    @ViewModelScoped
+    @Provides
+    fun provideRepository(apiHelper: ApiHelper) = Repository(apiHelper)
 }
