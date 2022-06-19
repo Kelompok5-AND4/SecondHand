@@ -6,15 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".ui.NotificationFragment">
 
+    <ImageView
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_union"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
+        android:id="@+id/tv_notifikasi_tittle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is Notification Fragment"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Notifikasi"
+        android:textSize="19sp"
+        android:fontFamily="@font/poppins_bold"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/top_bar"
+        app:layout_constraintEnd_toEndOf="@id/top_bar"
+        app:layout_constraintTop_toTopOf="@id/top_bar"
+        app:layout_constraintBottom_toBottomOf="@id/top_bar"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        android:layout_marginStart="27dp"
+        app:layout_constraintStart_toStartOf="@id/top_bar"
+        app:layout_constraintBottom_toBottomOf="@id/tv_notifikasi_tittle"
+        app:layout_constraintTop_toTopOf="@id/tv_notifikasi_tittle"
+        />
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"        tools:listitem="@layout/notification_item"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
