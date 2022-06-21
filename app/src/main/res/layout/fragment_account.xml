@@ -1,22 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.AccountFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_bg_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/content_descriptio_background"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_akun"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:src="@drawable/ic_profie"
+            android:layout_marginTop="91dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/content_description_icon" />
+
+        <TextView
+            android:id="@+id/tv_nama"
+            android:text="@string/nama_user"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="32dp"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_profile"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/tv_nama"
+            app:layout_constraintEnd_toEndOf="@id/tv_nama"
+            app:layout_constraintTop_toBottomOf="@id/tv_nama">
+
+            <ImageView
+                android:id="@+id/iv_ic_whatsapp"
+                android:src="@drawable/ic_whatsapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_no_whatsapp"
+                android:contentDescription="@string/content_description_icon" />
+
+            <TextView
+                android:id="@+id/tv_no_whatsapp"
+                android:text="@string/whatsapp_number"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_marginStart="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/iv_ic_whatsapp"
+                app:layout_constraintTop_toTopOf="@id/iv_ic_whatsapp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_ic_whatsapp"/>
+
+            <View
+                android:id="@+id/iv_line_satu"
+                android:layout_width="2dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="14dp"
+                android:background="@color/white"
+                app:layout_constraintStart_toEndOf="@id/tv_no_whatsapp"
+                app:layout_constraintTop_toTopOf="@id/iv_ic_whatsapp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_ic_whatsapp"/>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is Account Fragment"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+            <ImageView
+                android:id="@+id/iv_ic_location"
+                android:src="@drawable/ic_location_fix"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/iv_line_satu"
+                app:layout_constraintTop_toTopOf="@id/iv_ic_whatsapp"
+                app:layout_constraintEnd_toStartOf="@id/tv_location"
+                app:layout_constraintBottom_toBottomOf="@id/iv_ic_whatsapp"
+                app:tint="@color/white"
+                android:contentDescription="@string/content_description_icon" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:text="@string/alamat"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_marginStart="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/iv_ic_location"
+                app:layout_constraintTop_toTopOf="@id/iv_ic_location"
+                app:layout_constraintBottom_toBottomOf="@id/iv_ic_location"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--Section Edit / Ubah Akun-->
+        <ImageView
+            android:id="@+id/bg_section_edit"
+            android:layout_width="match_parent"
+            android:src="@drawable/outline_btn"
+            android:layout_height="51dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_bg_account"
+            android:contentDescription="@string/content_descriptio_background" />
+
+        <ImageView
+            android:id="@+id/iv_ic_edit"
+            android:src="@drawable/ic_edit"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/bg_section_edit"
+            app:layout_constraintTop_toTopOf="@id/bg_section_edit"
+            app:layout_constraintBottom_toBottomOf="@id/bg_section_edit"
+            android:contentDescription="@string/content_description_icon" />
+
+        <TextView
+            android:id="@+id/tv_edit"
+            android:text="@string/ubah_akun"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/iv_ic_edit"
+            app:layout_constraintTop_toTopOf="@id/iv_ic_edit"
+            app:layout_constraintBottom_toBottomOf="@id/iv_ic_edit"/>
+
+        <ImageView
+            android:id="@+id/iv_arrow_edit"
+            android:src="@drawable/ic_arraw_r"
+            android:layout_marginEnd="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/bg_section_edit"
+            app:layout_constraintTop_toTopOf="@id/iv_ic_edit"
+            app:layout_constraintBottom_toBottomOf="@id/iv_ic_edit"
+            android:contentDescription="@string/content_description_icon" />
+
+        <!--Section Setting / Pengaturan Akun-->
+        <ImageView
+            android:id="@+id/bg_section_setting"
+            android:layout_width="match_parent"
+            android:src="@drawable/outline_btn"
+            android:layout_height="51dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bg_section_edit"
+            android:contentDescription="@string/content_descriptio_background" />
+
+        <ImageView
+            android:id="@+id/iv_ic_setting"
+            android:src="@drawable/ic_setting"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/bg_section_setting"
+            app:layout_constraintTop_toTopOf="@id/bg_section_setting"
+            app:layout_constraintBottom_toBottomOf="@id/bg_section_setting"
+            android:contentDescription="@string/content_description_icon" />
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:text="@string/pengaturan_akun"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/iv_ic_setting"
+            app:layout_constraintTop_toTopOf="@id/iv_ic_setting"
+            app:layout_constraintBottom_toBottomOf="@id/iv_ic_setting"/>
+
+        <ImageView
+            android:id="@+id/iv_arrow_setting"
+            android:src="@drawable/ic_arraw_r"
+            android:layout_marginEnd="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/bg_section_setting"
+            app:layout_constraintTop_toTopOf="@id/bg_section_setting"
+            app:layout_constraintBottom_toBottomOf="@id/bg_section_setting"
+            android:contentDescription="@string/content_description_icon" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!--Section Keluar / Logout-->
+        <ImageView
+            android:id="@+id/bg_section_logout"
+            android:layout_width="match_parent"
+            android:src="@drawable/outline_btn"
+            android:layout_height="51dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bg_section_setting"
+            android:contentDescription="@string/content_descriptio_background" />
+
+        <ImageView
+            android:id="@+id/iv_ic_logout"
+            android:src="@drawable/ic_logout"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/bg_section_logout"
+            app:layout_constraintTop_toTopOf="@id/bg_section_logout"
+            app:layout_constraintBottom_toBottomOf="@id/bg_section_logout"
+            android:contentDescription="@string/content_description_icon" />
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:text="@string/keluar"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/iv_ic_logout"
+            app:layout_constraintTop_toTopOf="@id/iv_ic_logout"
+            app:layout_constraintBottom_toBottomOf="@id/iv_ic_logout"/>
+
+        <ImageView
+            android:id="@+id/iv_arrow_logout"
+            android:src="@drawable/ic_arraw_r"
+            android:layout_marginEnd="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/bg_section_logout"
+            app:layout_constraintTop_toTopOf="@id/bg_section_logout"
+            app:layout_constraintBottom_toBottomOf="@id/bg_section_logout"
+            android:contentDescription="@string/content_description_icon" />
+
+
+        <TextView
+            android:id="@+id/tv_aboutus"
+            android:text="@string/about_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bg_section_logout"
+            app:layout_constraintBottom_toTopOf="@id/tv_version"
+            app:layout_constraintBaseline_toTopOf="@string/version"/>
+
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:text="@string/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</ScrollView>
