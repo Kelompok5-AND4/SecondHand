@@ -12,7 +12,7 @@
         android:id="@+id/tv_debug"
         android:text="Ini fragmnet untuk test navigasi dan juga liat layout pas di mulai tanpa login"
         android:fontFamily="@font/poppins_regular"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:layout_marginTop="16dp"
         android:textAlignment="center"
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
     <Button
         android:id="@+id/btn_debug_account"
         android:text="Debug Account"
@@ -29,5 +30,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_debug"/>
+
+    <Button
+        android:id="@+id/btn_searchbar"
+        android:text="Debug searchbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_debug_account"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

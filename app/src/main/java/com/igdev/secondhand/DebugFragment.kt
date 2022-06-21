@@ -27,5 +27,9 @@ class DebugFragment : Fragment() {
         binding.btnDebugAccount.setOnClickListener {
             findNavController().navigate(R.id.action_debugFragment_to_accountFragment)
         }
+
+        binding.btnSearchbar.setOnClickListener{
+            findNavController().navigate(R.id.action_debugFragment_to_searchFragment)
+        }
     }
 }

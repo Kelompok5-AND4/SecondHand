@@ -111,4 +111,7 @@ dependencies {
     // Moshi
     implementation "com.squareup.moshi:moshi:1.9.3"
     implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
+
+    //Tranparat statusbar
+    implementation 'dev.chrisbanes.insetter:insetter:0.6.1'
 }

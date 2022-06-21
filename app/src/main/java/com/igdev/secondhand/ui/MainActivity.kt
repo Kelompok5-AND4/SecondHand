@@ -8,6 +8,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.ActivityMainBinding
+import com.igdev.secondhand.lightStatusBar
+import com.igdev.secondhand.setFullScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) //Turn Off dark mode
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setFullScreen(window)
+        lightStatusBar(window)
 
         val navController = findNavController(R.id.fragmentContainerView)
         binding.menuNavigation.setupWithNavController(navController)
