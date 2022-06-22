@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.igdev.secondhand.model.Resource
+import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.login.LoginResponse
 import com.igdev.secondhand.repository.Repository
@@ -18,6 +19,7 @@ class LoginViewModel @Inject constructor(private val repository: Repository) : V
     val userLogin: LiveData<Resource<LoginResponse>>
         get() = _userLogin
 
+
     fun loginPost(requestBody : LoginReq) {
         viewModelScope.launch {
             _userLogin.postValue(Resource.loading())
@@ -26,6 +28,12 @@ class LoginViewModel @Inject constructor(private val repository: Repository) : V
             } catch (exception: Exception) {
                 _userLogin.postValue(Resource.error(exception.message ?: "Error"))
             }
+        }
+    }
+
+    fun setUserToken(user: User){
+        viewModelScope.launch {
+            repository.setDatastore(user)
         }
     }
 

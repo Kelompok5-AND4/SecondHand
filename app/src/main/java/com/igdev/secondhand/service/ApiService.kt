@@ -3,13 +3,12 @@ package com.igdev.secondhand.service
 import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.login.LoginResponse
+import com.igdev.secondhand.model.notification.NotifResponseItem
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.register.RegisterResponse
 import retrofit2.http.*
 
 import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface ApiService {
     @GET("buyer/product")
@@ -18,4 +17,7 @@ interface ApiService {
     suspend fun postRegUser(@Body requestBody: RegistReq) : RegisterResponse
     @POST("auth/login")
     suspend fun postLogin(@Body requestBody: LoginReq) : LoginResponse
+    // notification
+    @GET("notification")
+    suspend fun GetNotif(@Header ("access_token") token: String ) : List<NotifResponseItem>
 }

@@ -2,6 +2,7 @@ package com.igdev.secondhand.ui
 
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentLoginBinding
 import com.igdev.secondhand.model.Status
+import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.ui.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,7 +46,15 @@ class LoginFragment : Fragment() {
                     Toast.makeText(requireContext(), "Login berhasil", Toast.LENGTH_SHORT)
                         .show()
                     progressDialog.dismiss()
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                   if (resources.data?.accessToken != null){
+                       val token = User(resources.data.accessToken)
+                       Handler().postDelayed({
+                           viewModel.setUserToken(token)
+                           findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                       },1000 )
+                   }
+
+
                 }
                 Status.ERROR ->{
                     Toast.makeText(requireContext(), "Login gagal", Toast.LENGTH_SHORT)

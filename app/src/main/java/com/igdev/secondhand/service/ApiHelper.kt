@@ -8,4 +8,7 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     suspend fun postRegUser(requestBody: RegistReq) = apiService.postRegUser(requestBody)
     suspend fun postLoginUser(requestBody: LoginReq) = apiService.postLogin(requestBody)
 
+    //notification
+    suspend fun getNotif(token:String) = apiService.GetNotif(token)
+
 }
