@@ -31,5 +31,9 @@ class DebugFragment : Fragment() {
         binding.btnSearchbar.setOnClickListener{
             findNavController().navigate(R.id.action_debugFragment_to_searchFragment)
         }
+
+        binding.btnLelang.setOnClickListener {
+            findNavController().navigate(R.id.action_debugFragment_to_lelangFragment)
+        }
     }
 }

@@ -15,4 +15,6 @@
     <color name="orange_muda_dua">#FFA800</color>
     <color name="hijau">#01B45F</color>
     <color name="merah">#ED1C24</color>
+    <color name="white_trans">#83FFFFFF</color>
+    <color name="transparant">#00FFFFFF</color>
 </resources>

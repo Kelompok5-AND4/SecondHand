@@ -75,5 +75,13 @@
         <action
             android:id="@+id/action_debugFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_debugFragment_to_lelangFragment"
+            app:destination="@id/lelangFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/lelangFragment"
+        android:name="com.igdev.secondhand.LelangFragment"
+        android:label="fragment_lelang"
+        tools:layout="@layout/fragment_lelang" />
 </navigation>
