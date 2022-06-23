@@ -32,5 +32,8 @@ interface ApiService {
                        @Part("username") username: RequestBody,
                        @Part("email") email: RequestBody,
                        @Part file: MultipartBody.Part) : UpdateResponse
+    // notification
+    @GET("notification")
+    suspend fun GetNotif(@Header ("access_token") token: String ) : List<NotifResponseItem>
 
 }
