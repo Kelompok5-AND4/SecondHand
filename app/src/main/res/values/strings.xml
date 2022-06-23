@@ -19,5 +19,7 @@
     <string name="lelang">Barang Lelang Minggu Ini</string>
     <string name="banner_fasion">Cari Sepatu</string>
     <string name="banner_smartphone">Cari Smartphone</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="user">User</string>
 
 </resources>
