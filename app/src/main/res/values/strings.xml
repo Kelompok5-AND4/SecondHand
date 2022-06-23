@@ -5,5 +5,7 @@
     <string name="masuk">Masuk</string>
     <string name="email_hint">email</string>
     <string name="password_hint">password</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="user">User</string>
 
 </resources>
