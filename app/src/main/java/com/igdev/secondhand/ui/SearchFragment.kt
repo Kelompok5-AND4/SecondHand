@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.SearchView
+import com.igdev.secondhand.lightStatusBar
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentSearchBinding
+import com.igdev.secondhand.lightStatusBar
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null

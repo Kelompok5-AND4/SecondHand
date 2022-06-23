@@ -5,6 +5,20 @@
     <string name="masuk">Masuk</string>
     <string name="email_hint">email</string>
     <string name="password_hint">password</string>
+    <string name="content_descriptio_background">background</string>
+    <string name="content_description_icon">icon</string>
+    <string name="nama_user">Nama User</string>
+    <string name="whatsapp_number">08975601600</string>
+    <string name="alamat">Alamat</string>
+    <string name="ubah_akun">Ubah Akun</string>
+    <string name="pengaturan_akun">Pengaturan Akun</string>
+    <string name="keluar">Keluar</string>
+    <string name="about_us">Tentang CuanCuan</string>
+    <string name="version">Version 1.0.0</string>
+    <string name="search_rekomendasi_text">Rekomendasi untuk anda</string>
+    <string name="lelang">Barang Lelang Minggu Ini</string>
+    <string name="banner_fasion">Cari Sepatu</string>
+    <string name="banner_smartphone">Cari Smartphone</string>
     <string name="welcome">Selamat Datang</string>
     <string name="user">User</string>
 

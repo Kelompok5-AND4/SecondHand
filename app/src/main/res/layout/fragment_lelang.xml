@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".LelangFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_bg_lelang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/content_descriptio_background"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_lelang"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/iv_logo_lelang"
+            android:layout_width="350dp"
+            android:layout_height="217dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/logo_lelang"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_judul_lelang" />
+
+        <ImageButton
+            android:id="@+id/ib_ic_back"
+            android:src="@drawable/ic_back"
+            android:backgroundTint="@color/transparant"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="14dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_judul_lelang"
+            android:text="List Lelang Minggu Ini :"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ib_ic_back"
+            app:layout_constraintBottom_toBottomOf="@id/ib_ic_back"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_lelang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:spanCount="2"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo_lelang"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/rv_lelang" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -185,7 +185,6 @@
         android:background="@drawable/searchview_bg"
         android:queryBackground="@android:color/transparent"/>
 
-
     <ImageView
         android:id="@+id/searchIcon"
         app:layout_constraintEnd_toEndOf="@id/searchView"
@@ -205,8 +204,6 @@
         android:src="@drawable/ic_notification"
         android:layout_width="36dp"
         android:layout_height="36dp"/>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,6 +61,9 @@ class LoginFragment : Fragment() {
             tvDaftarDiSini.setOnClickListener{
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
+            tvMasukDebug.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_debugFragment)
+            }
         }
     }
 
