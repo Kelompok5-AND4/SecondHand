@@ -85,7 +85,6 @@ class HomeFragment : Fragment() {
         val status = "available"
         val categoryId = ""
         val progressDialog = ProgressDialog(requireContext())
-
         viewModel.product.observe(viewLifecycleOwner){ resources ->
             when(resources.status){
                 Status.LOADING ->{
