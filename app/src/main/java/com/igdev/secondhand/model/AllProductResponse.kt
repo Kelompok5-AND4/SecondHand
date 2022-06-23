@@ -1,5 +1,6 @@
 package com.igdev.secondhand.model
 
+
 import com.google.gson.annotations.SerializedName
 
 data class AllProductResponse(
@@ -28,7 +29,6 @@ data class AllProductResponse(
     @SerializedName("user_id")
     val userId: Int
 )
-
 data class Category(
     @SerializedName("id")
     val id: Int,
