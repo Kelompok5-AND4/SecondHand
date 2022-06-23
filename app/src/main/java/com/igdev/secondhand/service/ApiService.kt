@@ -5,6 +5,7 @@ import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.UpdateResponse
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.login.LoginResponse
+import com.igdev.secondhand.model.notification.NotifResponseItem
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.register.RegisterResponse
 import okhttp3.MultipartBody
