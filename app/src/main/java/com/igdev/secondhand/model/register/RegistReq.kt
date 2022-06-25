@@ -16,4 +16,6 @@ data class RegistReq(
     val address: String,
     @SerializedName("image")
     val image: String,
+    @SerializedName("city")
+    val city: String,
 )

@@ -63,11 +63,12 @@ class HomeFragment : Fragment() {
         miniCategoryAdapter = MiniCategoryAdapter(object : MiniCategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {
                 Toast.makeText(requireContext(),"click",Toast.LENGTH_SHORT).show()
+                getProduct(data.id.toString())
             }
         })
         binding.rvMiniCategory.adapter = miniCategoryAdapter
         getCategory()
-        getBanner()
+        getProduct("")
 
     }
 
@@ -81,9 +82,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun getBanner() {
+    private fun getProduct(categoryId: String) {
         val status = "available"
-        val categoryId = ""
         val progressDialog = ProgressDialog(requireContext())
         viewModel.product.observe(viewLifecycleOwner){ resources ->
             when(resources.status){

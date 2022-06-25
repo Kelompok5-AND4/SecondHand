@@ -14,6 +14,8 @@ data class RegisterResponse(
     val fullName: String,
     @SerializedName("id")
     val id: Int,
+    @SerializedName("city")
+    val city: String,
     @SerializedName("image_url")
     val imageUrl: String,
     @SerializedName("password")

@@ -1,5 +1,6 @@
 package com.igdev.secondhand.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) //Turn Off dark mode
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         setFullScreen(window)
         lightStatusBar(window)
@@ -43,8 +45,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-
     }
+
 }

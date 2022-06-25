@@ -7,6 +7,7 @@
     android:layout_margin="16dp"
     tools:context=".ui.RegisterFragment">
 <LinearLayout
+    android:layout_marginTop="48dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -16,9 +17,11 @@
         android:layout_gravity="center"
         android:src="@drawable/ic_baseline_arrow_back_24"/>
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Daftar"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:textSize="30sp"
         android:gravity="center"
         android:textStyle="bold"/>
@@ -42,16 +45,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Buat Password"/>
+        android:hint="Buat Password"
+        android:inputType="textPassword"/>
     <EditText
         android:id="@+id/phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:inputType="number"
-        android:hint="nomor hp"
+        android:hint="Konfirmasi Password"
         tools:ignore="TextFields" />
-    <EditText
+   <!-- <EditText
         android:id="@+id/location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Photo"/>
+        android:hint="Photo"/>-->
 
     <Button
         android:id="@+id/btn_register"
