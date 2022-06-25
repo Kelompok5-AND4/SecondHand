@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
         }
         productAdapter = ProductAdapter(object : ProductAdapter.OnClickListener{
             override fun onClickItem(data: AllProductResponse) {
-                Toast.makeText(requireContext(),"click",Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_homeFragment_to_detailProductFragment)
             }
         })
         binding.rvBanner.adapter = productAdapter
@@ -85,6 +85,7 @@ class HomeFragment : Fragment() {
     private fun getProduct(categoryId: String) {
         val status = "available"
         val progressDialog = ProgressDialog(requireContext())
+        viewModel.getProduct(status, categoryId)
         viewModel.product.observe(viewLifecycleOwner){ resources ->
             when(resources.status){
                 Status.LOADING ->{
@@ -102,6 +103,5 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-        viewModel.getProduct(status, categoryId)
     }
 }
