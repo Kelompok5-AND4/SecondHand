@@ -31,17 +31,24 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.searchFragment -> {
-                    binding.menuNavigation.visibility = View.GONE
-                }
-                R.id.loginFragment -> {
-                    binding.menuNavigation.visibility = View.GONE
-                }
-                R.id.registerFragment -> {
-                    binding.menuNavigation.visibility = View.GONE
-                }
-                else -> {
+                R.id.homeFragment -> {
                     binding.menuNavigation.visibility = View.VISIBLE
+                }
+                R.id.notificationFragment -> {
+                    binding.menuNavigation.visibility = View.VISIBLE
+                }
+                R.id.accountFragment -> {
+                    binding.menuNavigation.visibility = View.VISIBLE
+                }
+                R.id.transactionFragment -> {
+                    binding.menuNavigation.visibility = View.VISIBLE
+                }
+                R.id.sellFragment -> {
+                    binding.menuNavigation.visibility = View.VISIBLE
+                }
+
+                else -> {
+                    binding.menuNavigation.visibility = View.GONE
                 }
             }
         }
