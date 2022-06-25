@@ -43,9 +43,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.transactionFragment -> {
                     binding.menuNavigation.visibility = View.VISIBLE
                 }
-                R.id.sellFragment -> {
-                    binding.menuNavigation.visibility = View.VISIBLE
-                }
 
                 else -> {
                     binding.menuNavigation.visibility = View.GONE
