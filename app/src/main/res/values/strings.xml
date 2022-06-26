@@ -20,5 +20,16 @@
     <string name="banner_smartphone">Cari Smartphone</string>
     <string name="welcome">Selamat Datang</string>
     <string name="user">User</string>
+    <string name="background">Background</string>
+    <string name="ldp">Lengkapi Detail Produk</string>
+    <string name="nama_produk">Nama Produk</string>
+    <string name="harga_produk">Harga Produk</string>
+    <string name="rp">Rp 0,00</string>
+    <string name="kategori">Kategori</string>
+    <string name="pilih_kategori">Pilih Kategori</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="contoh">Contoh: Jalan Ikan Hiu 33</string>
+    <string name="foto_produk">Foto Produk</string>
+    <string name="terbitkan">Terbitkan</string>
 
 </resources>
