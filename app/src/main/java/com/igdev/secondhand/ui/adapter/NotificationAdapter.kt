@@ -49,7 +49,7 @@ class NotificationAdapter(private val onItemClick: onClickListener) :
                 tvPenawaranBerhasil.text = data.status
                 tvDateNotif.text = data.transactionDate
                 tvHargaDiCoret.setText("${data.bidPrice}").toString()
-                tvHargaDiCoret.text = ("<strike> ${data.bidPrice}</strike>")
+                tvHargaDiCoret.text = ("${data.bidPrice}")
                 Glide.with(root)
                     .load(data.imageUrl)
                     .into(ivProduct)
