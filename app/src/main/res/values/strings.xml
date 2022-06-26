@@ -36,5 +36,6 @@
     <string name="photo">Photo</string>
     <string name="semua_barang">Semua Barang</string>
     <string name="dalam_pengajuan">Dalam Pengajuan</string>
+    <string name="pengajuan_ditolak">Pengajuan Ditolak</string>
 
 </resources>
