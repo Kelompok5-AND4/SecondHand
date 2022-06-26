@@ -48,10 +48,8 @@ class LoginFragment : Fragment() {
                     progressDialog.dismiss()
                    if (resources.data?.accessToken != null){
                        val token = User(resources.data.accessToken)
-                       Handler().postDelayed({
-                           viewModel.setUserToken(token)
-                           findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                       },1000 )
+                       viewModel.setUserToken(token)
+                       findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                    }
 
 

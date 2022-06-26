@@ -30,35 +30,46 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedHost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
-        android:layout_margin="8dp"
+        android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/separator">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/hostBanner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
-            <HorizontalScrollView
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerBanner"
+                android:layout_width="match_parent"
+                android:layout_height="196dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--<HorizontalScrollView
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/bannerScroll">
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/bannerContainer">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:layout_width="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/firstBanner">
                         <ImageView
@@ -92,15 +103,17 @@
                             app:layout_constraintEnd_toEndOf="@id/ivUserBanner"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </HorizontalScrollView>
+            </HorizontalScrollView>-->
             <HorizontalScrollView
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/bannerScroll"
+                app:layout_constraintTop_toBottomOf="@id/viewPagerBanner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
@@ -165,12 +178,12 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                android:id="@+id/rvBanner"
-                tools:listitem="@layout/banner_item"
+                android:id="@+id/rvProduct"
+                tools:listitem="@layout/product_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
 
