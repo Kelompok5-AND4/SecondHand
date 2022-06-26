@@ -31,5 +31,7 @@
     <string name="contoh">Contoh: Jalan Ikan Hiu 33</string>
     <string name="foto_produk">Foto Produk</string>
     <string name="terbitkan">Terbitkan</string>
+    <string name="harga">Rp 17.000</string>
+    <string name="nama_barang">Nama Barang</string>
 
 </resources>
