@@ -16,6 +16,7 @@
             android:id="@+id/iv_image"
             android:src="@drawable/ic_image"
             android:scaleType="fitCenter"
+            android:contentDescription="@string/photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

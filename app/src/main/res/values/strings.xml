@@ -33,5 +33,7 @@
     <string name="terbitkan">Terbitkan</string>
     <string name="harga">Rp 17.000</string>
     <string name="nama_barang">Nama Barang</string>
+    <string name="photo">Photo</string>
+    <string name="semua_barang">Semua Barang</string>
 
 </resources>
