@@ -38,5 +38,6 @@
     <string name="dalam_pengajuan">Dalam Pengajuan</string>
     <string name="pengajuan_ditolak">Pengajuan Ditolak</string>
     <string name="pengajuan_diterima">Pengajuan Diterima</string>
+    <string name="sedang_ditawar">Sedang Ditawar</string>
 
 </resources>
