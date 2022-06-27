@@ -3,6 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/drawable/gradient_button.xml" value="0.122" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_add_product.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_category.xml" value="0.18888888888888888" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_dalam_pengajuan.xml" value="0.18888888888888888" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_debug.xml" value="0.18333333333333332" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_detail_product.xml" value="0.18333333333333332" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_lelang.xml" value="0.18333333333333332" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_pengajuan_diterima.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_pengajuan_ditolak.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_second.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_sedang_ditawar.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_sell.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_semua_pembelian.xml" value="0.18888888888888888" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_semua_penjualan.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_splash.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_terjual.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_transaction.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_transaksi_semua_pembelian.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/item.xml" value="0.1675213675213675" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/mini_category_item.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHand(LatestMerge)/app/src/main/res/drawable/banner_bg.xml" value="0.1195" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHand(LatestMerge)/app/src/main/res/drawable/category_bg.xml" value="0.1195" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHand(LatestMerge)/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.12" />
