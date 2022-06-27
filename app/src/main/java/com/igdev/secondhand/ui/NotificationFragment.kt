@@ -40,6 +40,7 @@ class NotificationFragment : Fragment() {
                 Status.LOADING ->{
                     binding.pbLoading.visibility = View.VISIBLE
                 }
+
                 Status.SUCCESS ->{
                     val adapter = NotificationAdapter(object :NotificationAdapter.onClickListener{
                         override fun onClickItem(data: NotifResponseItem) {

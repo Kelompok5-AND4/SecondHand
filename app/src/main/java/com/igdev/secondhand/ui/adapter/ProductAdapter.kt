@@ -1,13 +1,16 @@
 package com.igdev.secondhand.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.RoundedCorner
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.igdev.secondhand.databinding.BannerItemBinding
+import com.igdev.secondhand.databinding.ProductItemBinding
 import com.igdev.secondhand.model.AllProductResponse
+import kotlinx.coroutines.newFixedThreadPoolContext
 
 class ProductAdapter(private val onClick: OnClickListener):RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
@@ -34,9 +37,9 @@ class ProductAdapter(private val onClick: OnClickListener):RecyclerView.Adapter<
     interface OnClickListener {
         fun onClickItem (data: AllProductResponse)
     }
-    inner class ViewHolder(private val binding: BannerItemBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding: ProductItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind (data:AllProductResponse){
-            Glide.with(binding.root).load(data.imageUrl).into(binding.ivBanner)
+            Glide.with(binding.root).load(data.imageUrl).into(binding.ivProduct)
             binding.tvProductName.text = data.name
             binding.tvHarga.text = "Rp. ${data.basePrice}"
             binding.root.setOnClickListener {
@@ -46,7 +49,7 @@ class ProductAdapter(private val onClick: OnClickListener):RecyclerView.Adapter<
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductAdapter.ViewHolder {
         val inflate = LayoutInflater.from(parent.context)
-        return ViewHolder(BannerItemBinding.inflate(inflate,parent,false))
+        return ViewHolder(ProductItemBinding.inflate(inflate,parent,false))
     }
 
     override fun onBindViewHolder(holder: ProductAdapter.ViewHolder, position: Int) {
