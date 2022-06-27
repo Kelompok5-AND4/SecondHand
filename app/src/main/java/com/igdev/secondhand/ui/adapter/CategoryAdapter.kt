@@ -17,7 +17,7 @@ class CategoryAdapter(private val onClick: CategoryAdapter.OnClickListener):Recy
             oldItem: CategoryResponseItem,
             newItem: CategoryResponseItem
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.name == newItem.name
         }
 
         override fun areContentsTheSame(

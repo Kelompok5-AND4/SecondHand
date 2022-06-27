@@ -27,8 +27,10 @@ interface ApiService {
     suspend fun postRegUser(@Body requestBody: RegistReq) : RegisterResponse
     @POST("auth/login")
     suspend fun postLogin(@Body requestBody: LoginReq) : LoginResponse
+
+    //anwar
     @Multipart
-    @POST("auth/update")
+    @PUT("auth/update")
     suspend fun update(@Header("Authorization") token: String,
                        @Part("username") username: RequestBody,
                        @Part("email") email: RequestBody,

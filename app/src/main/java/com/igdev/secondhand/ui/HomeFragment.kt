@@ -38,7 +38,6 @@ class HomeFragment : Fragment() {
     private lateinit var productAdapter: ProductAdapter
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var miniCategoryAdapter: MiniCategoryAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -92,6 +91,7 @@ class HomeFragment : Fragment() {
             }
         })
         binding.rvProduct.adapter = productAdapter
+        binding.rvSpecialOffer.adapter = productAdapter
         categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {
                 Toast.makeText(requireContext(),"click",Toast.LENGTH_SHORT).show()
