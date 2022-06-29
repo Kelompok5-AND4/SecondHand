@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_homeFragment_to_notificationFragment"
             app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_blankFragment"
+            app:destination="@id/blankFragment" />
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
@@ -119,4 +122,9 @@
         android:name="com.igdev.secondhand.ui.detailproduct.DetailProductFragment"
         android:label="fragment_detail_product"
         tools:layout="@layout/fragment_detail_product" />
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.igdev.secondhand.ui.blanktest.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" />
 </navigation>

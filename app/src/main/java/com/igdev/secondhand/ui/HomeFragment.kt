@@ -105,7 +105,7 @@ class HomeFragment : Fragment() {
             }
         })
         binding.ivNotification.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_blankFragment)
         }
         binding.rvMiniCategory.adapter = miniCategoryAdapter
         getCategory()
