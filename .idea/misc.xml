@@ -31,6 +31,7 @@
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_splash_screen.xml" value="0.2165" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_union.xml" value="0.137" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_whatsapp.xml" value="0.1255" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/outline_btn.xml" value="0.199" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/searchview_bg.xml" value="0.1255" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/selected_dot.xml" value="0.137" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/square_home.xml" value="0.1285" />
@@ -41,7 +42,7 @@
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/all_feature_item.xml" value="0.17094017094017094" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/banner_item.xml" value="0.22" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/category_item.xml" value="0.209375" />
-        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/fragment_account.xml" value="0.25" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/fragment_account.xml" value="0.13" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/fragment_add_product.xml" value="0.209375" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/fragment_all_feature.xml" value="0.18" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/fragment_blank.xml" value="0.209375" />
@@ -71,7 +72,7 @@
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/fragment_transaction.xml" value="0.209375" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/item.xml" value="0.209375" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/mini_category_item.xml" value="0.209375" />
-        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/notification_item.xml" value="0.33" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/notification_item.xml" value="0.25" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/product_item.xml" value="0.25" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/rv_lelang.xml" value="0.67" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/slider.xml" value="0.22" />

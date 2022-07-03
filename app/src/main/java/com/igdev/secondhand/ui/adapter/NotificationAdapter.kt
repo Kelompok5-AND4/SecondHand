@@ -47,13 +47,13 @@ class NotificationAdapter(private val onItemClick: onClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: NotifResponseItem) {
             binding.apply {
-                tvProductName.text = data.productName.toString()
+                tvProductName.text = data.productName
                 tvPenawaranBerhasil.text =
                     if (data.status == "declined") "Penawaran anda Ditolak " + rupiah(data.bidPrice)
                     else if(data.status == "accepted") "Penawaran Anda Diterima " + rupiah(data.bidPrice)
                     else "Ditawar " + rupiah(data.bidPrice)
                 tvDateNotif.text = date(data.transactionDate)
-                tvHargaDiCoret.text = data.product.basePrice.toString()
+                tvHargaDiCoret.text = data.basePrice
                 tvAkanDihubungi.text = data.status
                 Glide.with(root)
                     .load(data.imageUrl)

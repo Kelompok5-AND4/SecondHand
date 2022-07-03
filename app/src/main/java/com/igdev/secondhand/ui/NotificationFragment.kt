@@ -33,7 +33,12 @@ class NotificationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.getToken()
         viewModel.getToken.observe(viewLifecycleOwner){
-            viewModel.getAllNotif(it.token)
+            if (it.token=="def_token"){
+                binding.notLogin.visibility =View.VISIBLE
+                binding.emptyNotif.visibility = View.GONE
+            }else{
+                viewModel.getAllNotif(it.token)
+            }
         }
         viewModel.getNotif.observe(viewLifecycleOwner){
             item ->
@@ -41,14 +46,18 @@ class NotificationFragment : Fragment() {
                 Status.LOADING ->{
                     binding.pbLoading.visibility = View.VISIBLE
                 }
-
                 Status.SUCCESS ->{
-                    val adapter = NotificationAdapter(object :NotificationAdapter.onClickListener{
-                        override fun onClickItem(data: NotifResponseItem) {
-                        }
-                    })
-                    adapter.submitData(item.data)
-                    binding.rvNotif.adapter = adapter
+                    if (item.data.isNullOrEmpty()){
+                       binding.emptyNotif.visibility = View.VISIBLE
+                    }
+                    else{
+                        val adapter = NotificationAdapter(object :NotificationAdapter.onClickListener{
+                            override fun onClickItem(data: NotifResponseItem) {
+                            }
+                        })
+                        adapter.submitData(item.data)
+                        binding.rvNotif.adapter = adapter
+                    }
                     binding.pbLoading.visibility = View.GONE
                 }
                 Status.ERROR ->{

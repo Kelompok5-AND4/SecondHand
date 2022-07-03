@@ -11,6 +11,7 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     suspend fun postLoginUser(requestBody: LoginReq) = apiService.postLogin(requestBody)
     suspend fun getAllProduct(status:String,categoryId:String) = apiService.getAllProduct(status,categoryId)
     suspend fun getAllCategory() = apiService.getAllCategory()
+    suspend fun getDataUser(token: String) = apiService.getDataUser(token)
     suspend fun updateUser(token: String,
                            image: MultipartBody.Part?,
                            name: RequestBody?,

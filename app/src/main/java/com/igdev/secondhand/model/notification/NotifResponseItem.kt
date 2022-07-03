@@ -4,6 +4,8 @@ package com.igdev.secondhand.model.notification
 import com.google.gson.annotations.SerializedName
 
 data class NotifResponseItem(
+    @SerializedName("base_price")
+    val basePrice: String,
     @SerializedName("bid_price")
     val bidPrice: Int,
     @SerializedName("buyer_name")
@@ -19,7 +21,7 @@ data class NotifResponseItem(
     @SerializedName("product_id")
     val productId: Int,
     @SerializedName("product_name")
-    val productName: Any,
+    val productName: String,
     @SerializedName("read")
     val read: Boolean,
     @SerializedName("receiver_id")

@@ -3,6 +3,7 @@ package com.igdev.secondhand.service
 import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.UpdateResponse
+import com.igdev.secondhand.model.getAuth.ResponseAuth
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.login.LoginResponse
 import com.igdev.secondhand.model.notification.NotifResponseItem
@@ -41,6 +42,9 @@ interface ApiService {
         @Part("email") email: RequestBody? = null,
         @Part("password") password: RequestBody? = null
     ): UpdateResponse
+
+    @GET("auth/user")
+    suspend fun getDataUser(@Header("access_token") token: String): ResponseAuth
 
     // notification
     @GET("notification")

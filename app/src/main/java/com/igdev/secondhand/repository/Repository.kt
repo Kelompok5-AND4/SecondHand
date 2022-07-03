@@ -19,6 +19,8 @@ class Repository(
     suspend fun getAllCategory() = apiHelper.getAllCategory()
     suspend fun setDatastore(user: User) = dataStore.setToken(user)
     suspend fun getDatastore() : Flow<User> = dataStore.getToken()
+    suspend fun deleteToken() = dataStore.delete()
+    suspend fun getDataUser(token: String) = apiHelper.getDataUser(token)
     suspend fun updateDataUser(
         token : String,
         image: MultipartBody.Part?,
