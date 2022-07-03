@@ -99,15 +99,14 @@ dependencies {
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     testImplementation "org.mockito:mockito-core:4.5.1"
-//    // Optional -- mockito-kotlin
     testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
-//    // Optional -- Mockk framework
     testImplementation "io.mockk:mockk:1.12.4"
 
     // Retrofit with Moshi Converter
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
-
+    //ImagePicker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
     // Moshi
     implementation "com.squareup.moshi:moshi:1.9.3"
     implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
@@ -115,7 +114,7 @@ dependencies {
     //Tranparat statusbar
     implementation 'dev.chrisbanes.insetter:insetter:0.6.1'
 
-    //Image Slider
-    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+    implementation 'com.github.Fuadafdhal:Auto-Image-Slider:1.0'
 
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
 }

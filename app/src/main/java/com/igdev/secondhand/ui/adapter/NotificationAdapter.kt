@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.igdev.secondhand.databinding.NotificationItemBinding
 import com.igdev.secondhand.model.notification.NotifResponseItem
+import com.igdev.secondhand.rupiah
 
 class NotificationAdapter(private val onItemClick: onClickListener) :
     RecyclerView.Adapter<NotificationAdapter.ViewHolder>() {
@@ -45,11 +46,14 @@ class NotificationAdapter(private val onItemClick: onClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: NotifResponseItem) {
             binding.apply {
-                tvProductName.text = data.sellerName
-                tvPenawaranBerhasil.text = data.status
+                tvProductName.text = data.productName.toString()
+                tvPenawaranBerhasil.text =
+                    if (data.status == "declined") "Penawaran anda Ditolak " + rupiah(data.bidPrice)
+                    else if(data.status == "accepted") "Penawaran Anda Diterima " + rupiah(data.bidPrice)
+                    else "Ditawar " + rupiah(data.bidPrice)
                 tvDateNotif.text = data.transactionDate
-                tvHargaDiCoret.setText("${data.bidPrice}").toString()
-                tvHargaDiCoret.text = ("${data.bidPrice}")
+                tvHargaDiCoret.text = data.product.basePrice.toString()
+                tvAkanDihubungi.text = data.status
                 Glide.with(root)
                     .load(data.imageUrl)
                     .into(ivProduct)

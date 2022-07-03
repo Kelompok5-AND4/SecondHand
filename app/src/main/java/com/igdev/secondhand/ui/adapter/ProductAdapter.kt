@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.igdev.secondhand.databinding.BannerItemBinding
 import com.igdev.secondhand.databinding.ProductItemBinding
 import com.igdev.secondhand.model.AllProductResponse
 import kotlinx.coroutines.newFixedThreadPoolContext

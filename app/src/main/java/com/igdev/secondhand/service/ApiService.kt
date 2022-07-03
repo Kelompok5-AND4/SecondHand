@@ -30,11 +30,18 @@ interface ApiService {
 
     //anwar
     @Multipart
-    @PUT("auth/update")
-    suspend fun update(@Header("Authorization") token: String,
-                       @Part("username") username: RequestBody,
-                       @Part("email") email: RequestBody,
-                       @Part file: MultipartBody.Part) : UpdateResponse
+    @PUT("auth/user")
+    suspend fun updateDataUser(
+        @Header("access_token") token: String,
+        @Part file: MultipartBody.Part? = null,
+        @Part("full_name") name: RequestBody?,
+        @Part("phone_number") phoneNumber: RequestBody?,
+        @Part("address") address: RequestBody?,
+        @Part("city") city: RequestBody?,
+        @Part("email") email: RequestBody? = null,
+        @Part("password") password: RequestBody? = null
+    ): UpdateResponse
+
     // notification
     @GET("notification")
     suspend fun GetNotif(@Header ("access_token") token: String ) : List<NotifResponseItem>

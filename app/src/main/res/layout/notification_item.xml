@@ -45,15 +45,16 @@
         app:layout_constraintStart_toEndOf="@id/item_image"
         app:layout_constraintTop_toBottomOf="@id/tv_penawaran_product"
         tools:ignore="SmallSp" />
+
     <TextView
         android:id="@+id/tv_harga_di_coret"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="71dp"
+        android:layout_height="28dp"
         android:layout_marginStart="16dp"
-        android:text="Rp.250.000"
-        android:textSize="14sp"
-        android:textColor="@color/black"
         android:fontFamily="@font/poppins_regular"
+        android:text="Rp.250.000"
+        android:textColor="@color/black"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/item_image"
         app:layout_constraintTop_toBottomOf="@id/tv_product_name"
         tools:ignore="SmallSp" />
