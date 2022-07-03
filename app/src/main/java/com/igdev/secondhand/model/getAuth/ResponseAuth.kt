@@ -1,10 +1,13 @@
-package com.igdev.secondhand.model
+package com.igdev.secondhand.model.getAuth
+
 
 import com.google.gson.annotations.SerializedName
 
-data class UpdateResponse(
+data class ResponseAuth(
     @SerializedName("address")
     val address: String,
+    @SerializedName("city")
+    val city: String,
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("email")
@@ -14,7 +17,7 @@ data class UpdateResponse(
     @SerializedName("id")
     val id: Int,
     @SerializedName("image_url")
-    val imageUrl: Any,
+    val imageUrl: String,
     @SerializedName("password")
     val password: String,
     @SerializedName("phone_number")
