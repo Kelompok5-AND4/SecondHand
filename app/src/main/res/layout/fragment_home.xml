@@ -15,11 +15,11 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/guide"
-        app:layout_constraintGuide_percent="0.13"/>
+        app:layout_constraintGuide_begin="95dp" />
     <ImageView
         android:id="@+id/separator"
         android:layout_width="match_parent"

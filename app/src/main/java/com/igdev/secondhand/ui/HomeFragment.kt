@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.denzcoskun.imageslider.constants.ScaleTypes
-import com.denzcoskun.imageslider.models.SlideModel
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentHomeBinding
 import com.igdev.secondhand.model.AllProductResponse
@@ -104,9 +102,6 @@ class HomeFragment : Fragment() {
                 getProduct(data.id.toString())
             }
         })
-        binding.ivNotification.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
-        }
         binding.rvMiniCategory.adapter = miniCategoryAdapter
         getCategory()
         getProduct("")
