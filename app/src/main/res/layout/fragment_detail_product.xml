@@ -4,12 +4,13 @@
     android:background="@drawable/bg_biru_gradasi_satu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.detailproduct.DetailProductFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".ui.detailproduct.DetailProductFragment">
+        >
 
         <ImageView
             android:id="@+id/foto_produk"
