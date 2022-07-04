@@ -41,5 +41,13 @@
     <string name="pengajuan_diterima">Pengajuan Diterima</string>
     <string name="sedang_ditawar">Sedang Ditawar</string>
     <string name="see_all"><u>See All</u></string>
+    <string name="nama_penjual">Nama Penjual</string>
+    <string name="foto_profile">Foto Profile</string>
+    <string name="kota">Nama Kota</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="preview">Preview</string>
+    <string name="riwayat_tawaran">Riwayat Tawaran</string>
+    <string name="isi_deskripsi">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="nego">Saya Tertarik dan Ingin Nego</string>
 
 </resources>
