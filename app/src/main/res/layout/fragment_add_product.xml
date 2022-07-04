@@ -115,7 +115,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_kategori"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:hint="@string/pilih_kategori"
                 app:boxCornerRadiusTopStart="18dp"
                 app:boxCornerRadiusTopEnd="18dp"
                 app:boxCornerRadiusBottomStart="18dp"
@@ -123,9 +124,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_kategori"
-                    android:hint="@string/pilih_kategori"
+                <AutoCompleteTextView
+                    android:inputType="none"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -168,7 +168,7 @@
                 android:layout_height="wrap_content" />
 
             <ImageView
-                android:id="@+id/add_photo"
+                android:id="@+id/add_foto"
                 android:src="@drawable/ic_add_product"
                 android:layout_marginTop="8dp"
                 android:contentDescription="Photo"
@@ -187,12 +187,12 @@
             android:gravity="center_horizontal"
             android:weightSum="100"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_preview"
                 android:layout_weight="50"
-                android:text="Preview"
+                android:text="@string/preview"
                 android:textColor="@color/abu_muda_dua"
                 android:backgroundTint="@color/white"
                 app:strokeColor="@color/abu_muda_dua"
