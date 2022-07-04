@@ -29,7 +29,7 @@ class ThirdFragment : Fragment() {
         val viewPager =  activity?.findViewById<ViewPager2>(R.id.viewPager)
 
         binding.finish.setOnClickListener {
-            findNavController().navigate(R.id.action_onBoardingFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_onBoardingFragment_to_homeFragment)
             onBoardingFinished()
         }
         return binding.root

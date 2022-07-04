@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentNotificationBinding
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.notification.NotifResponseItem
@@ -36,6 +38,7 @@ class NotificationFragment : Fragment() {
             if (it.token=="def_token"){
                 binding.notLogin.visibility =View.VISIBLE
                 binding.emptyNotif.visibility = View.GONE
+                binding.rvNotif.visibility = View.GONE
             }else{
                 viewModel.getAllNotif(it.token)
             }
@@ -65,6 +68,9 @@ class NotificationFragment : Fragment() {
                     Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+        binding.btnLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_notificationFragment_to_loginFragment)
         }
     }
 

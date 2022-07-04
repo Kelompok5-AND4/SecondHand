@@ -29,20 +29,13 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getToken()
-        viewModel.getToken.observe(viewLifecycleOwner){
-            if (it.token == "def_token"){
-                Handler(Looper.getMainLooper()).postDelayed({
-                    if(onBoardingFinished()){
-                        findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
-                    }else{
-                        findNavController().navigate(R.id.action_splashFragment_to_onBoardingFragment)
-                    }
-                }, 3000)
-            }else{
+        Handler(Looper.getMainLooper()).postDelayed({
+            if(onBoardingFinished()){
                 findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            }else{
+                findNavController().navigate(R.id.action_splashFragment_to_onBoardingFragment)
             }
-        }
+        }, 3000)
 
     }
 

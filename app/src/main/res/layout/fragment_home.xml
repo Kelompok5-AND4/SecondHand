@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="96dp"
     tools:context=".ui.HomeFragment">
     <ImageView
         android:layout_width="match_parent"
@@ -198,7 +199,7 @@
                 android:orientation="vertical"
                 app:spanCount="2"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="48dp"
+                android:layout_marginBottom="100dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

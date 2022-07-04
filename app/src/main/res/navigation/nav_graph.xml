@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -50,7 +50,11 @@
         android:id="@+id/notificationFragment"
         android:name="com.igdev.secondhand.ui.NotificationFragment"
         android:label="fragment_notification"
-        tools:layout="@layout/fragment_notification" />
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sellFragment"
         android:name="com.igdev.secondhand.ui.SellFragment"
@@ -72,6 +76,9 @@
         <action
             android:id="@+id/action_accountFragment_to_splashFragment"
             app:destination="@id/splashFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -106,6 +113,9 @@
         <action
             android:id="@+id/action_onBoardingFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_onBoardingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"

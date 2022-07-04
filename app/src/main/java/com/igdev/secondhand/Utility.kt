@@ -92,15 +92,15 @@ fun reduceFileImage(file: File): File {
 fun date(date: String): String {
     var kotlin = date
     kotlin = kotlin.drop(5)
-    var month = kotlin.take(2)
+    val month = kotlin.take(2)
     kotlin = kotlin.drop(3)
     val day = kotlin.take(2)
     kotlin = kotlin.drop(3)
     val hours = kotlin.take(2)
     kotlin = kotlin.drop(3)
     val minute = kotlin.take(2)
+    val year = date.take(4)
 
-    return "$day $month, $hours:$minute"
-
+    return "$day-$month-$year, $hours:$minute"
 
 }

@@ -53,6 +53,9 @@ class AccountFragment : Fragment() {
             viewModel.deleteToken()
             findNavController().navigate(R.id.action_accountFragment_to_splashFragment)
         }
+        binding.btnLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_accountFragment_to_loginFragment)
+        }
     }
 
     }
