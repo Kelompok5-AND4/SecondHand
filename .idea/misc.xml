@@ -109,9 +109,19 @@
         <entry key="..\:/Users/rizqi/AndroidStudioProjects/SecondHand/app/src/main/res/layout/fragment_search.xml" value="0.4" />
         <entry key="..\:/Users/rizqi/AndroidStudioProjects/SecondHand/app/src/main/res/layout/fragment_transaction.xml" value="0.3625" />
         <entry key="..\:/Users/rizqi/AndroidStudioProjects/SecondHand/app/src/main/res/layout/rv_lelang.xml" value="0.3614583333333333" />
+        <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/drawable/ic_bg_offer.xml" value="0.1405" />
+        <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/drawable/ic_illustration_offer.xml" value="0.1405" />
+        <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/drawable/ic_image.xml" value="0.1405" />
         <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/banner_item.xml" value="0.22447916666666667" />
+        <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/category_item.xml" value="0.2175925925925926" />
+        <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/fragment_home.xml" value="0.2175925925925926" />
         <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/fragment_login.xml" value="0.2" />
+        <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/fragment_offer.xml" value="0.22447916666666667" />
+        <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/fragment_on_boarding.xml" value="0.2175925925925926" />
         <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/fragment_register.xml" value="0.22447916666666667" />
+        <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/fragment_transaction.xml" value="0.22447916666666667" />
+        <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/mini_category_item.xml" value="0.2175925925925926" />
       </map>
     </option>
   </component>
