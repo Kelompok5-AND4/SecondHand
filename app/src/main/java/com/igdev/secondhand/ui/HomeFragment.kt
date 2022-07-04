@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.denzcoskun.imageslider.constants.ScaleTypes
-import com.denzcoskun.imageslider.models.SlideModel
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentHomeBinding
 import com.igdev.secondhand.model.AllProductResponse
@@ -38,7 +36,6 @@ class HomeFragment : Fragment() {
     private lateinit var productAdapter: ProductAdapter
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var miniCategoryAdapter: MiniCategoryAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -92,6 +89,7 @@ class HomeFragment : Fragment() {
             }
         })
         binding.rvProduct.adapter = productAdapter
+        binding.rvSpecialOffer.adapter = productAdapter
         categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {
                 Toast.makeText(requireContext(),"click",Toast.LENGTH_SHORT).show()
@@ -104,9 +102,6 @@ class HomeFragment : Fragment() {
                 getProduct(data.id.toString())
             }
         })
-        binding.ivNotification.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
-        }
         binding.rvMiniCategory.adapter = miniCategoryAdapter
         getCategory()
         getProduct("")

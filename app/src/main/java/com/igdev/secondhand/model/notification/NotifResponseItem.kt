@@ -4,6 +4,8 @@ package com.igdev.secondhand.model.notification
 import com.google.gson.annotations.SerializedName
 
 data class NotifResponseItem(
+    @SerializedName("base_price")
+    val basePrice: String,
     @SerializedName("bid_price")
     val bidPrice: Int,
     @SerializedName("buyer_name")
@@ -14,8 +16,12 @@ data class NotifResponseItem(
     val id: Int,
     @SerializedName("image_url")
     val imageUrl: String,
+    @SerializedName("Product")
+    val product: Product,
     @SerializedName("product_id")
     val productId: Int,
+    @SerializedName("product_name")
+    val productName: String,
     @SerializedName("read")
     val read: Boolean,
     @SerializedName("receiver_id")
@@ -28,4 +34,29 @@ data class NotifResponseItem(
     val transactionDate: String,
     @SerializedName("updatedAt")
     val updatedAt: String
+)
+
+data class Product(
+    @SerializedName("base_price")
+    val basePrice: Int,
+    @SerializedName("createdAt")
+    val createdAt: String,
+    @SerializedName("description")
+    val description: String,
+    @SerializedName("id")
+    val id: Int,
+    @SerializedName("image_name")
+    val imageName: String,
+    @SerializedName("image_url")
+    val imageUrl: String,
+    @SerializedName("location")
+    val location: String,
+    @SerializedName("name")
+    val name: String,
+    @SerializedName("status")
+    val status: String,
+    @SerializedName("updatedAt")
+    val updatedAt: String,
+    @SerializedName("user_id")
+    val userId: Int
 )

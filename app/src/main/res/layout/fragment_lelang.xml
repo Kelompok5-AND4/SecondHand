@@ -17,9 +17,10 @@
             android:contentDescription="@string/content_descriptio_background"
             android:scaleType="fitXY"
             android:src="@drawable/bg_lelang"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_logo_lelang"

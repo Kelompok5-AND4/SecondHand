@@ -6,6 +6,8 @@ import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.service.ApiHelper
 import kotlinx.coroutines.flow.Flow
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class Repository(
     private val apiHelper: ApiHelper,private val dataStore: DataStore
@@ -17,6 +19,16 @@ class Repository(
     suspend fun getAllCategory() = apiHelper.getAllCategory()
     suspend fun setDatastore(user: User) = dataStore.setToken(user)
     suspend fun getDatastore() : Flow<User> = dataStore.getToken()
+    suspend fun deleteToken() = dataStore.delete()
+    suspend fun getDataUser(token: String) = apiHelper.getDataUser(token)
+    suspend fun updateDataUser(
+        token : String,
+        image: MultipartBody.Part?,
+        name: RequestBody?,
+        phoneNumber: RequestBody?,
+        address: RequestBody?,
+        city: RequestBody?,
+    ) = apiHelper.updateUser(token, image, name, phoneNumber, address, city)
     //notification
     suspend fun getNotif(token :String) = apiHelper.getNotif(token)
 
