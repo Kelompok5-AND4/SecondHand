@@ -3,6 +3,7 @@ package com.igdev.secondhand.service
 import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.UpdateResponse
+import com.igdev.secondhand.model.detail.GetDetail
 import com.igdev.secondhand.model.getAuth.ResponseAuth
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.login.LoginResponse
@@ -49,5 +50,9 @@ interface ApiService {
     // notification
     @GET("notification")
     suspend fun GetNotif(@Header ("access_token") token: String ) : List<NotifResponseItem>
+
+    //detail
+    @GET("buyer/product/{id}")
+    suspend fun getIdProduct(@Path("id") id:Int ) :GetDetail
 
 }

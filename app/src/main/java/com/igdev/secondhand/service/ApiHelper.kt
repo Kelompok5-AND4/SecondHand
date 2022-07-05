@@ -21,4 +21,7 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     //notification
     suspend fun getNotif(token:String) = apiService.GetNotif(token)
 
+    //details
+    suspend fun getDetail(id:Int) = apiService.getIdProduct(id)
+
 }
