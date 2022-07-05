@@ -40,7 +40,7 @@ class DetailProductFragment : Fragment() {
         val id = args.id
         val progressDialog = ProgressDialog(requireContext())
         binding.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_detailProductFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_detailProductFragment_to_mainFragment)
         }
         binding.btnMenu.setOnClickListener {
 

@@ -51,6 +51,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        MainFragment.currentPage = R.id.homeFragment
+
         val viewPager2 = binding.viewPagerBanner
         val handler = Handler(Looper.myLooper()!!)
         val imageList = ArrayList<Int>()
@@ -86,7 +88,7 @@ class HomeFragment : Fragment() {
         productAdapter = ProductAdapter(object : ProductAdapter.OnClickListener{
             override fun onClickItem(data: AllProductResponse) {
                 val id = data.id
-                val toDetail = HomeFragmentDirections.actionHomeFragmentToDetailProductFragment(id)
+                val toDetail = MainFragmentDirections.actionMainFragmentToDetailProductFragment(id)
                 findNavController().navigate(toDetail)
             }
         })
