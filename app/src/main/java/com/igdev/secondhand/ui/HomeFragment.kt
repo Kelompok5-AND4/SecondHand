@@ -78,10 +78,10 @@ class HomeFragment : Fragment() {
 
         setUpTransformer()
         binding.searchView.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+            findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
         }
         binding.searchIcon.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+            findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
         }
         productAdapter = ProductAdapter(object : ProductAdapter.OnClickListener{
             override fun onClickItem(data: AllProductResponse) {

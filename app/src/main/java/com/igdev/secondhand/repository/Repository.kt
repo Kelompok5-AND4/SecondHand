@@ -34,4 +34,14 @@ class Repository(
     //details
     suspend fun getDetail(id:Int) = apiHelper.getDetail(id)
 
+    suspend fun postProduct(
+        token: String,
+        file : MultipartBody.Part,
+        name: RequestBody,
+        description: RequestBody,
+        base_price: RequestBody,
+        categoryIds: List<Int>,
+        location: RequestBody,
+    ) = apiHelper.postProduct(token, file, name, description, base_price, categoryIds, location)
+
 }

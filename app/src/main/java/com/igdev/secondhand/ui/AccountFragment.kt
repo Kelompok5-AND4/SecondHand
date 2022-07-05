@@ -36,6 +36,8 @@ class AccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        MainFragment.currentPage = R.id.accountFragment
+
         viewModel.getToken()
         viewModel.getToken.observe(viewLifecycleOwner){
             if (it.token == "def_token"){
@@ -43,18 +45,19 @@ class AccountFragment : Fragment() {
                 binding.menuContainer.visibility = View.GONE
             }
             else {
+                binding.notLogin.visibility = View.GONE
                 binding.menuContainer.visibility = View.VISIBLE
             }
         }
         binding.bgSectionEdit.setOnClickListener {
-            findNavController().navigate(R.id.action_accountFragment_to_editAccountFragment)
+            findNavController().navigate(R.id.action_mainFragment_to_editAccountFragment)
         }
         binding.bgSectionLogout.setOnClickListener {
             viewModel.deleteToken()
-            findNavController().navigate(R.id.action_accountFragment_to_splashFragment)
+            findNavController().navigate(R.id.action_mainFragment_to_splashFragment)
         }
         binding.btnLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_accountFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
         }
     }
 

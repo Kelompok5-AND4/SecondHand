@@ -15,6 +15,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) //Turn Off dark mode
@@ -24,8 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         setFullScreen(window)
         lightStatusBar(window)
-
-        val navController = findNavController(R.id.fragmentContainerView)
+        /*val navController = findNavController(R.id.fragmentContainerView)
         binding.menuNavigation.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -48,6 +49,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        binding.menuNavigation.selectedItemId = if (activePage == 0){
+            R.id.homeFragment
+        }else{
+            activePage
+        }*/
     }
 
 }

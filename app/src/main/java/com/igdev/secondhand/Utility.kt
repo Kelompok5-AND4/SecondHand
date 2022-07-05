@@ -74,7 +74,7 @@ fun uriToFile(
     return myFile
 }
 
-fun reduceFileImage(file: File): File {
+fun reduceImageSize(file: File): File {
     val bitmap = BitmapFactory.decodeFile(file.path)
     var compressQuality = 100
     var streamLength: Int
@@ -104,3 +104,6 @@ fun date(date: String): String {
     return "$day-$month-$year, $hours:$minute"
 
 }
+
+val listCategory : MutableList<String> = ArrayList()
+val listCategoryId : MutableList<Int> = ArrayList()
