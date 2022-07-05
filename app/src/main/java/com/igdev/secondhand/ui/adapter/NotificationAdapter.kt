@@ -57,7 +57,7 @@ class NotificationAdapter(private val onItemClick: onClickListener) :
                 tvHargaDiCoret.text = data.basePrice
                 tvAkanDihubungi.text = data.status
                 Glide.with(root)
-                    .load(data.product.imageUrl)
+                    .load(data.imageUrl)
                     .into(ivProduct)
                 root.setOnClickListener {
                     onItemClick.onClickItem(data)

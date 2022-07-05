@@ -57,7 +57,7 @@ class SellViewModel @Inject constructor(private val repository: Repository):View
             }
         }
     }
-    fun uploadProduk(
+    fun postProduct(
         token: String,
         namaProduk: String,
         deskripsiProduk: String,

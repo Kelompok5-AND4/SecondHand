@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class ProductPreview(
     var productName:String?,
     var productPrice:String?,
-    var productDescriptionn:String?,
+    var productDescription:String?,
     var productCategory: String?,
     var productImage:String?
 ):Parcelable

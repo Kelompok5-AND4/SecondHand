@@ -109,6 +109,10 @@ class HomeFragment : Fragment() {
         binding.rvMiniCategory.adapter = miniCategoryAdapter
         getCategory()
         getProduct("")
+        binding.ivNotification.setOnClickListener {
+            MainFragment.currentPage = R.id.notificationFragment
+            findNavController().navigate(R.id.mainFragment)
+        }
     }
 
     private fun setUpTransformer() {

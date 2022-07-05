@@ -20,25 +20,25 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    companion object{
+    companion object {
         var currentPage = 0
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater,container, false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val nav = findNavController()
-        binding.menuNavigation.setupWithNavController(nav)
         binding.menuNavigation.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
 
                 R.id.homeFragment -> {
+
                     activity?.supportFragmentManager?.beginTransaction()
                         ?.replace(R.id.main_fragment_host, HomeFragment())
                         ?.commit()
@@ -54,7 +54,7 @@ class MainFragment : Fragment() {
                     true
                 }
 
-                R.id.sellFragment ->{
+                R.id.sellFragment -> {
                     activity?.supportFragmentManager?.beginTransaction()
                         ?.replace(R.id.main_fragment_host, SellFragment())
                         ?.commit()
@@ -70,7 +70,7 @@ class MainFragment : Fragment() {
                     true
                 }
 
-                R.id.accountFragment ->{
+                R.id.accountFragment -> {
                     activity?.supportFragmentManager?.beginTransaction()
                         ?.replace(R.id.main_fragment_host, AccountFragment())
                         ?.commit()
@@ -82,9 +82,9 @@ class MainFragment : Fragment() {
             }
         }
 
-        binding.menuNavigation.selectedItemId = if (currentPage == 0){
+        binding.menuNavigation.selectedItemId = if (currentPage == 0) {
             R.id.homeFragment
-        }else{
+        } else {
             currentPage
         }
 

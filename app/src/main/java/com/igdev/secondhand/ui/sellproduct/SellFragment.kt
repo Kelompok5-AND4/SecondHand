@@ -89,7 +89,6 @@ class SellFragment : Fragment() {
                                 .setTitle("Pesan")
                                 .setMessage("Lengkapi data terlebih dahulu sebelum Jual Barang")
                                 .setPositiveButton("Yes"){ positiveButton, _ ->
-//                                    bundleLengkapiAkun.putString(NAME_USER_KEY, it.data.fullName)
                                     findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
                                     positiveButton.dismiss()
                                 }
@@ -161,7 +160,8 @@ class SellFragment : Fragment() {
             if (validation == "passed") {
                 dataProduct = ProductPreview(namaProduk,hargaProduk,deskripsiProduk,kategoriProduk,uri)
                 val data = dataProduct
-                val direct = MainFragmentDirections.actionMainFragmentToPreviewFragment(data)
+                val user = dataUser
+                val direct = MainFragmentDirections.actionMainFragmentToPreviewFragment(data,user)
                 findNavController().navigate(direct)
             }
         }
@@ -181,7 +181,7 @@ class SellFragment : Fragment() {
                 listCategoryId
             )
             if (validation == "passed") {
-                viewModel.uploadProduk(
+                viewModel.postProduct(
                     token,
                     namaProduk,
                     deskripsiProduk,
@@ -200,6 +200,8 @@ class SellFragment : Fragment() {
                     Toast.makeText(requireContext(), "Barang Anda berhasil di terbitkan", Toast.LENGTH_SHORT)
                         .show()
                     listCategoryId.clear()
+                    MainFragment.currentPage = R.id.transactionFragment
+                    findNavController().navigate(R.id.mainFragment)
                 }
                 Status.ERROR -> {
                     progressDialog.dismiss()
