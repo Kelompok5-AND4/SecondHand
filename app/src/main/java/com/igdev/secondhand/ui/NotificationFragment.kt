@@ -33,6 +33,7 @@ class NotificationFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        MainFragment.currentPage = R.id.notificationFragment
         viewModel.getToken()
         viewModel.getToken.observe(viewLifecycleOwner){
             if (it.token=="def_token"){
@@ -70,7 +71,7 @@ class NotificationFragment : Fragment() {
             }
         }
         binding.btnLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_notificationFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
         }
     }
 

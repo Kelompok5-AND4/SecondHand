@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.NotificationItemBinding
 import com.igdev.secondhand.date
 import com.igdev.secondhand.model.notification.NotifResponseItem
@@ -52,11 +53,11 @@ class NotificationAdapter(private val onItemClick: onClickListener) :
                     if (data.status == "declined") "Penawaran anda Ditolak " + rupiah(data.bidPrice)
                     else if(data.status == "accepted") "Penawaran Anda Diterima " + rupiah(data.bidPrice)
                     else "Ditawar " + rupiah(data.bidPrice)
-                tvDateNotif.text = date(data.transactionDate)
+                tvDateNotif.text = date(data.updatedAt)
                 tvHargaDiCoret.text = data.basePrice
                 tvAkanDihubungi.text = data.status
                 Glide.with(root)
-                    .load(data.imageUrl)
+                    .load(data.product.imageUrl)
                     .into(ivProduct)
                 root.setOnClickListener {
                     onItemClick.onClickItem(data)

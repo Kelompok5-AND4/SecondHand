@@ -23,6 +23,7 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private val viewModel : LoginViewModel by viewModels()
+    private var token:String= ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +36,23 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            btnLogin.setOnClickListener{
+                login()
+            }
+            tvDaftarDiSini.setOnClickListener{
+                findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            }
+            tvMasukDebug.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_debugFragment)
+            }
+        }
+        /*val data = User(token)
+        viewModel.setUserToken(data)*/
+
+
+
         val progressDialog = ProgressDialog(requireActivity())
         viewModel.userLogin.observe(viewLifecycleOwner){ resources ->
             when(resources.status){
@@ -47,11 +65,12 @@ class LoginFragment : Fragment() {
                         .show()
                     progressDialog.dismiss()
                    if (resources.data?.accessToken != null){
-                       val token = User(resources.data.accessToken)
-                       viewModel.setUserToken(token)
-                       findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                       token = resources.data.accessToken
+                       val data2 = User(token)
+                       viewModel.setUserToken(data2)
+                       //findNavController().popBackStack()
+                       findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                    }
-
 
                 }
                 Status.ERROR ->{
@@ -62,17 +81,7 @@ class LoginFragment : Fragment() {
             }
         }
 
-        binding.apply {
-            btnLogin.setOnClickListener{
-                login()
-            }
-            tvDaftarDiSini.setOnClickListener{
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-            }
-            tvMasukDebug.setOnClickListener {
-                findNavController().navigate(R.id.action_loginFragment_to_debugFragment)
-            }
-        }
+
     }
 
     private fun login() {

@@ -25,6 +25,8 @@ import com.igdev.secondhand.listCategoryId
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.local.ProductPreview
 import com.igdev.secondhand.model.local.UserLogin
+import com.igdev.secondhand.ui.MainFragment
+import com.igdev.secondhand.ui.MainFragmentDirections
 import com.igdev.secondhand.ui.viewmodel.SellViewModel
 import com.igdev.secondhand.uriToFile
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,6 +63,7 @@ class SellFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val progressDialog = ProgressDialog(requireContext())
+        MainFragment.currentPage = R.id.sellFragment
         viewModel.getToken()
         viewModel.getToken.observe(viewLifecycleOwner){
             if(it.token == "def_token"){
@@ -87,7 +90,7 @@ class SellFragment : Fragment() {
                                 .setMessage("Lengkapi data terlebih dahulu sebelum Jual Barang")
                                 .setPositiveButton("Yes"){ positiveButton, _ ->
 //                                    bundleLengkapiAkun.putString(NAME_USER_KEY, it.data.fullName)
-                                    findNavController().navigate(R.id.action_sellFragment_to_editAccountFragment)
+                                    findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
                                     positiveButton.dismiss()
                                 }
                                 .setNegativeButton("No") { negativeButton, _ ->
@@ -157,6 +160,9 @@ class SellFragment : Fragment() {
             )
             if (validation == "passed") {
                 dataProduct = ProductPreview(namaProduk,hargaProduk,deskripsiProduk,kategoriProduk,uri)
+                val data = dataProduct
+                val direct = MainFragmentDirections.actionMainFragmentToPreviewFragment(data)
+                findNavController().navigate(direct)
             }
         }
         binding.btnTerbitkan.setOnClickListener {
