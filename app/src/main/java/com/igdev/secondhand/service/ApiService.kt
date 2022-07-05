@@ -4,6 +4,7 @@ import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.UpdateResponse
 import com.igdev.secondhand.model.addProduct.SellProductResponse
+import com.igdev.secondhand.model.detail.GetDetail
 import com.igdev.secondhand.model.getAuth.ResponseAuth
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.login.LoginResponse
@@ -62,5 +63,9 @@ interface ApiService {
         @Part("category_ids") categoryIds: List<Int>,
         @Part("location") location: RequestBody?,
     ): SellProductResponse
+
+    //detail
+    @GET("buyer/product/{id}")
+    suspend fun getIdProduct(@Path("id") id:Int ) :GetDetail
 
 }

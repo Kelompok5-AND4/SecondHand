@@ -31,6 +31,8 @@ class Repository(
     ) = apiHelper.updateUser(token, image, name, phoneNumber, address, city)
     //notification
     suspend fun getNotif(token :String) = apiHelper.getNotif(token)
+    //details
+    suspend fun getDetail(id:Int) = apiHelper.getDetail(id)
 
     suspend fun postProduct(
         token: String,

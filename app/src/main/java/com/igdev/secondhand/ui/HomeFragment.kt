@@ -86,8 +86,8 @@ class HomeFragment : Fragment() {
         productAdapter = ProductAdapter(object : ProductAdapter.OnClickListener{
             override fun onClickItem(data: AllProductResponse) {
                 val id = data.id
-                val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(id)
-                findNavController().navigate(direct)
+                val toDetail = HomeFragmentDirections.actionHomeFragmentToDetailProductFragment(id)
+                findNavController().navigate(toDetail)
             }
         })
         binding.rvProduct.adapter = productAdapter

@@ -30,5 +30,6 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
         categoryIds: List<Int>,
         location: RequestBody,
     ) = apiService.postProduct(token, file, name, description, base_price, categoryIds, location)
-
+    //details
+    suspend fun getDetail(id:Int) = apiService.getIdProduct(id)
 }
