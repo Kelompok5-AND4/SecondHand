@@ -3,6 +3,7 @@ package com.igdev.secondhand.service
 import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.UpdateResponse
+import com.igdev.secondhand.model.addProduct.SellProductResponse
 import com.igdev.secondhand.model.getAuth.ResponseAuth
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.login.LoginResponse
@@ -49,5 +50,17 @@ interface ApiService {
     // notification
     @GET("notification")
     suspend fun GetNotif(@Header ("access_token") token: String ) : List<NotifResponseItem>
+    //Seller Add Product
+    @Multipart
+    @POST("seller/product")
+    suspend fun postProduct(
+        @Header("access_token") token: String,
+        @Part file: MultipartBody.Part,
+        @Part("name") name: RequestBody?,
+        @Part("description") description: RequestBody?,
+        @Part("base_price") base_price: RequestBody?,
+        @Part("category_ids") categoryIds: List<Int>,
+        @Part("location") location: RequestBody?,
+    ): SellProductResponse
 
 }

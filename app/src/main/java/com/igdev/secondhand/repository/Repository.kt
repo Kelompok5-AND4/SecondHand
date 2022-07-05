@@ -32,4 +32,14 @@ class Repository(
     //notification
     suspend fun getNotif(token :String) = apiHelper.getNotif(token)
 
+    suspend fun postProduct(
+        token: String,
+        file : MultipartBody.Part,
+        name: RequestBody,
+        description: RequestBody,
+        base_price: RequestBody,
+        categoryIds: List<Int>,
+        location: RequestBody,
+    ) = apiHelper.postProduct(token, file, name, description, base_price, categoryIds, location)
+
 }

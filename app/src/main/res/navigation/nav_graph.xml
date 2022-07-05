@@ -57,9 +57,16 @@
     </fragment>
     <fragment
         android:id="@+id/sellFragment"
-        android:name="com.igdev.secondhand.ui.SellFragment"
+        android:name="com.igdev.secondhand.ui.sellproduct.SellFragment"
         android:label="fragment_sell"
-        tools:layout="@layout/fragment_sell" />
+        tools:layout="@layout/fragment_sell" >
+        <action
+            android:id="@+id/action_sellFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_sellFragment_to_editAccountFragment"
+            app:destination="@id/editAccountFragment" />
+    </fragment>
     <fragment
         android:id="@+id/transactionFragment"
         android:name="com.igdev.secondhand.ui.TransactionFragment"
