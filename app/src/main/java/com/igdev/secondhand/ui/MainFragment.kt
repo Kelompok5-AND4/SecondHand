@@ -5,14 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.igdev.secondhand.R
-import com.igdev.secondhand.databinding.FragmentLoginBinding
 import com.igdev.secondhand.databinding.FragmentMainBinding
 import com.igdev.secondhand.ui.sellproduct.SellFragment
-import com.igdev.secondhand.ui.viewmodel.LoginViewModel
+import com.igdev.secondhand.ui.transaction.TransactionFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

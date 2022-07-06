@@ -144,7 +144,7 @@
     </fragment>
     <fragment
         android:id="@+id/transactionFragment"
-        android:name="com.igdev.secondhand.ui.TransactionFragment"
+        android:name="com.igdev.secondhand.ui.transaction.TransactionFragment"
         android:label="fragment_transaction"
         tools:layout="@layout/fragment_transaction" />
 </navigation>

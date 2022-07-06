@@ -42,6 +42,7 @@ class NotificationFragment : Fragment() {
                 binding.rvNotif.visibility = View.GONE
             }else{
                 viewModel.getAllNotif(it.token)
+                binding.notLogin.visibility = View.GONE
             }
         }
         viewModel.getNotif.observe(viewLifecycleOwner){

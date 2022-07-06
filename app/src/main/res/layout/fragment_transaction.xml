@@ -4,11 +4,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.TransactionFragment">
+    tools:context=".ui.transaction.TransactionFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/notLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                app:lottie_autoPlay="true"
+                app:lottie_rawRes="@raw/login"
+                app:lottie_loop="true"
+                app:lottie_speed="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvLogin"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/biru"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Anda Harus Login Terlebih Dahulu !"/>
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
 
         <ImageView
             android:id="@+id/top"
@@ -46,342 +83,379 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/tv_pembelian"
-            android:text="@string/pembelian"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/top"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/biru_muda"
-            android:textSize="24sp"
-            android:gravity="start"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="32dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_semua"
-            app:layout_constraintTop_toBottomOf="@id/tv_pembelian"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tv_histori"
-            app:layout_constraintEnd_toStartOf="@id/btn_pengajuan"
-            android:backgroundTint="@color/biru_tua"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/semua"
-            android:textAllCaps="false"
-            app:cornerRadius="24dp"
-            android:layout_width="88dp"
-            android:layout_height="96dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_pengajuan"
-            app:layout_constraintTop_toTopOf="@id/btn_semua"
-            app:layout_constraintBottom_toBottomOf="@id/btn_semua"
-            app:layout_constraintStart_toEndOf="@id/btn_semua"
-            app:layout_constraintEnd_toStartOf="@id/btn_diterima"
-            android:backgroundTint="@color/orange_muda_dua"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/pengajuan"
-            android:textSize="10sp"
-            android:textAllCaps="false"
-            android:textAlignment="center"
-            app:cornerRadius="24dp"
-            android:layout_width="88dp"
-            android:layout_height="96dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_diterima"
-            app:layout_constraintTop_toTopOf="@id/btn_pengajuan"
-            app:layout_constraintBottom_toBottomOf="@id/btn_pengajuan"
-            app:layout_constraintStart_toEndOf="@id/btn_pengajuan"
-            app:layout_constraintEnd_toStartOf="@id/btn_ditolak"
-            android:backgroundTint="@color/hijau"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/diterima"
-            android:textSize="10sp"
-            android:textAllCaps="false"
-            android:textAlignment="center"
-            app:cornerRadius="24dp"
-            android:layout_width="88dp"
-            android:layout_height="96dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_ditolak"
-            app:layout_constraintTop_toTopOf="@id/btn_diterima"
-            app:layout_constraintBottom_toBottomOf="@id/btn_diterima"
-            app:layout_constraintStart_toEndOf="@id/btn_diterima"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:backgroundTint="@color/merah"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/ditolak"
-            android:textSize="10sp"
-            android:textAllCaps="false"
-            android:textAlignment="center"
-            app:cornerRadius="24dp"
-            android:layout_width="88dp"
-            android:layout_height="96dp" />
-
-        <TextView
-            android:id="@+id/tv_histori"
-            android:text="@string/histori"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_semua"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/abu_muda_dua"
-            android:textSize="18sp"
-            android:gravity="start"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="18dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_histori"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_histori"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/product_item"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_penjualan"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top"
+            android:id="@+id/loggedIn"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_histori"
-            android:layout_marginVertical="24dp"
-            android:background="@drawable/ic_mask_group"
-            android:layout_width="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
             <TextView
-                android:id="@+id/tv_penjualan"
-                android:text="@string/penjualan"
+                android:id="@+id/tv_pembelian"
+                android:text="@string/pembelian"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@color/white"
+                android:textColor="@color/biru_muda"
                 android:textSize="24sp"
-                android:layout_marginTop="12dp"
+                android:gravity="start"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_semua"
+                app:layout_constraintTop_toBottomOf="@id/tv_pembelian"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_histori"
+                app:layout_constraintEnd_toStartOf="@id/btn_pengajuan"
+                android:backgroundTint="@color/biru_tua"
                 android:layout_marginStart="18dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/semua"
+                android:textAllCaps="false"
+                app:cornerRadius="24dp"
+                android:layout_width="88dp"
+                android:layout_height="96dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_pengajuan"
+                app:layout_constraintTop_toTopOf="@id/btn_semua"
+                app:layout_constraintBottom_toBottomOf="@id/btn_semua"
+                app:layout_constraintStart_toEndOf="@id/btn_semua"
+                app:layout_constraintEnd_toStartOf="@id/btn_diterima"
+                android:backgroundTint="@color/orange_muda_dua"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/pengajuan"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                android:textAlignment="center"
+                app:cornerRadius="24dp"
+                android:layout_width="88dp"
+                android:layout_height="96dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_diterima"
+                app:layout_constraintTop_toTopOf="@id/btn_pengajuan"
+                app:layout_constraintBottom_toBottomOf="@id/btn_pengajuan"
+                app:layout_constraintStart_toEndOf="@id/btn_pengajuan"
+                app:layout_constraintEnd_toStartOf="@id/btn_ditolak"
+                android:backgroundTint="@color/hijau"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/diterima"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                android:textAlignment="center"
+                app:cornerRadius="24dp"
+                android:layout_width="88dp"
+                android:layout_height="96dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_ditolak"
+                app:layout_constraintTop_toTopOf="@id/btn_diterima"
+                app:layout_constraintBottom_toBottomOf="@id/btn_diterima"
+                app:layout_constraintStart_toEndOf="@id/btn_diterima"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:backgroundTint="@color/merah"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/ditolak"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                android:textAlignment="center"
+                app:cornerRadius="24dp"
+                android:layout_width="88dp"
+                android:layout_height="96dp" />
+
+            <TextView
+                android:id="@+id/tv_histori"
+                android:text="@string/histori"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_semua"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/abu_muda_dua"
+                android:textSize="18sp"
+                android:gravity="start"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/empty_notif"
+                android:layout_width="wrap_content"
+                android:layout_height="220dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_histori">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_rawRes="@raw/empty"
+                    app:lottie_loop="true"
+                    app:lottie_speed="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvEmpty"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/biru"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Belum ada Notifikasi"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_histori"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_histori"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/product_item"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/iv_icon"
-                app:layout_constraintStart_toEndOf="@id/tv_penjualan"
-                app:layout_constraintTop_toTopOf="@id/tv_penjualan"
-                app:layout_constraintBottom_toBottomOf="@id/tv_penjualan"
-                android:src="@drawable/ic_coolicon"
-                android:layout_marginStart="8dp"
-                android:contentDescription="@string/photo"
-                android:layout_width="32dp"
-                android:layout_height="32dp" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_add"
-                app:layout_constraintTop_toBottomOf="@id/tv_penjualan"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/cv_semua"
-                android:backgroundTint="@color/abu_muda"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="24dp"
-                android:layout_marginStart="18dp"
-                app:cardCornerRadius="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_plus"
-                        app:icon="@drawable/ic_plus_circle"
-                        app:iconTint="@color/abu_muda_dua"
-                        style="@style/Widget.AppCompat.ActionButton"
-                        android:layout_marginStart="4dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/tv_add"
-                        android:text="@string/jual"
-                        android:gravity="center"
-                        android:textColor="@color/abu_muda_dua"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_semua"
-                app:layout_constraintTop_toTopOf="@id/cv_add"
-                app:layout_constraintBottom_toBottomOf="@id/cv_add"
-                app:layout_constraintStart_toEndOf="@id/cv_add"
-                app:layout_constraintEnd_toStartOf="@id/cv_ditawar"
-                android:backgroundTint="@color/transparant"
-                android:layout_marginStart="18dp"
-                app:cardCornerRadius="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tv_semua"
-                        android:text="@string/semua_nbarang"
-                        android:textSize="12sp"
-                        android:layout_marginVertical="6dp"
-                        android:layout_marginHorizontal="18dp"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/tv_total"
-                        android:text="20"
-                        android:textSize="26sp"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_ditawar"
-                app:layout_constraintTop_toTopOf="@id/cv_semua"
-                app:layout_constraintBottom_toBottomOf="@id/cv_semua"
-                app:layout_constraintStart_toEndOf="@id/cv_semua"
-                app:layout_constraintEnd_toStartOf="@id/cv_terjual"
-                android:backgroundTint="@color/transparant"
-                android:layout_marginStart="18dp"
-                app:cardCornerRadius="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tv_ditawar"
-                        android:text="@string/ditawar"
-                        android:textSize="12sp"
-                        android:layout_marginVertical="6dp"
-                        android:layout_marginHorizontal="18dp"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/tv_total_ditawar"
-                        android:text="10"
-                        android:textSize="26sp"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_terjual"
-                app:layout_constraintTop_toTopOf="@id/cv_ditawar"
-                app:layout_constraintBottom_toBottomOf="@id/cv_ditawar"
-                app:layout_constraintStart_toEndOf="@id/cv_ditawar"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_penjualan"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="18dp"
-                android:backgroundTint="@color/transparant"
-                android:layout_marginEnd="18dp"
-                app:cardCornerRadius="12dp"
-                android:layout_width="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_histori"
+                android:layout_marginVertical="24dp"
+                android:background="@drawable/ic_mask_group"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:orientation="vertical"
-                    android:gravity="center"
+                <TextView
+                    android:id="@+id/tv_penjualan"
+                    android:text="@string/penjualan"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/iv_icon"
+                    app:layout_constraintStart_toEndOf="@id/tv_penjualan"
+                    app:layout_constraintTop_toTopOf="@id/tv_penjualan"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_penjualan"
+                    android:src="@drawable/ic_coolicon"
+                    android:layout_marginStart="8dp"
+                    android:contentDescription="@string/photo"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_add"
+                    app:layout_constraintTop_toBottomOf="@id/tv_penjualan"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/cv_semua"
+                    android:backgroundTint="@color/abu_muda"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginStart="18dp"
+                    app:cardCornerRadius="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/tv_terjual"
-                        android:text="@string/terjual"
-                        android:textSize="12sp"
-                        android:layout_marginVertical="6dp"
-                        android:layout_marginHorizontal="18dp"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:orientation="vertical"
                         android:gravity="center"
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/tv_total_terjual"
-                        android:text="05"
-                        android:textSize="26sp"
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_plus"
+                            app:icon="@drawable/ic_plus_circle"
+                            app:iconTint="@color/abu_muda_dua"
+                            style="@style/Widget.AppCompat.ActionButton"
+                            android:layout_marginStart="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/tv_add"
+                            android:text="@string/jual"
+                            android:gravity="center"
+                            android:textColor="@color/abu_muda_dua"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_semua"
+                    app:layout_constraintTop_toTopOf="@id/cv_add"
+                    app:layout_constraintBottom_toBottomOf="@id/cv_add"
+                    app:layout_constraintStart_toEndOf="@id/cv_add"
+                    app:layout_constraintEnd_toStartOf="@id/cv_ditawar"
+                    android:backgroundTint="@color/transparant"
+                    android:layout_marginStart="18dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:orientation="vertical"
                         android:gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
+                        <TextView
+                            android:id="@+id/tv_semua"
+                            android:text="@string/semua_nbarang"
+                            android:textSize="12sp"
+                            android:layout_marginVertical="6dp"
+                            android:layout_marginHorizontal="18dp"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/tv_total"
+                            android:text="20"
+                            android:textSize="26sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_ditawar"
+                    app:layout_constraintTop_toTopOf="@id/cv_semua"
+                    app:layout_constraintBottom_toBottomOf="@id/cv_semua"
+                    app:layout_constraintStart_toEndOf="@id/cv_semua"
+                    app:layout_constraintEnd_toStartOf="@id/cv_terjual"
+                    android:backgroundTint="@color/transparant"
+                    android:layout_marginStart="18dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_ditawar"
+                            android:text="@string/ditawar"
+                            android:textSize="12sp"
+                            android:layout_marginVertical="6dp"
+                            android:layout_marginHorizontal="18dp"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/tv_total_ditawar"
+                            android:text="10"
+                            android:textSize="26sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_terjual"
+                    app:layout_constraintTop_toTopOf="@id/cv_ditawar"
+                    app:layout_constraintBottom_toBottomOf="@id/cv_ditawar"
+                    app:layout_constraintStart_toEndOf="@id/cv_ditawar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="18dp"
+                    android:backgroundTint="@color/transparant"
+                    android:layout_marginEnd="18dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_terjual"
+                            android:text="@string/terjual"
+                            android:textSize="12sp"
+                            android:layout_marginVertical="6dp"
+                            android:layout_marginHorizontal="18dp"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/tv_total_terjual"
+                            android:text="05"
+                            android:textSize="26sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_semua_product"
+                android:text="@string/semua_product"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_penjualan"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/biru_muda"
+                android:textSize="24sp"
+                android:gravity="start"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_semua_product"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_semua_product"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:listitem="@layout/item"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                android:orientation="vertical"
+                app:spanCount="2"
+                android:layout_marginVertical="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/tv_semua_product"
-            android:text="@string/semua_product"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_penjualan"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/biru_muda"
-            android:textSize="24sp"
-            android:gravity="start"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="32dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_semua_product"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_semua_product"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/item"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            android:orientation="vertical"
-            app:spanCount="2"
-            android:layout_marginVertical="18dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
