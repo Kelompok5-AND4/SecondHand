@@ -85,24 +85,9 @@ class SellFragment : Fragment() {
                         val image = it.data.imageUrl
                         val password = it.data.password
                         val phoneNumber = it.data.phoneNumber
-                        if (city.isEmpty() || address.isEmpty() || image == "noImage" || phoneNumber.isEmpty()) {
-                            AlertDialog.Builder(requireContext())
-                                .setTitle("Pesan")
-                                .setMessage("Lengkapi data terlebih dahulu sebelum Jual Barang")
-                                .setPositiveButton("Yes"){ positiveButton, _ ->
-                                    findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
-                                    positiveButton.dismiss()
-                                }
-                                .setNegativeButton("No") { negativeButton, _ ->
-                                    findNavController().popBackStack()
-                                    negativeButton.dismiss()
-                                }
-                                .show()
-                        }else{
-                            val name = it.data.fullName
-                            val email = it.data.email
-                            dataUser = UserLogin(name,email,password,phoneNumber,address, city, image, token)
-                        }
+                        val name = it.data.fullName
+                        val email = it.data.email
+                        dataUser = UserLogin(name,email,password,phoneNumber,address, city, image, token)
                         }
                 }
                 Status.ERROR -> {
@@ -165,6 +150,10 @@ class SellFragment : Fragment() {
                 val direct = MainFragmentDirections.actionMainFragmentToPreviewFragment(data,user)
                 findNavController().navigate(direct)
             }
+        }
+        binding.btnLogin.setOnClickListener {
+            val direct = MainFragmentDirections.actionMainFragmentToLoginFragment()
+            findNavController().navigate(direct)
         }
         binding.btnTerbitkan.setOnClickListener {
             binding.tilNamaProduk.error = null
