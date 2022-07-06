@@ -48,5 +48,25 @@
     <string name="riwayat_tawaran">Riwayat Tawaran</string>
     <string name="isi_deskripsi">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="nego">Saya Tertarik dan Ingin Nego</string>
+    <string name="masukkan">Masukkan Harga Tawarmu</string>
+    <string name="detail_product">Detail Product</string>
+    <string name="category">Category</string>
+    <string name="isi">Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan segera dihubungi penjual</string>
+    <string name="harga_tawaran">Harga Tawaran</string>
+    <string name="angka">Rp 0,000</string>
+    <string name="kirim">Kirim</string>
+    <string name="transaksi">Transaksi</string>
+    <string name="pembelian">Pembelian</string>
+    <string name="semua">Semua</string>
+    <string name="pengajuan">Dalam Pengajuan</string>
+    <string name="diterima">Pengajuan Diterima</string>
+    <string name="ditolak">Pengajuan Ditolak</string>
+    <string name="histori">Histori Pembelian</string>
+    <string name="penjualan">Penjualan</string>
+    <string name="jual">Jual</string>
+    <string name="semua_nbarang">Semua \nBarang</string>
+    <string name="ditawar">Sedang \nDitawar</string>
+    <string name="terjual">Product \nTerjual</string>
+    <string name="semua_product">Semua Product</string>
 
 </resources>
