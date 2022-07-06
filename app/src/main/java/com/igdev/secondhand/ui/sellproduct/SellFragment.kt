@@ -83,6 +83,7 @@ class SellFragment : Fragment() {
                         val city = it.data.city
                         val address = it.data.address
                         val image = it.data.imageUrl
+                        val password = it.data.password
                         val phoneNumber = it.data.phoneNumber
                         if (city.isEmpty() || address.isEmpty() || image == "noImage" || phoneNumber.isEmpty()) {
                             AlertDialog.Builder(requireContext())
@@ -100,7 +101,7 @@ class SellFragment : Fragment() {
                         }else{
                             val name = it.data.fullName
                             val email = it.data.email
-                            dataUser = UserLogin(name,email,phoneNumber,address, city, image, token)
+                            dataUser = UserLogin(name,email,password,phoneNumber,address, city, image, token)
                         }
                         }
                 }

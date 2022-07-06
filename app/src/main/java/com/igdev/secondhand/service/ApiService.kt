@@ -36,7 +36,7 @@ interface ApiService {
     @PUT("auth/user")
     suspend fun updateDataUser(
         @Header("access_token") token: String,
-        @Part file: MultipartBody.Part? = null,
+        @Part file: MultipartBody.Part,
         @Part("full_name") name: RequestBody?,
         @Part("phone_number") phoneNumber: RequestBody?,
         @Part("address") address: RequestBody?,

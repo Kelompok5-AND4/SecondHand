@@ -13,7 +13,7 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     suspend fun getAllCategory() = apiService.getAllCategory()
     suspend fun getDataUser(token: String) = apiService.getDataUser(token)
     suspend fun updateUser(token: String,
-                           image: MultipartBody.Part?,
+                           image: MultipartBody.Part,
                            name: RequestBody?,
                            phoneNumber: RequestBody?,
                            address: RequestBody?,

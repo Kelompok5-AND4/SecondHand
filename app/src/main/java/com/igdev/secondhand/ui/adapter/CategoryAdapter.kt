@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.BannerItemBinding
 import com.igdev.secondhand.databinding.CategoryItemBinding
 import com.igdev.secondhand.model.AllProductResponse
@@ -37,9 +38,9 @@ class CategoryAdapter(private val onClick: CategoryAdapter.OnClickListener):Recy
     }
     inner class ViewHolder(private val binding: CategoryItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind (data: CategoryResponseItem){
-            val imageUrl = "https://raw.githubusercontent.com/Kelompok5-AND4/CategoryIconDirectory/master/${data.name}.png"
+            //val imageUrl = "https://raw.githubusercontent.com/Kelompok5-AND4/CategoryIconDirectory/master/${data.name}.png"
             binding.tvCategoryName.text = data.name
-            Glide.with(binding.root).load(imageUrl).into(binding.ivCategory)
+            Glide.with(binding.root).load(R.drawable.default_rv).into(binding.ivCategory)
             binding.root.setOnClickListener {
                 onClick.onClickItem(data)
             }

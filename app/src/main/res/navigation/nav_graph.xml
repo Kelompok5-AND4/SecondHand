@@ -92,7 +92,12 @@
         android:id="@+id/editAccountFragment"
         android:name="com.igdev.secondhand.ui.editaccount.EditAccountFragment"
         android:label="fragment_edit_account"
-        tools:layout="@layout/fragment_edit_account" />
+        tools:layout="@layout/fragment_edit_account" >
+        <argument
+            android:name="user"
+            app:argType="com.igdev.secondhand.model.local.UserLogin"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.igdev.secondhand.ui.MainFragment"

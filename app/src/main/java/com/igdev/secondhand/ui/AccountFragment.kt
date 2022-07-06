@@ -1,15 +1,21 @@
 package com.igdev.secondhand.ui
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentAccountBinding
 import com.igdev.secondhand.databinding.FragmentLoginBinding
+import com.igdev.secondhand.model.Status
+import com.igdev.secondhand.model.local.UserLogin
 import com.igdev.secondhand.ui.viewmodel.AccountViewModel
 import com.igdev.secondhand.ui.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +25,8 @@ class AccountFragment : Fragment() {
     private var _binding: FragmentAccountBinding? = null
     private val binding get() = _binding!!
     private val viewModel : AccountViewModel by viewModels()
+    private var token : String =""
+    private var dataUser : UserLogin?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +44,10 @@ class AccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         MainFragment.currentPage = R.id.accountFragment
+
+        val progressDialog = ProgressDialog(requireContext())
 
         viewModel.getToken()
         viewModel.getToken.observe(viewLifecycleOwner){
@@ -47,10 +58,47 @@ class AccountFragment : Fragment() {
             else {
                 binding.notLogin.visibility = View.GONE
                 binding.menuContainer.visibility = View.VISIBLE
+                viewModel.getUserData(it.token)
+                token = it.token
+            }
+        }
+        viewModel.user.observe(viewLifecycleOwner){
+            when (it.status){
+                Status.SUCCESS->{
+                    progressDialog.dismiss()
+                    val city = it.data?.city
+                    val address = it.data?.address
+                    val image = it.data?.imageUrl
+                    val password = it.data?.password
+                    val phoneNumber = it.data?.phoneNumber
+                    val name = it.data?.fullName
+                    val email = it.data?.email
+                    if (image != null){
+                        Glide.with(binding.root)
+                            .load(image)
+                            .placeholder(R.drawable.ic_profie)
+                            .transform(CircleCrop())
+                            .into(binding.ivProfile)
+                    }
+                    binding.tvNama.text = name
+                    dataUser = UserLogin(name,email, password, phoneNumber, address, city, image, token)
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT)
+                        .show()
+                    progressDialog.dismiss()
+                }
+                Status.LOADING -> {
+                    progressDialog.setMessage("Please Wait...")
+                    progressDialog.show()
+                }
+
             }
         }
         binding.bgSectionEdit.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_editAccountFragment)
+            val data = dataUser
+            val direct = MainFragmentDirections.actionMainFragmentToEditAccountFragment(data)
+            findNavController().navigate(direct)
         }
         binding.bgSectionLogout.setOnClickListener {
             viewModel.deleteToken()
