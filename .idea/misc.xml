@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/drawable/shape.xml" value="0.123" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_account.xml" value="0.18518518518518517" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_detail_product.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_home.xml" value="0.18518518518518517" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_pengajuan_diterima.xml" value="0.18518518518518517" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_sell.xml" value="0.18518518518518517" />
+        <entry key="..\:/AndroidStudioProject/SecondHand/app/src/main/res/layout/fragment_transaction.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/Bax/.gradle/caches/transforms-3/37507b54373d04271dee835722fa6f33/transformed/ImageSlideshow-0.1.0/res/drawable/default_selected_dot.xml" value="0.137" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHand(LatestMerge)/app/src/main/res/drawable/banner_bg.xml" value="0.1195" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHand(LatestMerge)/app/src/main/res/drawable/category_bg.xml" value="0.1195" />

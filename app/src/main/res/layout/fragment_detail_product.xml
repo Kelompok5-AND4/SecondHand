@@ -9,8 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/foto_produk"
             app:layout_constraintTop_toTopOf="parent"
@@ -195,7 +195,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="18dp"
-                    android:text="Deskripsi"/>
+                    android:text="@string/deskripsi"/>
                 <TextView
                     android:id="@+id/tv_deskripsi"
                     app:layout_constraintTop_toBottomOf="@+id/tv_deskripsi_title"
@@ -297,6 +297,102 @@
             android:padding="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_diterima"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_deskripsi"
+            android:backgroundTint="@color/hijau"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="64dp"
+            app:cardCornerRadius="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_diterima"
+                    android:text="@string/diterima_text"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_ditolak"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_deskripsi"
+            android:backgroundTint="@color/merah"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="64dp"
+            app:cardCornerRadius="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginVertical="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_ditolak"
+                    android:text="@string/ditolak_text"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_menunggu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_deskripsi"
+            android:backgroundTint="@color/abu_muda"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="64dp"
+            app:cardCornerRadius="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginVertical="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_menunggu"
+                    android:text="@string/menunggu_text"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
