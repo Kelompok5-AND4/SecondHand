@@ -18,14 +18,14 @@ import javax.inject.Inject
 class EditAccountViewModel @Inject constructor(private val repository: Repository):ViewModel(){
     fun updateDataUser(
         token : String,
-        file: File,
+        file: File?,
         name: String,
         phoneNumber: String,
         address: String,
         city: String,
     ){
-        val requestFile = reduceImageSize(file).asRequestBody("image/jpg".toMediaTypeOrNull())
-        val image = MultipartBody.Part.createFormData("image", file.name, requestFile)
+        val requestFile = file?.let { reduceImageSize(it).asRequestBody("image/jpg".toMediaTypeOrNull()) }
+        val image = requestFile?.let { MultipartBody.Part.createFormData("image", file.name, it) }
         val namaRequestBody = name.toRequestBody("text/plain".toMediaType())
         val kotaRequestBody = city.toRequestBody("text/plain".toMediaType())
         val alamatRequestBody = address.toRequestBody("text/plain".toMediaType())

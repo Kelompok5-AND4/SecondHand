@@ -23,7 +23,7 @@ class Repository(
     suspend fun getDataUser(token: String) = apiHelper.getDataUser(token)
     suspend fun updateDataUser(
         token : String,
-        image: MultipartBody.Part,
+        image: MultipartBody.Part?,
         name: RequestBody?,
         phoneNumber: RequestBody?,
         address: RequestBody?,
