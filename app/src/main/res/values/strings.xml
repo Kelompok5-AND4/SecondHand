@@ -69,5 +69,8 @@
     <string name="ditawar">Sedang \nDitawar</string>
     <string name="terjual">Product \nTerjual</string>
     <string name="semua_product">Semua Product</string>
+    <string name="diterima_text">Pengajuan diterima, kamu akan segera di hubungi oleh seller</string>
+    <string name="ditolak_text">Pengajuan Kamu Di Tolak :(</string>
+    <string name="menunggu_text">Menunggu Respon Penjual</string>
 
 </resources>
