@@ -70,7 +70,7 @@ class EditAccountFragment : Fragment() {
                 if (token != null) {
                     viewModel.updateDataUser(
                         token,
-                        uriToFile(Uri.parse(uri), requireContext()),
+                        imageFile,
                         nama,
                         noHp,
                         alamat,
