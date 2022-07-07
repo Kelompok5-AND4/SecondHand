@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.transaction.TransactionFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
         android:id="@+id/notLogin"
         android:layout_width="wrap_content"
@@ -40,12 +40,6 @@
             android:text="Login"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/guide1"
-        app:layout_constraintGuide_percent=".15"/>
 
     <ImageView
         android:id="@+id/top"
@@ -85,7 +79,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/guide1"
+        app:layout_constraintTop_toBottomOf="@id/top"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:scrollbars="none"
@@ -303,7 +297,7 @@
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cv_semua"
                     app:layout_constraintTop_toTopOf="@id/cv_add"
                     app:layout_constraintBottom_toBottomOf="@id/cv_add"
@@ -315,7 +309,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:orientation="vertical"
                         android:gravity="center"
                         android:layout_width="wrap_content"
@@ -341,8 +335,8 @@
                             android:textColor="@color/white"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_ditawar"
@@ -450,14 +444,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_semua_product"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:listitem="@layout/buyer_history_item"
+                tools:listitem="@layout/item"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 android:orientation="vertical"
                 app:spanCount="2"
-                android:layout_marginBottom="48dp"
                 android:layout_marginVertical="18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

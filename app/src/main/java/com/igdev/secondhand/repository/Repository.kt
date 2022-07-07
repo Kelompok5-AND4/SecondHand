@@ -43,5 +43,8 @@ class Repository(
         categoryIds: List<Int>,
         location: RequestBody,
     ) = apiHelper.postProduct(token, file, name, description, base_price, categoryIds, location)
-
+    //buyer history
+    suspend fun getBuyerHistory(token :String) = apiHelper.getBuyerHistory(token)
+    //seller product
+    suspend fun getSellerProduct(token :String) = apiHelper.getSellerProduct(token)
 }

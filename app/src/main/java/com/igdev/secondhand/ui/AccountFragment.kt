@@ -65,7 +65,6 @@ class AccountFragment : Fragment() {
         viewModel.user.observe(viewLifecycleOwner){
             when (it.status){
                 Status.SUCCESS->{
-                    progressDialog.dismiss()
                     val city = it.data?.city
                     val address = it.data?.address
                     val image = it.data?.imageUrl
@@ -82,6 +81,7 @@ class AccountFragment : Fragment() {
                     }
                     binding.tvNama.text = name
                     dataUser = UserLogin(name,email, password, phoneNumber, address, city, image, token)
+                    progressDialog.dismiss()
                 }
                 Status.ERROR -> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT)
