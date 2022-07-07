@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -16,8 +17,11 @@ import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentDetailProductBinding
 import com.igdev.secondhand.databinding.FragmentHomeBinding
 import com.igdev.secondhand.model.Status
+import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
+import com.igdev.secondhand.ui.transaction.BuyerAdapter
 import com.igdev.secondhand.ui.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.ArrayList
 
 
 @AndroidEntryPoint
@@ -26,6 +30,9 @@ class DetailProductFragment : Fragment() {
     private val binding get() = _binding!!
     private val args: DetailProductFragmentArgs by navArgs()
     private val viewModel: DetailViewModel by viewModels()
+    private var pending = false
+    private var accepted = false
+    private var decline = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,38 +52,86 @@ class DetailProductFragment : Fragment() {
         binding.btnMenu.setOnClickListener {
 
         }
-        viewModel.getDetail(id)
-        viewModel.detail.observe(viewLifecycleOwner) { detail ->
-            when (detail.status) {
-                Status.LOADING -> {
-                    progressDialog.setMessage("loading")
-                    progressDialog.show()
-                }
-                Status.SUCCESS ->{
-                    viewModel.detail.observe(viewLifecycleOwner){
-                        binding.apply {
-                            tvNamaProduct.text = detail.data?.name
-                            tvHarga.text = detail.data?.basePrice.toString()
-                            tvLokasi.text = detail.data?.location
-                            tvDeskripsi.text = detail.data?.description
-                            tvNamaPenjual.text = detail.data?.user?.fullName
-                            Glide.with(binding.root)
-                                .load(detail.data?.user?.imageUrl)
-                                .into(ivFotoProfile)
-                            Glide.with(binding.root)
-                                .load(detail.data?.imageUrl)
-                                .into(fotoProduk)
 
-                        }
-                    }
-                    progressDialog.dismiss()
+        viewModel.getToken()
+        viewModel.getToken.observe(viewLifecycleOwner) {
+            viewModel.getBuyerHistory(it.token)
+        }
+        viewModel.getBuyerHistory.observe(viewLifecycleOwner) {
+            for (data in 0 until (it.data?.size ?: 0)) {
+                if (it.data?.get(data)?.productId == args.id && it.data.get(data).status == "pending") {
+                    pending = true
+
                 }
-                Status.ERROR ->{
-                    AlertDialog.Builder(requireContext()).setMessage("${detail.message}").show()
-                    progressDialog.dismiss()
+            }
+            for (data in 0 until (it.data?.size ?: 0)) {
+                if (it.data?.get(data)?.productId == args.id && it.data.get(data).status == "accepted") {
+                    accepted = true
+
+                }
+            }
+            for (data in 0 until (it.data?.size ?: 0)) {
+                if (it.data?.get(data)?.productId == args.id && it.data.get(data).status == "declined") {
+                    decline = true
+
+                }
+            }
+            if (accepted) {
+                binding.cvMenunggu.visibility = View.GONE
+                binding.btnNego.visibility = View.GONE
+                binding.cvDiterima.visibility = View.VISIBLE
+                binding.cvDitolak.visibility = View.GONE
+            } else if (pending) {
+                binding.cvMenunggu.visibility = View.VISIBLE
+                binding.btnNego.visibility = View.GONE
+                binding.cvDiterima.visibility = View.GONE
+                binding.cvDitolak.visibility = View.GONE
+            } else if (decline) {
+                binding.cvMenunggu.visibility = View.GONE
+                binding.btnNego.visibility = View.GONE
+                binding.cvDiterima.visibility = View.GONE
+                binding.cvDitolak.visibility = View.VISIBLE
+            } else {
+                binding.cvMenunggu.visibility = View.GONE
+                binding.btnNego.visibility = View.VISIBLE
+                binding.cvDiterima.visibility = View.GONE
+                binding.cvDitolak.visibility = View.GONE
+            }
+
+
+            viewModel.getDetail(id)
+            viewModel.detail.observe(viewLifecycleOwner) { detail ->
+                when (detail.status) {
+                    Status.LOADING -> {
+                        progressDialog.setMessage("loading")
+                        progressDialog.show()
+                    }
+                    Status.SUCCESS -> {
+                        viewModel.detail.observe(viewLifecycleOwner) {
+                            binding.apply {
+                                tvNamaProduct.text = detail.data?.name
+                                tvHarga.text = detail.data?.basePrice.toString()
+                                tvLokasi.text = detail.data?.location
+                                tvDeskripsi.text = detail.data?.description
+                                tvNamaPenjual.text = detail.data?.user?.fullName
+                                Glide.with(binding.root)
+                                    .load(detail.data?.user?.imageUrl)
+                                    .into(ivFotoProfile)
+                                Glide.with(binding.root)
+                                    .load(detail.data?.imageUrl)
+                                    .into(fotoProduk)
+
+                            }
+                        }
+                        progressDialog.dismiss()
+                    }
+                    Status.ERROR -> {
+                        AlertDialog.Builder(requireContext()).setMessage("${detail.message}").show()
+                        progressDialog.dismiss()
+                    }
                 }
             }
         }
-    }
 
+    }
 }
