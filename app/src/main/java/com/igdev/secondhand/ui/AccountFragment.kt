@@ -79,6 +79,8 @@ class AccountFragment : Fragment() {
                             .transform(CircleCrop())
                             .into(binding.ivProfile)
                     }
+                    binding.tvLocation.text = it.data?.city
+                    binding.tvNoWhatsapp.text = it.data?.phoneNumber
                     binding.tvNama.text = name
                     dataUser = UserLogin(name,email, password, phoneNumber, address, city, image, token)
                     progressDialog.dismiss()
