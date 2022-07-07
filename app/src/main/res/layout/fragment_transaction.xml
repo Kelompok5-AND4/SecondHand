@@ -91,7 +91,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_pengajuan"
-                app:layout_constraintTop_toTopOf="@id/btn_semua"
+                app:layout_constraintTop_toBottomOf="@id/tv_pembelian"
                 app:layout_constraintBottom_toBottomOf="@id/btn_semua"
                 app:layout_constraintStart_toEndOf="@id/btn_semua"
                 app:layout_constraintEnd_toStartOf="@id/btn_diterima"
@@ -108,7 +108,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_diterima"
-                app:layout_constraintTop_toTopOf="@id/btn_pengajuan"
+                app:layout_constraintTop_toBottomOf="@id/tv_pembelian"
                 app:layout_constraintBottom_toBottomOf="@id/btn_pengajuan"
                 app:layout_constraintStart_toEndOf="@id/btn_pengajuan"
                 app:layout_constraintEnd_toStartOf="@id/btn_ditolak"
@@ -125,7 +125,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_ditolak"
-                app:layout_constraintTop_toTopOf="@id/btn_diterima"
+                app:layout_constraintTop_toBottomOf="@id/tv_pembelian"
                 app:layout_constraintBottom_toBottomOf="@id/btn_diterima"
                 app:layout_constraintStart_toEndOf="@id/btn_diterima"
                 app:layout_constraintEnd_toEndOf="parent"
