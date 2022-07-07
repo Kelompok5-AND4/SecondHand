@@ -104,6 +104,8 @@ class TransactionFragment : Fragment() {
                                             "Notif Id = ${data.id}",
                                             Toast.LENGTH_SHORT
                                         ).show()
+                                        val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(data.productId)
+                                        findNavController().navigate(direct)
                                     }
                                 })
                             buyerAdapter.submitData(listBuyer)
