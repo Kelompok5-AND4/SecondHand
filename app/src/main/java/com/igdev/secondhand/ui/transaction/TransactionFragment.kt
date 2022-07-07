@@ -17,12 +17,12 @@ import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
 import com.igdev.secondhand.model.local.UserLogin
 import com.igdev.secondhand.model.notification.NotifResponseItem
+import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.MainFragmentDirections
 import com.igdev.secondhand.ui.viewmodel.AccountViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.ArrayList
 
 
 @AndroidEntryPoint
@@ -34,7 +34,7 @@ class TransactionFragment : Fragment() {
     private var token : String =""
     private var dataUser : UserLogin?=null
     private val listBuyer: MutableList<BuyerOrderResponse> = ArrayList()
-
+    private val listNego : MutableList<SellerOrderResponseItem> = ArrayList()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,6 +56,7 @@ class TransactionFragment : Fragment() {
             }else{
                 viewModel.getBuyerHistory(it.token)
                 viewModel.getSellerProduct(it.token)
+                viewModel.getSellerOrder(it.token)
                 binding.notLogin.visibility =View.GONE
                 binding.loggedIn.visibility = View.VISIBLE
             }
@@ -128,6 +129,7 @@ class TransactionFragment : Fragment() {
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
                             binding.emptyNotif.visibility = View.VISIBLE
+                            binding.tvTotal.text = "-"
                         } else {
                             val sellerAdapter =
                                 SellerAdapter(object : SellerAdapter.OnClickListener {
@@ -142,6 +144,30 @@ class TransactionFragment : Fragment() {
                             sellerAdapter.submitData(it.data)
                             binding.rvSemuaProduct.adapter = sellerAdapter
                             binding.tvTotal.text = sellerAdapter.itemCount.toString()
+                        }
+                        progressDialog.dismiss()
+                    }
+                    Status.ERROR -> {
+                        progressDialog.dismiss()
+                        AlertDialog.Builder(requireContext())
+                            .setMessage(it.message)
+                            .show()
+                    }
+                }
+            }
+        }
+
+        viewModel.getAllSellerOrder.observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it.status) {
+                    Status.LOADING -> {
+                        progressDialog.show()
+                    }
+                    Status.SUCCESS -> {
+                        if (it.data.isNullOrEmpty()) {
+                            binding.tvTotalDitawar.text = "-"
+                        } else {
+                            binding.tvTotalDitawar.text = it.data.size.toString()
                         }
                         progressDialog.dismiss()
                     }

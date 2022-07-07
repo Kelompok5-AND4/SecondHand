@@ -47,4 +47,7 @@ class Repository(
     suspend fun getBuyerHistory(token :String) = apiHelper.getBuyerHistory(token)
     //seller product
     suspend fun getSellerProduct(token :String) = apiHelper.getSellerProduct(token)
+    //seller order
+    suspend fun getSellerOrder(token :String) = apiHelper.getSellerOrder(token)
+
 }

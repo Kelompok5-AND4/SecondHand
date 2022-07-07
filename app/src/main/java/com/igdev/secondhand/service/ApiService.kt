@@ -12,6 +12,7 @@ import com.igdev.secondhand.model.login.LoginResponse
 import com.igdev.secondhand.model.notification.NotifResponseItem
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.register.RegisterResponse
+import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -77,6 +78,9 @@ interface ApiService {
     //Seller product
     @GET("seller/product")
     suspend fun getSellerProduct(@Header ("access_token") token: String ): List<SellerProductResponseItem>
+    //Seller Order
+    @GET("seller/order")
+    suspend fun getSellerOrder(@Header ("access_token") token: String ): List<SellerOrderResponseItem>
 
 
 }

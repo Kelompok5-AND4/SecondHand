@@ -36,5 +36,7 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     suspend fun getBuyerHistory(token:String) = apiService.getBuyerHistory(token)
     //seller product
     suspend fun getSellerProduct(token:String) = apiService.getSellerProduct(token)
+    //seller order
+    suspend fun getSellerOrder(token:String) = apiService.getSellerOrder(token)
 
 }

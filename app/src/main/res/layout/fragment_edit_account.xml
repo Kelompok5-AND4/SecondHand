@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.editaccount.EditAccountFragment">
 
+
     <ImageView
         android:id="@+id/iv_bg_lelang"
         android:layout_width="match_parent"
