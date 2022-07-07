@@ -125,9 +125,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.cottacush.android.currencyedittext.CurrencyEditText
                     android:id="@+id/et_harga_produk"
-                    android:hint="@string/rp"
+                    android:hint="@string/harga_produk"
+                    android:ems="10"
+                    app:currencySymbol="Rp "
+                    android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -171,7 +174,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_deskripsi"
-                    android:hint="@string/contoh"
+                    android:hint="@string/alamat"
                     android:inputType="textMultiLine|text"
                     android:gravity="top"
                     android:textAlignment="inherit"

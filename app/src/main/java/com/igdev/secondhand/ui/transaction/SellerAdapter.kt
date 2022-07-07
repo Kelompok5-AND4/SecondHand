@@ -2,6 +2,7 @@ package com.igdev.secondhand.ui.transaction
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -9,30 +10,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.BuyerHistoryItemBinding
-import com.igdev.secondhand.databinding.ProductItemBinding
-import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
+import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 
-class BuyerAdapter(
+class SellerAdapter(
     private val onItemClick : OnClickListener
 ) :
-    RecyclerView.Adapter<BuyerAdapter.ViewHolder>() {
-    private val diffCallBack = object : DiffUtil.ItemCallback<BuyerOrderResponse>(){
+    RecyclerView.Adapter<SellerAdapter.ViewHolder>() {
+    private val diffCallBack = object : DiffUtil.ItemCallback<SellerProductResponseItem>(){
         override fun areItemsTheSame(
-            oldItem: BuyerOrderResponse,
-            newItem: BuyerOrderResponse
+            oldItem: SellerProductResponseItem,
+            newItem: SellerProductResponseItem
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: BuyerOrderResponse,
-            newItem: BuyerOrderResponse
+            oldItem: SellerProductResponseItem,
+            newItem: SellerProductResponseItem
         ): Boolean {
             return oldItem.hashCode() == newItem.hashCode()
         }
     }
     private val differ = AsyncListDiffer(this,diffCallBack)
-    fun submitData(value:List<BuyerOrderResponse>?) = differ.submitList(value)
+    fun submitData(value:List<SellerProductResponseItem>?) = differ.submitList(value)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -52,26 +52,13 @@ class BuyerAdapter(
     inner class ViewHolder(private val binding: BuyerHistoryItemBinding):
         RecyclerView.ViewHolder(binding.root){
         @SuppressLint("SetTextI18n")
-        fun bind(data: BuyerOrderResponse){
+        fun bind(data: SellerProductResponseItem){
             binding.apply {
-                when (data.status) {
-                    "pending" -> {
-                        tvMessage.text = "Dalam Pengajuan"
-                    }
-                    "declined" -> {
-                        tvMessage.text = "Pengajuan Ditolak"
-                    }
-                    "accepted" -> {
-                        tvMessage.text = "Pengajuan Diterima"
-                    }
-                    else -> {
-                        tvMessage.text = "Produk sudah tidak ada"
-                    }
-                }
-                tvProductName.text = data.productName
-                tvHarga.text = data.basePrice ?: "d"
+                tvMessage.visibility = View.GONE
+                tvProductName.text = data.name
+                tvHarga.text = data.basePrice.toString()
                 Glide.with(binding.root)
-                    .load(data.product.imageUrl ?: R.drawable.default_rv)
+                    .load(data.imageUrl ?: R.drawable.default_rv)
                     .centerCrop()
                     .into(ivProduct)
                 root.setOnClickListener{
@@ -82,6 +69,6 @@ class BuyerAdapter(
     }
 
     interface OnClickListener{
-        fun onClickItem(data: BuyerOrderResponse)
+        fun onClickItem(data: SellerProductResponseItem)
     }
 }

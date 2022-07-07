@@ -1,52 +1,37 @@
-package com.igdev.secondhand.model.notification
+package com.igdev.secondhand.model.buyerorder
 
 
 import com.google.gson.annotations.SerializedName
 
-data class NotifResponseItem(
+data class BuyerOrderResponse(
     @SerializedName("base_price")
     val basePrice: String,
-    @SerializedName("bid_price")
-    val bidPrice: Int,
-    @SerializedName("buyer_name")
-    val buyerName: String,
-    @SerializedName("createdAt")
-    val createdAt: String,
+    @SerializedName("buyer_id")
+    val buyerId: Int,
     @SerializedName("id")
     val id: Int,
-    @SerializedName("image_url")
-    val imageUrl: String,
+    @SerializedName("image_product")
+    val imageProduct: String,
+    @SerializedName("price")
+    val price: Int,
     @SerializedName("Product")
     val product: Product,
     @SerializedName("product_id")
     val productId: Int,
     @SerializedName("product_name")
     val productName: String,
-    @SerializedName("read")
-    val read: Boolean,
-    @SerializedName("receiver_id")
-    val receiverId: Int,
-    @SerializedName("seller_name")
-    val sellerName: String,
     @SerializedName("status")
     val status: String,
     @SerializedName("transaction_date")
     val transactionDate: String,
-    @SerializedName("updatedAt")
-    val updatedAt: String,
     @SerializedName("User")
-    val user: User
+    val user: UserX
 )
-
 data class Product(
     @SerializedName("base_price")
     val basePrice: Int,
-    @SerializedName("createdAt")
-    val createdAt: String,
     @SerializedName("description")
     val description: String,
-    @SerializedName("id")
-    val id: Int,
     @SerializedName("image_name")
     val imageName: String,
     @SerializedName("image_url")
@@ -57,12 +42,11 @@ data class Product(
     val name: String,
     @SerializedName("status")
     val status: String,
-    @SerializedName("updatedAt")
-    val updatedAt: String,
+    @SerializedName("User")
+    val user: User,
     @SerializedName("user_id")
     val userId: Int
 )
-
 data class User(
     @SerializedName("address")
     val address: String,
@@ -74,8 +58,21 @@ data class User(
     val fullName: String,
     @SerializedName("id")
     val id: Int,
-    @SerializedName("image_url")
-    val imageUrl: String,
+    @SerializedName("phone_number")
+    val phoneNumber: String
+)
+
+data class UserX(
+    @SerializedName("address")
+    val address: String,
+    @SerializedName("city")
+    val city: String,
+    @SerializedName("email")
+    val email: String,
+    @SerializedName("full_name")
+    val fullName: String,
+    @SerializedName("id")
+    val id: Int,
     @SerializedName("phone_number")
     val phoneNumber: String
 )
