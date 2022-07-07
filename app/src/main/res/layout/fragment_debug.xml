@@ -9,6 +9,27 @@
     <!--Ini fragmnet untuk test navigasi dan juga liat layout pas di mulai tanpa login-->
 
     <TextView
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_tes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="testes"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.cottacush.android.currencyedittext.CurrencyEditText
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/et_harga_produk"
+        android:hint="@string/harga_produk"
+        android:ems="10"
+        app:currencySymbol="Rp "
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
         android:id="@+id/tv_debug"
         android:text="Ini fragmnet untuk test navigasi dan juga liat layout pas di mulai tanpa login"
         android:fontFamily="@font/poppins_regular"
@@ -21,13 +42,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ImageView
-        android:id="@+id/tesSnackbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/default_rv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/btn_debug_account"
@@ -58,5 +72,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_searchbar"/>
+
+    <Button
+        android:id="@+id/btn_tes"
+        android:text="Debug lelang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_lelang"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

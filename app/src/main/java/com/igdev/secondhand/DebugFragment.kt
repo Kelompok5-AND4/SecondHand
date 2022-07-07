@@ -39,19 +39,6 @@ class DebugFragment : Fragment() {
         }
         val image = ImageView(requireContext())
         image.setImageResource(R.drawable.default_rv)
-        binding.tesSnackbar.setOnClickListener {
-            AlertDialog.Builder(requireContext())
-                .setTitle("Report")
-                .setView(image)
-                .setMessage("apakah anda merasa ini merupakan barang illegal?")
-                .setPositiveButton("Iya"){ p1,p2->
-                    Toast.makeText(requireContext(),"Lanjut ke WA",1000).show()
-                    p1.dismiss()
-                }
-                .setNegativeButton("Batal"){p1,p2->
-                    Toast.makeText(requireContext(),"Batal",1000).show()
-                    p1.dismiss()
-                }.setCancelable(false).show()
-        }
+
     }
 }

@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.cottacush.android.currencyedittext.CurrencyInputWatcher
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentSellBinding
@@ -32,6 +33,7 @@ import com.igdev.secondhand.uriToFile
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.File
+import java.util.*
 
 @AndroidEntryPoint
 class SellFragment : Fragment() {
@@ -160,8 +162,10 @@ class SellFragment : Fragment() {
             binding.tilHargaProduk.error = null
             binding.tilDeskripsi.error = null
             binding.tilKategori.error = null
+            val edit = binding.etHargaProduk
             val namaProduk = binding.etNamaProduk.text.toString()
-            val hargaProduk = binding.etHargaProduk.text.toString()
+            val hargaProduk = binding.etHargaProduk.getNumericValue().toInt().toString()
+            binding.etHargaProduk.addTextChangedListener(CurrencyInputWatcher(edit,"Rp ", Locale.getDefault()))
             val deskripsiProduk = binding.etDeskripsi.text.toString()
             val validation = validasi(
                 namaProduk,

@@ -121,9 +121,6 @@
         <action
             android:id="@+id/action_mainFragment_to_previewFragment"
             app:destination="@id/previewFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_transactionFragment"
-            app:destination="@id/transactionFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
@@ -142,9 +139,4 @@
             android:id="@+id/action_previewFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/transactionFragment"
-        android:name="com.igdev.secondhand.ui.transaction.TransactionFragment"
-        android:label="fragment_transaction"
-        tools:layout="@layout/fragment_transaction" />
 </navigation>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.transaction.TransactionFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
         android:id="@+id/notLogin"
         android:layout_width="wrap_content"
@@ -40,18 +40,46 @@
             android:text="Login"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
-    <androidx.constraintlayout.widget.Guideline
+
+    <ImageView
+        android:id="@+id/top"
+        android:src="@drawable/ic_bc_top"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/background"
+        android:layout_width="match_parent"
+        android:layout_height="132dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_back"
+        app:icon="@drawable/ic_baseline_keyboard_arrow_left"
+        style="@style/Widget.AppCompat.ActionButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="32dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/guide1"
-        app:layout_constraintGuide_percent=".15"/>
+        android:layout_height="wrap_content" />
 
-
+    <TextView
+        app:layout_constraintEnd_toStartOf="@id/btn_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        android:text="@string/transaksi"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/guide1"
+        app:layout_constraintTop_toBottomOf="@id/top"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:scrollbars="none"
@@ -156,59 +184,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/buyerSeparator"
-                app:layout_constraintTop_toBottomOf="@id/tv_histori"
+            <LinearLayout
+                android:id="@+id/empty_notif"
+                android:layout_width="wrap_content"
+                android:layout_height="220dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-                <LinearLayout
-                    android:id="@+id/empty_notif"
+                app:layout_constraintTop_toBottomOf="@id/tv_histori">
+
+                <com.airbnb.lottie.LottieAnimationView
                     android:layout_width="wrap_content"
-                    android:layout_height="220dp"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="300dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_rawRes="@raw/empty"
+                    app:lottie_loop="true"
+                    app:lottie_speed="1" />
 
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:layout_width="wrap_content"
-                        android:layout_height="300dp"
-                        app:lottie_autoPlay="true"
-                        app:lottie_rawRes="@raw/empty"
-                        app:lottie_loop="true"
-                        app:lottie_speed="1" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tvEmpty"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/biru"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Belum ada Notifikasi"/>
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_histori"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/product_item"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp"
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvEmpty"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/biru"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Belum ada Notifikasi"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_histori"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_histori"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/product_item"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_penjualan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/buyerSeparator"
+                app:layout_constraintTop_toBottomOf="@id/rv_histori"
                 android:layout_marginVertical="24dp"
                 android:background="@drawable/ic_mask_group"
                 android:layout_width="match_parent"
@@ -277,21 +297,19 @@
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cv_semua"
                     app:layout_constraintTop_toTopOf="@id/cv_add"
                     app:layout_constraintBottom_toBottomOf="@id/cv_add"
                     app:layout_constraintStart_toEndOf="@id/cv_add"
                     app:layout_constraintEnd_toStartOf="@id/cv_ditawar"
-                    android:background="@drawable/shape"
                     android:backgroundTint="@color/transparant"
                     android:layout_marginStart="18dp"
                     app:cardCornerRadius="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:background="@drawable/shape"
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:orientation="vertical"
                         android:gravity="center"
                         android:layout_width="wrap_content"
@@ -317,10 +335,10 @@
                             android:textColor="@color/white"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
-                    </LinearLayout>
-                </LinearLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cv_ditawar"
                     app:layout_constraintTop_toTopOf="@id/cv_semua"
                     app:layout_constraintBottom_toBottomOf="@id/cv_semua"
@@ -335,8 +353,6 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:orientation="vertical"
                         android:gravity="center"
-                        android:background="@drawable/shape"
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -361,9 +377,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cv_terjual"
                     app:layout_constraintTop_toTopOf="@id/cv_ditawar"
                     app:layout_constraintBottom_toBottomOf="@id/cv_ditawar"
@@ -378,7 +394,6 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:orientation="vertical"
-                        android:background="@drawable/shape"
                         android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -404,7 +419,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -429,50 +444,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_semua_product"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:listitem="@layout/buyer_history_item"
+                tools:listitem="@layout/item"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 android:orientation="vertical"
                 app:spanCount="2"
-                android:layout_marginBottom="48dp"
                 android:layout_marginVertical="18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <ImageView
-        android:id="@+id/top"
-        android:src="@drawable/ic_bc_top"
-        android:scaleType="fitXY"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/background"
-        android:layout_width="match_parent"
-        android:layout_height="132dp" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_back"
-        app:icon="@drawable/ic_baseline_keyboard_arrow_left"
-        style="@style/Widget.AppCompat.ActionButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        app:layout_constraintEnd_toStartOf="@id/btn_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/btn_back"
-        android:text="@string/transaksi"
-        android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:layout_marginTop="32dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>
