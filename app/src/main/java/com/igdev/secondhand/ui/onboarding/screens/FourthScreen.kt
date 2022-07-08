@@ -9,12 +9,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.igdev.secondhand.R
-import com.igdev.secondhand.databinding.FragmentFirstBinding
-import com.igdev.secondhand.databinding.FragmentThirdBinding
+import com.igdev.secondhand.databinding.FragmentFourthScreenBinding
 
-
-class ThirdFragment : Fragment() {
-    private var _binding: FragmentThirdBinding? = null
+class FourthScreen : Fragment() {
+    private var _binding: FragmentFourthScreenBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,13 +23,21 @@ class ThirdFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentThirdBinding.inflate(inflater,container,false)
+        _binding = FragmentFourthScreenBinding.inflate(inflater,container,false)
         val viewPager =  activity?.findViewById<ViewPager2>(R.id.viewPager)
 
-        binding.next3.setOnClickListener {
-            viewPager?.currentItem = 3
+        binding.finish.setOnClickListener {
+            findNavController().navigate(R.id.action_onBoardingFragment_to_startFragment)
+            onBoardingFinished()
         }
         return binding.root
+    }
+
+    private fun onBoardingFinished() {
+        val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putBoolean("Finished", true)
+        editor.apply()
     }
 
 }

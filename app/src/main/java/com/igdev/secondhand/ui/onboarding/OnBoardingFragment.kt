@@ -9,6 +9,7 @@ import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentHomeBinding
 import com.igdev.secondhand.databinding.FragmentOnBoardingBinding
 import com.igdev.secondhand.ui.onboarding.screens.FirstFragment
+import com.igdev.secondhand.ui.onboarding.screens.FourthScreen
 import com.igdev.secondhand.ui.onboarding.screens.SecondFragment
 import com.igdev.secondhand.ui.onboarding.screens.ThirdFragment
 
@@ -24,7 +25,8 @@ class OnBoardingFragment : Fragment() {
         val fragmentList = arrayListOf<Fragment>(
             FirstFragment(),
             SecondFragment(),
-            ThirdFragment()
+            ThirdFragment(),
+            FourthScreen()
         )
 
         val adapter = OnBoardingAdapter(

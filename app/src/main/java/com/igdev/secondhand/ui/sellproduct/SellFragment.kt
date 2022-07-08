@@ -134,8 +134,10 @@ class SellFragment : Fragment() {
             binding.tilHargaProduk.error = null
             binding.tilDeskripsi.error = null
             binding.tilKategori.error = null
+            val edit = binding.etHargaProduk
             val namaProduk = binding.etNamaProduk.text.toString()
-            val hargaProduk = binding.etHargaProduk.text.toString()
+            val hargaProduk = binding.etHargaProduk.getNumericValue().toInt().toString()
+            binding.etHargaProduk.addTextChangedListener(CurrencyInputWatcher(edit,"Rp ", Locale.getDefault()))
             val deskripsiProduk = binding.etDeskripsi.text.toString()
             val kategoriProduk = binding.etCategory.text.toString()
             val validation = validasi(
