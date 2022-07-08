@@ -57,6 +57,8 @@ class RegisterFragment : Fragment() {
             }
         }
 
+
+
         binding.apply {
             btnRegister.setOnClickListener {
                 signIn()
