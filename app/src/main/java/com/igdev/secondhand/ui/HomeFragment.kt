@@ -150,8 +150,11 @@ class HomeFragment : Fragment() {
                     progressDialog.show()
                 }
                 Status.SUCCESS ->{
-                    productAdapter.submitData(resources.data)
-                    progressDialog.dismiss()
+                    if (resources.data?.size!! > 10){
+                        productAdapter.submitData(resources.data.subList(0,10))
+                        progressDialog.dismiss()
+                    }
+
                 }
                 Status.ERROR ->{
                     Toast.makeText(requireContext(), resources.message, Toast.LENGTH_SHORT)

@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SplashFragment : Fragment() {
 
     private val viewModel: NotifViewModel by viewModels()
-
+    private var token:String = "def_token"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,10 +29,18 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getToken()
+        viewModel.getToken.observe(viewLifecycleOwner){
+            token=it.token
+        }
+
         Handler(Looper.getMainLooper()).postDelayed({
-            if(onBoardingFinished()){
+            if(onBoardingFinished() && token!="def_token"){
                 findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
-            }else{
+            }else if (onBoardingFinished()){
+                findNavController().navigate(R.id.action_splashFragment_to_startFragment)
+            }
+            else{
                 findNavController().navigate(R.id.action_splashFragment_to_onBoardingFragment)
             }
         }, 3000)
