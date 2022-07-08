@@ -72,6 +72,18 @@ class TransactionFragment : Fragment() {
             MainFragment.currentPage = R.id.sellFragment
             findNavController().navigate(R.id.mainFragment)
         }
+        binding.btnPlus.setOnClickListener {
+            MainFragment.currentPage = R.id.sellFragment
+            findNavController().navigate(R.id.mainFragment)
+        }
+        binding.cvSemua.setOnClickListener{
+            val direct = MainFragmentDirections.actionMainFragmentToSemuaPenjualanFragment()
+            findNavController().navigate(direct)
+        }
+        binding.cvDitawar.setOnClickListener {
+            val direct = MainFragmentDirections.actionMainFragmentToSedangDitawarFragment()
+            findNavController().navigate(direct)
+        }
         val progressDialog = ProgressDialog(requireContext())
         progressDialog.setMessage("Please Wait...")
         viewModel.getBuyerHistory.observe(viewLifecycleOwner) {
@@ -83,6 +95,7 @@ class TransactionFragment : Fragment() {
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
                             binding.emptyNotif.visibility = View.VISIBLE
+                            binding.rvHistori.visibility = View.GONE
                         } else {
                             for (data in it.data) {
                                 if (data.imageProduct.isNullOrEmpty() &&
@@ -108,6 +121,7 @@ class TransactionFragment : Fragment() {
                                         findNavController().navigate(direct)
                                     }
                                 })
+                            binding.emptyNotif.visibility = View.GONE
                             buyerAdapter.submitData(listBuyer)
                             binding.rvHistori.adapter = buyerAdapter
                         }
@@ -122,6 +136,24 @@ class TransactionFragment : Fragment() {
                 }
             }
         }
+        binding.apply {
+            btnSemua.setOnClickListener {
+                val direct = MainFragmentDirections.actionMainFragmentToTransaksiSemuaPembelianFragment()
+                findNavController().navigate(direct)
+            }
+            btnPengajuan.setOnClickListener {
+                val direct = MainFragmentDirections.actionMainFragmentToDalamPengajuanFragment()
+                findNavController().navigate(direct)
+            }
+            btnDiterima.setOnClickListener {
+                val direct = MainFragmentDirections.actionMainFragmentToPengajuanDiterimaFragment()
+                findNavController().navigate(direct)
+            }
+            btnDitolak.setOnClickListener {
+                val direct = MainFragmentDirections.actionMainFragmentToPengajuanDitolakFragment()
+                findNavController().navigate(direct)
+            }
+        }
         viewModel.getAllSellerProduct.observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it.status) {
@@ -131,7 +163,7 @@ class TransactionFragment : Fragment() {
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
                             binding.emptyNotif.visibility = View.VISIBLE
-                            binding.tvTotal.text = "-"
+                            binding.tvTotal.text = "00"
                         } else {
                             val sellerAdapter =
                                 SellerAdapter(object : SellerAdapter.OnClickListener {
@@ -145,7 +177,7 @@ class TransactionFragment : Fragment() {
                                 })
                             sellerAdapter.submitData(it.data)
                             binding.rvSemuaProduct.adapter = sellerAdapter
-                            binding.tvTotal.text = sellerAdapter.itemCount.toString()
+                            binding.tvTotal.text = "0${sellerAdapter.itemCount}"
                         }
                         progressDialog.dismiss()
                     }
@@ -167,9 +199,9 @@ class TransactionFragment : Fragment() {
                     }
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
-                            binding.tvTotalDitawar.text = "-"
+                            binding.tvTotalDitawar.text = "00"
                         } else {
-                            binding.tvTotalDitawar.text = it.data.size.toString()
+                            binding.tvTotalDitawar.text = "0${it.data.size}"
                         }
                         progressDialog.dismiss()
                     }
