@@ -433,7 +433,7 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 android:orientation="vertical"
                 app:spanCount="2"
-                android:layout_marginBottom="48dp"
+                android:paddingBottom="128dp"
                 android:layout_marginVertical="18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

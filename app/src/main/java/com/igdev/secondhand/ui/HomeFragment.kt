@@ -99,6 +99,10 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(),"click",Toast.LENGTH_SHORT).show()
             }
         })
+        binding.btnJual.setOnClickListener {
+            MainFragment.currentPage = R.id.sellFragment
+            findNavController().navigate(R.id.mainFragment)
+        }
         binding.rvCategory.adapter = categoryAdapter
         miniCategoryAdapter = MiniCategoryAdapter(object : MiniCategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {

@@ -79,7 +79,7 @@ class MainFragment : Fragment() {
         }
 
         binding.menuNavigation.selectedItemId = if (currentPage == 0) {
-            R.id.accountFragment
+            R.id.homeFragment
         } else {
             currentPage
         }
