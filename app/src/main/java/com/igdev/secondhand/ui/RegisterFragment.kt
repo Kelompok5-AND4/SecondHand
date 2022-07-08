@@ -74,10 +74,7 @@ class RegisterFragment : Fragment() {
         val nama = binding.etNamaLengkap.text.toString()
         val email = binding.etEmail.text.toString()
         val password = binding.etBuatPassword.text.toString()
-        val phone = binding.phoneNumber.text.toString()/*
-        val location = binding.location.text.toString()*/
-        val image = "no_image"
-        val registerReq = RegistReq(nama,email,password,phone,"location",image,"jakarta")
+        val registerReq = RegistReq(email,password)
         viewModel.registerPost(registerReq)
         if (nama.isEmpty() || email.isEmpty() || password.isEmpty()){
             Toast.makeText(requireContext(), "lengkapi data", Toast.LENGTH_SHORT).show()
