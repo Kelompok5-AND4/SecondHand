@@ -14,14 +14,14 @@ data class RegisterResponse(
     val fullName: String,
     @SerializedName("id")
     val id: Int,
-    @SerializedName("city")
-    val city: String,
     @SerializedName("image_url")
-    val imageUrl: String,
+    val imageUrl: Any,
     @SerializedName("password")
     val password: String,
     @SerializedName("phone_number")
     val phoneNumber: String,
     @SerializedName("updatedAt")
-    val updatedAt: String
+    val updatedAt: String,
+    @SerializedName("city")
+    val city: String
 )
