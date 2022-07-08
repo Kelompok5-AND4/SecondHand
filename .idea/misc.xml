@@ -114,11 +114,16 @@
         <entry key="..\:/studi independent/kegiatan/SecondHand/app/src/main/res/layout/fragment_register.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/drawable/bg_biru_gradasi_dua.xml" value="0.215" />
         <entry key="app/src/main/res/drawable/bg_biru_gradasi_satu.xml" value="0.215" />
+        <entry key="app/src/main/res/drawable/bg_rounded_birusatu.xml" value="0.215" />
         <entry key="app/src/main/res/drawable/bg_searchbar.xml" value="0.215" />
+        <entry key="app/src/main/res/drawable/gradient_button.xml" value="0.215" />
         <entry key="app/src/main/res/drawable/ic_splash_screen.xml" value="0.215" />
+        <entry key="app/src/main/res/drawable/orange_btn.xml" value="0.215" />
         <entry key="app/src/main/res/drawable/searchview_bg.xml" value="0.2475" />
         <entry key="app/src/main/res/drawable/top_menu_separator.xml" value="0.215" />
+        <entry key="app/src/main/res/layout/fragment_detail_product.xml" value="0.33125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.25" />
       </map>
