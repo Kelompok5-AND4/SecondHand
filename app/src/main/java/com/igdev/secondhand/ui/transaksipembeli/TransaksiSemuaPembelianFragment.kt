@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.igdev.secondhand.R
-import com.igdev.secondhand.databinding.FragmentDalamPengajuanBinding
-import com.igdev.secondhand.databinding.FragmentTransactionBinding
+import com.igdev.secondhand.databinding.FragmentPengajuanDiterimaBinding
+import com.igdev.secondhand.databinding.FragmentSemuaPembelianBinding
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
 import com.igdev.secondhand.model.local.UserLogin
@@ -24,9 +24,8 @@ import com.igdev.secondhand.ui.transaction.TransactionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DalamPengajuanFragment : Fragment() {
-
-    private var _binding: FragmentDalamPengajuanBinding? = null
+class TransaksiSemuaPembelianFragment : Fragment() {
+    private var _binding: FragmentSemuaPembelianBinding? = null
     private val binding get() = _binding!!
     private val viewModel : TransactionViewModel by viewModels()
     private var token : String =""
@@ -40,11 +39,10 @@ class DalamPengajuanFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDalamPengajuanBinding.inflate(inflater,container, false)
+        _binding = FragmentSemuaPembelianBinding.inflate(inflater,container, false)
         // Inflate the layout for this fragment
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         MainFragment.currentPage = R.id.transactionFragment
@@ -69,11 +67,17 @@ class DalamPengajuanFragment : Fragment() {
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
                             binding.emptyNotif.visibility = View.VISIBLE
-                            binding.rvDalamPengajuan.visibility = View.GONE
+                            binding.rvAllProduct.visibility = View.GONE
                         } else {
                             for (data in it.data) {
-                                if (data.status == "pending"
+                                if (data.imageProduct.isNullOrEmpty() &&
+                                    data.product != null &&
+                                    data.basePrice.isEmpty() &&
+                                    data.productName.isEmpty() &&
+                                    data.transactionDate.isNullOrEmpty() &&
+                                    data.product.imageUrl.isNullOrEmpty()
                                 ) {
+                                } else {
                                     listBuyer.add(data)
                                 }
                             }
@@ -91,7 +95,7 @@ class DalamPengajuanFragment : Fragment() {
                                 })
                             binding.emptyNotif.visibility = View.GONE
                             buyerAdapter.submitData(listBuyer)
-                            binding.rvDalamPengajuan.adapter = buyerAdapter
+                            binding.rvAllProduct.adapter = buyerAdapter
                         }
                         progressDialog.dismiss()
                     }

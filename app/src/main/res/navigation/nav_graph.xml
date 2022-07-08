@@ -121,6 +121,24 @@
         <action
             android:id="@+id/action_mainFragment_to_previewFragment"
             app:destination="@id/previewFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_transaksiSemuaPembelianFragment"
+            app:destination="@id/transaksiSemuaPembelianFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_pengajuanDitolakFragment"
+            app:destination="@id/pengajuanDitolakFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dalamPengajuanFragment"
+            app:destination="@id/dalamPengajuanFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_pengajuanDiterimaFragment"
+            app:destination="@id/pengajuanDiterimaFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_semuaPenjualanFragment"
+            app:destination="@id/semuaPenjualanFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_sedangDitawarFragment"
+            app:destination="@id/sedangDitawarFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
@@ -139,4 +157,34 @@
             android:id="@+id/action_previewFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/transaksiSemuaPembelianFragment"
+        android:name="com.igdev.secondhand.ui.transaksipembeli.TransaksiSemuaPembelianFragment"
+        android:label="fragment_semua_pembelian"
+        tools:layout="@layout/fragment_semua_pembelian" />
+    <fragment
+        android:id="@+id/dalamPengajuanFragment"
+        android:name="com.igdev.secondhand.ui.transaksipembeli.DalamPengajuanFragment"
+        android:label="fragment_dalam_pengajuan"
+        tools:layout="@layout/fragment_dalam_pengajuan" />
+    <fragment
+        android:id="@+id/pengajuanDiterimaFragment"
+        android:name="com.igdev.secondhand.ui.transaksipembeli.PengajuanDiterimaFragment"
+        android:label="fragment_pengajuan_diterima"
+        tools:layout="@layout/fragment_pengajuan_diterima" />
+    <fragment
+        android:id="@+id/pengajuanDitolakFragment"
+        android:name="com.igdev.secondhand.ui.transaksipembeli.PengajuanDitolakFragment"
+        android:label="fragment_pengajuan_ditolak"
+        tools:layout="@layout/fragment_pengajuan_ditolak" />
+    <fragment
+        android:id="@+id/semuaPenjualanFragment"
+        android:name="com.igdev.secondhand.ui.transaksipenjual.SemuaPenjualanFragment"
+        android:label="fragment_semua_penjualan"
+        tools:layout="@layout/fragment_semua_penjualan" />
+    <fragment
+        android:id="@+id/sedangDitawarFragment"
+        android:name="com.igdev.secondhand.ui.transaksipenjual.SedangDitawarFragment"
+        android:label="fragment_sedang_ditawar"
+        tools:layout="@layout/fragment_sedang_ditawar" />
 </navigation>
