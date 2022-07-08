@@ -198,4 +198,9 @@
         android:name="com.igdev.secondhand.ui.transaksipenjual.SedangDitawarFragment"
         android:label="fragment_sedang_ditawar"
         tools:layout="@layout/fragment_sedang_ditawar" />
+    <fragment
+        android:id="@+id/transaksiSemuaPembelianFragment"
+        android:name="com.igdev.secondhand.ui.transaksipembeli.TransaksiSemuaPembelianFragment"
+        android:label="fragment_semua_pembelian"
+        tools:layout="@layout/fragment_semua_pembelian" />
 </navigation>
