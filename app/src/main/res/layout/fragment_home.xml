@@ -179,7 +179,7 @@
                         app:layout_constraintTop_toTopOf="@id/textLelang"
                         app:layout_constraintStart_toEndOf="@id/textLelang"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/product_item"/>
+                        tools:listitem="@layout/buyer_history_item"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>

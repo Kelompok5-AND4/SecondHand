@@ -1,5 +1,6 @@
 package com.igdev.secondhand.ui
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.os.Handler
@@ -20,10 +21,12 @@ import com.igdev.secondhand.databinding.FragmentHomeBinding
 import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.Status
+import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.ui.adapter.BannerAdapter
 import com.igdev.secondhand.ui.adapter.CategoryAdapter
 import com.igdev.secondhand.ui.adapter.MiniCategoryAdapter
 import com.igdev.secondhand.ui.adapter.ProductAdapter
+import com.igdev.secondhand.ui.transaction.SellerAdapter
 import com.igdev.secondhand.ui.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.abs
@@ -36,6 +39,7 @@ class HomeFragment : Fragment() {
     private lateinit var productAdapter: ProductAdapter
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var miniCategoryAdapter: MiniCategoryAdapter
+    private val tokenLelang = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -116,6 +120,36 @@ class HomeFragment : Fragment() {
         binding.ivNotification.setOnClickListener {
             MainFragment.currentPage = R.id.notificationFragment
             findNavController().navigate(R.id.mainFragment)
+        }
+        viewModel.getSellerProduct(tokenLelang)
+        viewModel.getAllSellerProduct.observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it.status) {
+                    Status.LOADING -> {
+                    }
+                    Status.SUCCESS -> {
+                        if (it.data.isNullOrEmpty()) {
+                            binding.rvSpecialOffer.visibility = View.GONE
+                        } else {
+                            val sellerAdapter =
+                                SellerAdapter(object : SellerAdapter.OnClickListener {
+                                    override fun onClickItem(data: SellerProductResponseItem) {
+                                        val id = data.id
+                                        val toDetail = MainFragmentDirections.actionMainFragmentToDetailProductFragment(id)
+                                        findNavController().navigate(toDetail)
+                                    }
+                                })
+                            sellerAdapter.submitData(it.data)
+                            binding.rvSpecialOffer.adapter = sellerAdapter
+                        }
+                    }
+                    Status.ERROR -> {
+                        AlertDialog.Builder(requireContext())
+                            .setMessage(it.message)
+                            .show()
+                    }
+                }
+            }
         }
     }
 

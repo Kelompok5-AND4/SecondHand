@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tab_padding_start">8dp</dimen>
+    <dimen name="tab_padding_end">8dp</dimen>
+    <dimen name="indicator_size">6dp</dimen>
+</resources>

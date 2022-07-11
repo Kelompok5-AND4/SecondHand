@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.Resource
+import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -20,6 +21,9 @@ class HomeViewModel @Inject constructor(private val repository: Repository):View
     private val _category :MutableLiveData<Resource<List<CategoryResponseItem>>> = MutableLiveData()
     val category :LiveData<Resource<List<CategoryResponseItem>>> get() = _category
 
+    private val _getAllSellerProduct = MutableLiveData<Resource<List<SellerProductResponseItem>>>()
+    val getAllSellerProduct: LiveData<Resource<List<SellerProductResponseItem>>> get() = _getAllSellerProduct
+
 
     fun getProduct(status:String,categoryId:String){
         viewModelScope.launch {
@@ -28,6 +32,17 @@ class HomeViewModel @Inject constructor(private val repository: Repository):View
                 _product.postValue(Resource.success(repository.getAllProduct(status,categoryId)))
             }catch (e:Exception){
                 _product.postValue(Resource.error(e.localizedMessage?:"Error occurred"))
+            }
+        }
+    }
+
+    fun getSellerProduct(token: String) {
+        viewModelScope.launch {
+            _getAllSellerProduct.postValue(Resource.loading())
+            try {
+                _getAllSellerProduct.postValue(Resource.success(repository.getSellerProduct(token)))
+            } catch (exception: Exception) {
+                _getAllSellerProduct.postValue(Resource.error(exception.message ?: "Error"))
             }
         }
     }

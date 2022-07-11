@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.tabs.TabLayoutMediator
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentHomeBinding
 import com.igdev.secondhand.databinding.FragmentOnBoardingBinding
@@ -34,8 +35,11 @@ class OnBoardingFragment : Fragment() {
             requireActivity().supportFragmentManager,
             lifecycle
         )
-
+        val viewPager = binding.viewPager
         binding.viewPager.adapter = adapter
+        /*val tabLayout = binding.intoTabLayout
+        TabLayoutMediator(tabLayout,viewPager){
+            tab,position-> }.attach()*/
         return binding.root
     }
 
