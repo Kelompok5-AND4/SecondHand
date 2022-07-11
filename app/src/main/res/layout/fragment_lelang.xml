@@ -73,7 +73,7 @@
             app:layout_constraintTop_toBottomOf="@id/iv_logo_lelang"
             app:layout_constraintVertical_bias="0.0"
             app:spanCount="2"
-            tools:listitem="@layout/rv_lelang" />
+            tools:listitem="@layout/buyer_history_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

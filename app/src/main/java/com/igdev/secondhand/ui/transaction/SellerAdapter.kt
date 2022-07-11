@@ -56,7 +56,7 @@ class SellerAdapter(
             binding.apply {
                 tvMessage.visibility = View.GONE
                 tvProductName.text = data.name
-                tvHarga.text = data.basePrice.toString()
+                tvHarga.text = "Rp. ${data.basePrice.toString()}"
                 Glide.with(binding.root)
                     .load(data.imageUrl ?: R.drawable.default_rv)
                     .centerCrop()

@@ -121,6 +121,10 @@ class HomeFragment : Fragment() {
             MainFragment.currentPage = R.id.notificationFragment
             findNavController().navigate(R.id.mainFragment)
         }
+        binding.tvSeeAll.setOnClickListener {
+            val direct = MainFragmentDirections.actionMainFragmentToLelangFragment()
+            findNavController().navigate(direct)
+        }
         viewModel.getSellerProduct(tokenLelang)
         viewModel.getAllSellerProduct.observe(viewLifecycleOwner) {
             if (it != null) {

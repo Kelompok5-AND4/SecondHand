@@ -152,6 +152,9 @@
         <action
             android:id="@+id/action_mainFragment_to_sedangDitawarFragment"
             app:destination="@id/sedangDitawarFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_lelangFragment"
+            app:destination="@id/lelangFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
