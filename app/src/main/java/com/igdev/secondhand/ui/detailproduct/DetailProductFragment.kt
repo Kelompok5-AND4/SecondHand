@@ -16,8 +16,11 @@ import com.google.android.material.snackbar.Snackbar
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentDetailProductBinding
 import com.igdev.secondhand.databinding.FragmentHomeBinding
+import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
+import com.igdev.secondhand.model.detail.Category
+import com.igdev.secondhand.ui.adapter.DetailCategoryAdapter
 import com.igdev.secondhand.ui.transaction.BuyerAdapter
 import com.igdev.secondhand.ui.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,6 +36,7 @@ class DetailProductFragment : Fragment() {
     private var pending = false
     private var accepted = false
     private var decline = false
+    private lateinit var categoryAdapter : DetailCategoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -121,6 +125,14 @@ class DetailProductFragment : Fragment() {
                                     .load(detail.data?.imageUrl)
                                     .into(fotoProduk)
 
+
+                                categoryAdapter = DetailCategoryAdapter(object : DetailCategoryAdapter.OnClickListener{
+                                    override fun onClickItem(data: Category) {
+                                    }
+                                })
+                                binding.rvCategory.adapter = categoryAdapter
+                                categoryAdapter.submitData(it.data?.categories)
+
                             }
                         }
                         progressDialog.dismiss()
@@ -132,6 +144,8 @@ class DetailProductFragment : Fragment() {
                 }
             }
         }
+
+
 
     }
 }

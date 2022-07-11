@@ -119,7 +119,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cv_penjual"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="62dp"
                 android:layout_marginHorizontal="24dp"
                 app:cardCornerRadius="24dp"
                 android:layout_width="match_parent"
@@ -152,6 +151,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="category"-->
+<!--                        app:layout_constraintTop_toBottomOf="@id/tv_deskripsi"/>-->
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_category"
                         android:layout_width="match_parent"
@@ -159,7 +164,6 @@
                         android:layout_margin="16dp"
                         tools:listitem="@layout/detail_category_item"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        android:orientation="vertical"
                         app:spanCount="2"
                         app:layout_constraintTop_toBottomOf="@id/tv_deskripsi"/>
 
@@ -225,6 +229,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/nego"
             android:textAllCaps="false"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/poppins_bold"
             android:textColor="@color/abu_muda_dua"
             android:backgroundTint="@color/white"
@@ -244,6 +249,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:backgroundTint="@color/hijau"
             android:visibility="gone"
+            android:layout_marginBottom="16dp"
             android:layout_marginHorizontal="28dp"
             android:layout_marginTop="24dp"
             app:cardCornerRadius="24dp"
@@ -272,6 +278,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_ditolak"
             android:visibility="gone"
+            android:layout_marginBottom="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -307,6 +314,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:visibility="gone"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/abu_muda"
             android:layout_marginHorizontal="28dp"
             android:layout_marginTop="24dp"
