@@ -219,4 +219,9 @@
         android:name="com.igdev.secondhand.ui.transaksipembeli.TransaksiSemuaPembelianFragment"
         android:label="fragment_semua_pembelian"
         tools:layout="@layout/fragment_semua_pembelian" />
+    <fragment
+        android:id="@+id/tawaranSellerFragment"
+        android:name="com.igdev.secondhand.TawaranSellerFragment"
+        android:label="fragment_tawaran_seller"
+        tools:layout="@layout/fragment_tawaran_seller" />
 </navigation>
