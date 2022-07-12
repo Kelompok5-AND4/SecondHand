@@ -2,6 +2,7 @@ package com.igdev.secondhand.repository
 
 import com.igdev.secondhand.datastore.DataStore
 import com.igdev.secondhand.model.User
+import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.service.ApiHelper
@@ -49,5 +50,7 @@ class Repository(
     suspend fun getSellerProduct(token :String) = apiHelper.getSellerProduct(token)
     //seller order
     suspend fun getSellerOrder(token :String) = apiHelper.getSellerOrder(token)
+    //post Bid
+    suspend fun postOrder(token: String,requestBody: PostOrderReq)= apiHelper.postOrder(token, requestBody)
 
 }
