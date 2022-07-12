@@ -79,6 +79,9 @@ class InputPenawaranFragment(
                 }
             }
         }
+        binding.btnUp.setOnClickListener {
+            dismiss()
+        }
         viewModel.postOrder.observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.LOADING ->{

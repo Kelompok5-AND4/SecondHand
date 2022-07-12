@@ -42,7 +42,6 @@ class DetailProductFragment : Fragment() {
     private lateinit var categoryAdapter : DetailCategoryAdapter
     private var token = ""
     private var imageProduct = ""
-    private var sellerName = ""
     private var productName = ""
     private var productPrice = ""
     override fun onCreateView(
