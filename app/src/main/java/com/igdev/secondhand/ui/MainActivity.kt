@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         setFullScreen(window)
         lightStatusBar(window)
+
         /*val navController = findNavController(R.id.fragmentContainerView)
         binding.menuNavigation.setupWithNavController(navController)
 
