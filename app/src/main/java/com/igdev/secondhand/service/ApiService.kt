@@ -15,6 +15,7 @@ import com.igdev.secondhand.model.notification.NotifResponseItem
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.register.RegisterResponse
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
+import com.igdev.secondhand.model.sellerproduct.SellerProductDetail
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -75,6 +76,10 @@ interface ApiService {
     //detail
     @GET("buyer/product/{id}")
     suspend fun getIdProduct(@Path("id") id:Int ) :GetDetail
+
+    //detail seller
+    @GET("seller/product/{id}")
+    suspend fun getSellerProductDetail(@Header("access_token")token: String ,@Path("id") id:Int ) :SellerProductDetail
 
     //buyer history
     @GET("buyer/order")

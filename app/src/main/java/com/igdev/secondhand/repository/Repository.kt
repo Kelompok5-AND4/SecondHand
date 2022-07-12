@@ -34,6 +34,7 @@ class Repository(
     suspend fun getNotif(token :String) = apiHelper.getNotif(token)
     //details
     suspend fun getDetail(id:Int) = apiHelper.getDetail(id)
+    suspend fun getSellerDetailProduct(token: String,id:Int) = apiHelper.getSellerProductDetail(token,id)
 
     suspend fun postProduct(
         token: String,
