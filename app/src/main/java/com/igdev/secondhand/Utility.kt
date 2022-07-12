@@ -31,6 +31,7 @@ fun lightStatusBar(window: Window, isLight: Boolean = true, isLightNav: Boolean 
     val wic = WindowInsetsControllerCompat (window, window.decorView)
 /*    wic.isAppearanceLightStatusBars = isLight*/
     wic.isAppearanceLightNavigationBars = isLightNav
+
 }
 fun rupiah(number:Int): String{
     val kursIndonesia = DecimalFormat.getCurrencyInstance() as DecimalFormat
