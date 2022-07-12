@@ -1,15 +1,29 @@
 package com.igdev.secondhand
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.igdev.secondhand.databinding.FragmentHomeBinding
+import com.igdev.secondhand.databinding.FragmentLelangBinding
+import com.igdev.secondhand.model.Status
+import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
+import com.igdev.secondhand.ui.MainFragmentDirections
+import com.igdev.secondhand.ui.transaction.SellerAdapter
+import com.igdev.secondhand.ui.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LelangFragment : Fragment() {
+    private var _binding : FragmentLelangBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel : HomeViewModel by viewModels()
+    private val tokenLelang = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -17,11 +31,42 @@ class LelangFragment : Fragment() {
 
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lelang, container, false)
+        _binding = FragmentLelangBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getSellerProduct(tokenLelang)
+        viewModel.getAllSellerProduct.observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it.status) {
+                    Status.LOADING -> {
+                    }
+                    Status.SUCCESS -> {
+                        if (it.data.isNullOrEmpty()) {
+                            binding.rvLelang.visibility = View.GONE
+                        } else {
+                            val sellerAdapter =
+                                SellerAdapter(object : SellerAdapter.OnClickListener {
+                                    override fun onClickItem(data: SellerProductResponseItem) {
+                                        val id = data.id
+                                        val toDetail = LelangFragmentDirections.actionLelangFragmentToDetailProductFragment(id)
+                                        findNavController().navigate(toDetail)
+                                    }
+                                })
+                            sellerAdapter.submitData(it.data)
+                            binding.rvLelang.adapter = sellerAdapter
+                        }
+                    }
+                    Status.ERROR -> {
+                        AlertDialog.Builder(requireContext())
+                            .setMessage(it.message)
+                            .show()
+                    }
+                }
+            }
+        }
         
     }
 }

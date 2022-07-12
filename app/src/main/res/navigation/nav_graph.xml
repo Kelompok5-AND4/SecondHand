@@ -51,7 +51,12 @@
         android:id="@+id/lelangFragment"
         android:name="com.igdev.secondhand.LelangFragment"
         android:label="fragment_lelang"
-        tools:layout="@layout/fragment_lelang" />
+        tools:layout="@layout/fragment_lelang" >
+        <action
+            android:id="@+id/action_lelangFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.igdev.secondhand.ui.onboarding.OnBoardingFragment"
