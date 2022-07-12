@@ -103,6 +103,11 @@
         <action
             android:id="@+id/action_detailProductFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_detailProductFragment_to_penawaranTerkirimFragment"
+            app:destination="@id/penawaranTerkirimFragment"
+            app:popUpTo="@id/detailProductFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/editAccountFragment"
@@ -229,4 +234,15 @@
         android:name="com.igdev.secondhand.TawaranSellerFragment"
         android:label="fragment_tawaran_seller"
         tools:layout="@layout/fragment_tawaran_seller" />
+    <fragment
+        android:id="@+id/penawaranTerkirimFragment"
+        android:name="com.igdev.secondhand.ui.transaksipembeli.PenawaranTerkirimFragment"
+        android:label="fragment_penawaran_terkirim"
+        tools:layout="@layout/fragment_penawaran_terkirim" >
+        <action
+            android:id="@+id/action_penawaranTerkirimFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/penawaranTerkirimFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

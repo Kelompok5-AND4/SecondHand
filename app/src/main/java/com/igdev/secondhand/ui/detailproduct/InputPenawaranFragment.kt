@@ -90,8 +90,8 @@ class InputPenawaranFragment(
                         201 -> {
                             Toast.makeText(requireContext(), "Berhasil mengajukan penawaran", Toast.LENGTH_SHORT)
                                 .show()
-                            MainFragment.currentPage = R.id.transactionFragment
-                            findNavController().navigate(R.id.action_detailProductFragment_to_mainFragment)
+                            MainFragment.currentPage = R.id.homeFragment
+                            findNavController().navigate(R.id.action_detailProductFragment_to_penawaranTerkirimFragment)
                             }
                         400 -> {
                             Toast.makeText(
