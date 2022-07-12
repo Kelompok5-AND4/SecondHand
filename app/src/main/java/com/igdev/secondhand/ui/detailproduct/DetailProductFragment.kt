@@ -94,8 +94,11 @@ class DetailProductFragment : Fragment() {
                 binding.cvDiterima.visibility = View.VISIBLE
                 binding.cvDitolak.visibility = View.GONE
             } else if (pending) {
-                binding.cvMenunggu.visibility = View.VISIBLE
-                binding.btnNego.visibility = View.GONE
+                binding.cvMenunggu.visibility = View.GONE
+                binding.btnNego.visibility = View.VISIBLE
+                binding.btnNego.setText("Menunggu Respons Penjual")
+                binding.btnNego.isClickable = false
+                binding.btnNego.setBackgroundColor(R.color.abu_muda_dua)
                 binding.cvDiterima.visibility = View.GONE
                 binding.cvDitolak.visibility = View.GONE
             } else if (decline) {
