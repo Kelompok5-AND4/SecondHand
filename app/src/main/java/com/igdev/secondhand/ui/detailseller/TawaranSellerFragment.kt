@@ -30,9 +30,11 @@ class TawaranSellerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val id = 1517
         viewModel.getToken()
         viewModel.getToken.observe(viewLifecycleOwner){
             viewModel.getSellerOrder(it.token)
+            viewModel.getDetail(it.token,id)
         }
     }
 }

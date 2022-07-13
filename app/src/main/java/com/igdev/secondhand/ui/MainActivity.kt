@@ -48,6 +48,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
         /*val navController = findNavController(R.id.fragmentContainerView)
         binding.menuNavigation.setupWithNavController(navController)
 
