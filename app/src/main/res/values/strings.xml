@@ -77,5 +77,6 @@
     <string name="penawaran_diterima">Yeay!!! Barang kamu\n berhasil terjual</string>
     <string name="penawaran_ditolak">Wah Maaf Banget, mungkin\n belum rezeki, yuk cek\n penawaran lainnya</string>
     <string name="click">Tekan dimana saja untuk\n kembali ke Homescreen</string>
+    <string name="nama_penawar">Nama Penawar</string>
 
 </resources>

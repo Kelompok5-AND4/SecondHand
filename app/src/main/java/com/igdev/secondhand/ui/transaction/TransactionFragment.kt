@@ -169,11 +169,8 @@ class TransactionFragment : Fragment() {
                             val sellerAdapter =
                                 SellerAdapter(object : SellerAdapter.OnClickListener {
                                     override fun onClickItem(data: SellerProductResponseItem) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Notif Id = ${data.id}",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        val direct = MainFragmentDirections.actionMainFragmentToTawaranSellerFragment(data.id)
+                                        findNavController().navigate(direct)
                                     }
                                 })
                             sellerAdapter.submitData(it.data)

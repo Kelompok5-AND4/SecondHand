@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/tv_nama_pembeli"
-        android:text="@string/nama_penjual"
+        android:text="@string/nama_penawar"
         android:fontFamily="@font/poppins_bold"
         android:textSize="18sp"
         android:layout_marginStart="16dp"
@@ -70,25 +70,13 @@
         app:layout_constraintStart_toStartOf="@id/cv_photo"/>
 
     <TextView
-    android:id="@+id/tv_rp_penawaran"
-    android:text="Rp."
-    android:fontFamily="@font/poppins_regular"
-    android:textSize="14sp"
-    android:layout_marginStart="16dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintStart_toEndOf="@id/tv_text_penawaran"
-    app:layout_constraintTop_toTopOf="@id/tv_text_penawaran"
-    app:layout_constraintBottom_toBottomOf="@id/tv_text_penawaran" />
-
-    <TextView
         android:id="@+id/tv_harga_penawaran"
         android:text="50.000"
         android:fontFamily="@font/poppins_regular"
         android:textSize="14sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tv_rp_penawaran"
+        app:layout_constraintStart_toEndOf="@id/tv_text_penawaran"
         app:layout_constraintTop_toTopOf="@id/tv_text_penawaran"
         app:layout_constraintBottom_toBottomOf="@id/tv_text_penawaran" />
 
