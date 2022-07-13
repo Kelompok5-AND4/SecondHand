@@ -1,4 +1,4 @@
-package com.igdev.secondhand.ui.transaksipenjual
+package com.igdev.secondhand.ui.detailseller
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.BuyerHistoryItemBinding
+import com.igdev.secondhand.databinding.PenawaranMasukRvBinding
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
 import com.igdev.secondhand.rupiah
 
-
-class NegoAdapter(
+class PenawarAdapter(
     private val onItemClick : OnClickListener
 ) :
-    RecyclerView.Adapter<NegoAdapter.ViewHolder>() {
+    RecyclerView.Adapter<PenawarAdapter.ViewHolder>() {
     private val diffCallBack = object : DiffUtil.ItemCallback<SellerOrderResponseItem>(){
         override fun areItemsTheSame(
             oldItem: SellerOrderResponseItem,
@@ -39,7 +39,7 @@ class NegoAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(BuyerHistoryItemBinding.inflate(inflater,parent,false))
+        return ViewHolder(PenawaranMasukRvBinding.inflate(inflater,parent,false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -51,18 +51,18 @@ class NegoAdapter(
 
     override fun getItemCount(): Int = differ.currentList.size
 
-    inner class ViewHolder(private val binding: BuyerHistoryItemBinding):
+    inner class ViewHolder(private val binding: PenawaranMasukRvBinding):
         RecyclerView.ViewHolder(binding.root){
         @SuppressLint("SetTextI18n")
         fun bind(data: SellerOrderResponseItem){
             binding.apply {
-                tvMessage.visibility = View.GONE
-                tvProductName.text = data.productName
-                tvHarga.text = rupiah(data.basePrice.toString().toInt())
+                tvNamaPembeli.text = data.user.fullName
+                tvLokasi.text = data.user.city
+                tvHargaPenawaran.text = rupiah(data.price)
                 Glide.with(binding.root)
-                    .load(data.imageProduct ?: R.drawable.default_rv)
+                    .load( R.drawable.default_rv)
                     .centerCrop()
-                    .into(ivProduct)
+                    .into(ivFotoProfile)
                 root.setOnClickListener{
                     onItemClick.onClickItem(data)
                 }

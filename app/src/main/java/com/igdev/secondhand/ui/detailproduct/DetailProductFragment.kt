@@ -21,6 +21,7 @@ import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
 import com.igdev.secondhand.model.detail.Category
+import com.igdev.secondhand.rupiah
 import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.adapter.DetailCategoryAdapter
 import com.igdev.secondhand.ui.sellproduct.BottomSheetCategory
@@ -124,7 +125,7 @@ class DetailProductFragment : Fragment() {
                         viewModel.detail.observe(viewLifecycleOwner) {
                             binding.apply {
                                 tvNamaProduct.text = detail.data?.name
-                                tvHarga.text = detail.data?.basePrice.toString()
+                                tvHarga.text = rupiah(detail.data?.basePrice.toString().toInt())
                                 tvLokasi.text = detail.data?.location
                                 tvDeskripsi.text = detail.data?.description
                                 tvNamaPenjual.text = detail.data?.user?.fullName

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.igdev.secondhand.databinding.ProductItemBinding
 import com.igdev.secondhand.model.AllProductResponse
+import com.igdev.secondhand.rupiah
 import kotlinx.coroutines.newFixedThreadPoolContext
 
 class ProductAdapter(private val onClick: OnClickListener):RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
@@ -41,7 +42,7 @@ class ProductAdapter(private val onClick: OnClickListener):RecyclerView.Adapter<
         fun bind (data:AllProductResponse){
             Glide.with(binding.root).load(data.imageUrl).into(binding.ivProduct)
             binding.tvProductName.text = data.name
-            binding.tvHarga.text = "Rp. ${data.basePrice}"
+            binding.tvHarga.text = rupiah(data.basePrice)
             binding.root.setOnClickListener {
                 onClick.onClickItem(data)
             }

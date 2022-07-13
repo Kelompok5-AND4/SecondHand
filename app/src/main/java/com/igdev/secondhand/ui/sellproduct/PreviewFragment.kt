@@ -20,6 +20,7 @@ import com.igdev.secondhand.listCategoryId
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.local.ProductPreview
 import com.igdev.secondhand.model.local.UserLogin
+import com.igdev.secondhand.rupiah
 import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.viewmodel.SellViewModel
 import com.igdev.secondhand.uriToFile
@@ -67,7 +68,7 @@ class PreviewFragment : Fragment() {
         Glide.with(binding.root).load(productImage).into(binding.fotoProduk)
         Glide.with(binding.root).load(userImage).into(binding.ivFotoProfile)
         binding.tvDeskripsi.text = productDescription
-        binding.tvHarga.text = productPrice
+        binding.tvHarga.text = rupiah(productPrice.toString().toInt())
         binding.tvKategori.text = productCategory
         binding.tvNamaProduct.text = productName
         binding.tvNamaPenjual.text = userName

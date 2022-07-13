@@ -170,6 +170,9 @@
             app:destination="@id/categoryFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_tawaranSellerFragment"
+            app:destination="@id/tawaranSellerFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
@@ -235,11 +238,6 @@
         android:label="fragment_semua_pembelian"
         tools:layout="@layout/fragment_semua_pembelian" />
     <fragment
-        android:id="@+id/tawaranSellerFragment"
-        android:name="com.igdev.secondhand.TawaranSellerFragment"
-        android:label="fragment_tawaran_seller"
-        tools:layout="@layout/fragment_tawaran_seller" />
-    <fragment
         android:id="@+id/penawaranTerkirimFragment"
         android:name="com.igdev.secondhand.ui.transaksipembeli.PenawaranTerkirimFragment"
         android:label="fragment_penawaran_terkirim"
@@ -263,5 +261,14 @@
         <action
             android:id="@+id/action_categoryFragment_to_detailProductFragment"
             app:destination="@id/detailProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tawaranSellerFragment"
+        android:name="com.igdev.secondhand.ui.detailseller.TawaranSellerFragment"
+        android:label="fragment_tawaran_seller"
+        tools:layout="@layout/fragment_tawaran_seller" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>
