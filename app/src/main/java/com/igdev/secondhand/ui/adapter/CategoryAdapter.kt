@@ -13,6 +13,8 @@ import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.CategoryResponseItem
 
 class CategoryAdapter(private val onClick: CategoryAdapter.OnClickListener):RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+    var index = -1
+
     private val diffCallBack = object: DiffUtil.ItemCallback<CategoryResponseItem>(){
         override fun areItemsTheSame(
             oldItem: CategoryResponseItem,
@@ -37,13 +39,17 @@ class CategoryAdapter(private val onClick: CategoryAdapter.OnClickListener):Recy
         fun onClickItem (data: CategoryResponseItem)
     }
     inner class ViewHolder(private val binding: CategoryItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind (data: CategoryResponseItem){
+        fun bind (data: CategoryResponseItem, position: Int){
             //https://raw.githubusercontent.com/Kelompok5-AND4/CategoryIconDirectory/master/Electronik.png
             val imageUrl = "https://raw.githubusercontent.com/Kelompok5-AND4/CategoryIconDirectory/master/${data.name}.png"
             binding.tvCategoryName.text = data.name
             Glide.with(binding.root).load(imageUrl).placeholder(R.drawable.default_rv).into(binding.ivCategory)
             binding.root.setOnClickListener {
                 onClick.onClickItem(data)
+                index = position
+                notifyDataSetChanged()
+            }
+            if (index == position) {
             }
         }
     }
@@ -59,7 +65,7 @@ class CategoryAdapter(private val onClick: CategoryAdapter.OnClickListener):Recy
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = differ.currentList[position]
         data.let {
-            holder.bind(data)
+            holder.bind(data, position)
         }
     }
 }

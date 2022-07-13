@@ -81,25 +81,20 @@ class DetailProductFragment : Fragment() {
                 }
             }
             if (accepted) {
-                binding.cvMenunggu.visibility = View.GONE
-                binding.btnNego.visibility = View.GONE
-                binding.cvDiterima.visibility = View.VISIBLE
-                binding.cvDitolak.visibility = View.GONE
+                binding.btnNego.setText(R.string.diterima_text)
+                binding.btnNego.isClickable = false
+                binding.btnNego.setBackgroundColor(R.color.hijau)
             } else if (pending) {
-                binding.cvMenunggu.visibility = View.VISIBLE
-                binding.btnNego.visibility = View.GONE
-                binding.cvDiterima.visibility = View.GONE
-                binding.cvDitolak.visibility = View.GONE
+                binding.btnNego.setText(R.string.menunggu_text)
+                binding.btnNego.isClickable = false
+                binding.btnNego.setBackgroundColor(R.color.abu_muda)
+                binding.btnNego.setTextColor(R.color.black)
             } else if (decline) {
-                binding.cvMenunggu.visibility = View.GONE
-                binding.btnNego.visibility = View.GONE
-                binding.cvDiterima.visibility = View.GONE
-                binding.cvDitolak.visibility = View.VISIBLE
+                binding.btnNego.setText(R.string.ditolak_text)
+                binding.btnNego.isClickable = false
+                binding.btnNego.setBackgroundColor(R.color.merah)
             } else {
-                binding.cvMenunggu.visibility = View.GONE
                 binding.btnNego.visibility = View.VISIBLE
-                binding.cvDiterima.visibility = View.GONE
-                binding.cvDitolak.visibility = View.GONE
             }
 
 
