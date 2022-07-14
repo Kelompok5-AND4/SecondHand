@@ -3,6 +3,7 @@ package com.igdev.secondhand.service
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
+import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import javax.inject.Inject
@@ -42,5 +43,6 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     suspend fun getSellerOrder(token:String) = apiService.getSellerOrder(token)
     //post order
     suspend fun postOrder(token: String,requestBody: PostOrderReq)= apiService.postBuyerOrder(token,requestBody)
-
+    //setting account
+    suspend fun settingAccount(token: String, requestBody : SettingAccountRequest ) = apiService.updatePassword(token, requestBody)
 }

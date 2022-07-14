@@ -17,6 +17,8 @@ import com.igdev.secondhand.model.register.RegisterResponse
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
 import com.igdev.secondhand.model.sellerproduct.SellerProductDetail
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
+import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
+import com.igdev.secondhand.model.settingaccount.SettingAccountResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -53,6 +55,14 @@ interface ApiService {
         @Part("email") email: RequestBody? = null,
         @Part("password") password: RequestBody? = null
     ): UpdateResponse
+
+    //setting account
+    @PUT("auth/change-password")
+    suspend fun updatePassword(
+        @Header("access_token") token: String,
+        @Body requestBody:SettingAccountRequest
+    ) : SettingAccountResponse
+
 
     @GET("auth/user")
     suspend fun getDataUser(@Header("access_token") token: String): ResponseAuth
