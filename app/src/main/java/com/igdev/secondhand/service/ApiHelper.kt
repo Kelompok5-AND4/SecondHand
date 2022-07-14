@@ -1,5 +1,6 @@
 package com.igdev.secondhand.service
 
+import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
 import okhttp3.MultipartBody
@@ -32,11 +33,14 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     ) = apiService.postProduct(token, file, name, description, base_price, categoryIds, location)
     //details
     suspend fun getDetail(id:Int) = apiService.getIdProduct(id)
+    suspend fun getSellerProductDetail(token: String,id:Int) = apiService.getSellerProductDetail(token, id)
     //buyer history
     suspend fun getBuyerHistory(token:String) = apiService.getBuyerHistory(token)
     //seller product
     suspend fun getSellerProduct(token:String) = apiService.getSellerProduct(token)
     //seller order
     suspend fun getSellerOrder(token:String) = apiService.getSellerOrder(token)
+    //post order
+    suspend fun postOrder(token: String,requestBody: PostOrderReq)= apiService.postBuyerOrder(token,requestBody)
 
 }

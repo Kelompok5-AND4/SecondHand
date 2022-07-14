@@ -54,7 +54,7 @@ class NotificationAdapter(private val onItemClick: onClickListener) :
                     else if(data.status == "accepted") "Penawaran Anda Diterima " + rupiah(data.bidPrice)
                     else "Ditawar " + rupiah(data.bidPrice)
                 tvDateNotif.text = date(data.updatedAt)
-                tvHargaDiCoret.text = data.basePrice
+                tvHargaDiCoret.text = rupiah(data.basePrice.toString().toInt())
                 tvAkanDihubungi.text = data.status
                 Glide.with(root)
                     .load(data.imageUrl)

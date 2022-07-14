@@ -6,23 +6,16 @@
     android:background="@drawable/bg_biru_gradasi_satu"
     android:orientation="vertical"
     android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.transaksipembeli.PenawaranTerkirimFragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_image"
-        android:backgroundTint="@color/abu_muda_dua"
-        android:layout_width="320dp"
-        android:layout_height="260dp">
-
-        <TextView
-            android:text="@string/ilustrasi"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </androidx.cardview.widget.CardView>
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/succes"
+        app:lottie_loop="true"
+        app:lottie_speed="1" />
 
     <TextView
         android:text="@string/penawaran_terkirim"

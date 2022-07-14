@@ -6,6 +6,8 @@ import com.igdev.secondhand.model.UpdateResponse
 import com.igdev.secondhand.model.addProduct.SellProductResponse
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
 import com.igdev.secondhand.model.detail.GetDetail
+import com.igdev.secondhand.model.detail.PostOrderReq
+import com.igdev.secondhand.model.detail.PostOrderResponse
 import com.igdev.secondhand.model.getAuth.ResponseAuth
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.login.LoginResponse
@@ -13,9 +15,11 @@ import com.igdev.secondhand.model.notification.NotifResponseItem
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.register.RegisterResponse
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
+import com.igdev.secondhand.model.sellerproduct.SellerProductDetail
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Response
 import retrofit2.http.*
 
 import retrofit2.http.GET
@@ -33,6 +37,8 @@ interface ApiService {
     suspend fun postRegUser(@Body requestBody: RegistReq) : RegisterResponse
     @POST("auth/login")
     suspend fun postLogin(@Body requestBody: LoginReq) : LoginResponse
+    @POST("buyer/order")
+    suspend fun postBuyerOrder(@Header("access_token") token: String,@Body requestBody: PostOrderReq) : Response<PostOrderResponse>
 
     //anwar
     @Multipart
@@ -70,6 +76,10 @@ interface ApiService {
     //detail
     @GET("buyer/product/{id}")
     suspend fun getIdProduct(@Path("id") id:Int ) :GetDetail
+
+    //detail seller
+    @GET("seller/product/{id}")
+    suspend fun getSellerProductDetail(@Header("access_token")token: String ,@Path("id") id:Int ) :SellerProductDetail
 
     //buyer history
     @GET("buyer/order")

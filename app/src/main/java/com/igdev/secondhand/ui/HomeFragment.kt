@@ -97,20 +97,21 @@ class HomeFragment : Fragment() {
             }
         })
         binding.rvProduct.adapter = productAdapter
-        binding.rvSpecialOffer.adapter = productAdapter
+
         categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {
-                Toast.makeText(requireContext(),"click",Toast.LENGTH_SHORT).show()
+                val toCategory = MainFragmentDirections.actionMainFragmentToCategoryFragment(data.id)
+                findNavController().navigate(toCategory)
             }
         })
+        binding.rvCategory.adapter = categoryAdapter
         binding.btnJual.setOnClickListener {
             MainFragment.currentPage = R.id.sellFragment
             findNavController().navigate(R.id.mainFragment)
         }
-        binding.rvCategory.adapter = categoryAdapter
+
         miniCategoryAdapter = MiniCategoryAdapter(object : MiniCategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {
-                Toast.makeText(requireContext(),"click",Toast.LENGTH_SHORT).show()
                 getProduct(data.id.toString())
             }
         })

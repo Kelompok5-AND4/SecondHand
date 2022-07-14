@@ -1,8 +1,6 @@
 package com.igdev.secondhand
 
 import android.view.Window
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import java.text.DecimalFormat
 import android.app.ActionBar
 import android.content.ContentResolver
@@ -14,6 +12,8 @@ import android.net.Uri
 import android.os.Environment
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.*
 import java.io.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -31,6 +31,7 @@ fun lightStatusBar(window: Window, isLight: Boolean = true, isLightNav: Boolean 
     val wic = WindowInsetsControllerCompat (window, window.decorView)
 /*    wic.isAppearanceLightStatusBars = isLight*/
     wic.isAppearanceLightNavigationBars = isLightNav
+
 }
 fun rupiah(number:Int): String{
     val kursIndonesia = DecimalFormat.getCurrencyInstance() as DecimalFormat

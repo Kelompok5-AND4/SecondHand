@@ -16,11 +16,15 @@ import com.google.android.material.snackbar.Snackbar
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentDetailProductBinding
 import com.igdev.secondhand.databinding.FragmentHomeBinding
+import com.igdev.secondhand.listCategory
 import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
 import com.igdev.secondhand.model.detail.Category
+import com.igdev.secondhand.rupiah
+import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.adapter.DetailCategoryAdapter
+import com.igdev.secondhand.ui.sellproduct.BottomSheetCategory
 import com.igdev.secondhand.ui.transaction.BuyerAdapter
 import com.igdev.secondhand.ui.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +41,10 @@ class DetailProductFragment : Fragment() {
     private var accepted = false
     private var decline = false
     private lateinit var categoryAdapter : DetailCategoryAdapter
-
+    private var token = ""
+    private var imageProduct = ""
+    private var productName = ""
+    private var productPrice = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,6 +67,7 @@ class DetailProductFragment : Fragment() {
         viewModel.getToken()
         viewModel.getToken.observe(viewLifecycleOwner) {
             viewModel.getBuyerHistory(it.token)
+            token = it.token
         }
         viewModel.getBuyerHistory.observe(viewLifecycleOwner) {
             for (data in 0 until (it.data?.size ?: 0)) {
@@ -109,7 +117,7 @@ class DetailProductFragment : Fragment() {
                         viewModel.detail.observe(viewLifecycleOwner) {
                             binding.apply {
                                 tvNamaProduct.text = detail.data?.name
-                                tvHarga.text = detail.data?.basePrice.toString()
+                                tvHarga.text = rupiah(detail.data?.basePrice.toString().toInt())
                                 tvLokasi.text = detail.data?.location
                                 tvDeskripsi.text = detail.data?.description
                                 tvNamaPenjual.text = detail.data?.user?.fullName
@@ -119,6 +127,9 @@ class DetailProductFragment : Fragment() {
                                 Glide.with(binding.root)
                                     .load(detail.data?.imageUrl)
                                     .into(fotoProduk)
+                                productName = detail.data?.name.toString()
+                                imageProduct = detail.data?.imageUrl.toString()
+                                productPrice = detail.data?.basePrice.toString()
 
 
                                 categoryAdapter = DetailCategoryAdapter(object : DetailCategoryAdapter.OnClickListener{
@@ -140,7 +151,14 @@ class DetailProductFragment : Fragment() {
             }
         }
 
+    binding.btnNego.setOnClickListener {
+        val bottomFragment = InputPenawaranFragment(
+            id,productName,productPrice,imageProduct, submit = {
+            }
+        )
+        bottomFragment.show(parentFragmentManager,"Bid Price")
 
+    }
 
     }
 }

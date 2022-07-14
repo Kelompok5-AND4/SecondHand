@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.BuyerHistoryItemBinding
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
+import com.igdev.secondhand.rupiah
 
 class SellerAdapter(
     private val onItemClick : OnClickListener
@@ -56,7 +57,7 @@ class SellerAdapter(
             binding.apply {
                 tvMessage.visibility = View.GONE
                 tvProductName.text = data.name
-                tvHarga.text = "Rp. ${data.basePrice.toString()}"
+                tvHarga.text = rupiah(data.basePrice.toString().toInt())
                 Glide.with(binding.root)
                     .load(data.imageUrl ?: R.drawable.default_rv)
                     .centerCrop()

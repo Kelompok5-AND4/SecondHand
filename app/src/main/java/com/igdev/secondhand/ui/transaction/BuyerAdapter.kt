@@ -11,6 +11,7 @@ import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.BuyerHistoryItemBinding
 import com.igdev.secondhand.databinding.ProductItemBinding
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
+import com.igdev.secondhand.rupiah
 
 class BuyerAdapter(
     private val onItemClick : OnClickListener
@@ -69,7 +70,7 @@ class BuyerAdapter(
                     }
                 }
                 tvProductName.text = data.productName
-                tvHarga.text = data.basePrice ?: "d"
+                tvHarga.text = rupiah(data.basePrice.toString().toInt())
                 Glide.with(binding.root)
                     .load(data.product.imageUrl ?: R.drawable.default_rv)
                     .centerCrop()

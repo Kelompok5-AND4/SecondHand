@@ -121,6 +121,7 @@ class TransactionFragment : Fragment() {
                                         findNavController().navigate(direct)
                                     }
                                 })
+
                             binding.emptyNotif.visibility = View.GONE
                             buyerAdapter.submitData(listBuyer)
                             binding.rvHistori.adapter = buyerAdapter
@@ -135,6 +136,7 @@ class TransactionFragment : Fragment() {
                     }
                 }
             }
+
         }
         binding.apply {
             btnSemua.setOnClickListener {
@@ -162,17 +164,13 @@ class TransactionFragment : Fragment() {
                     }
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
-                            binding.emptyNotif.visibility = View.VISIBLE
                             binding.tvTotal.text = "00"
                         } else {
                             val sellerAdapter =
                                 SellerAdapter(object : SellerAdapter.OnClickListener {
                                     override fun onClickItem(data: SellerProductResponseItem) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Notif Id = ${data.id}",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        val direct = MainFragmentDirections.actionMainFragmentToTawaranSellerFragment(data.id)
+                                        findNavController().navigate(direct)
                                     }
                                 })
                             sellerAdapter.submitData(it.data)
