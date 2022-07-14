@@ -38,7 +38,7 @@ class CategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding.btnBack.setOnClickListener {
-            findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToMainFragment())
+            findNavController().popBackStack()
         }
         val id = args.id.toString()
         val status = "available"

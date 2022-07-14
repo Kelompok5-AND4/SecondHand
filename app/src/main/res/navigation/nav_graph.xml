@@ -168,8 +168,7 @@
         <action
             android:id="@+id/action_mainFragment_to_categoryFragment"
             app:destination="@id/categoryFragment"
-            app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_mainFragment_to_tawaranSellerFragment"
             app:destination="@id/tawaranSellerFragment" />

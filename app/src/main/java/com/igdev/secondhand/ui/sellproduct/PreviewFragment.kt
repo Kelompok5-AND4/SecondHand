@@ -69,7 +69,7 @@ class PreviewFragment : Fragment() {
         Glide.with(binding.root).load(userImage).into(binding.ivFotoProfile)
         binding.tvDeskripsi.text = productDescription
         binding.tvHarga.text = rupiah(productPrice.toString().toInt())
-        binding.tvKategori.text = productCategory
+        binding.tvCategory.text = productCategory
         binding.tvNamaProduct.text = productName
         binding.tvNamaPenjual.text = userName
         binding.tvLokasi.text = address
@@ -77,7 +77,7 @@ class PreviewFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.btnTerbitkan.setOnClickListener {
+        binding.btnTerapkan.setOnClickListener {
             if(token != null){
                 viewModel.postProduct(
                     token,
