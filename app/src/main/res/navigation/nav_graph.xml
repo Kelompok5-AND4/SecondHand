@@ -176,6 +176,9 @@
         <action
             android:id="@+id/action_mainFragment_to_tawaranSellerFragment"
             app:destination="@id/tawaranSellerFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
@@ -282,5 +285,14 @@
         <argument
             android:name="query"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.igdev.secondhand.ui.settingaccount.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 </navigation>

@@ -7,6 +7,7 @@ import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
+import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
 import com.igdev.secondhand.service.ApiHelper
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
@@ -55,7 +56,6 @@ class Repository(
     suspend fun getSellerOrder(token :String) = apiHelper.getSellerOrder(token)
     //post Bid
     suspend fun postOrder(token: String,requestBody: PostOrderReq)= apiHelper.postOrder(token, requestBody)
-
     //search section
     suspend fun getSearchHistory() = dbHelper.getSearchHistory()
 
@@ -66,4 +66,6 @@ class Repository(
         dbHelper.clearHistory(searchHistoryEntity)
 
     suspend fun clearAllHistory() = dbHelper.clearAllHistory()
+    suspend fun settingAccount(token: String, requestBody: SettingAccountRequest) = apiHelper.settingAccount(token,requestBody)
+
 }
