@@ -14,6 +14,7 @@ import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentSettingBinding
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
+import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.viewmodel.AccountViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,12 +36,13 @@ class SettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        MainFragment.currentPage = R.id.accountFragment
         val password = binding.etPassword.text
         val newPassword = binding.etNewPassword.text
         val repassword = binding.etRepassword.text
 
         binding.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_settingFragment_to_mainFragment)
+            findNavController().popBackStack()
         }
         binding.btnChangePassword.setOnClickListener {
             when {
@@ -83,6 +85,7 @@ class SettingFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                     progressDialog.dismiss()
+                    findNavController().navigate(R.id.action_settingFragment_to_mainFragment)
                 }
                 Status.ERROR -> {
                     Toast.makeText(requireContext(), "Gagal ganti password", Toast.LENGTH_SHORT)

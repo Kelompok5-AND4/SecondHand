@@ -293,6 +293,8 @@
         tools:layout="@layout/fragment_setting" >
         <action
             android:id="@+id/action_settingFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/settingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
