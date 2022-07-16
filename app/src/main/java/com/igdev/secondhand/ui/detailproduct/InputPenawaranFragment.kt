@@ -64,20 +64,20 @@ class InputPenawaranFragment(
                 binding.tilTawar.error = "Input tawar harga tidak boleh kosong"
             }else {
                 viewModel.getToken()
-                viewModel.getToken.observe(viewLifecycleOwner) {
-                    val edit = binding.etTawar
-                    val nego = binding.etTawar.getNumericValue().toInt().toString()
-                    binding.etTawar.addTextChangedListener(CurrencyInputWatcher(edit,"Rp ", Locale.getDefault()))
-                    val requestHargaTawar =
-                        PostOrderReq(productId.toString(),nego )
-                    viewModel.postOrder(it.token, requestHargaTawar)
-                    Handler().postDelayed({
-                        progressDialog.dismiss()
-                        submit.invoke()
-                        dismiss()
-                    }, 1000)
-                }
             }
+        }
+        viewModel.getToken.observe(viewLifecycleOwner) {
+            val edit = binding.etTawar
+            val nego = binding.etTawar.getNumericValue().toInt().toString()
+            binding.etTawar.addTextChangedListener(CurrencyInputWatcher(edit,"Rp ", Locale.getDefault()))
+            val requestHargaTawar =
+                PostOrderReq(productId.toString(),nego )
+            viewModel.postOrder(it.token, requestHargaTawar)
+            Handler().postDelayed({
+                progressDialog.dismiss()
+                submit.invoke()
+                dismiss()
+            }, 1000)
         }
         binding.btnUp.setOnClickListener {
             dismiss()

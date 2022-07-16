@@ -81,7 +81,6 @@ class HomeFragment : Fragment() {
             }
         })
 
-
         setUpTransformer()
         binding.searchView.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
@@ -189,10 +188,13 @@ class HomeFragment : Fragment() {
                     progressDialog.show()
                 }
                 Status.SUCCESS ->{
-                    if (resources.data?.size!! > 10){
+                    if (resources.data?.size!! > 1){
                         productAdapter.submitData(resources.data.subList(0,10))
                         progressDialog.dismiss()
                     }
+
+                    /*productAdapter.submitData(resources.data)
+                    progressDialog.dismiss()*/
 
                 }
                 Status.ERROR ->{
