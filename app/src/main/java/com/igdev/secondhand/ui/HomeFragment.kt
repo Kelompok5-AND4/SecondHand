@@ -188,9 +188,14 @@ class HomeFragment : Fragment() {
                     progressDialog.show()
                 }
                 Status.SUCCESS ->{
-                    if (resources.data?.size!! > 1){
-                        productAdapter.submitData(resources.data.subList(0,10))
-                        progressDialog.dismiss()
+
+                    when(resources.data?.code()){
+                        200 ->{
+                            if (resources.data.body()?.size!! > 1){
+                                productAdapter.submitData(resources.data.body()!!.subList(0,10))
+                                progressDialog.dismiss()
+                            }
+                        }
                     }
 
                     /*productAdapter.submitData(resources.data)

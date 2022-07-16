@@ -1,5 +1,7 @@
 package com.igdev.secondhand.repository
 
+import com.igdev.secondhand.database.DbHelper
+import com.igdev.secondhand.database.SearchHistoryEntity
 import com.igdev.secondhand.datastore.DataStore
 import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.detail.PostOrderReq
@@ -12,12 +14,12 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 class Repository(
-    private val apiHelper: ApiHelper,private val dataStore: DataStore
+    private val apiHelper: ApiHelper,private val dataStore: DataStore, private val dbHelper:DbHelper
 ) {
     // login and register
     suspend fun postRegUser(requestBody: RegistReq) = apiHelper.postRegUser(requestBody)
     suspend fun postLogin(requestBody: LoginReq) = apiHelper.postLoginUser(requestBody)
-    suspend fun getAllProduct(status:String,categoryId:String) = apiHelper.getAllProduct(status,categoryId)
+    suspend fun getAllProduct(status:String?=null,categoryId:String?=null,search:String?=null) = apiHelper.getAllProduct(status,categoryId,search)
     suspend fun getAllCategory() = apiHelper.getAllCategory()
     suspend fun setDatastore(user: User) = dataStore.setToken(user)
     suspend fun getDatastore() : Flow<User> = dataStore.getToken()
@@ -54,6 +56,16 @@ class Repository(
     suspend fun getSellerOrder(token :String) = apiHelper.getSellerOrder(token)
     //post Bid
     suspend fun postOrder(token: String,requestBody: PostOrderReq)= apiHelper.postOrder(token, requestBody)
-    //setting account
+    //search section
+    suspend fun getSearchHistory() = dbHelper.getSearchHistory()
+
+    suspend fun insertSearchHistory(searchHistoryEntity: SearchHistoryEntity) =
+        dbHelper.insertSearchHistory(searchHistoryEntity)
+
+    suspend fun clearHistory(searchHistoryEntity: SearchHistoryEntity) =
+        dbHelper.clearHistory(searchHistoryEntity)
+
+    suspend fun clearAllHistory() = dbHelper.clearAllHistory()
     suspend fun settingAccount(token: String, requestBody: SettingAccountRequest) = apiHelper.settingAccount(token,requestBody)
+
 }

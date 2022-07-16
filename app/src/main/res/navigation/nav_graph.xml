@@ -32,9 +32,13 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.igdev.secondhand.ui.SearchFragment"
+        android:name="com.igdev.secondhand.ui.search.listpage.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
     <fragment
         android:id="@+id/debugFragment"
         android:name="com.igdev.secondhand.DebugFragment"
@@ -272,6 +276,15 @@
         <argument
             android:name="id"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.igdev.secondhand.ui.search.result.SearchResultFragment"
+        android:label="fragment_search_result"
+        tools:layout="@layout/fragment_search_result" >
+        <argument
+            android:name="query"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"

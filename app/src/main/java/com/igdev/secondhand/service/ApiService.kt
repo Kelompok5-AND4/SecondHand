@@ -31,8 +31,10 @@ import retrofit2.http.Query
 interface ApiService {
     @GET("buyer/product")
     suspend fun getAllProduct(
-        @Query ("status") status:String,
-        @Query("category_id") categoryId : String): List<AllProductResponse>
+        @Query("status") status: String? = null,
+        @Query("category_id") categoryId: String? = null,
+        @Query("search") searchKeyword: String? = null
+    ): Response<List<AllProductResponse>>
     @GET("seller/category")
     suspend fun getAllCategory(): List<CategoryResponseItem>
     @POST("auth/register")

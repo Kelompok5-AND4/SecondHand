@@ -61,7 +61,7 @@ class CategoryFragment : Fragment() {
                         })
                     binding.rvKategori.adapter = categoryAdapter
                     resource.data?.let {
-                        categoryAdapter.submitData(it)
+                        categoryAdapter.submitData(it.body()!!)
                     }
                     progressDialog.dismiss()
                 }

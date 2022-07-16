@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SearchFragment">
+    tools:context=".ui.search.listpage.SearchFragment">
     <View
         android:id="@+id/view_bg_biru_searchbar"
         android:background="@drawable/bg_biru_gradasi_satu"
@@ -24,153 +24,190 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintBottom_toBottomOf="@id/et_search"
+        app:layout_constraintEnd_toStartOf="@id/et_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/et_search" />
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_search"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/searchview_bg"
-        android:iconifiedByDefault="false"
-        android:queryBackground="@android:color/transparent"
-        android:queryHint="Lagi mau cari apa nih ? ..."
+        android:layout_marginEnd="16dp"
+        android:textSize="14sp"
+        app:endIconDrawable="@drawable/ic_baseline_search_24"
+        app:endIconMode="custom"
+        app:hintAnimationEnabled="false"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="lagi mau cari apa nich?"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <ListView
-        android:id="@+id/searchList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_goneMarginTop="8dp"
+        android:overScrollMode="never"
         app:layout_constraintTop_toTopOf="@id/view_bg_white_searchbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/search_list_item"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"/>
-
-
-
-    <TextView
-        android:id="@+id/tv_rekomendasi"
-        android:text="@string/search_rekomendasi_text"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/poppins_bold"
-        android:textColor="@color/biru_tua"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchList"/>
-
-
-    <!--Section Banner smartphone-->
-
-    <View
-        android:id="@+id/view_background_smarthpone"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_rounded_birusatu"
-
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/view_background_fasion"
-        app:layout_constraintTop_toBottomOf="@id/tv_rekomendasi"/>
-
-    <ImageView
-        android:id="@+id/iv_banner_smartphone"
-        android:src="@drawable/handphone"
-        android:layout_width="44dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="12dp"
-        app:layout_constraintStart_toStartOf="@id/view_background_smarthpone"
-        app:layout_constraintBottom_toBottomOf="@id/view_background_smarthpone"
-        android:contentDescription="@string/content_description_icon" />
-
-    <TextView
-        android:text="@string/banner_smartphone"
-        android:fontFamily="@font/poppins_bold"
-        android:textColor="@color/white"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@id/iv_banner_smartphone"
-        app:layout_constraintTop_toTopOf="@id/view_background_smarthpone"
-        app:layout_constraintBottom_toBottomOf="@id/view_background_smarthpone"
-        app:layout_constraintEnd_toEndOf="@id/view_background_smarthpone"/>
-
-
-
-    <!--Section Banner Fasion-->
-
-    <View
-        android:id="@+id/view_background_fasion"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_rounded_birusatu"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@id/view_background_smarthpone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_rekomendasi"/>
-
-    <ImageView
-        android:id="@+id/iv_banner_fasion"
-        android:src="@drawable/sepatu"
-        android:layout_width="88dp"
-        android:layout_height="74dp"
-        android:layout_marginEnd="6dp"
-        app:layout_constraintEnd_toEndOf="@id/view_background_fasion"
-        app:layout_constraintBottom_toBottomOf="@id/view_background_smarthpone"
-        android:contentDescription="@string/content_description_icon" />
-
-    <TextView
-        android:text="@string/banner_fasion"
-        android:fontFamily="@font/poppins_bold"
-        android:textColor="@color/white"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        app:layout_constraintStart_toStartOf="@id/view_background_fasion"
-        app:layout_constraintTop_toTopOf="@id/view_background_fasion"
-        app:layout_constraintBottom_toBottomOf="@id/view_background_fasion"
-        app:layout_constraintEnd_toStartOf="@id/iv_banner_fasion"/>
-
-    <!--Section Banner Lelang-->
-
-    <View
-        android:id="@+id/view_background_lelang"
+        android:layout_marginTop="8dp"
         android:layout_marginHorizontal="16dp"
-        android:background="@drawable/bg_rounded_birusatu"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/promo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_background_smarthpone"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <ImageView
-        android:id="@+id/iv_logo_lelang"
-        android:src="@drawable/logo_lelang"
-        android:layout_width="140dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="-14dp"
-        app:layout_constraintStart_toStartOf="@id/view_background_lelang"
-        app:layout_constraintTop_toTopOf="@id/view_background_lelang"
-        app:layout_constraintBottom_toBottomOf="@id/view_background_lelang"
-        android:contentDescription="@string/content_description_icon" />
-
-    <TextView
-        android:text="@string/lelang"
-        android:fontFamily="@font/poppins_bold"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/promo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/iv_logo_lelang"
-        app:layout_constraintTop_toTopOf="@id/view_background_lelang"
-        app:layout_constraintBottom_toBottomOf="@id/view_background_lelang"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_search">
+        <TextView
+            android:id="@+id/tv_rekomendasi"
+            android:text="@string/search_rekomendasi_text"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/biru_tua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <!--Section Banner smartphone-->
+
+        <View
+            android:id="@+id/view_background_smarthpone"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_rounded_birusatu"
+
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/view_background_fasion"
+            app:layout_constraintTop_toBottomOf="@id/tv_rekomendasi"/>
+
+        <ImageView
+            android:id="@+id/iv_banner_smartphone"
+            android:src="@drawable/handphone"
+            android:layout_width="44dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toStartOf="@id/view_background_smarthpone"
+            app:layout_constraintBottom_toBottomOf="@id/view_background_smarthpone"
+            android:contentDescription="@string/content_description_icon" />
+
+        <TextView
+            android:text="@string/banner_smartphone"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/white"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/iv_banner_smartphone"
+            app:layout_constraintTop_toTopOf="@id/view_background_smarthpone"
+            app:layout_constraintBottom_toBottomOf="@id/view_background_smarthpone"
+            app:layout_constraintEnd_toEndOf="@id/view_background_smarthpone"/>
+
+
+
+        <!--Section Banner Fasion-->
+
+        <View
+            android:id="@+id/view_background_fasion"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_rounded_birusatu"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@id/view_background_smarthpone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_rekomendasi"/>
+
+        <ImageView
+            android:id="@+id/iv_banner_fasion"
+            android:src="@drawable/sepatu"
+            android:layout_width="88dp"
+            android:layout_height="74dp"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintEnd_toEndOf="@id/view_background_fasion"
+            app:layout_constraintBottom_toBottomOf="@id/view_background_smarthpone"
+            android:contentDescription="@string/content_description_icon" />
+
+        <TextView
+            android:text="@string/banner_fasion"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/white"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toStartOf="@id/view_background_fasion"
+            app:layout_constraintTop_toTopOf="@id/view_background_fasion"
+            app:layout_constraintBottom_toBottomOf="@id/view_background_fasion"
+            app:layout_constraintEnd_toStartOf="@id/iv_banner_fasion"/>
+
+        <!--Section Banner Lelang-->
+
+        <View
+            android:id="@+id/view_background_lelang"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/bg_rounded_birusatu"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="28dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_background_smarthpone"/>
+
+        <ImageView
+            android:id="@+id/iv_logo_lelang"
+            android:src="@drawable/logo_lelang"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="-14dp"
+            app:layout_constraintStart_toStartOf="@id/view_background_lelang"
+            app:layout_constraintTop_toTopOf="@id/view_background_lelang"
+            app:layout_constraintBottom_toBottomOf="@id/view_background_lelang"
+            android:contentDescription="@string/content_description_icon" />
+
+        <TextView
+            android:text="@string/lelang"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/iv_logo_lelang"
+            app:layout_constraintTop_toTopOf="@id/view_background_lelang"
+            app:layout_constraintBottom_toBottomOf="@id/view_background_lelang"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
