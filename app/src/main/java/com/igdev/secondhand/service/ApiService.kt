@@ -2,6 +2,7 @@ package com.igdev.secondhand.service
 
 import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.CategoryResponseItem
+import com.igdev.secondhand.model.PagingProduct.BuyerProductResponse
 import com.igdev.secondhand.model.UpdateResponse
 import com.igdev.secondhand.model.addProduct.SellProductResponse
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
@@ -94,5 +95,13 @@ interface ApiService {
     @GET("seller/order")
     suspend fun getSellerOrder(@Header ("access_token") token: String ): List<SellerOrderResponseItem>
 
+    //paging
+    @GET("buyer/product?status=available")
+    suspend fun getProductsAsBuyer(
+        @Query("page") page: Int,
+        @Query("per_page") size: Int,
+        @Query("category_id") categoryId: Int? = null,
+        @Query("search") search: String? = null,
+    ): Response<BuyerProductResponse>
 
 }

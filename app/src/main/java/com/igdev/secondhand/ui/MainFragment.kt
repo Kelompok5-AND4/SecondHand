@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentMainBinding
+import com.igdev.secondhand.ui.home.HomeFragment
 import com.igdev.secondhand.ui.sellproduct.SellFragment
 import com.igdev.secondhand.ui.transaction.TransactionFragment
 import dagger.hilt.android.AndroidEntryPoint
