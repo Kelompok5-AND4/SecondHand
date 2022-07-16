@@ -109,6 +109,9 @@ class AccountFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
         }
+        binding.bgSectionSetting.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_settingFragment)
+        }
     }
 
     }
