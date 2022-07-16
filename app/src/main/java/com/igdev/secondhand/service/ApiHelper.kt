@@ -10,7 +10,7 @@ import javax.inject.Inject
 class ApiHelper @Inject constructor(private val apiService: ApiService) {
     suspend fun postRegUser(requestBody: RegistReq) = apiService.postRegUser(requestBody)
     suspend fun postLoginUser(requestBody: LoginReq) = apiService.postLogin(requestBody)
-    suspend fun getAllProduct(status:String,categoryId:String) = apiService.getAllProduct(status,categoryId)
+    suspend fun getAllProduct(status:String?=null,categoryId:String?=null,search :String?=null) = apiService.getAllProduct(status,categoryId,search)
     suspend fun getAllCategory() = apiService.getAllCategory()
     suspend fun getDataUser(token: String) = apiService.getDataUser(token)
     suspend fun updateUser(token: String,
