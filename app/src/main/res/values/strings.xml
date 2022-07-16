@@ -82,5 +82,6 @@
     <string name="total_pencarian">Total Pencarian Ditemukan</string>
     <string name="cari_apa">lagi mau cari apa nich?</string>
     <string name="back">Back</string>
+    <string name="pencarian_tidak_ditemukan">Pencarian Tidak Ditemukan</string>
 
 </resources>
