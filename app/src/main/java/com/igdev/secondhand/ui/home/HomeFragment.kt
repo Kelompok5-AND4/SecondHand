@@ -1,18 +1,21 @@
-package com.igdev.secondhand.ui
+package com.igdev.secondhand.ui.home
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
@@ -22,13 +25,18 @@ import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
+import com.igdev.secondhand.ui.MainFragment
+import com.igdev.secondhand.ui.MainFragmentDirections
 import com.igdev.secondhand.ui.adapter.BannerAdapter
 import com.igdev.secondhand.ui.adapter.CategoryAdapter
 import com.igdev.secondhand.ui.adapter.MiniCategoryAdapter
 import com.igdev.secondhand.ui.adapter.ProductAdapter
+import com.igdev.secondhand.ui.home.paging.ProductPagingAdapter
 import com.igdev.secondhand.ui.transaction.SellerAdapter
 import com.igdev.secondhand.ui.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import kotlin.math.abs
 
 @AndroidEntryPoint
@@ -36,7 +44,9 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel:HomeViewModel by viewModels()
+    private val viewModels:PagingViewModel by viewModels()
     private lateinit var productAdapter: ProductAdapter
+    //private lateinit var productPagingAdapter: ProductPagingAdapter
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var miniCategoryAdapter: MiniCategoryAdapter
     private val tokenLelang = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
@@ -56,6 +66,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         MainFragment.currentPage = R.id.homeFragment
+
+        setupRecyclerView()
+        loadData()
 
         val viewPager2 = binding.viewPagerBanner
         val handler = Handler(Looper.myLooper()!!)
@@ -95,11 +108,22 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(toDetail)
             }
         })
-        binding.rvProduct.adapter = productAdapter
+
+        val productPagingAdapter = ProductPagingAdapter()
+
+        binding.rvProduct.adapter = productPagingAdapter
+        lifecycleScope.launch {
+            viewModels.listData.collect {
+                Log.d("aaa","load:$it")
+                productPagingAdapter.submitData(it)
+            }
+
+        }
 
         categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {
-                val toCategory = MainFragmentDirections.actionMainFragmentToCategoryFragment(data.id)
+                val toCategory =
+                    MainFragmentDirections.actionMainFragmentToCategoryFragment(data.id)
                 findNavController().navigate(toCategory)
             }
         })
@@ -111,12 +135,12 @@ class HomeFragment : Fragment() {
 
         miniCategoryAdapter = MiniCategoryAdapter(object : MiniCategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {
-                getProduct(data.id.toString())
+                //getProduct(data.id.toString())
             }
         })
         binding.rvMiniCategory.adapter = miniCategoryAdapter
         getCategory()
-        getProduct("")
+        //getProduct("")
         binding.ivNotification.setOnClickListener {
             MainFragment.currentPage = R.id.notificationFragment
             findNavController().navigate(R.id.mainFragment)
@@ -139,7 +163,10 @@ class HomeFragment : Fragment() {
                                 SellerAdapter(object : SellerAdapter.OnClickListener {
                                     override fun onClickItem(data: SellerProductResponseItem) {
                                         val id = data.id
-                                        val toDetail = MainFragmentDirections.actionMainFragmentToDetailProductFragment(id)
+                                        val toDetail =
+                                            MainFragmentDirections.actionMainFragmentToDetailProductFragment(
+                                                id
+                                            )
                                         findNavController().navigate(toDetail)
                                     }
                                 })
@@ -177,7 +204,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun getProduct(categoryId: String) {
+    /*private fun getProduct(categoryId: String) {
         val status = "available"
         val progressDialog = ProgressDialog(requireContext())
         viewModel.getProduct(status, categoryId)
@@ -198,8 +225,8 @@ class HomeFragment : Fragment() {
                         }
                     }
 
-                    /*productAdapter.submitData(resources.data)
-                    progressDialog.dismiss()*/
+                    *//*productAdapter.submitData(resources.data)
+                    progressDialog.dismiss()*//*
 
                 }
                 Status.ERROR ->{
@@ -209,5 +236,16 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }*/
+
+    private fun setupRecyclerView() {
+
+
+
+    }
+
+    private fun loadData() {
+
+
     }
 }

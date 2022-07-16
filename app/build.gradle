@@ -122,4 +122,7 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     implementation 'com.cottacush:CurrencyEditText:0.0.7'
+
+    //paging
+    implementation "androidx.paging:paging-runtime-ktx:3.0.0-beta03"
 }

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <ImageView
         android:id="@+id/topMenuBackground"
@@ -144,31 +144,30 @@
                 android:id="@+id/tvSeeAll"/>
 
 
-
-
-
-
             <HorizontalScrollView
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CategoryScroll"
-                app:layout_constraintBottom_toBottomOf="@id/backgroundScrollableSpecial"
+                android:id="@+id/specialOffer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
-                android:id="@+id/specialOffer">
+                app:layout_constraintBottom_toBottomOf="@id/backgroundScrollableSpecial"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/CategoryScroll"
+                app:layout_constraintVertical_bias="1.0">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bannerContainer"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/bannerContainer">
+                    android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/textLelang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginStart="16dp"
-                        app:layout_constraintStart_toStartOf="parent"
+                        android:src="@drawable/ic_teks_logo_lelang"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:src="@drawable/ic_teks_logo_lelang"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -176,10 +175,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintTop_toTopOf="@id/textLelang"
-                        app:layout_constraintStart_toEndOf="@id/textLelang"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/buyer_history_item"/>
+                        app:layout_constraintStart_toEndOf="@id/textLelang"
+                        app:layout_constraintTop_toTopOf="@id/textLelang"
+                        tools:listitem="@layout/buyer_history_item" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
@@ -220,8 +219,8 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 android:id="@+id/rvProduct"
                 tools:listitem="@layout/product_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="match_parent"
+                android:layout_height="1024dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
