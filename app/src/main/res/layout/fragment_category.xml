@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.CategoryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".ui.CategoryFragment">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_bc"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/iv_kategori"
+            android:id="@+id/tv_kategori"
             app:layout_constraintEnd_toStartOf="@id/btn_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

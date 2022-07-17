@@ -83,5 +83,8 @@
     <string name="cari_apa">lagi mau cari apa nich?</string>
     <string name="back">Back</string>
     <string name="pencarian_tidak_ditemukan">Pencarian Tidak Ditemukan</string>
+    <string name="login">Login</string>
+    <string name="login_dulu">Anda Harus Login Terlebih Dahulu !</string>
+    <string name="daftar_simpan">Daftar Simpan</string>
 
 </resources>
