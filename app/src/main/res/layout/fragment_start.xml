@@ -9,13 +9,15 @@
     <ImageView
         android:id="@+id/iv_background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/bg_start"
+        android:layout_marginBottom="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/iv_illustasi"/>
 
     <ImageView
         android:id="@+id/logo"
@@ -29,11 +31,11 @@
 
     <ImageView
         android:id="@+id/iv_illustasi"
-        android:layout_width="314dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/start_illustration"
+        android:src="@drawable/mascot_start"
         app:layout_constraintBottom_toTopOf="@id/btn_masuk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

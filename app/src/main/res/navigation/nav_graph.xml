@@ -224,4 +224,9 @@
         android:name="com.igdev.secondhand.TawaranSellerFragment"
         android:label="fragment_tawaran_seller"
         tools:layout="@layout/fragment_tawaran_seller" />
+    <fragment
+        android:id="@+id/allFeatureFragment"
+        android:name="com.igdev.secondhand.AllFeatureFragment"
+        android:label="fragment_all_feature2"
+        tools:layout="@layout/fragment_all_feature2" />
 </navigation>
