@@ -6,6 +6,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.wishlist.WishlistFragment">
 
+    <LinearLayout
+        android:id="@+id/empty_notif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_bc">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/empty"
+            app:lottie_loop="true"
+            app:lottie_speed="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvEmpty"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/biru"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/kosong_tersimpan"/>
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/iv_bc"
         android:src="@drawable/ic_bc_top"

@@ -86,5 +86,14 @@
     <string name="login">Login</string>
     <string name="login_dulu">Anda Harus Login Terlebih Dahulu !</string>
     <string name="daftar_simpan">Daftar Simpan</string>
+    <string name="belum_ada_notifikasi">Belum ada Notifikasi</string>
+    <string name="kosong_diterima">Belum Ada Product Yang Diterima</string>
+    <string name="kosong_ditolak">Belum Ada Product Yang Ditolak</string>
+    <string name="kosong_tawaran">Belum Ada Yang Menawar</string>
+    <string name="kosong_pengajuan">Belum Ada Pengajuan</string>
+    <string name="kosong_barang">Belum Ada Product</string>
+    <string name="terjual_text">Terjual</string>
+    <string name="kosong_terjual">Belum Ada Product Terjual</string>
+    <string name="kosong_tersimpan">Belum Ada Product Tersimpan</string>
 
 </resources>
