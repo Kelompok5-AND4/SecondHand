@@ -226,6 +226,52 @@
                 app:layout_constraintBottom_toBottomOf="@id/bg_section_setting"
                 android:contentDescription="@string/content_description_icon" />
 
+            <!--Section Wishlist / Daftar Simapn-->
+            <View
+                android:id="@+id/bg_section_wishlist"
+                android:layout_width="match_parent"
+                android:src="@drawable/outline_btn"
+                android:layout_height="51dp"
+                android:background="@drawable/outline_btn"
+                android:layout_marginTop="21dp"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bg_section_setting"
+                android:contentDescription="@string/content_descriptio_background" />
+
+            <ImageView
+                android:id="@+id/iv_ic_wishlist"
+                android:src="@drawable/ic_wishlist"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/bg_section_wishlist"
+                app:layout_constraintTop_toTopOf="@id/bg_section_wishlist"
+                app:layout_constraintBottom_toBottomOf="@id/bg_section_wishlist"
+                android:contentDescription="@string/content_description_icon" />
+
+            <TextView
+                android:id="@+id/tv_wishlist"
+                android:text="@string/daftar_simpan"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/iv_ic_wishlist"
+                app:layout_constraintTop_toTopOf="@id/iv_ic_wishlist"
+                app:layout_constraintBottom_toBottomOf="@id/iv_ic_wishlist"/>
+
+            <ImageView
+                android:id="@+id/iv_arrow_wishlist"
+                android:src="@drawable/ic_arraw_r"
+                android:layout_marginEnd="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/bg_section_wishlist"
+                app:layout_constraintTop_toTopOf="@id/bg_section_wishlist"
+                app:layout_constraintBottom_toBottomOf="@id/bg_section_wishlist"
+                android:contentDescription="@string/content_description_icon" />
 
             <!--Section Keluar / Logout-->
             <View
@@ -238,7 +284,7 @@
                 android:layout_marginHorizontal="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/bg_section_setting"
+                app:layout_constraintTop_toBottomOf="@id/bg_section_wishlist"
                 android:contentDescription="@string/content_descriptio_background" />
 
             <ImageView
@@ -303,12 +349,12 @@
             android:textColor="@color/biru"
             android:textSize="20sp"
             android:fontFamily="@font/poppins_bold"
-            android:text="Anda Harus Login Terlebih Dahulu !"/>
+            android:text="@string/login_dulu"/>
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="@string/login"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
     <TextView
