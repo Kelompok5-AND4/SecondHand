@@ -1,4 +1,4 @@
-package com.igdev.secondhand.ui.favorite
+package com.igdev.secondhand.ui.wishlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -43,7 +43,7 @@ class WishlistAdapter(private val onClick: OnClickListener) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WishlistAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(WishlistItemBinding.inflate(inflater, parent, false))
     }

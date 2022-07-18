@@ -1,4 +1,4 @@
-package com.igdev.secondhand.ui.favorite
+package com.igdev.secondhand.ui.wishlist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
