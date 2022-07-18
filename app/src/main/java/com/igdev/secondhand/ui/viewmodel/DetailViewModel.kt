@@ -11,6 +11,7 @@ import com.igdev.secondhand.model.detail.GetDetail
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.detail.PostOrderResponse
 import com.igdev.secondhand.model.register.RegistReq
+import com.igdev.secondhand.model.wishlist.PostWishListResponse
 import com.igdev.secondhand.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -28,6 +29,14 @@ class DetailViewModel @Inject constructor(private val repository: Repository) : 
 
     private val _postOrder = MutableLiveData<Resource<Response<PostOrderResponse>>>()
     val postOrder : LiveData<Resource<Response<PostOrderResponse>>> get()= _postOrder
+
+    //wishlist
+    private val _postWishList : MutableLiveData<PostWishListResponse> = MutableLiveData()
+    val postWishlist : LiveData<PostWishListResponse> get() = _postWishList
+
+
+
+
     fun postOrder(token: String,requestBody : PostOrderReq) {
         viewModelScope.launch {
             _postOrder.postValue(Resource.loading())

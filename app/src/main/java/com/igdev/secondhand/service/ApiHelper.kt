@@ -4,6 +4,7 @@ import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
+import com.igdev.secondhand.model.wishlist.PostWishlistRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import javax.inject.Inject
@@ -45,4 +46,9 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     suspend fun postOrder(token: String,requestBody: PostOrderReq)= apiService.postBuyerOrder(token,requestBody)
     //setting account
     suspend fun settingAccount(token: String, requestBody : SettingAccountRequest ) = apiService.updatePassword(token, requestBody)
+    //wishlist
+    suspend fun getWishlist(token: String) = apiService.getWishlist(token)
+    suspend fun getWishlistId(token: String, id: Int) = apiService.getWishlistById(token,id)
+    suspend fun postWishlist(token: String, request: PostWishlistRequest) = apiService.postWishlist(token,request)
+    suspend fun deleteWishlist(token: String, id: Int) = apiService.deleteWishlist(token, id)
 }

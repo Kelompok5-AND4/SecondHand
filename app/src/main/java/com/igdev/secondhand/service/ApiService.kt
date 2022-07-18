@@ -20,6 +20,7 @@ import com.igdev.secondhand.model.sellerproduct.SellerProductDetail
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
 import com.igdev.secondhand.model.settingaccount.SettingAccountResponse
+import com.igdev.secondhand.model.wishlist.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -114,4 +115,27 @@ interface ApiService {
         @Query("search") search: String? = null,
     ): Response<BuyerProductResponse>
 
+    //wishlist
+    @GET("buyer/wishlist")
+    suspend fun getWishlist(
+        @Header("access_token") token: String
+    ) : List<GetWishlistResponse>
+
+    @GET("buyer/wishlist/{id}")
+    suspend fun getWishlistById(
+        @Header("access_token") token: String,
+        @Path ("id") id :Int
+    ) : List<GetWishlistById>
+
+    @POST("buyer/wishlist")
+    suspend fun postWishlist(
+        @Header("access_token") token: String,
+        @Body requestBody : PostWishlistRequest
+    ) : PostWishListResponse
+
+    @DELETE("buyer/wishlist/{id}")
+    suspend fun deleteWishlist(
+        @Header("access_token") token: String,
+        @Path ("id") id: Int
+    ) : DeleteWishlistResponse
 }

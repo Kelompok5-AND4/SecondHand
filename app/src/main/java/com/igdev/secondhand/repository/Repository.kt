@@ -8,6 +8,7 @@ import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
+import com.igdev.secondhand.model.wishlist.PostWishlistRequest
 import com.igdev.secondhand.service.ApiHelper
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
@@ -68,4 +69,10 @@ class Repository(
     suspend fun clearAllHistory() = dbHelper.clearAllHistory()
     suspend fun settingAccount(token: String, requestBody: SettingAccountRequest) = apiHelper.settingAccount(token,requestBody)
 
+
+    // wishlist
+    suspend fun getWishlist(token: String) = apiHelper.getWishlist(token)
+    suspend fun getWishlistById(token: String,id :Int) = apiHelper.getWishlistId(token, id)
+    suspend fun postWishlist(token: String, request: PostWishlistRequest) = apiHelper.postWishlist(token, request)
+    suspend fun deleteWishlist(token: String, id: Int) = apiHelper.deleteWishlist(token, id)
 }

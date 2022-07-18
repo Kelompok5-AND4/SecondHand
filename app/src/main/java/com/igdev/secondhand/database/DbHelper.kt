@@ -12,4 +12,7 @@ class DbHelper(private val searchHistoryDao: SearchHistoryDao) {
 
     suspend fun clearAllHistory() = searchHistoryDao.clearAllHistory()
 
+
+
+
 }
