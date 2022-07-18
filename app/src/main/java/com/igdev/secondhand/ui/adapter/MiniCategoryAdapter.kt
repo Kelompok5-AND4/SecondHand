@@ -34,13 +34,13 @@ class MiniCategoryAdapter(private val onClick: OnClickListener):RecyclerView.Ada
 
 
     interface OnClickListener {
-        fun onClickItem (data: CategoryResponseItem)
+        fun onClickItem (data: CategoryResponseItem,position: Int)
     }
     inner class ViewHolder(private val binding: MiniCategoryItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind (data: CategoryResponseItem, position: Int){
             binding.tvNamaKategori.text = data.name
             binding.root.setOnClickListener {
-                onClick.onClickItem(data)
+                onClick.onClickItem(data,position)
             }
             if (position == 0) {
                 binding.semuaBarang.visibility = View.VISIBLE

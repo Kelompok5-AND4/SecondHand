@@ -51,4 +51,17 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     suspend fun getWishlistId(token: String, id: Int) = apiService.getWishlistById(token,id)
     suspend fun postWishlist(token: String, request: PostWishlistRequest) = apiService.postWishlist(token,request)
     suspend fun deleteWishlist(token: String, id: Int) = apiService.deleteWishlist(token, id)
+    suspend fun getProductAsBuyer(
+        status: String? = null,
+        categoryId: Int? = null,
+        searchKeyword: String? = null,
+        page: Int=1,
+        itemsPerPage: Int=20
+    ) = apiService.getProductAsBuyer(
+        status,
+        categoryId,
+        searchKeyword,
+        page,
+        itemsPerPage
+    )
 }
