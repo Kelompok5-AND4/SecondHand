@@ -14,7 +14,7 @@ class ProductPagingSource(private val apiService: ApiService):PagingSource<Int,D
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Data> {
         return try {
             val currentPage = params.key ?: 1
-            val response = apiService.getProductsAsBuyer(currentPage,6)
+            val response = apiService.getProductAsBuyer()
             val responseData = mutableListOf<Data>()
             val data = response.body()!!.data ?: emptyList()
             responseData.addAll(data)

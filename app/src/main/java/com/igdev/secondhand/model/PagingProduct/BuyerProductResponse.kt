@@ -1,6 +1,7 @@
 package com.igdev.secondhand.model.PagingProduct
 
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -46,5 +47,7 @@ data class Data(
     @SerializedName("updatedAt")
     val updatedAt: String,
     @SerializedName("user_id")
-    val userId: Int
+    val userId: Int,
+    @ColumnInfo(name = "category_id")
+    var categoryID:String?
 )

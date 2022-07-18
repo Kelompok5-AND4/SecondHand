@@ -107,12 +107,13 @@ interface ApiService {
     suspend fun getSellerOrder(@Header ("access_token") token: String ): List<SellerOrderResponseItem>
 
     //paging
-    @GET("buyer/product?status=available")
-    suspend fun getProductsAsBuyer(
-        @Query("page") page: Int,
-        @Query("per_page") size: Int,
+    @GET("buyer/product")
+    suspend fun getProductAsBuyer(
+        @Query("status") status: String? = null,
         @Query("category_id") categoryId: Int? = null,
-        @Query("search") search: String? = null,
+        @Query("search") searchKeyword: String? = null,
+        @Query("page") page: Int=1,
+        @Query("per_page") itemsPerPage: Int=20
     ): Response<BuyerProductResponse>
 
     //wishlist
