@@ -75,8 +75,6 @@ class HomeFragment : Fragment() {
 
         MainFragment.currentPage = R.id.homeFragment
 
-        setupRecyclerView()
-        loadData()
 
         val viewPager2 = binding.viewPagerBanner
         val handler = Handler(Looper.myLooper()!!)
@@ -302,14 +300,4 @@ class HomeFragment : Fragment() {
         }
     }*/
 
-    private fun setupRecyclerView() {
-
-
-
-    }
-
-    private fun loadData() {
-
-
-    }
 }
