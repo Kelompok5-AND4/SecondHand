@@ -135,8 +135,11 @@ class HomeFragment : Fragment() {
                 //getProduct(data.id.toString())
                 if (position==0){
                     category=null
+                    setUpPaging(productPagingAdapter,productLoadStateAdapter,viewModels.getProducts())
                 }else{
                     category = data.id
+                    val kategoriId = category
+                    setUpPaging(productPagingAdapter,productLoadStateAdapter,viewModels.getProducts(kategoriId))
                 }
 
             }
@@ -181,8 +184,7 @@ class HomeFragment : Fragment() {
                         }
                     }
                     Status.ERROR -> {
-                        AlertDialog.Builder(requireContext())
-                            .setMessage(it.message)
+                        Toast.makeText(requireContext(), "Memasuki Mode Offline", Toast.LENGTH_SHORT)
                             .show()
                     }
                 }
