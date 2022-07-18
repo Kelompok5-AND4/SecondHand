@@ -72,5 +72,6 @@
     <string name="diterima_text">Pengajuan diterima, kamu akan segera di hubungi oleh seller</string>
     <string name="ditolak_text">Pengajuan Kamu Di Tolak :(</string>
     <string name="menunggu_text">Menunggu Respon Penjual</string>
+    <string name="onboarding_satu">Selamat datang \ndi CuanCuan</string>
 
 </resources>
