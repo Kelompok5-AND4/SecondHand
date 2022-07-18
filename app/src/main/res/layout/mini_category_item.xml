@@ -1,61 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cv_category"
     android:layout_width="wrap_content"
-    android:layout_height="44dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:backgroundTint="@color/biru"
-    app:cardCornerRadius="18dp"
+    app:cardCornerRadius="32dp"
     android:layout_marginStart="16dp">
-    <LinearLayout
-        android:id="@+id/semuaBarang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_vertical"
-        android:padding="12dp"
-        android:visibility="gone"
-        >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:contentDescription="@string/photo"
-            android:src="@drawable/ic_baseline_search_24"
-            />
-        <TextView
-            android:id="@+id/tv_semua_kategori"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Semua Barang"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            />
 
-    </LinearLayout>
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/category"
         android:layout_gravity="center_vertical"
-        android:padding="12dp"
-        >
+        android:paddingVertical="6dp"
+        android:paddingHorizontal="16dp">
+
         <ImageView
+            android:id="@+id/ic_search"
+            android:background="@drawable/ic_search"
+            android:backgroundTint="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
             android:contentDescription="@string/photo"
-            android:src="@drawable/ic_baseline_search_24"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
         <TextView
             android:id="@+id/tv_nama_kategori"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category"
+            android:layout_marginStart="16dp"
             android:textColor="@color/white"
-            android:textSize="14sp"
-            />
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/ic_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ic_search"
+            app:layout_constraintBottom_toBottomOf="@id/ic_search"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
