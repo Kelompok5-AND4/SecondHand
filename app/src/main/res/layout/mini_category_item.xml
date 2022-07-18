@@ -8,9 +8,36 @@
     app:cardCornerRadius="18dp"
     android:layout_marginStart="16dp">
     <LinearLayout
+        android:id="@+id/semuaBarang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:padding="12dp"
+        android:visibility="gone"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/photo"
+            android:src="@drawable/ic_baseline_search_24"
+            />
+        <TextView
+            android:id="@+id/tv_semua_kategori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semua Barang"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/category"
         android:layout_gravity="center_vertical"
         android:padding="12dp"
         >

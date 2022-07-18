@@ -1,6 +1,7 @@
 package com.igdev.secondhand.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -36,10 +37,17 @@ class MiniCategoryAdapter(private val onClick: OnClickListener):RecyclerView.Ada
         fun onClickItem (data: CategoryResponseItem)
     }
     inner class ViewHolder(private val binding: MiniCategoryItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind (data: CategoryResponseItem){
+        fun bind (data: CategoryResponseItem, position: Int){
             binding.tvNamaKategori.text = data.name
             binding.root.setOnClickListener {
                 onClick.onClickItem(data)
+            }
+            if (position == 0) {
+                binding.semuaBarang.visibility = View.VISIBLE
+                binding.category.visibility = View.INVISIBLE
+            } else {
+                binding.semuaBarang.visibility = View.INVISIBLE
+                binding.category.visibility = View.VISIBLE
             }
         }
     }
@@ -55,7 +63,7 @@ class MiniCategoryAdapter(private val onClick: OnClickListener):RecyclerView.Ada
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = differ.currentList[position]
         data.let {
-            holder.bind(data)
+            holder.bind(data,position)
         }
     }
 }
