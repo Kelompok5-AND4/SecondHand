@@ -73,8 +73,11 @@ class HomeFragment : Fragment() {
         val viewPager2 = binding.viewPagerBanner
         val handler = Handler(Looper.myLooper()!!)
         val imageList = ArrayList<Int>()
-        imageList.add(R.drawable.banner1)
-        imageList.add(R.drawable.banner2)
+        imageList.add(R.drawable.bannercuan_1)
+        imageList.add(R.drawable.bannercuan_2)
+        imageList.add(R.drawable.bannercuan_3)
+        imageList.add(R.drawable.bannercuan_4)
+
 
         val adapter = BannerAdapter(imageList,viewPager2)
         viewPager2.adapter = adapter
