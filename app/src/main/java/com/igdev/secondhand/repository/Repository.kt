@@ -9,7 +9,7 @@ import com.igdev.secondhand.database.MyDatabase
 import com.igdev.secondhand.database.RemoteKeys
 import com.igdev.secondhand.database.SearchHistoryEntity
 import com.igdev.secondhand.datastore.DataStore
-import com.igdev.secondhand.model.PagingProduct.Data
+import com.igdev.secondhand.model.PagingProduct.Product
 import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
@@ -85,7 +85,7 @@ class Repository(
     suspend fun deleteWishlist(token: String, id: Int) = apiHelper.deleteWishlist(token, id)
 
     // Network Bound Resource
-    suspend fun insertAllProduct(product : List<Data>)= dbHelper.insertAllProduct(product)
+    suspend fun insertAllProduct(product : List<Product>)= dbHelper.insertAllProduct(product)
     suspend fun getProductDb()= dbHelper.getProduct()
     suspend fun clearProduct()= dbHelper.clearProduct()
 
@@ -103,7 +103,7 @@ class Repository(
         categoryId,
         searchKeyword,
     )
-    fun getProductStream(categoryId: Int? = null): Flow<PagingData<Data>> {
+    fun getProductStream(categoryId: Int? = null): Flow<PagingData<Product>> {
 
         val pagingSourceFactory = { database.productDao().getProduct() }
 

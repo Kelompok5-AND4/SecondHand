@@ -31,7 +31,7 @@ object DatabaseModule {
     @Singleton
     @Provides
     fun provideDbHelper(database: MyDatabase): DbHelper {
-        return DbHelper(database.searchHistoryDao())
+        return DbHelper(database.searchHistoryDao(),database.productDao(),database.remoteKeysDao())
     }
 
 }

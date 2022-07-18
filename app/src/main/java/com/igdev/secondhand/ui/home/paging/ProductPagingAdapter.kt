@@ -7,55 +7,63 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.facebook.shimmer.Shimmer
+import com.facebook.shimmer.ShimmerDrawable
+import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.ProductItemBinding
-import com.igdev.secondhand.model.PagingProduct.Data
+import com.igdev.secondhand.model.PagingProduct.Product
 import com.igdev.secondhand.rupiah
+import com.igdev.secondhand.ui.home.UiModel
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
-class ProductPagingAdapter : PagingDataAdapter<Data,
-        ProductPagingAdapter.ImageViewHolder>(diffCallback) {
+class ProductPagingAdapter(private val onClick: (Product) -> Unit) :
+    PagingDataAdapter<UiModel.ProductItem, RecyclerView.ViewHolder>(UIMODEL_COMPARATOR) {
 
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (val uiModel = getItem(position)) {
+            is UiModel.ProductItem -> (holder as RepoViewHolder).bind(uiModel.products)
+            else -> {}
+        }
+    }
 
-    inner class ImageViewHolder(
-        val binding: ProductItemBinding
-    ) :
-        RecyclerView.ViewHolder(binding.root)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val binding = ProductItemBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+
+        return RepoViewHolder(binding)
+    }
+
+    inner class RepoViewHolder(private val binding: ProductItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        private var product: Product? = null
+
+        fun bind(productResponseItem: Product) {
+
+            this.product = productResponseItem
+
+            binding.root.setOnClickListener {
+                onClick(productResponseItem)
+            }
+            Glide.with(binding.root).load(productResponseItem.imageUrl)
+                .placeholder(R.drawable.default_rv)
+                .error(R.drawable.default_rv)
+                .into(binding.ivProduct)
+            binding.tvProductName.text = productResponseItem.name
+            binding.tvHarga.text = rupiah(productResponseItem.basePrice)
+        }
+    }
 
     companion object {
-        val diffCallback = object : DiffUtil.ItemCallback<Data>() {
-            override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
-                return oldItem.id == newItem.id
+        private val UIMODEL_COMPARATOR = object : DiffUtil.ItemCallback<UiModel.ProductItem>() {
+            override fun areItemsTheSame(oldItem: UiModel.ProductItem, newItem: UiModel.ProductItem): Boolean {
+                return (oldItem.products.name == newItem.products.name)
             }
 
-            override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean {
-                return oldItem == newItem
-            }
+            override fun areContentsTheSame(oldItem: UiModel.ProductItem, newItem: UiModel.ProductItem): Boolean =
+                oldItem == newItem
         }
     }
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        return ImageViewHolder(
-            ProductItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent, false
-            )
-        )
-    }
-
-    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        val currChar = getItem(position)
-
-        holder.binding.apply {
-
-            holder.itemView.apply {
-                tvProductName.text = currChar?.name
-                tvHarga.text = rupiah(currChar?.basePrice.toString().toInt())
-                val imageLink = currChar?.imageUrl
-                Glide.with(holder.itemView).load(imageLink).into(ivProduct)
-            }
-        }
-
-    }
-
-
 }

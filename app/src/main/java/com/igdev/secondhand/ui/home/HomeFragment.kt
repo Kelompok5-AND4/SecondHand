@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -35,7 +36,9 @@ import com.igdev.secondhand.ui.home.paging.ProductPagingAdapter
 import com.igdev.secondhand.ui.transaction.SellerAdapter
 import com.igdev.secondhand.ui.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 
@@ -109,17 +112,8 @@ class HomeFragment : Fragment() {
             }
         })
 
-        val productPagingAdapter = ProductPagingAdapter()
 
-        binding.rvProduct.adapter = productPagingAdapter
-        lifecycleScope.launch {
-            viewModels.listData.collect {
-                Log.d("aaa","load:$it")
-                productPagingAdapter.submitData(it)
-            }
-
-        }
-
+        setUpPaging(pagingData = viewModels.getProducts())
         categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {
                 val toCategory =
@@ -136,11 +130,11 @@ class HomeFragment : Fragment() {
         miniCategoryAdapter = MiniCategoryAdapter(object : MiniCategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {
                 //getProduct(data.id.toString())
+                viewModels.getProducts(categoryId = data.id)
             }
         })
         binding.rvMiniCategory.adapter = miniCategoryAdapter
         getCategory()
-        //getProduct("")
         binding.ivNotification.setOnClickListener {
             MainFragment.currentPage = R.id.notificationFragment
             findNavController().navigate(R.id.mainFragment)
@@ -182,6 +176,20 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setUpPaging(pagingData: Flow<PagingData<UiModel.ProductItem>>) {
+        val productPagingAdapter = ProductPagingAdapter{
+            val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(it.id)
+            findNavController().navigate(direct)
+        }
+        lifecycleScope.launchWhenCreated {
+            productPagingAdapter.loadStateFlow.collectLatest {
+
+            }
+        }
+        binding.rvProduct.adapter = productPagingAdapter
+
     }
 
     private fun setUpTransformer() {
