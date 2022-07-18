@@ -48,7 +48,7 @@ class SearchViewModel @Inject constructor(private val repository: Repository):Vi
     val searchResponse : LiveData<Resource<Response<List<AllProductResponse>>>> get() = _searchResponse
 
     fun getProduct(
-        status: String? = null,
+        status: String? = "available",
         categoryId: String? = null,
         searchKeyword: String? = null
     ) {
