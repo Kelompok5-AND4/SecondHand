@@ -2,6 +2,7 @@ package com.igdev.secondhand.model.PagingProduct
 
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class BuyerProductResponse(
@@ -20,6 +21,8 @@ data class Category(
 )
 @Entity(tableName = "Product")
 data class Data(
+    @PrimaryKey(autoGenerate = true)
+    val productId:Int?=null,
     @SerializedName("base_price")
     val basePrice: Int,
     @SerializedName("Categories")

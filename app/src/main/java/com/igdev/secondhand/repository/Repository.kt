@@ -1,8 +1,10 @@
 package com.igdev.secondhand.repository
 
 import com.igdev.secondhand.database.DbHelper
+import com.igdev.secondhand.database.RemoteKeys
 import com.igdev.secondhand.database.SearchHistoryEntity
 import com.igdev.secondhand.datastore.DataStore
+import com.igdev.secondhand.model.PagingProduct.Data
 import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
@@ -75,4 +77,13 @@ class Repository(
     suspend fun getWishlistById(token: String,id :Int) = apiHelper.getWishlistId(token, id)
     suspend fun postWishlist(token: String, request: PostWishlistRequest) = apiHelper.postWishlist(token, request)
     suspend fun deleteWishlist(token: String, id: Int) = apiHelper.deleteWishlist(token, id)
+
+    // Network Bound Resource
+    suspend fun insertAllProduct(product : List<Data>)= dbHelper.insertAllProduct(product)
+    suspend fun getProductDb()= dbHelper.getProduct()
+    suspend fun clearProduct()= dbHelper.clearProduct()
+
+    suspend fun insertAllRemoteKeys(remoteKeys : List<RemoteKeys>)= dbHelper.insertAllRemoteKeys(remoteKeys)
+    suspend fun remoteKeysProductId(productId:Int)= dbHelper.remoteKeysProductId(productId)
+    suspend fun clearRemoteKeys()= dbHelper.clearRemoteKeys()
 }

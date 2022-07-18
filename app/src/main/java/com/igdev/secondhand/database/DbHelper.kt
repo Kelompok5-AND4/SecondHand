@@ -1,6 +1,11 @@
 package com.igdev.secondhand.database
 
-class DbHelper(private val searchHistoryDao: SearchHistoryDao) {
+import com.igdev.secondhand.model.PagingProduct.Data
+
+class DbHelper(
+    private val searchHistoryDao: SearchHistoryDao,
+    private val productDao: ProductDao,
+    private val remoteKeysDao: RemoteKeysDao ) {
 
     suspend fun getSearchHistory() = searchHistoryDao.getSearchHistory()
 
@@ -12,7 +17,13 @@ class DbHelper(private val searchHistoryDao: SearchHistoryDao) {
 
     suspend fun clearAllHistory() = searchHistoryDao.clearAllHistory()
 
+    suspend fun insertAllProduct(product : List<Data>)= productDao.insertAll(product)
+    suspend fun getProduct()= productDao.getProduct()
+    suspend fun clearProduct()= productDao.clearProducts()
 
+    suspend fun insertAllRemoteKeys(remoteKeys : List<RemoteKeys>)= remoteKeysDao.insertAll(remoteKeys)
+    suspend fun remoteKeysProductId(productId:Int)= remoteKeysDao.remoteKeysProductId(productId)
+    suspend fun clearRemoteKeys()= remoteKeysDao.clearRemoteKeys()
 
 
 }
