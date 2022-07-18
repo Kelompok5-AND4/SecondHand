@@ -1,6 +1,7 @@
 package com.igdev.secondhand.ui.home.paging
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -47,6 +48,7 @@ class ProductPagingAdapter(private val onClick: (Product) -> Unit) :
             binding.root.setOnClickListener {
                 onClick(productResponseItem)
             }
+            binding.ivWishlist.visibility = View.GONE
             Glide.with(binding.root).load(productResponseItem.imageUrl)
                 .placeholder(R.drawable.default_rv)
                 .error(R.drawable.default_rv)

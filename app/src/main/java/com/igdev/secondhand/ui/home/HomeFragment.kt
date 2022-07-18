@@ -11,10 +11,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.paging.PagingData
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -32,6 +35,7 @@ import com.igdev.secondhand.ui.adapter.BannerAdapter
 import com.igdev.secondhand.ui.adapter.CategoryAdapter
 import com.igdev.secondhand.ui.adapter.MiniCategoryAdapter
 import com.igdev.secondhand.ui.adapter.ProductAdapter
+import com.igdev.secondhand.ui.home.paging.ProductLoadStateAdapter
 import com.igdev.secondhand.ui.home.paging.ProductPagingAdapter
 import com.igdev.secondhand.ui.transaction.SellerAdapter
 import com.igdev.secondhand.ui.viewmodel.HomeViewModel
@@ -48,10 +52,11 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel:HomeViewModel by viewModels()
     private val viewModels:PagingViewModel by viewModels()
-    private lateinit var productAdapter: ProductAdapter
+    //private lateinit var productAdapter: ProductAdapter
     //private lateinit var productPagingAdapter: ProductPagingAdapter
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var miniCategoryAdapter: MiniCategoryAdapter
+    var category :Int?=null
     private val tokenLelang = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,6 +105,7 @@ class HomeFragment : Fragment() {
             }
         })
 
+
         setUpTransformer()
         binding.searchView.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
@@ -107,16 +113,12 @@ class HomeFragment : Fragment() {
         binding.searchIcon.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
         }
-        productAdapter = ProductAdapter(object : ProductAdapter.OnClickListener{
-            override fun onClickItem(data: AllProductResponse) {
-                val id = data.id
-                val toDetail = MainFragmentDirections.actionMainFragmentToDetailProductFragment(id)
-                findNavController().navigate(toDetail)
-            }
-        })
-
-
-        setUpPaging(pagingData = viewModels.getProducts())
+        val productPagingAdapter = ProductPagingAdapter{
+            val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(it.id)
+            findNavController().navigate(direct)
+        }
+        val productLoadStateAdapter=ProductLoadStateAdapter{productPagingAdapter.retry()}
+        setUpPaging(adapter= productPagingAdapter,load = productLoadStateAdapter,pagingData = viewModels.getProducts())
         categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener{
             override fun onClickItem(data: CategoryResponseItem) {
                 val toCategory =
@@ -131,11 +133,20 @@ class HomeFragment : Fragment() {
         }
 
         miniCategoryAdapter = MiniCategoryAdapter(object : MiniCategoryAdapter.OnClickListener{
-            override fun onClickItem(data: CategoryResponseItem) {
+            override fun onClickItem(data: CategoryResponseItem,position:Int) {
                 //getProduct(data.id.toString())
-                viewModels.getProducts(categoryId = data.id)
+                if (position==0){
+                    category=null
+                }else{
+                    category = data.id
+                }
+
             }
         })
+        val kategoriId= category
+        binding.swipe.setOnRefreshListener {
+            setUpPaging(productPagingAdapter,productLoadStateAdapter,viewModels.getProducts(kategoriId))
+        }
         binding.rvMiniCategory.adapter = miniCategoryAdapter
         getCategory()
         binding.ivNotification.setOnClickListener {
@@ -181,17 +192,59 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setUpPaging(pagingData: Flow<PagingData<UiModel.ProductItem>>) {
-        val productPagingAdapter = ProductPagingAdapter{
-            val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(it.id)
-            findNavController().navigate(direct)
-        }
-        lifecycleScope.launchWhenCreated {
-            productPagingAdapter.loadStateFlow.collectLatest {
+    private fun setUpPaging(adapter: ProductPagingAdapter,
+        load: ProductLoadStateAdapter,
+        pagingData: Flow<PagingData<UiModel.ProductItem>>) {
+        val footerAdapter = ProductLoadStateAdapter { adapter.retry() }
+        binding.rvProduct.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = load,
+            footer = footerAdapter
+        )
 
+        lifecycleScope.launchWhenCreated {
+            adapter.loadStateFlow.collectLatest {
+                binding.swipe.isRefreshing = it.refresh is LoadState.Loading
             }
         }
-        binding.rvProduct.adapter = productPagingAdapter
+        val gridLayoutManager = binding.rvProduct.layoutManager as GridLayoutManager
+        gridLayoutManager.spanSizeLookup =  object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return if ((position == adapter.itemCount  && footerAdapter.itemCount > 0) ||
+                    (position == adapter.itemCount  && load.itemCount > 0)) {
+                    2
+                } else {
+                    1
+                }
+            }
+        }
+        lifecycleScope.launchWhenCreated {
+            pagingData.collectLatest  (adapter::submitData)
+        }
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collect { loadState->
+                load.loadState = loadState.mediator
+                    ?.refresh
+                    ?.takeIf { it is LoadState.Error && adapter.itemCount > 0 }
+                    ?: loadState.prepend
+                val isListEmpty =
+                    loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
+                binding.rvProduct.isVisible =
+                    loadState.source.refresh is LoadState.NotLoading
+                            || loadState.mediator?.refresh is LoadState.NotLoading
+                binding.pbHomeProduct.isVisible = loadState.mediator?.refresh is LoadState.Loading
+                val errorState = loadState.source.append as? LoadState.Error
+                    ?: loadState.source.prepend as? LoadState.Error
+                    ?: loadState.append as? LoadState.Error
+                    ?: loadState.prepend as? LoadState.Error
+                errorState?.let {
+                    Toast.makeText(
+                        context,
+                        "\uD83D\uDE28 Wooops ${it.error}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
 
     }
 

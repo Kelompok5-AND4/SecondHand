@@ -113,7 +113,7 @@ interface ApiService {
         @Query("category_id") categoryId: Int? = null,
         @Query("search") searchKeyword: String? = null,
         @Query("page") page: Int=1,
-        @Query("per_page") itemsPerPage: Int=20
+        @Query("per_page") itemsPerPage: Int=4
     ): Response<BuyerProductResponse>
 
     //wishlist
