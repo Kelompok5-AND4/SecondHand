@@ -37,7 +37,9 @@
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_searchResultFragment"
-            app:destination="@id/searchResultFragment" />
+            app:destination="@id/searchResultFragment"
+            app:popUpTo="@id/searchFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/debugFragment"
@@ -179,6 +181,9 @@
         <action
             android:id="@+id/action_mainFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_allFeatureFragment"
+            app:destination="@id/allFeatureFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
@@ -209,10 +214,6 @@
             android:id="@+id/action_startFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
-        android:id="@+id/transaksiSemuaPembelianFragment"
-        android:name="com.igdev.secondhand.ui.transaksipembeli.TransaksiSemuaPembelianFragment"
-        android:label="fragment_semua_pembelian"
-        tools:layout="@layout/fragment_semua_pembelian" />
     <fragment
         android:id="@+id/dalamPengajuanFragment"
         android:name="com.igdev.secondhand.ui.transaksipembeli.DalamPengajuanFragment"
@@ -285,6 +286,12 @@
         <argument
             android:name="query"
             app:argType="string" />
+        <action
+            android:id="@+id/action_searchResultFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+        <action
+            android:id="@+id/action_searchResultFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
@@ -297,4 +304,9 @@
             app:popUpTo="@id/settingFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/allFeatureFragment"
+        android:name="com.igdev.secondhand.ui.allfeature.AllFeatureFragment"
+        android:label="fragment_all_feature"
+        tools:layout="@layout/fragment_all_feature" />
 </navigation>
