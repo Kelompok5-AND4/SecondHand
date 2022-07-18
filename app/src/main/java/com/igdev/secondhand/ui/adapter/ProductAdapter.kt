@@ -43,6 +43,7 @@ class ProductAdapter(private val onClick: OnClickListener):RecyclerView.Adapter<
             Glide.with(binding.root).load(data.imageUrl).into(binding.ivProduct)
             binding.tvProductName.text = data.name
             binding.tvHarga.text = rupiah(data.basePrice)
+            binding.ivWishlist.visibility = View.GONE
             binding.root.setOnClickListener {
                 onClick.onClickItem(data)
             }

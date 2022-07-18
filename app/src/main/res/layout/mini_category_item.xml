@@ -6,11 +6,47 @@
     android:backgroundTint="@color/biru"
     app:cardCornerRadius="32dp"
     android:layout_marginStart="16dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/semuaBarang"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_gravity="center_vertical"
+        android:paddingVertical="6dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/ic_search2"
+            android:background="@drawable/ic_search"
+            android:backgroundTint="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/photo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/semuakategori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semua Barang"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/ic_search2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ic_search2"
+            app:layout_constraintBottom_toBottomOf="@id/ic_search2"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:id="@+id/category"
         android:layout_gravity="center_vertical"
         android:paddingVertical="6dp"
         android:paddingHorizontal="16dp">

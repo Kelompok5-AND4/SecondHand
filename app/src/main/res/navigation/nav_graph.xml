@@ -181,6 +181,9 @@
         <action
             android:id="@+id/action_mainFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_allFeatureFragment"
+            app:destination="@id/allFeatureFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
@@ -303,7 +306,7 @@
     </fragment>
     <fragment
         android:id="@+id/allFeatureFragment"
-        android:name="com.igdev.secondhand.AllFeatureFragment"
-        android:label="fragment_all_feature2"
-        tools:layout="@layout/fragment_all_feature2" />
+        android:name="com.igdev.secondhand.ui.allfeature.AllFeatureFragment"
+        android:label="fragment_all_feature"
+        tools:layout="@layout/fragment_all_feature" />
 </navigation>

@@ -26,7 +26,7 @@ class FirstFragment : Fragment() {
         _binding = FragmentFirstBinding.inflate(inflater,container,false)
         val viewPager =  activity?.findViewById<ViewPager2>(R.id.viewPager)
 
-        binding.next.setOnClickListener {
+        binding.icNext.setOnClickListener {
             viewPager?.currentItem = 1
         }
         return binding.root
