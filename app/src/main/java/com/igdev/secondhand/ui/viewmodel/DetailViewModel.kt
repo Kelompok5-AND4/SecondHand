@@ -11,7 +11,10 @@ import com.igdev.secondhand.model.detail.GetDetail
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.detail.PostOrderResponse
 import com.igdev.secondhand.model.register.RegistReq
+import com.igdev.secondhand.model.wishlist.GetWishlistById
+import com.igdev.secondhand.model.wishlist.GetWishlistResponse
 import com.igdev.secondhand.model.wishlist.PostWishListResponse
+import com.igdev.secondhand.model.wishlist.PostWishlistRequest
 import com.igdev.secondhand.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -31,8 +34,42 @@ class DetailViewModel @Inject constructor(private val repository: Repository) : 
     val postOrder : LiveData<Resource<Response<PostOrderResponse>>> get()= _postOrder
 
     //wishlist
-    private val _postWishList : MutableLiveData<PostWishListResponse> = MutableLiveData()
-    val postWishlist : LiveData<PostWishListResponse> get() = _postWishList
+    private val _postWishList : MutableLiveData<Resource<PostWishListResponse>> = MutableLiveData()
+    val postWishlist : LiveData<Resource<PostWishListResponse>> get() = _postWishList
+
+    private val _getAllWishlist : MutableLiveData<Resource<List<GetWishlistResponse>>> = MutableLiveData()
+    val getAllWishlist :LiveData<Resource<List<GetWishlistResponse>>> get() = _getAllWishlist
+
+
+
+    //wishlist
+    fun postWishlist(token: String, requestBody : PostWishlistRequest){
+        viewModelScope.launch {
+            _postWishList.postValue(Resource.loading())
+            try {
+                _postWishList.postValue(Resource.success(repository.postWishlist(token,requestBody)))
+            }catch (exception : Exception){
+                _postWishList.postValue(Resource.error(exception.message ?: "Error"))
+            }
+        }
+    }
+
+    fun deleteWishlist(token: String, id: Int){
+        viewModelScope.launch {
+            repository.deleteWishlist(token, id)
+        }
+    }
+
+    fun getAllWishlist (token: String){
+        viewModelScope.launch {
+            _getAllWishlist.postValue(Resource.loading())
+            try {
+                _getAllWishlist.postValue(Resource.success(repository.getWishlist(token)))
+            }catch (exception : Exception){
+                _getAllWishlist.postValue(Resource.error(exception.message ?: "Error"))
+            }
+        }
+    }
 
 
 

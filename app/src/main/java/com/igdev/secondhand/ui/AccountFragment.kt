@@ -112,6 +112,9 @@ class AccountFragment : Fragment() {
         binding.bgSectionSetting.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_settingFragment)
         }
+        binding.bgSectionWishlist.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_wishlistFragment)
+        }
     }
 
     }
