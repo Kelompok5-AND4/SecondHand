@@ -184,6 +184,9 @@
         <action
             android:id="@+id/action_mainFragment_to_allFeatureFragment"
             app:destination="@id/allFeatureFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_terjualFragment"
+            app:destination="@id/terjualFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
@@ -309,6 +312,11 @@
         android:name="com.igdev.secondhand.ui.allfeature.AllFeatureFragment"
         android:label="fragment_all_feature"
         tools:layout="@layout/fragment_all_feature" />
+    <fragment
+        android:id="@+id/terjualFragment"
+        android:name="com.igdev.secondhand.ui.transaksipenjual.TerjualFragment"
+        android:label="fragment_terjual"
+        tools:layout="@layout/fragment_terjual" />
     <fragment
         android:id="@+id/penawaran_Buyer_To_Seller_Fragment"
         android:name="com.igdev.secondhand.Penawaran_Buyer_To_Seller_Fragment"
