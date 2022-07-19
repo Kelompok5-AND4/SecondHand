@@ -317,4 +317,14 @@
         android:name="com.igdev.secondhand.ui.transaksipenjual.TerjualFragment"
         android:label="fragment_terjual"
         tools:layout="@layout/fragment_terjual" />
+    <fragment
+        android:id="@+id/penawaran_Buyer_To_Seller_Fragment"
+        android:name="com.igdev.secondhand.Penawaran_Buyer_To_Seller_Fragment"
+        android:label="fragment_penawaran__buyer__to__seller_"
+        tools:layout="@layout/fragment_penawaran__buyer__to__seller_" />
+    <fragment
+        android:id="@+id/penawaranDiPorsesSellerFragment"
+        android:name="com.igdev.secondhand.PenawaranDiPorsesSellerFragment"
+        android:label="fragment_penawaran_di_porses_seller"
+        tools:layout="@layout/fragment_penawaran_di_porses_seller" />
 </navigation>
