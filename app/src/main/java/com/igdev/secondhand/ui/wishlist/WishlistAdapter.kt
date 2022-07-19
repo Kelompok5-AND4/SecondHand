@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.igdev.secondhand.databinding.ProductItemBinding
 import com.igdev.secondhand.model.wishlist.GetWishlistResponse
+import com.igdev.secondhand.rupiah
 
 class WishlistAdapter(private val onClick: OnClickListener) :
     RecyclerView.Adapter<WishlistAdapter.ViewHolder>() {
@@ -31,7 +32,7 @@ class WishlistAdapter(private val onClick: OnClickListener) :
         fun bind(data : GetWishlistResponse) {
             binding.apply {
                 tvProductName.text = data.product.name
-                tvHarga.text = data.product.basePrice.toString()
+                tvHarga.text = rupiah(data.product.basePrice)
                 Glide.with(binding.root)
                     .load(data.product.imageUrl)
                     .into(ivProduct)

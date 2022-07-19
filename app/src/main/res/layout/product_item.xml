@@ -37,6 +37,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -59,15 +60,16 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvProductName"
         app:layout_constraintStart_toStartOf="@id/tvProductName"/>
-
     <ImageView
         android:id="@+id/iv_wishlist"
         android:src="@drawable/ic_is_wishlist"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView"
-        android:layout_marginEnd="18dp"
-        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@id/cardView"
+        app:layout_constraintTop_toTopOf="@id/tvHarga"
+        app:layout_constraintBottom_toBottomOf="@id/tvHarga"
+        android:layout_marginBottom="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

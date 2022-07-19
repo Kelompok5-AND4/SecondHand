@@ -1,6 +1,7 @@
 package com.igdev.secondhand.ui.search.result
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -39,6 +40,7 @@ class SearchResultAdapter(private val onClick: OnClickListener): RecyclerView.Ad
         fun bind (data: AllProductResponse){
             Glide.with(binding.root).load(data.imageUrl).into(binding.ivProduct)
             binding.tvProductName.text = data.name
+            binding.ivWishlist.visibility = View.GONE
             binding.tvHarga.text = rupiah(data.basePrice)
             binding.root.setOnClickListener {
                 onClick.onClickItem(data)
