@@ -86,7 +86,7 @@
             <ImageView
                 android:id="@+id/bg_harga"
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
+                android:layout_height="120dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="-40dp"
                 android:background="@drawable/bg_rounded_birusatu"
@@ -108,15 +108,38 @@
                 app:layout_constraintTop_toTopOf="@id/bg_harga" />
 
             <TextView
-                android:id="@+id/tv_harga"
+                android:id="@+id/tv_text_deal_harga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-8dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/harga"
+                android:layout_marginTop="-4dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Deal harga :"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/tv_nama_product"
                 app:layout_constraintTop_toBottomOf="@id/tv_nama_product" />
+
+            <TextView
+                android:id="@+id/tv_harga_tawaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/harga"
+                android:layout_marginStart="6dp"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="@id/tv_text_deal_harga"
+                app:layout_constraintBottom_toBottomOf="@id/tv_text_deal_harga"
+                app:layout_constraintStart_toEndOf="@id/tv_text_deal_harga"
+                app:layout_constraintTop_toBottomOf="@id/tv_nama_product" />
+
+            <TextView
+                android:id="@+id/tv_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/harga"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/tv_text_deal_harga"
+                app:layout_constraintTop_toBottomOf="@id/tv_text_deal_harga" />
 
 
 
@@ -134,7 +157,7 @@
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:padding="8dp"
+                    android:padding="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -191,49 +214,28 @@
                         app:layout_constraintBottom_toBottomOf="@id/iv_lokasi"
                         app:layout_constraintStart_toEndOf="@id/iv_lokasi"/>
 
-                    <TextView
-                        android:id="@+id/tv_text_penawaran"
-                        android:text="Menawar :"
-                        android:fontFamily="@font/poppins_bold"
-                        android:textSize="16sp"
-                        android:layout_marginTop="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@id/cv_photo"
-                        app:layout_constraintStart_toStartOf="@id/cv_photo"/>
-
-                    <TextView
-                        android:id="@+id/tv_harga_penawaran"
-                        android:text="50.000"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="16sp"
-                        android:layout_marginStart="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toEndOf="@id/tv_text_penawaran"
-                        app:layout_constraintTop_toTopOf="@id/tv_text_penawaran"
-                        app:layout_constraintBottom_toBottomOf="@id/tv_text_penawaran" />
 
                     <Button
                         android:id="@+id/btn_tolak"
                         android:text="tolak"
                         android:layout_width="0dp"
-                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="16dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/btn_terima"
-                        app:layout_constraintTop_toBottomOf="@id/tv_text_penawaran"
+                        app:layout_constraintTop_toBottomOf="@id/cv_photo"
                         app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <Button
                         android:id="@+id/btn_terima"
                         android:text="terima"
                         android:layout_width="0dp"
-                        android:layout_marginEnd="16dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/btn_tolak"
-                        app:layout_constraintTop_toBottomOf="@id/tv_text_penawaran"
+                        app:layout_constraintTop_toBottomOf="@id/cv_photo"
                         app:layout_constraintBottom_toBottomOf="parent"/>
 
 
