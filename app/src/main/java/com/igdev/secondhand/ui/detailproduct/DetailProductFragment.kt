@@ -2,6 +2,8 @@ package com.igdev.secondhand.ui.detailproduct
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.Intent
+import android.net.Uri
 import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
@@ -76,7 +78,21 @@ class DetailProductFragment : Fragment() {
             findNavController().popBackStack()
         }
         binding.btnMenu.setOnClickListener {
-
+            val snackbar = Snackbar.make(requireContext(),binding.root,"Laporkan barang?",Snackbar.LENGTH_LONG)
+            snackbar.setAction("Tidak"){snackbar.dismiss()}
+            snackbar.setAction("Iya"){
+                val number = "081252847037"
+                val text = "Saya ingin melaporkan barang ini ..."
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(
+                            "https://api.whatsapp.com/send?phone=$number&text=$text"
+                        )
+                    )
+                )
+            }
+            snackbar.show()
         }
 
 
