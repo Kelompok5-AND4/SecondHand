@@ -53,6 +53,16 @@ class SedangDitawarFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
+        val negoAdapter =
+            NegoAdapter(object : NegoAdapter.OnClickListener {
+                override fun onClickItem(data: SellerOrderResponseItem) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Notif Id = ${data.id}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
         val progressDialog = ProgressDialog(requireContext())
         progressDialog.setMessage("Please Wait...")
         viewModel.getAllSellerOrder.observe(viewLifecycleOwner) {
@@ -65,16 +75,6 @@ class SedangDitawarFragment : Fragment() {
                         if (it.data.isNullOrEmpty()) {
                             binding.emptyNotif.visibility = View.GONE
                         } else {
-                            val negoAdapter =
-                                NegoAdapter(object : NegoAdapter.OnClickListener {
-                                    override fun onClickItem(data: SellerOrderResponseItem) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Notif Id = ${data.id}",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                })
                             negoAdapter.submitData(it.data)
                             binding.rvNego.adapter = negoAdapter
                         }
