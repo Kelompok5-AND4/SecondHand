@@ -81,7 +81,7 @@ class DetailProductFragment : Fragment() {
             val snackbar = Snackbar.make(requireContext(),binding.root,"Laporkan barang?",Snackbar.LENGTH_LONG)
             snackbar.setAction("Tidak"){snackbar.dismiss()}
             snackbar.setAction("Iya"){
-                val number = "081252847037"
+                val number = "6281252847037"
                 val text = "Saya ingin melaporkan barang ini ..."
                 startActivity(
                     Intent(
@@ -223,13 +223,12 @@ class DetailProductFragment : Fragment() {
                         }
                         binding.btnLove.setOnClickListener {
                             val req = PostWishlistRequest(id)
-                            val wishlist = isWishlist
-                            if (wishlist) {
+                            if (isWishlist) {
                                 viewModel.deleteWishlist(token, idWishlist)
-
+                                isWishlist = false
                             } else {
                                 viewModel.postWishlist(token, req)
-
+                                isWishlist =true
                             }
                         }
 
@@ -248,9 +247,10 @@ class DetailProductFragment : Fragment() {
                 Status.LOADING ->{
                 }
                 Status.SUCCESS ->{
+                    viewModel.getAllWishlist(token)
                     binding.btnLove.setImageResource(R.drawable.ic_is_wishlist)
                     Toast.makeText(requireContext(), "add to wishlist", Toast.LENGTH_SHORT).show()
-                    isWishlist=true
+
                 }
                 Status.ERROR ->{
 
@@ -261,10 +261,10 @@ class DetailProductFragment : Fragment() {
             when(it.status){
                 Status.LOADING ->{}
                 Status.SUCCESS ->{
+                    viewModel.getAllWishlist(token)
                     binding.btnLove.setImageResource(R.drawable.ic_is_not_wishlist)
                     Toast.makeText(requireContext(), "delete from wishlist", Toast.LENGTH_SHORT)
                         .show()
-                    isWishlist=false
                 }
                 Status.ERROR ->{}
             }
