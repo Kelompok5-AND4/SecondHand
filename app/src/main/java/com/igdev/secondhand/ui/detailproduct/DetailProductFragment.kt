@@ -201,9 +201,9 @@ class DetailProductFragment : Fragment() {
                             }
                         }
                         if (isWishlist) {
-                            binding.btnLove.setImageResource(R.drawable.ic_favorite)
+                            binding.btnLove.setImageResource(R.drawable.ic_is_wishlist)
                         } else {
-                            binding.btnLove.setImageResource(R.drawable.ic_non_favorite)
+                            binding.btnLove.setImageResource(R.drawable.ic_is_not_wishlist)
                         }
                         binding.btnLove.setOnClickListener {
                             val req = PostWishlistRequest(id)
@@ -232,8 +232,9 @@ class DetailProductFragment : Fragment() {
                 Status.LOADING ->{
                 }
                 Status.SUCCESS ->{
-                    binding.btnLove.setImageResource(R.drawable.ic_favorite)
+                    binding.btnLove.setImageResource(R.drawable.ic_is_wishlist)
                     Toast.makeText(requireContext(), "add to wishlist", Toast.LENGTH_SHORT).show()
+                    isWishlist=true
                 }
                 Status.ERROR ->{
 
@@ -244,9 +245,10 @@ class DetailProductFragment : Fragment() {
             when(it.status){
                 Status.LOADING ->{}
                 Status.SUCCESS ->{
-                    binding.btnLove.setImageResource(R.drawable.ic_non_favorite)
+                    binding.btnLove.setImageResource(R.drawable.ic_is_not_wishlist)
                     Toast.makeText(requireContext(), "delete from wishlist", Toast.LENGTH_SHORT)
                         .show()
+                    isWishlist=false
                 }
                 Status.ERROR ->{}
             }
