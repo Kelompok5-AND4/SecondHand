@@ -1,8 +1,15 @@
 package com.igdev.secondhand.repository
 
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.igdev.secondhand.database.DbHelper
+import com.igdev.secondhand.database.MyDatabase
+import com.igdev.secondhand.database.RemoteKeys
 import com.igdev.secondhand.database.SearchHistoryEntity
 import com.igdev.secondhand.datastore.DataStore
+import com.igdev.secondhand.model.PagingProduct.Product
 import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
@@ -10,12 +17,13 @@ import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
 import com.igdev.secondhand.model.wishlist.PostWishlistRequest
 import com.igdev.secondhand.service.ApiHelper
+import com.igdev.secondhand.ui.home.paging.ProductRemoteMediator
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 class Repository(
-    private val apiHelper: ApiHelper,private val dataStore: DataStore, private val dbHelper:DbHelper
+    private val apiHelper: ApiHelper,private val dataStore: DataStore, private val dbHelper:DbHelper, private val database: MyDatabase
 ) {
     // login and register
     suspend fun postRegUser(requestBody: RegistReq) = apiHelper.postRegUser(requestBody)
@@ -75,4 +83,39 @@ class Repository(
     suspend fun getWishlistById(token: String,id :Int) = apiHelper.getWishlistId(token, id)
     suspend fun postWishlist(token: String, request: PostWishlistRequest) = apiHelper.postWishlist(token, request)
     suspend fun deleteWishlist(token: String, id: Int) = apiHelper.deleteWishlist(token, id)
+
+    // Network Bound Resource
+    suspend fun insertAllProduct(product : List<Product>)= dbHelper.insertAllProduct(product)
+    suspend fun getProductDb()= dbHelper.getProduct()
+    suspend fun clearProduct()= dbHelper.clearProduct()
+
+    suspend fun insertAllRemoteKeys(remoteKeys : List<RemoteKeys>)= dbHelper.insertAllRemoteKeys(remoteKeys)
+    suspend fun remoteKeysProductId(productId:Int)= dbHelper.remoteKeysProductId(productId)
+    suspend fun clearRemoteKeys()= dbHelper.clearRemoteKeys()
+
+    //paging
+    suspend fun getProductAsBuyer(
+        status: String? = null,
+        categoryId: Int? = null,
+        searchKeyword: String? = null,
+    ) = apiHelper.getProductAsBuyer(
+        status,
+        categoryId,
+        searchKeyword,
+    )
+    fun getProductStream(categoryId: Int? = null): Flow<PagingData<Product>> {
+
+        val pagingSourceFactory = { database.productDao().getProduct() }
+
+        @OptIn(ExperimentalPagingApi::class)
+        return Pager(
+            config = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false),
+            remoteMediator = ProductRemoteMediator(database, apiHelper, categoryId),
+            pagingSourceFactory = pagingSourceFactory
+        ).flow
+
+    }
+    companion object{
+        const val PAGE_SIZE = 4
+    }
 }

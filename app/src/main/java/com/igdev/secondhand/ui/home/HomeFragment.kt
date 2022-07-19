@@ -11,9 +11,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import androidx.paging.PagingData
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -31,11 +35,14 @@ import com.igdev.secondhand.ui.adapter.BannerAdapter
 import com.igdev.secondhand.ui.adapter.CategoryAdapter
 import com.igdev.secondhand.ui.adapter.MiniCategoryAdapter
 import com.igdev.secondhand.ui.adapter.ProductAdapter
+import com.igdev.secondhand.ui.home.paging.ProductLoadStateAdapter
 import com.igdev.secondhand.ui.home.paging.ProductPagingAdapter
 import com.igdev.secondhand.ui.transaction.SellerAdapter
 import com.igdev.secondhand.ui.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 
@@ -43,13 +50,17 @@ import kotlin.math.abs
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel:HomeViewModel by viewModels()
-    private val viewModels:PagingViewModel by viewModels()
-    private lateinit var productAdapter: ProductAdapter
+    private val viewModel: HomeViewModel by viewModels()
+    private val viewModels: PagingViewModel by viewModels()
+
+    //private lateinit var productAdapter: ProductAdapter
     //private lateinit var productPagingAdapter: ProductPagingAdapter
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var miniCategoryAdapter: MiniCategoryAdapter
-    private val tokenLelang = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
+    var category: Int? = null
+    private val tokenLelang =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -67,16 +78,17 @@ class HomeFragment : Fragment() {
 
         MainFragment.currentPage = R.id.homeFragment
 
-        setupRecyclerView()
-        loadData()
 
         val viewPager2 = binding.viewPagerBanner
         val handler = Handler(Looper.myLooper()!!)
         val imageList = ArrayList<Int>()
-        imageList.add(R.drawable.banner1)
-        imageList.add(R.drawable.banner2)
+        imageList.add(R.drawable.bannercuan_1)
+        imageList.add(R.drawable.bannercuan_2)
+        imageList.add(R.drawable.bannercuan_3)
+        imageList.add(R.drawable.bannercuan_4)
 
-        val adapter = BannerAdapter(imageList,viewPager2)
+
+        val adapter = BannerAdapter(imageList, viewPager2)
         viewPager2.adapter = adapter
         viewPager2.offscreenPageLimit = 2
         viewPager2.clipToPadding = false
@@ -86,13 +98,14 @@ class HomeFragment : Fragment() {
             viewPager2.currentItem = viewPager2.currentItem + 1
         }
 
-        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 handler.removeCallbacks(runnable)
-                handler.postDelayed(runnable,5000)
+                handler.postDelayed(runnable, 5000)
             }
         })
+
 
         setUpTransformer()
         binding.searchView.setOnClickListener {
@@ -101,26 +114,17 @@ class HomeFragment : Fragment() {
         binding.searchIcon.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
         }
-        productAdapter = ProductAdapter(object : ProductAdapter.OnClickListener{
-            override fun onClickItem(data: AllProductResponse) {
-                val id = data.id
-                val toDetail = MainFragmentDirections.actionMainFragmentToDetailProductFragment(id)
-                findNavController().navigate(toDetail)
-            }
-        })
-
-        val productPagingAdapter = ProductPagingAdapter()
-
-        binding.rvProduct.adapter = productPagingAdapter
-        lifecycleScope.launch {
-            viewModels.listData.collect {
-                Log.d("aaa","load:$it")
-                productPagingAdapter.submitData(it)
-            }
-
+        val productPagingAdapter = ProductPagingAdapter {
+            val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(it.id)
+            findNavController().navigate(direct)
         }
-
-        categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener{
+        val productLoadStateAdapter = ProductLoadStateAdapter { productPagingAdapter.retry() }
+        setUpPaging(
+            adapter = productPagingAdapter,
+            load = productLoadStateAdapter,
+            pagingData = viewModels.getProducts()
+        )
+        categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener {
             override fun onClickItem(data: CategoryResponseItem) {
                 val toCategory =
                     MainFragmentDirections.actionMainFragmentToCategoryFragment(data.id)
@@ -133,14 +137,38 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.mainFragment)
         }
 
-        miniCategoryAdapter = MiniCategoryAdapter(object : MiniCategoryAdapter.OnClickListener{
-            override fun onClickItem(data: CategoryResponseItem) {
+        miniCategoryAdapter = MiniCategoryAdapter(object : MiniCategoryAdapter.OnClickListener {
+            override fun onClickItem(data: CategoryResponseItem, position: Int) {
                 //getProduct(data.id.toString())
+                if (position == 0) {
+                    category = null
+                    setUpPaging(
+                        productPagingAdapter,
+                        productLoadStateAdapter,
+                        viewModels.getProducts()
+                    )
+                } else {
+                    category = data.id
+                    val kategoriId = category
+                    setUpPaging(
+                        productPagingAdapter,
+                        productLoadStateAdapter,
+                        viewModels.getProducts(kategoriId)
+                    )
+                }
+
             }
         })
+        val kategoriId = category
+        binding.swipe.setOnRefreshListener {
+            setUpPaging(
+                productPagingAdapter,
+                productLoadStateAdapter,
+                viewModels.getProducts(kategoriId)
+            )
+        }
         binding.rvMiniCategory.adapter = miniCategoryAdapter
         getCategory()
-        //getProduct("")
         binding.ivNotification.setOnClickListener {
             MainFragment.currentPage = R.id.notificationFragment
             findNavController().navigate(R.id.mainFragment)
@@ -175,8 +203,11 @@ class HomeFragment : Fragment() {
                         }
                     }
                     Status.ERROR -> {
-                        AlertDialog.Builder(requireContext())
-                            .setMessage(it.message)
+                        Toast.makeText(
+                            requireContext(),
+                            "Memasuki Mode Offline",
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
                     }
                 }
@@ -184,48 +215,121 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun setUpPaging(
+        adapter: ProductPagingAdapter,
+        load: ProductLoadStateAdapter,
+        pagingData: Flow<PagingData<UiModel.ProductItem>>
+    ) {
+        val footerAdapter = ProductLoadStateAdapter { adapter.retry() }
+        binding.rvProduct.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = load,
+            footer = footerAdapter
+        )
+
+        lifecycleScope.launchWhenCreated {
+            adapter.loadStateFlow.collectLatest {
+                binding.swipe.isRefreshing = it.refresh is LoadState.Loading
+            }
+        }
+        val gridLayoutManager = binding.rvProduct.layoutManager as GridLayoutManager
+        gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return if ((position == adapter.itemCount && footerAdapter.itemCount > 0) ||
+                    (position == adapter.itemCount && load.itemCount > 0)
+                ) {
+                    2
+                } else {
+                    1
+                }
+            }
+        }
+        lifecycleScope.launchWhenCreated {
+            pagingData.collectLatest(adapter::submitData)
+        }
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collect { loadState ->
+                load.loadState = loadState.mediator
+                    ?.refresh
+                    ?.takeIf { it is LoadState.Error && adapter.itemCount > 0 }
+                    ?: loadState.prepend
+                val isListEmpty =
+                    loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
+                binding.rvProduct.isVisible =
+                    loadState.source.refresh is LoadState.NotLoading
+                            || loadState.mediator?.refresh is LoadState.NotLoading
+                binding.pbHomeProduct.isVisible = loadState.mediator?.refresh is LoadState.Loading
+                val errorState = loadState.source.append as? LoadState.Error
+                    ?: loadState.source.prepend as? LoadState.Error
+                    ?: loadState.append as? LoadState.Error
+                    ?: loadState.prepend as? LoadState.Error
+                errorState?.let {
+                    Toast.makeText(
+                        context,
+                        "\uD83D\uDE28 Wooops ${it.error}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
+
+    }
+
     private fun setUpTransformer() {
         val transformer = CompositePageTransformer()
         transformer.addTransformer(MarginPageTransformer(40))
-        transformer.addTransformer{ page, position ->
-            val r = 1 - abs (position)
+        transformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
             page.scaleY = 0.85f + r * 0.14f
         }
         binding.viewPagerBanner.setPageTransformer(transformer)
     }
 
-    private fun getCategory(){
+    private fun getCategory() {
+        val progressDialog = ProgressDialog(requireContext())
         viewModel.getCategory()
-        viewModel.category.observe(viewLifecycleOwner){ resources ->
-            if (resources.status == Status.SUCCESS){
-                categoryAdapter.submitData(resources.data)
-                miniCategoryAdapter.submitData(resources.data)
+        viewModel.category.observe(viewLifecycleOwner) { resources ->
+            when (resources.status) {
+                Status.LOADING -> {
+                    progressDialog.setMessage("Loading")
+                    progressDialog.show()
+                }
+                Status.SUCCESS -> {
+                    categoryAdapter.submitData(resources.data)
+                    miniCategoryAdapter.submitData(resources.data)
+                    progressDialog.dismiss()
+
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), resources.message, Toast.LENGTH_SHORT)
+                        .show()
+                    progressDialog.dismiss()
+                }
             }
         }
     }
 
     /*private fun getProduct(categoryId: String) {
-        val status = "available"
-        val progressDialog = ProgressDialog(requireContext())
-        viewModel.getProduct(status, categoryId)
-        viewModel.product.observe(viewLifecycleOwner){ resources ->
-            when(resources.status){
-                Status.LOADING ->{
-                    progressDialog.setMessage("Loading")
-                    progressDialog.show()
-                }
-                Status.SUCCESS ->{
+    val status = "available"
+    val progressDialog = ProgressDialog(requireContext())
+    viewModel.getProduct(status, categoryId)
+    viewModel.product.observe(viewLifecycleOwner){ resources ->
+        when(resources.status){
+            Status.LOADING ->{
+                progressDialog.setMessage("Loading")
+                progressDialog.show()
+            }
+            Status.SUCCESS ->{
 
-                    when(resources.data?.code()){
-                        200 ->{
-                            if (resources.data.body()?.size!! > 1){
-                                productAdapter.submitData(resources.data.body()!!.subList(0,10))
-                                progressDialog.dismiss()
-                            }
+                when(resources.data?.code()){
+                    200 ->{
+                        if (resources.data.body()?.size!! > 1){
+                            productAdapter.submitData(resources.data.body()!!.subList(0,10))
+                            progressDialog.dismiss()
                         }
                     }
+                }
 
-                    *//*productAdapter.submitData(resources.data)
+                *//*productAdapter.submitData(resources.data)
                     progressDialog.dismiss()*//*
 
                 }
@@ -238,14 +342,4 @@ class HomeFragment : Fragment() {
         }
     }*/
 
-    private fun setupRecyclerView() {
-
-
-
-    }
-
-    private fun loadData() {
-
-
-    }
 }

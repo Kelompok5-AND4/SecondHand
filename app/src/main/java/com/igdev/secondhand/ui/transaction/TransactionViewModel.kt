@@ -28,6 +28,8 @@ class TransactionViewModel @Inject constructor(private val repository: Repositor
     private val _getAllSellerOrder = MutableLiveData<Resource<List<SellerOrderResponseItem>>>()
     val getAllSellerOrder: LiveData<Resource<List<SellerOrderResponseItem>>> get() = _getAllSellerOrder
 
+    val getProductSold: LiveData<Resource<List<SellerOrderResponseItem>>> get() = _getAllSellerOrder
+
     private val _getToken = MutableLiveData<User>()
     val getToken: LiveData<User> get() = _getToken
 

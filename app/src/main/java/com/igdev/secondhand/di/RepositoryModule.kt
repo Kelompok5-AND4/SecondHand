@@ -1,6 +1,7 @@
 package com.igdev.secondhand.di
 
 import com.igdev.secondhand.database.DbHelper
+import com.igdev.secondhand.database.MyDatabase
 import com.igdev.secondhand.datastore.DataStore
 import com.igdev.secondhand.repository.Repository
 import com.igdev.secondhand.service.ApiHelper
@@ -16,5 +17,5 @@ object RepositoryModule {
 
     @ViewModelScoped
     @Provides
-    fun provideRepository(apiHelper: ApiHelper, dataStore: DataStore,dbHelper: DbHelper) = Repository(apiHelper,dataStore,dbHelper)
+    fun provideRepository(apiHelper: ApiHelper, dataStore: DataStore,dbHelper: DbHelper,database: MyDatabase) = Repository(apiHelper,dataStore,dbHelper,database)
 }

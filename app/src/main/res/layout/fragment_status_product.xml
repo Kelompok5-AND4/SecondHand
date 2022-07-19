@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_biru_gradasi_dua"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".StatusProductFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="48dp"
+                android:layout_marginHorizontal="16dp"
+                app:cardCornerRadius="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_back"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:icon="@drawable/ic_baseline_keyboard_arrow_left"
+                        style="@style/Widget.AppCompat.ActionButton"
+                        app:iconTint="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tv_judul"
+                        android:text="@string/detail_product"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/btn_back"
+                        app:layout_constraintEnd_toStartOf="@id/btn_edit"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_edit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:icon="@drawable/ic_edit"
+                        style="@style/Widget.AppCompat.ActionButton"
+                        app:iconTint="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/foto_produk"
+                android:layout_width="match_parent"
+                android:layout_height="394dp"
+                android:contentDescription="@string/foto_produk"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/bg_harga"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="-40dp"
+                android:background="@drawable/bg_rounded_birusatu"
+                android:backgroundTint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/foto_produk" />
+
+            <TextView
+                android:id="@+id/tv_nama_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/nama_produk"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/bg_harga"
+                app:layout_constraintTop_toTopOf="@id/bg_harga" />
+
+            <TextView
+                android:id="@+id/tv_text_deal_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-4dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Deal harga :"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/tv_nama_product"
+                app:layout_constraintTop_toBottomOf="@id/tv_nama_product" />
+
+            <TextView
+                android:id="@+id/tv_harga_tawaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/harga"
+                android:layout_marginStart="6dp"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="@id/tv_text_deal_harga"
+                app:layout_constraintBottom_toBottomOf="@id/tv_text_deal_harga"
+                app:layout_constraintStart_toEndOf="@id/tv_text_deal_harga"
+                app:layout_constraintTop_toBottomOf="@id/tv_nama_product" />
+
+            <TextView
+                android:id="@+id/tv_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/harga"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/tv_text_deal_harga"
+                app:layout_constraintTop_toBottomOf="@id/tv_text_deal_harga" />
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_seller"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="16dp"
+                app:cardCornerRadius="12dp"
+                android:layout_marginBottom="125dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bg_harga">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/iv_foto_profile"
+                            android:background="@drawable/default_detail"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:scaleType="centerCrop"/>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tv_nama_pembeli"
+                        android:text="@string/nama_penawar"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="18sp"
+                        android:layout_marginStart="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/iv_lokasi"
+                        app:layout_constraintStart_toEndOf="@id/cv_photo"
+                        app:layout_constraintTop_toTopOf="@id/cv_photo"/>
+
+                    <ImageView
+                        android:id="@+id/iv_lokasi"
+                        android:background="@drawable/ic_lokasi"
+                        android:backgroundTint="@color/abu_muda_dua"
+                        android:contentDescription="@string/lokasi"
+                        android:layout_width="12dp"
+                        android:layout_height="17dp"
+                        app:layout_constraintStart_toStartOf="@id/tv_nama_pembeli"
+                        app:layout_constraintBottom_toBottomOf="@id/cv_photo"
+                        app:layout_constraintTop_toBottomOf="@id/tv_nama_pembeli"/>
+
+                    <TextView
+                        android:id="@+id/tv_lokasi"
+                        android:text="@string/kota"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginStart="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/iv_lokasi"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_lokasi"
+                        app:layout_constraintStart_toEndOf="@id/iv_lokasi"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_transaksi"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="16dp"
+                app:cardCornerRadius="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_seller">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:textSize="20sp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tv_desc"
+                        android:text="Pastikan kamu telah menghubungi pembeli untuk pengkonfirmasi transaksi ini"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_status"/>
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_desc">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RadioButton
+                                android:id="@+id/radio_terima"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Berhasil Terjual"
+                                android:fontFamily="@font/poppins_bold"
+                                android:onClick="onRadioButtonClicked"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/tv_desc_terima"
+                                android:text="Kamu telah menghubungi dan telah sepakat menjual produk ini kepada pembeli"
+                                android:layout_width="match_parent"
+                                android:layout_marginStart="32dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/radio_terima"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+
+                            <RadioButton
+                                android:id="@+id/radio_tolak"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Batalkan Transaksi"
+                                android:onClick="onRadioButtonClicked"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/poppins_bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tv_desc_terima"/>
+                            <TextView
+                                android:id="@+id/tv_desc_tolak"
+                                android:text="Kamu membatalkan transaksi produk ini dengan pembeli"
+                                android:layout_width="match_parent"
+                                android:layout_marginStart="32dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/radio_tolak"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </RadioGroup>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/btn_konfirmasi"
+                android:text="Konfirmasi"
+                android:textSize="18dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/white"
+                android:background="@drawable/gradient_button"
+                android:gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="48dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_transaksi"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

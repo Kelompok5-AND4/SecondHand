@@ -187,6 +187,9 @@
         <action
             android:id="@+id/action_mainFragment_to_wishlistFragment"
             app:destination="@id/wishlistFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_terjualFragment"
+            app:destination="@id/terjualFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
@@ -280,6 +283,9 @@
         <argument
             android:name="id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_tawaranSellerFragment_to_penawaran_Buyer_To_Seller_Fragment"
+            app:destination="@id/penawaran_Buyer_To_Seller_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
@@ -313,6 +319,7 @@
         android:label="fragment_all_feature"
         tools:layout="@layout/fragment_all_feature" />
     <fragment
+
         android:id="@+id/wishlistFragment"
         android:name="com.igdev.secondhand.ui.wishlist.WishlistFragment"
         android:label="fragment_wishlist"
@@ -323,5 +330,49 @@
         <argument
             android:name="id"
             app:argType="integer" />
+    <fragment
+        android:id="@+id/terjualFragment"
+        android:name="com.igdev.secondhand.ui.transaksipenjual.TerjualFragment"
+        android:label="fragment_terjual"
+        tools:layout="@layout/fragment_terjual" />
+    <fragment
+        android:id="@+id/penawaran_Buyer_To_Seller_Fragment"
+        android:name="com.igdev.secondhand.Penawaran_Buyer_To_Seller_Fragment"
+        android:label="fragment_penawaran__buyer__to__seller_"
+        tools:layout="@layout/fragment_penawaran__buyer__to__seller_" >
+        <action
+            android:id="@+id/action_penawaran_Buyer_To_Seller_Fragment_to_penawaranDiPorsesSellerFragment"
+            app:destination="@id/penawaranDiPorsesSellerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/penawaranDiPorsesSellerFragment"
+        android:name="com.igdev.secondhand.PenawaranDiPorsesSellerFragment"
+        android:label="fragment_penawaran_di_porses_seller"
+        tools:layout="@layout/fragment_penawaran_di_porses_seller" >
+        <action
+            android:id="@+id/action_penawaranDiPorsesSellerFragment_to_statusProductFragment"
+            app:destination="@id/statusProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/endPointDiterimaFragment"
+        android:name="com.igdev.secondhand.EndPointDiterimaFragment"
+        android:label="fragment_end_point_diterima"
+        tools:layout="@layout/fragment_end_point_diterima" />
+    <fragment
+        android:id="@+id/endoPointDitolakFragment"
+        android:name="com.igdev.secondhand.EndoPointDitolakFragment"
+        android:label="fragment_endo_point_ditolak"
+        tools:layout="@layout/fragment_endo_point_ditolak" />
+    <fragment
+        android:id="@+id/statusProductFragment"
+        android:name="com.igdev.secondhand.StatusProductFragment"
+        android:label="fragment_status_product"
+        tools:layout="@layout/fragment_status_product" >
+        <action
+            android:id="@+id/action_statusProductFragment_to_endPointDiterimaFragment"
+            app:destination="@id/endPointDiterimaFragment" />
+        <action
+            android:id="@+id/action_statusProductFragment_to_endoPointDitolakFragment"
+            app:destination="@id/endoPointDitolakFragment" />
     </fragment>
 </navigation>

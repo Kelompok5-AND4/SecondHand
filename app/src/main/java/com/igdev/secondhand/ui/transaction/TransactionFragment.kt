@@ -84,6 +84,10 @@ class TransactionFragment : Fragment() {
             val direct = MainFragmentDirections.actionMainFragmentToSedangDitawarFragment()
             findNavController().navigate(direct)
         }
+        binding.cvTerjual.setOnClickListener {
+            val direct = MainFragmentDirections.actionMainFragmentToTerjualFragment()
+            findNavController().navigate(direct)
+        }
         val progressDialog = ProgressDialog(requireContext())
         progressDialog.setMessage("Please Wait...")
         viewModel.getBuyerHistory.observe(viewLifecycleOwner) {
@@ -155,6 +159,7 @@ class TransactionFragment : Fragment() {
                 val direct = MainFragmentDirections.actionMainFragmentToPengajuanDitolakFragment()
                 findNavController().navigate(direct)
             }
+
         }
         viewModel.getAllSellerProduct.observe(viewLifecycleOwner) {
             if (it != null) {
@@ -175,7 +180,7 @@ class TransactionFragment : Fragment() {
                                 })
                             sellerAdapter.submitData(it.data)
                             binding.rvSemuaProduct.adapter = sellerAdapter
-                            binding.tvTotal.text = "0${sellerAdapter.itemCount}"
+                            binding.tvTotal.text = "${sellerAdapter.itemCount}"
                         }
                         progressDialog.dismiss()
                     }
@@ -198,8 +203,36 @@ class TransactionFragment : Fragment() {
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
                             binding.tvTotalDitawar.text = "00"
-                        } else {
-                            binding.tvTotalDitawar.text = "0${it.data.size}"
+                        }
+                        else {
+                            binding.tvTotalDitawar.text = "${it.data.size}"
+                        }
+                        progressDialog.dismiss()
+                    }
+                    Status.ERROR -> {
+                        progressDialog.dismiss()
+                        AlertDialog.Builder(requireContext())
+                            .setMessage(it.message)
+                            .show()
+                    }
+                }
+            }
+        }
+        viewModel.getProductSold.observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it.status) {
+                    Status.LOADING -> {
+                        progressDialog.show()
+                    }
+                    Status.SUCCESS -> {
+                        if (it.data.isNullOrEmpty()) {
+                            binding.tvTotalTerjual.text = "00"
+                        }
+                        else {
+                            val filteredData = it.data.filter {
+                                it.status == "accepted"
+                            }
+                            binding.tvTotalTerjual.text = "${filteredData.size}"
                         }
                         progressDialog.dismiss()
                     }
