@@ -50,14 +50,17 @@ import kotlin.math.abs
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel:HomeViewModel by viewModels()
-    private val viewModels:PagingViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
+    private val viewModels: PagingViewModel by viewModels()
+
     //private lateinit var productAdapter: ProductAdapter
     //private lateinit var productPagingAdapter: ProductPagingAdapter
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var miniCategoryAdapter: MiniCategoryAdapter
-    var category :Int?=null
-    private val tokenLelang = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
+    var category: Int? = null
+    private val tokenLelang =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -85,7 +88,7 @@ class HomeFragment : Fragment() {
         imageList.add(R.drawable.bannercuan_4)
 
 
-        val adapter = BannerAdapter(imageList,viewPager2)
+        val adapter = BannerAdapter(imageList, viewPager2)
         viewPager2.adapter = adapter
         viewPager2.offscreenPageLimit = 2
         viewPager2.clipToPadding = false
@@ -95,11 +98,11 @@ class HomeFragment : Fragment() {
             viewPager2.currentItem = viewPager2.currentItem + 1
         }
 
-        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 handler.removeCallbacks(runnable)
-                handler.postDelayed(runnable,5000)
+                handler.postDelayed(runnable, 5000)
             }
         })
 
@@ -111,13 +114,17 @@ class HomeFragment : Fragment() {
         binding.searchIcon.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
         }
-        val productPagingAdapter = ProductPagingAdapter{
+        val productPagingAdapter = ProductPagingAdapter {
             val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(it.id)
             findNavController().navigate(direct)
         }
-        val productLoadStateAdapter=ProductLoadStateAdapter{productPagingAdapter.retry()}
-        setUpPaging(adapter= productPagingAdapter,load = productLoadStateAdapter,pagingData = viewModels.getProducts())
-        categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener{
+        val productLoadStateAdapter = ProductLoadStateAdapter { productPagingAdapter.retry() }
+        setUpPaging(
+            adapter = productPagingAdapter,
+            load = productLoadStateAdapter,
+            pagingData = viewModels.getProducts()
+        )
+        categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener {
             override fun onClickItem(data: CategoryResponseItem) {
                 val toCategory =
                     MainFragmentDirections.actionMainFragmentToCategoryFragment(data.id)
@@ -130,23 +137,35 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.mainFragment)
         }
 
-        miniCategoryAdapter = MiniCategoryAdapter(object : MiniCategoryAdapter.OnClickListener{
-            override fun onClickItem(data: CategoryResponseItem,position:Int) {
+        miniCategoryAdapter = MiniCategoryAdapter(object : MiniCategoryAdapter.OnClickListener {
+            override fun onClickItem(data: CategoryResponseItem, position: Int) {
                 //getProduct(data.id.toString())
-                if (position==0){
-                    category=null
-                    setUpPaging(productPagingAdapter,productLoadStateAdapter,viewModels.getProducts())
-                }else{
+                if (position == 0) {
+                    category = null
+                    setUpPaging(
+                        productPagingAdapter,
+                        productLoadStateAdapter,
+                        viewModels.getProducts()
+                    )
+                } else {
                     category = data.id
                     val kategoriId = category
-                    setUpPaging(productPagingAdapter,productLoadStateAdapter,viewModels.getProducts(kategoriId))
+                    setUpPaging(
+                        productPagingAdapter,
+                        productLoadStateAdapter,
+                        viewModels.getProducts(kategoriId)
+                    )
                 }
 
             }
         })
-        val kategoriId= category
+        val kategoriId = category
         binding.swipe.setOnRefreshListener {
-            setUpPaging(productPagingAdapter,productLoadStateAdapter,viewModels.getProducts(kategoriId))
+            setUpPaging(
+                productPagingAdapter,
+                productLoadStateAdapter,
+                viewModels.getProducts(kategoriId)
+            )
         }
         binding.rvMiniCategory.adapter = miniCategoryAdapter
         getCategory()
@@ -184,7 +203,11 @@ class HomeFragment : Fragment() {
                         }
                     }
                     Status.ERROR -> {
-                        Toast.makeText(requireContext(), "Memasuki Mode Offline", Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            requireContext(),
+                            "Memasuki Mode Offline",
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
                     }
                 }
@@ -192,9 +215,11 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setUpPaging(adapter: ProductPagingAdapter,
+    private fun setUpPaging(
+        adapter: ProductPagingAdapter,
         load: ProductLoadStateAdapter,
-        pagingData: Flow<PagingData<UiModel.ProductItem>>) {
+        pagingData: Flow<PagingData<UiModel.ProductItem>>
+    ) {
         val footerAdapter = ProductLoadStateAdapter { adapter.retry() }
         binding.rvProduct.adapter = adapter.withLoadStateHeaderAndFooter(
             header = load,
@@ -207,10 +232,11 @@ class HomeFragment : Fragment() {
             }
         }
         val gridLayoutManager = binding.rvProduct.layoutManager as GridLayoutManager
-        gridLayoutManager.spanSizeLookup =  object : GridLayoutManager.SpanSizeLookup() {
+        gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
-                return if ((position == adapter.itemCount  && footerAdapter.itemCount > 0) ||
-                    (position == adapter.itemCount  && load.itemCount > 0)) {
+                return if ((position == adapter.itemCount && footerAdapter.itemCount > 0) ||
+                    (position == adapter.itemCount && load.itemCount > 0)
+                ) {
                     2
                 } else {
                     1
@@ -218,10 +244,10 @@ class HomeFragment : Fragment() {
             }
         }
         lifecycleScope.launchWhenCreated {
-            pagingData.collectLatest  (adapter::submitData)
+            pagingData.collectLatest(adapter::submitData)
         }
         lifecycleScope.launch {
-            adapter.loadStateFlow.collect { loadState->
+            adapter.loadStateFlow.collect { loadState ->
                 load.loadState = loadState.mediator
                     ?.refresh
                     ?.takeIf { it is LoadState.Error && adapter.itemCount > 0 }
@@ -251,45 +277,59 @@ class HomeFragment : Fragment() {
     private fun setUpTransformer() {
         val transformer = CompositePageTransformer()
         transformer.addTransformer(MarginPageTransformer(40))
-        transformer.addTransformer{ page, position ->
-            val r = 1 - abs (position)
+        transformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
             page.scaleY = 0.85f + r * 0.14f
         }
         binding.viewPagerBanner.setPageTransformer(transformer)
     }
 
-    private fun getCategory(){
+    private fun getCategory() {
+        val progressDialog = ProgressDialog(requireContext())
         viewModel.getCategory()
-        viewModel.category.observe(viewLifecycleOwner){ resources ->
-            if (resources.status == Status.SUCCESS){
-                categoryAdapter.submitData(resources.data)
-                miniCategoryAdapter.submitData(resources.data)
+        viewModel.category.observe(viewLifecycleOwner) { resources ->
+            when (resources.status) {
+                Status.LOADING -> {
+                    progressDialog.setMessage("Loading")
+                    progressDialog.show()
+                }
+                Status.SUCCESS -> {
+                    categoryAdapter.submitData(resources.data)
+                    miniCategoryAdapter.submitData(resources.data)
+                    progressDialog.dismiss()
+
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), resources.message, Toast.LENGTH_SHORT)
+                        .show()
+                    progressDialog.dismiss()
+                }
             }
         }
     }
 
     /*private fun getProduct(categoryId: String) {
-        val status = "available"
-        val progressDialog = ProgressDialog(requireContext())
-        viewModel.getProduct(status, categoryId)
-        viewModel.product.observe(viewLifecycleOwner){ resources ->
-            when(resources.status){
-                Status.LOADING ->{
-                    progressDialog.setMessage("Loading")
-                    progressDialog.show()
-                }
-                Status.SUCCESS ->{
+    val status = "available"
+    val progressDialog = ProgressDialog(requireContext())
+    viewModel.getProduct(status, categoryId)
+    viewModel.product.observe(viewLifecycleOwner){ resources ->
+        when(resources.status){
+            Status.LOADING ->{
+                progressDialog.setMessage("Loading")
+                progressDialog.show()
+            }
+            Status.SUCCESS ->{
 
-                    when(resources.data?.code()){
-                        200 ->{
-                            if (resources.data.body()?.size!! > 1){
-                                productAdapter.submitData(resources.data.body()!!.subList(0,10))
-                                progressDialog.dismiss()
-                            }
+                when(resources.data?.code()){
+                    200 ->{
+                        if (resources.data.body()?.size!! > 1){
+                            productAdapter.submitData(resources.data.body()!!.subList(0,10))
+                            progressDialog.dismiss()
                         }
                     }
+                }
 
-                    *//*productAdapter.submitData(resources.data)
+                *//*productAdapter.submitData(resources.data)
                     progressDialog.dismiss()*//*
 
                 }
