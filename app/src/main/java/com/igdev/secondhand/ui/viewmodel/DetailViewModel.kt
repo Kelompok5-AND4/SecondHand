@@ -11,10 +11,7 @@ import com.igdev.secondhand.model.detail.GetDetail
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.detail.PostOrderResponse
 import com.igdev.secondhand.model.register.RegistReq
-import com.igdev.secondhand.model.wishlist.GetWishlistById
-import com.igdev.secondhand.model.wishlist.GetWishlistResponse
-import com.igdev.secondhand.model.wishlist.PostWishListResponse
-import com.igdev.secondhand.model.wishlist.PostWishlistRequest
+import com.igdev.secondhand.model.wishlist.*
 import com.igdev.secondhand.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -40,6 +37,9 @@ class DetailViewModel @Inject constructor(private val repository: Repository) : 
     private val _getAllWishlist : MutableLiveData<Resource<List<GetWishlistResponse>>> = MutableLiveData()
     val getAllWishlist :LiveData<Resource<List<GetWishlistResponse>>> get() = _getAllWishlist
 
+    private val _deleteWishlist : MutableLiveData<Resource<DeleteWishlistResponse>> = MutableLiveData()
+    val deleteWishlist : LiveData<Resource<DeleteWishlistResponse>> get() = _deleteWishlist
+
 
 
     //wishlist
@@ -56,7 +56,12 @@ class DetailViewModel @Inject constructor(private val repository: Repository) : 
 
     fun deleteWishlist(token: String, id: Int){
         viewModelScope.launch {
-            repository.deleteWishlist(token, id)
+            _deleteWishlist.postValue(Resource.loading())
+            try {
+                _deleteWishlist.postValue(Resource.success(repository.deleteWishlist(token, id)))
+            }catch (exception : Exception){
+                _deleteWishlist.postValue(Resource.error(exception.message ?: "Error"))
+            }
         }
     }
 

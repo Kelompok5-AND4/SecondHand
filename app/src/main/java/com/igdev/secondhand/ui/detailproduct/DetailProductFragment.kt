@@ -23,6 +23,7 @@ import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
 import com.igdev.secondhand.model.detail.Category
+import com.igdev.secondhand.model.wishlist.PostWishListResponse
 import com.igdev.secondhand.model.wishlist.PostWishlistRequest
 import com.igdev.secondhand.rupiah
 import com.igdev.secondhand.ui.MainFragment
@@ -49,6 +50,7 @@ class DetailProductFragment : Fragment() {
     private var productName = ""
     private var productPrice = ""
     private var isWishlist = false
+    private var idWishlist = 1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -78,30 +80,6 @@ class DetailProductFragment : Fragment() {
         }
 
 
-
-//        binding.btnLove.setOnClickListener {
-//            viewModel.postWishlist(token, PostWishlistRequest(id))
-//            viewModel.postWishlist.observe(viewLifecycleOwner) {
-//                when (it.status) {
-//                    Status.LOADING -> {
-//                        progressDialog.show()
-//                        progressDialog.setMessage("loading")
-//                    }
-//                    Status.SUCCESS -> {
-//                        binding.btnLoveFull.visibility = View.VISIBLE
-//                        binding.btnLove.visibility = View.GONE
-//                        progressDialog.dismiss()
-//
-//                    }
-//                    Status.ERROR -> {
-//                        Toast.makeText(requireContext(), "Gagal ganti password", Toast.LENGTH_SHORT)
-//                            .show()
-//                        progressDialog.dismiss()
-//                    }
-//                }
-//            }
-//
-//        }
 
 
         viewModel.getBuyerHistory.observe(viewLifecycleOwner) {
@@ -203,33 +181,75 @@ class DetailProductFragment : Fragment() {
     private fun setupObserverWishlist() {
         val id = args.id
         viewModel.getAllWishlist.observe(viewLifecycleOwner) {
-           when (it.status){
-               Status.LOADING ->{
+            when (it.status) {
+                Status.LOADING -> {
 
-               }
-               Status.SUCCESS ->{
-                   if (it.data.isNullOrEmpty()){
+                }
+                Status.SUCCESS -> {
+                    if (it.data.isNullOrEmpty()) {
 
-                   }else{
-                       for (data in 0 until (it.data.size ?: 0)) {
-                           if (it.data.get(data).productId == args.id ) {
-                               isWishlist = true
-                           }
-                       }
-                   }
+                    } else {
+                        for (idWhishlist in it.data ){
+                            if (idWhishlist.productId == args.id){
+                                idWishlist = idWhishlist.id
+                            }
+                        }
 
-               }
-               Status.ERROR ->{
-                   AlertDialog.Builder(requireContext()).setMessage(it.message).show()
-               }
-           }
+                        for (data in 0 until (it.data.size ?: 0)) {
+                            if (it.data.get(data).productId == args.id) {
+                                isWishlist = true
+                            }
+                        }
+                        if (isWishlist) {
+                            binding.btnLove.setImageResource(R.drawable.ic_favorite)
+                        } else {
+                            binding.btnLove.setImageResource(R.drawable.ic_non_favorite)
+                        }
+                        binding.btnLove.setOnClickListener {
+                            val req = PostWishlistRequest(id)
+                            val wishlist = isWishlist
+                            if (wishlist) {
+                                viewModel.deleteWishlist(token, idWishlist)
+
+                            } else {
+                                viewModel.postWishlist(token, req)
+
+                            }
+                        }
+
+
+                    }
+
+                }
+                Status.ERROR -> {
+                    AlertDialog.Builder(requireContext()).setMessage(it.message).show()
+                }
+            }
         }
-        if (isWishlist) {
-            binding.btnLove.setImageResource(R.drawable.ic_favorite)
-        }else{
-            binding.btnLove.setImageResource(R.drawable.ic_non_favorite)
-        }
-Log.d("wishlish", "$isWishlist")
 
+        viewModel.postWishlist.observe(viewLifecycleOwner) {
+            when (it.status){
+                Status.LOADING ->{
+                }
+                Status.SUCCESS ->{
+                    binding.btnLove.setImageResource(R.drawable.ic_favorite)
+                    Toast.makeText(requireContext(), "add to wishlist", Toast.LENGTH_SHORT).show()
+                }
+                Status.ERROR ->{
+
+                }
+            }
+        }
+        viewModel.deleteWishlist.observe(viewLifecycleOwner){
+            when(it.status){
+                Status.LOADING ->{}
+                Status.SUCCESS ->{
+                    binding.btnLove.setImageResource(R.drawable.ic_non_favorite)
+                    Toast.makeText(requireContext(), "delete from wishlist", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                Status.ERROR ->{}
+            }
+        }
     }
 }
