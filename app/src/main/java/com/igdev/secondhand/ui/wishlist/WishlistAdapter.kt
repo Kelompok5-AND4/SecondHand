@@ -6,35 +6,34 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.igdev.secondhand.databinding.WishlistItemBinding
-import com.igdev.secondhand.model.wishlist.Product
+import com.igdev.secondhand.databinding.ProductItemBinding
+import com.igdev.secondhand.model.wishlist.GetWishlistResponse
 
 class WishlistAdapter(private val onClick: OnClickListener) :
     RecyclerView.Adapter<WishlistAdapter.ViewHolder>() {
-    private val diffCallBack = object : DiffUtil.ItemCallback<Product>() {
-        override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
-            return oldItem.name == newItem.name
+    private val diffCallBack = object : DiffUtil.ItemCallback<GetWishlistResponse>() {
+        override fun areItemsTheSame(oldItem: GetWishlistResponse, newItem: GetWishlistResponse): Boolean {
+            return oldItem.productId == newItem.productId
         }
 
-        override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
+        override fun areContentsTheSame(oldItem: GetWishlistResponse, newItem: GetWishlistResponse): Boolean {
             return oldItem.hashCode() == newItem.hashCode()
         }
 
     }
     private val differ = AsyncListDiffer(this, diffCallBack)
-    fun submitData(value: List<Product>?) = differ.submitList(value)
+    fun submitData(value: List<GetWishlistResponse>?) = differ.submitList(value)
 
     interface OnClickListener{
-        fun onCLickItem (data :Product)
+        fun onCLickItem (data :GetWishlistResponse)
     }
-    inner class ViewHolder(private val binding : WishlistItemBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(data : Product, position: Int) {
+    inner class ViewHolder(private val binding : ProductItemBinding) : RecyclerView.ViewHolder(binding.root){
+        fun bind(data : GetWishlistResponse) {
             binding.apply {
-                tvMessage.text = data.description
-                tvProductName.text = data.name
-                tvHarga.text = data.basePrice.toString()
+                tvProductName.text = data.product.name
+                tvHarga.text = data.product.basePrice.toString()
                 Glide.with(binding.root)
-                    .load(data.imageUrl)
+                    .load(data.product.imageUrl)
                     .into(ivProduct)
                 root.setOnClickListener {
                     onClick.onCLickItem(data)
@@ -45,16 +44,15 @@ class WishlistAdapter(private val onClick: OnClickListener) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(WishlistItemBinding.inflate(inflater, parent, false))
+        return ViewHolder(ProductItemBinding.inflate(inflater, parent, false))
     }
     override fun onBindViewHolder(holder : ViewHolder, position : Int) {
         val data = differ.currentList[position]
         data.let {
-            holder.bind(data,position)
+            holder.bind(data)
         }
     }
 
-    override fun getItemCount(): Int {
-        return differ.currentList.size
-    }
+    override fun getItemCount(): Int =  differ.currentList.size
+
 }

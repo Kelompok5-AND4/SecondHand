@@ -2,7 +2,9 @@ package com.igdev.secondhand.ui.detailproduct
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +23,8 @@ import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
 import com.igdev.secondhand.model.detail.Category
+import com.igdev.secondhand.model.wishlist.PostWishListResponse
+import com.igdev.secondhand.model.wishlist.PostWishlistRequest
 import com.igdev.secondhand.rupiah
 import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.adapter.DetailCategoryAdapter
@@ -40,11 +44,13 @@ class DetailProductFragment : Fragment() {
     private var pending = false
     private var accepted = false
     private var decline = false
-    private lateinit var categoryAdapter : DetailCategoryAdapter
+    private lateinit var categoryAdapter: DetailCategoryAdapter
     private var token = ""
     private var imageProduct = ""
     private var productName = ""
     private var productPrice = ""
+    private var isWishlist = false
+    private var idWishlist = 1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,20 +61,27 @@ class DetailProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getToken()
+        viewModel.getToken.observe(viewLifecycleOwner) {
+            viewModel.getAllWishlist(it.token)
+            viewModel.getBuyerHistory(it.token)
+            token = it.token
+        }
+
+        setupObserverWishlist()
         val id = args.id
         val progressDialog = ProgressDialog(requireContext())
         binding.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_detailProductFragment_to_mainFragment)
+            findNavController().popBackStack()
         }
         binding.btnMenu.setOnClickListener {
 
         }
 
-        viewModel.getToken()
-        viewModel.getToken.observe(viewLifecycleOwner) {
-            viewModel.getBuyerHistory(it.token)
-            token = it.token
-        }
+
+
+
         viewModel.getBuyerHistory.observe(viewLifecycleOwner) {
             for (data in 0 until (it.data?.size ?: 0)) {
                 if (it.data?.get(data)?.productId == args.id && it.data.get(data).status == "pending") {
@@ -132,7 +145,8 @@ class DetailProductFragment : Fragment() {
                                 productPrice = detail.data?.basePrice.toString()
 
 
-                                categoryAdapter = DetailCategoryAdapter(object : DetailCategoryAdapter.OnClickListener{
+                                categoryAdapter = DetailCategoryAdapter(object :
+                                    DetailCategoryAdapter.OnClickListener {
                                     override fun onClickItem(data: Category) {
                                     }
                                 })
@@ -142,6 +156,7 @@ class DetailProductFragment : Fragment() {
                             }
                         }
                         progressDialog.dismiss()
+
                     }
                     Status.ERROR -> {
                         AlertDialog.Builder(requireContext()).setMessage("${detail.message}").show()
@@ -151,14 +166,90 @@ class DetailProductFragment : Fragment() {
             }
         }
 
-    binding.btnNego.setOnClickListener {
-        val bottomFragment = InputPenawaranFragment(
-            id,productName,productPrice,imageProduct, submit = {
-            }
-        )
-        bottomFragment.show(parentFragmentManager,"Bid Price")
+        binding.btnNego.setOnClickListener {
+            val bottomFragment = InputPenawaranFragment(
+                id, productName, productPrice, imageProduct, submit = {
+                }
+            )
+            bottomFragment.show(parentFragmentManager, "Bid Price")
+
+        }
+
 
     }
 
+    private fun setupObserverWishlist() {
+        val id = args.id
+        viewModel.getAllWishlist.observe(viewLifecycleOwner) {
+            when (it.status) {
+                Status.LOADING -> {
+
+                }
+                Status.SUCCESS -> {
+                    if (it.data.isNullOrEmpty()) {
+
+                    } else {
+                        for (idWhishlist in it.data ){
+                            if (idWhishlist.productId == args.id){
+                                idWishlist = idWhishlist.id
+                            }
+                        }
+
+                        for (data in 0 until (it.data.size ?: 0)) {
+                            if (it.data.get(data).productId == args.id) {
+                                isWishlist = true
+                            }
+                        }
+                        if (isWishlist) {
+                            binding.btnLove.setImageResource(R.drawable.ic_favorite)
+                        } else {
+                            binding.btnLove.setImageResource(R.drawable.ic_non_favorite)
+                        }
+                        binding.btnLove.setOnClickListener {
+                            val req = PostWishlistRequest(id)
+                            val wishlist = isWishlist
+                            if (wishlist) {
+                                viewModel.deleteWishlist(token, idWishlist)
+
+                            } else {
+                                viewModel.postWishlist(token, req)
+
+                            }
+                        }
+
+
+                    }
+
+                }
+                Status.ERROR -> {
+                    AlertDialog.Builder(requireContext()).setMessage(it.message).show()
+                }
+            }
+        }
+
+        viewModel.postWishlist.observe(viewLifecycleOwner) {
+            when (it.status){
+                Status.LOADING ->{
+                }
+                Status.SUCCESS ->{
+                    binding.btnLove.setImageResource(R.drawable.ic_favorite)
+                    Toast.makeText(requireContext(), "add to wishlist", Toast.LENGTH_SHORT).show()
+                }
+                Status.ERROR ->{
+
+                }
+            }
+        }
+        viewModel.deleteWishlist.observe(viewLifecycleOwner){
+            when(it.status){
+                Status.LOADING ->{}
+                Status.SUCCESS ->{
+                    binding.btnLove.setImageResource(R.drawable.ic_non_favorite)
+                    Toast.makeText(requireContext(), "delete from wishlist", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                Status.ERROR ->{}
+            }
+        }
     }
 }
