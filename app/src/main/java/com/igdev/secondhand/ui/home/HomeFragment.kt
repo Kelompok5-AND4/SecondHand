@@ -213,6 +213,13 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+        binding.swipe.setOnRefreshListener {
+            setUpPaging(
+                productPagingAdapter,
+                productLoadStateAdapter,
+                viewModels.getProducts(kategoriId)
+            )
+        }
     }
 
     private fun setUpPaging(

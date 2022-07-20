@@ -42,7 +42,7 @@ class ProductRemoteMediator(
         }
         try {
             val apiResponse = apiHelper.getProductAsBuyer(categoryId = category, page = page, itemsPerPage = state.config.pageSize)
-            val product = apiResponse.body()?.data
+            val product = apiResponse.body()
             val endOfPagination = product?.isEmpty()
             database.withTransaction {
                 // clear all tables in the database
