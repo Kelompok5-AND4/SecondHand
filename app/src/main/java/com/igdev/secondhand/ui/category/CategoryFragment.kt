@@ -1,4 +1,4 @@
-package com.igdev.secondhand.ui
+package com.igdev.secondhand.ui.category
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
@@ -13,8 +13,6 @@ import androidx.navigation.fragment.navArgs
 import com.igdev.secondhand.databinding.FragmentCategoryBinding
 import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.Status
-import com.igdev.secondhand.ui.category.CategoryBarangAdapter
-import com.igdev.secondhand.ui.category.CategoryBarangViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -55,7 +53,9 @@ class CategoryFragment : Fragment() {
                         CategoryBarangAdapter(object : CategoryBarangAdapter.OnClickListener {
                             override fun onClickItem(data: AllProductResponse) {
                                 val id = data.id
-                                val toDetail = CategoryFragmentDirections.actionCategoryFragmentToDetailProductFragment(id)
+                                val toDetail =CategoryFragmentDirections.actionCategoryFragmentToDetailProductFragment(
+                                        id
+                                    )
                                 findNavController().navigate(toDetail)
                             }
                         })

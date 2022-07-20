@@ -1,8 +1,7 @@
-package com.igdev.secondhand.ui
+package com.igdev.secondhand.ui.auth
 
 import android.app.ProgressDialog
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View

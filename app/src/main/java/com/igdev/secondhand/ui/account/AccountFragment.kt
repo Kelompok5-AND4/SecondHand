@@ -1,4 +1,4 @@
-package com.igdev.secondhand.ui
+package com.igdev.secondhand.ui.account
 
 import android.app.ProgressDialog
 import android.os.Bundle
@@ -13,11 +13,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentAccountBinding
-import com.igdev.secondhand.databinding.FragmentLoginBinding
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.local.UserLogin
+import com.igdev.secondhand.ui.MainFragment
+import com.igdev.secondhand.ui.MainFragmentDirections
 import com.igdev.secondhand.ui.viewmodel.AccountViewModel
-import com.igdev.secondhand.ui.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

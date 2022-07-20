@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/bg_biru_gradasi_dua"
-    tools:context=".ui.LoginFragment">
+    tools:context=".ui.auth.LoginFragment">
 
 
     <ImageView
