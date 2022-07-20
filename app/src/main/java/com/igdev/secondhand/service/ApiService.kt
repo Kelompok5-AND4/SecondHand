@@ -3,6 +3,7 @@ package com.igdev.secondhand.service
 import com.igdev.secondhand.model.AllProductResponse
 import com.igdev.secondhand.model.CategoryResponseItem
 import com.igdev.secondhand.model.PagingProduct.BuyerProductResponse
+import com.igdev.secondhand.model.PagingProduct.Product
 import com.igdev.secondhand.model.UpdateResponse
 import com.igdev.secondhand.model.addProduct.SellProductResponse
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
@@ -114,7 +115,7 @@ interface ApiService {
         @Query("search") searchKeyword: String? = null,
         @Query("page") page: Int=1,
         @Query("per_page") itemsPerPage: Int=4
-    ): Response<BuyerProductResponse>
+    ): Response<List<Product>>
 
     //wishlist
     @GET("buyer/wishlist")

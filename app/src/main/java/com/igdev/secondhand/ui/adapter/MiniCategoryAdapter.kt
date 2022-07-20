@@ -14,7 +14,7 @@ import com.igdev.secondhand.databinding.MiniCategoryItemBinding
 import com.igdev.secondhand.model.CategoryResponseItem
 
 class MiniCategoryAdapter(private val onClick: OnClickListener):RecyclerView.Adapter<MiniCategoryAdapter.ViewHolder>()  {
-    var index =-1
+    var index =0
     private val diffCallBack = object: DiffUtil.ItemCallback<CategoryResponseItem>(){
         override fun areItemsTheSame(
             oldItem: CategoryResponseItem,
