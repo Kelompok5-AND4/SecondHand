@@ -84,11 +84,11 @@ interface ApiService {
     @POST("seller/product")
     suspend fun postProduct(
         @Header("access_token") token: String,
-        @Part file: MultipartBody.Part,
+        @Part file: MultipartBody.Part? = null,
         @Part("name") name: RequestBody?,
         @Part("description") description: RequestBody?,
         @Part("base_price") base_price: RequestBody?,
-        @Part("category_ids") categoryIds: List<Int>,
+        @Part("category_ids") categoryIds: List<Int>? = null,
         @Part("location") location: RequestBody?,
     ): SellProductResponse
 

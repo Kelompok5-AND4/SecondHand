@@ -51,12 +51,12 @@ class Repository(
 
     suspend fun postProduct(
         token: String,
-        file : MultipartBody.Part,
-        name: RequestBody,
-        description: RequestBody,
-        base_price: RequestBody,
-        categoryIds: List<Int>,
-        location: RequestBody,
+        file : MultipartBody.Part?,
+        name: RequestBody?,
+        description: RequestBody?,
+        base_price: RequestBody?,
+        categoryIds: List<Int>?,
+        location: RequestBody?,
     ) = apiHelper.postProduct(token, file, name, description, base_price, categoryIds, location)
     //buyer history
     suspend fun getBuyerHistory(token :String) = apiHelper.getBuyerHistory(token)
@@ -72,38 +72,17 @@ class Repository(
     suspend fun insertSearchHistory(searchHistoryEntity: SearchHistoryEntity) =
         dbHelper.insertSearchHistory(searchHistoryEntity)
 
-    suspend fun clearHistory(searchHistoryEntity: SearchHistoryEntity) =
-        dbHelper.clearHistory(searchHistoryEntity)
 
-    suspend fun clearAllHistory() = dbHelper.clearAllHistory()
     suspend fun settingAccount(token: String, requestBody: SettingAccountRequest) = apiHelper.settingAccount(token,requestBody)
 
 
     // wishlist
     suspend fun getWishlist(token: String) = apiHelper.getWishlist(token)
-    suspend fun getWishlistById(token: String,id :Int) = apiHelper.getWishlistId(token, id)
     suspend fun postWishlist(token: String, request: PostWishlistRequest) = apiHelper.postWishlist(token, request)
     suspend fun deleteWishlist(token: String, id: Int) = apiHelper.deleteWishlist(token, id)
 
-    // Network Bound Resource
-    suspend fun insertAllProduct(product : List<Product>)= dbHelper.insertAllProduct(product)
-    suspend fun getProductDb()= dbHelper.getProduct()
-    suspend fun clearProduct()= dbHelper.clearProduct()
 
-    suspend fun insertAllRemoteKeys(remoteKeys : List<RemoteKeys>)= dbHelper.insertAllRemoteKeys(remoteKeys)
-    suspend fun remoteKeysProductId(productId:Int)= dbHelper.remoteKeysProductId(productId)
-    suspend fun clearRemoteKeys()= dbHelper.clearRemoteKeys()
 
-    //paging
-    suspend fun getProductAsBuyer(
-        status: String? = null,
-        categoryId: Int? = null,
-        searchKeyword: String? = null,
-    ) = apiHelper.getProductAsBuyer(
-        status,
-        categoryId,
-        searchKeyword,
-    )
     fun getProductStream(categoryId: Int? = null): Flow<PagingData<Product>> {
 
         val pagingSourceFactory = { database.productDao().getProduct() }
