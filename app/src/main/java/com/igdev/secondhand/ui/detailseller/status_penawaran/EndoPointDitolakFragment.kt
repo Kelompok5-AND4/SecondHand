@@ -10,7 +10,9 @@ import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentEndPointDiterimaBinding
 import com.igdev.secondhand.databinding.FragmentEndoPointDitolakBinding
 import com.igdev.secondhand.ui.MainFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EndoPointDitolakFragment : Fragment() {
 
 
