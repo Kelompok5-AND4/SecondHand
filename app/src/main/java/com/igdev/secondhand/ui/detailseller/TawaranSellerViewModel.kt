@@ -7,13 +7,18 @@ import androidx.lifecycle.viewModelScope
 import com.igdev.secondhand.model.Resource
 import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.detail.GetDetail
+import com.igdev.secondhand.model.sellerorder.PatchSellerOrderReq
+import com.igdev.secondhand.model.sellerorder.PatchSellerOrderResponse
+import com.igdev.secondhand.model.sellerorder.SellerOrderIdResponse
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
+import com.igdev.secondhand.model.sellerproduct.PatchSellerProductIdResponse
 import com.igdev.secondhand.model.sellerproduct.SellerProductDetail
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
@@ -51,6 +56,50 @@ class TawaranSellerViewModel @Inject constructor(private val repository: Reposit
         viewModelScope.launch {
             repository.getDatastore().collect {
                 _getToken.postValue(it)
+            }
+        }
+    }
+    private val _bidder = MutableLiveData<Resource<Response<SellerOrderIdResponse>>>()
+    val bidder: LiveData<Resource<Response<SellerOrderIdResponse>>> get() = _bidder
+
+    fun bidder(token: String,id:Int) {
+        viewModelScope.launch {
+            _bidder.postValue(Resource.loading())
+            try {
+                val response = Resource.success(repository.getSellerOrderId(token,id))
+                _bidder.postValue(response)
+            } catch (t: Throwable) {
+                _bidder.postValue(Resource.error(t.message))
+            }
+        }
+    }
+
+    private val _status = MutableLiveData<Resource<Response<PatchSellerOrderResponse>>>()
+    val status: LiveData<Resource<Response<PatchSellerOrderResponse>>> get() = _status
+
+    fun statusItem(token: String,id:Int,request: PatchSellerOrderReq) {
+        viewModelScope.launch {
+            _status.postValue(Resource.loading())
+            try {
+                val response = Resource.success(repository.patchSellerOrderId(token,id,request))
+                _status.postValue(response)
+            } catch (t: Throwable) {
+                _status.postValue(Resource.error(t.message))
+            }
+        }
+    }
+
+    private val _statusProduct = MutableLiveData<Resource<Response<PatchSellerProductIdResponse>>>()
+    val statusProduct: LiveData<Resource<Response<PatchSellerProductIdResponse>>> get() = _statusProduct
+
+    fun statusProduct(token: String,id:Int,request: PatchSellerOrderReq) {
+        viewModelScope.launch {
+            _statusProduct.postValue(Resource.loading())
+            try {
+                val response = Resource.success(repository.patchSellerProductId(token,id,request))
+                _statusProduct.postValue(response)
+            } catch (t: Throwable) {
+                _statusProduct.postValue(Resource.error(t.message))
             }
         }
     }

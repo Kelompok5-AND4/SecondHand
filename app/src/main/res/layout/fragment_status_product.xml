@@ -1,139 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_biru_gradasi_dua"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".StatusProductFragment">
+    tools:context=".ui.detailseller.status_penawaran.StatusProductFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_header"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="48dp"
-                android:layout_marginHorizontal="16dp"
-                app:cardCornerRadius="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_back"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:icon="@drawable/ic_baseline_keyboard_arrow_left"
-                        style="@style/Widget.AppCompat.ActionButton"
-                        app:iconTint="@color/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/tv_judul"
-                        android:text="@string/detail_product"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/btn_back"
-                        app:layout_constraintEnd_toStartOf="@id/btn_edit"
-                        android:textSize="18sp"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_edit"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:icon="@drawable/ic_edit"
-                        style="@style/Widget.AppCompat.ActionButton"
-                        app:iconTint="@color/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <ImageView
-                android:id="@+id/foto_produk"
-                android:layout_width="match_parent"
-                android:layout_height="394dp"
-                android:contentDescription="@string/foto_produk"
-                android:scaleType="centerCrop"
-                android:src="@drawable/default_detail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/bg_harga"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="-40dp"
-                android:background="@drawable/bg_rounded_birusatu"
-                android:backgroundTint="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/foto_produk" />
-
-            <TextView
-                android:id="@+id/tv_nama_product"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/nama_produk"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@id/bg_harga"
-                app:layout_constraintTop_toTopOf="@id/bg_harga" />
-
-            <TextView
-                android:id="@+id/tv_text_deal_harga"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-4dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Deal harga :"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@id/tv_nama_product"
-                app:layout_constraintTop_toBottomOf="@id/tv_nama_product" />
-
-            <TextView
-                android:id="@+id/tv_harga_tawaran"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/harga"
-                android:layout_marginStart="6dp"
-                android:textSize="18sp"
-                app:layout_constraintTop_toTopOf="@id/tv_text_deal_harga"
-                app:layout_constraintBottom_toBottomOf="@id/tv_text_deal_harga"
-                app:layout_constraintStart_toEndOf="@id/tv_text_deal_harga"
-                app:layout_constraintTop_toBottomOf="@id/tv_nama_product" />
-
-            <TextView
-                android:id="@+id/tv_harga"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/harga"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@id/tv_text_deal_harga"
-                app:layout_constraintTop_toBottomOf="@id/tv_text_deal_harga" />
-
-
-
+            android:layout_height="match_parent">
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_seller"
                 android:layout_marginTop="24dp"
@@ -143,9 +19,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@id/cv_transaksi"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/bg_harga">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:paddingHorizontal="16dp"
@@ -220,6 +97,7 @@
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/btn_konfirmasi"
                 app:layout_constraintTop_toBottomOf="@id/cv_seller">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -249,6 +127,7 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_status"/>
 
                     <RadioGroup
+                        android:id="@+id/radio_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -256,18 +135,15 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_desc">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
                             <RadioButton
                                 android:id="@+id/radio_terima"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Berhasil Terjual"
+                                android:clickable="true"
+                                android:buttonTint="@color/biru_tua"
+                                android:focusable="true"
                                 android:fontFamily="@font/poppins_bold"
-                                android:onClick="onRadioButtonClicked"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -287,7 +163,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Batalkan Transaksi"
-                                android:onClick="onRadioButtonClicked"
+                                android:clickable="true"
+                                android:buttonTint="@color/biru_tua"
+                                android:focusable="true"
                                 android:layout_marginTop="6dp"
                                 android:fontFamily="@font/poppins_bold"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -305,8 +183,6 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/radio_tolak"
                                 app:layout_constraintBottom_toBottomOf="parent"/>
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </RadioGroup>
 
@@ -336,4 +212,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

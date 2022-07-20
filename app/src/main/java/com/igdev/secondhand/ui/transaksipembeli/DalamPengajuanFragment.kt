@@ -80,12 +80,7 @@ class DalamPengajuanFragment : Fragment() {
                             val buyerAdapter =
                                 BuyerAdapter(object : BuyerAdapter.OnClickListener {
                                     override fun onClickItem(data: BuyerOrderResponse) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Notif Id = ${data.id}",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                        val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(data.productId)
+                                        val direct = DalamPengajuanFragmentDirections.actionDalamPengajuanFragmentToDetailProductFragment(data.productId)
                                         findNavController().navigate(direct)
                                     }
                                 })

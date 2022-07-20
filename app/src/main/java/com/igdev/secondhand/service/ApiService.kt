@@ -16,7 +16,11 @@ import com.igdev.secondhand.model.login.LoginResponse
 import com.igdev.secondhand.model.notification.NotifResponseItem
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.register.RegisterResponse
+import com.igdev.secondhand.model.sellerorder.PatchSellerOrderReq
+import com.igdev.secondhand.model.sellerorder.PatchSellerOrderResponse
+import com.igdev.secondhand.model.sellerorder.SellerOrderIdResponse
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
+import com.igdev.secondhand.model.sellerproduct.PatchSellerProductIdResponse
 import com.igdev.secondhand.model.sellerproduct.SellerProductDetail
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
@@ -140,4 +144,16 @@ interface ApiService {
         @Header("access_token") token: String,
         @Path ("id") id: Int
     ) : DeleteWishlistResponse
+
+    @PATCH("seller/order/{id}")
+    suspend fun patchSellerOrderId(@Header("access_token")token: String, @Path("id")id:Int, @Body request: PatchSellerOrderReq): Response<PatchSellerOrderResponse>
+
+    @DELETE("seller/product/{id}")
+    suspend fun deleteSellerProductId(@Header("access_token")token: String,@Path("id")id:Int): Response<Unit>
+
+    @GET("seller/order/{id}")
+    suspend fun getSellerOrderId(@Header("access_token")token: String,@Path("id")id:Int): Response<SellerOrderIdResponse>
+
+    @PATCH("seller/product/{id}")
+    suspend fun statusProduct(@Header("access_token")token:String,@Path("id")id:Int, @Body request: PatchSellerOrderReq): Response<PatchSellerProductIdResponse>
 }

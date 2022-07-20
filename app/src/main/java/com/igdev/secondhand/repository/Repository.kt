@@ -14,6 +14,7 @@ import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
+import com.igdev.secondhand.model.sellerorder.PatchSellerOrderReq
 import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
 import com.igdev.secondhand.model.wishlist.PostWishlistRequest
 import com.igdev.secondhand.service.ApiHelper
@@ -115,7 +116,12 @@ class Repository(
         ).flow
 
     }
+    suspend fun patchSellerOrderId(token: String,id:Int, request: PatchSellerOrderReq) = apiHelper.patchSellerOrderId(token,id, request)
+    suspend fun patchSellerProductId(token: String,id:Int, request: PatchSellerOrderReq) = apiHelper.patchSellerProductId(token,id, request)
+    suspend fun deleteSellerProductId(token: String,id: Int) = apiHelper.deleteSellerProduct(token,id)
+    suspend fun getSellerOrderId(token: String,id:Int) = apiHelper.getSellerOrderId(token,id)
+
     companion object{
-        const val PAGE_SIZE = 4
+        const val PAGE_SIZE = 20
     }
 }

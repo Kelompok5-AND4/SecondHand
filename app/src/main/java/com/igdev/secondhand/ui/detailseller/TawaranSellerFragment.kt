@@ -40,7 +40,6 @@ class TawaranSellerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTawaranSellerBinding.inflate(inflater,container,false)
-        // Inflate the layout for this fragment
         return binding.root
     }
 
@@ -80,8 +79,11 @@ class TawaranSellerFragment : Fragment() {
             val penawarAdapter =
                 PenawarAdapter(object : PenawarAdapter.OnClickListener {
                     override fun onClickItem(data: SellerOrderResponseItem) {
+                        val direct = TawaranSellerFragmentDirections.actionTawaranSellerFragmentToPenawaranBuyerToSellerFragment(data.id)
+                        findNavController().navigate(direct)
                     }
                 })
+            listPenawar.clear()
             if (it.status == Status.SUCCESS){
                 for (res in it.data!!){
                     if (res.productId == id){
