@@ -56,16 +56,16 @@ class NegoAdapter(
         @SuppressLint("SetTextI18n")
         fun bind(data: SellerOrderResponseItem){
             binding.apply {
-                tvMessage.visibility = View.GONE
                 tvProductName.text = data.productName
                 tvHarga.text = rupiah(data.basePrice.toString().toInt())
                 Glide.with(binding.root)
-                    .load(data.imageProduct ?: R.drawable.default_rv)
+                    .load(data.product.imageUrl ?: R.drawable.default_rv)
                     .centerCrop()
                     .into(ivProduct)
                 root.setOnClickListener{
                     onItemClick.onClickItem(data)
                 }
+
             }
         }
     }

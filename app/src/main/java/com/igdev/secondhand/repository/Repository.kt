@@ -100,6 +100,17 @@ class Repository(
     suspend fun deleteSellerProductId(token: String,id: Int) = apiHelper.deleteSellerProduct(token,id)
     suspend fun getSellerOrderId(token: String,id:Int) = apiHelper.getSellerOrderId(token,id)
 
+    suspend fun editProduct(
+        token: String,
+        id: Int,
+        file: MultipartBody.Part?,
+        name: RequestBody?,
+        description: RequestBody?,
+        base_price: RequestBody?,
+        categoryIds: List<Int>?,
+        location: RequestBody?,
+    ) = apiHelper.editProduct(token,id, file, name, description, base_price, categoryIds, location)
+
     companion object{
         const val PAGE_SIZE = 20
     }

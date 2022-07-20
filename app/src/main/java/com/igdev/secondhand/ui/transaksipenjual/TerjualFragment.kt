@@ -74,7 +74,7 @@ class TerjualFragment : Fragment() {
                         }
                         else {
                             val filteredData = it.data.filter {
-                                it.status == "accepted"
+                                it.product.status == "seller"
                             }
                             negoAdapter.submitData(filteredData)
                             binding.rvKategori.adapter = negoAdapter

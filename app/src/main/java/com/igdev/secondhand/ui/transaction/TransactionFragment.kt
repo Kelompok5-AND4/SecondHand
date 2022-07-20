@@ -230,7 +230,7 @@ class TransactionFragment : Fragment() {
                         }
                         else {
                             val filteredData = it.data.filter {
-                                it.status == "accepted"
+                                it.product.status == "seller"
                             }
                             binding.tvTotalTerjual.text = "${filteredData.size}"
                         }
