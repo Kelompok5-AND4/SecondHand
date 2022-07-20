@@ -1,4 +1,4 @@
-package com.igdev.secondhand.ui
+package com.igdev.secondhand.ui.auth
 
 import android.app.ProgressDialog
 import android.os.Bundle

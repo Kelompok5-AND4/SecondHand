@@ -1,6 +1,5 @@
-package com.igdev.secondhand.ui
+package com.igdev.secondhand.ui.notif
 
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +12,7 @@ import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentNotificationBinding
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.notification.NotifResponseItem
+import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.adapter.NotificationAdapter
 import com.igdev.secondhand.ui.viewmodel.NotifViewModel
 import dagger.hilt.android.AndroidEntryPoint

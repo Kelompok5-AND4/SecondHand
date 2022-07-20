@@ -1,4 +1,4 @@
-package com.igdev.secondhand
+package com.igdev.secondhand.ui.lelang
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -8,12 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.igdev.secondhand.databinding.FragmentHomeBinding
 import com.igdev.secondhand.databinding.FragmentLelangBinding
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
-import com.igdev.secondhand.ui.MainFragmentDirections
 import com.igdev.secondhand.ui.transaction.SellerAdapter
 import com.igdev.secondhand.ui.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,7 +48,9 @@ class LelangFragment : Fragment() {
                                 SellerAdapter(object : SellerAdapter.OnClickListener {
                                     override fun onClickItem(data: SellerProductResponseItem) {
                                         val id = data.id
-                                        val toDetail = LelangFragmentDirections.actionLelangFragmentToDetailProductFragment(id)
+                                        val toDetail =LelangFragmentDirections.actionLelangFragmentToDetailProductFragment(
+                                                id
+                                            )
                                         findNavController().navigate(toDetail)
                                     }
                                 })

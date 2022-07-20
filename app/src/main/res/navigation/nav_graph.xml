@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.igdev.secondhand.ui.LoginFragment"
+        android:name="com.igdev.secondhand.ui.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.igdev.secondhand.ui.RegisterFragment"
+        android:name="com.igdev.secondhand.ui.auth.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/lelangFragment"
-        android:name="com.igdev.secondhand.LelangFragment"
+        android:name="com.igdev.secondhand.ui.lelang.LelangFragment"
         android:label="fragment_lelang"
         tools:layout="@layout/fragment_lelang" >
         <action
@@ -210,7 +210,7 @@
     </fragment>
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.igdev.secondhand.StartFragment"
+        android:name="com.igdev.secondhand.ui.auth.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
@@ -287,7 +287,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.igdev.secondhand.ui.CategoryFragment"
+        android:name="com.igdev.secondhand.ui.category.CategoryFragment"
         android:label="CategoryFragment" >
         <argument
             android:name="id"
