@@ -63,9 +63,7 @@ class PenawarAdapter(
                     .load( R.drawable.default_rv)
                     .centerCrop()
                     .into(ivFotoProfile)
-                root.setOnClickListener{
-                    onItemClick.onClickItem(data)
-                }
+                btnExtendSeller.setOnClickListener { onItemClick.onClickItem(data) }
             }
         }
     }

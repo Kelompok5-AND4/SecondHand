@@ -224,32 +224,56 @@
         android:id="@+id/dalamPengajuanFragment"
         android:name="com.igdev.secondhand.ui.transaksipembeli.DalamPengajuanFragment"
         android:label="fragment_dalam_pengajuan"
-        tools:layout="@layout/fragment_dalam_pengajuan" />
+        tools:layout="@layout/fragment_dalam_pengajuan" >
+        <action
+            android:id="@+id/action_dalamPengajuanFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pengajuanDiterimaFragment"
         android:name="com.igdev.secondhand.ui.transaksipembeli.PengajuanDiterimaFragment"
         android:label="fragment_pengajuan_diterima"
-        tools:layout="@layout/fragment_pengajuan_diterima" />
+        tools:layout="@layout/fragment_pengajuan_diterima" >
+        <action
+            android:id="@+id/action_pengajuanDiterimaFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pengajuanDitolakFragment"
         android:name="com.igdev.secondhand.ui.transaksipembeli.PengajuanDitolakFragment"
         android:label="fragment_pengajuan_ditolak"
-        tools:layout="@layout/fragment_pengajuan_ditolak" />
+        tools:layout="@layout/fragment_pengajuan_ditolak" >
+        <action
+            android:id="@+id/action_pengajuanDitolakFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/semuaPenjualanFragment"
         android:name="com.igdev.secondhand.ui.transaksipenjual.SemuaPenjualanFragment"
         android:label="fragment_semua_penjualan"
-        tools:layout="@layout/fragment_semua_penjualan" />
+        tools:layout="@layout/fragment_semua_penjualan" >
+        <action
+            android:id="@+id/action_semuaPenjualanFragment_to_tawaranSellerFragment"
+            app:destination="@id/tawaranSellerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sedangDitawarFragment"
         android:name="com.igdev.secondhand.ui.transaksipenjual.SedangDitawarFragment"
         android:label="fragment_sedang_ditawar"
-        tools:layout="@layout/fragment_sedang_ditawar" />
+        tools:layout="@layout/fragment_sedang_ditawar" >
+        <action
+            android:id="@+id/action_sedangDitawarFragment_to_penawaranBuyerToSellerFragment"
+            app:destination="@id/penawaranBuyerToSellerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/transaksiSemuaPembelianFragment"
         android:name="com.igdev.secondhand.ui.transaksipembeli.TransaksiSemuaPembelianFragment"
         android:label="fragment_semua_pembelian"
-        tools:layout="@layout/fragment_semua_pembelian" />
+        tools:layout="@layout/fragment_semua_pembelian" >
+        <action
+            android:id="@+id/action_transaksiSemuaPembelianFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/penawaranTerkirimFragment"
         android:name="com.igdev.secondhand.ui.transaksipembeli.PenawaranTerkirimFragment"
@@ -284,8 +308,8 @@
             android:name="id"
             app:argType="integer" />
         <action
-            android:id="@+id/action_tawaranSellerFragment_to_penawaran_Buyer_To_Seller_Fragment"
-            app:destination="@id/penawaran_Buyer_To_Seller_Fragment" />
+            android:id="@+id/action_tawaranSellerFragment_to_penawaranBuyerToSellerFragment"
+            app:destination="@id/penawaranBuyerToSellerFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
@@ -337,15 +361,6 @@
         android:label="fragment_terjual"
         tools:layout="@layout/fragment_terjual" />
     <fragment
-        android:id="@+id/penawaran_Buyer_To_Seller_Fragment"
-        android:name="com.igdev.secondhand.Penawaran_Buyer_To_Seller_Fragment"
-        android:label="fragment_penawaran__buyer__to__seller_"
-        tools:layout="@layout/fragment_penawaran__buyer__to__seller_" >
-        <action
-            android:id="@+id/action_penawaran_Buyer_To_Seller_Fragment_to_penawaranDiPorsesSellerFragment"
-            app:destination="@id/penawaranDiPorsesSellerFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/penawaranDiPorsesSellerFragment"
         android:name="com.igdev.secondhand.PenawaranDiPorsesSellerFragment"
         android:label="fragment_penawaran_di_porses_seller"
@@ -375,5 +390,17 @@
         <action
             android:id="@+id/action_statusProductFragment_to_endoPointDitolakFragment"
             app:destination="@id/endoPointDitolakFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/penawaranBuyerToSellerFragment"
+        android:name="com.igdev.secondhand.ui.detailseller.status_penawaran.PenawaranBuyerToSellerFragment"
+        android:label="fragment_penawaran__buyer__to__seller_"
+        tools:layout="@layout/fragment_penawaran__buyer__to__seller_" >
+        <action
+            android:id="@+id/action_penawaranBuyerToSellerFragment_to_penawaranDiPorsesSellerFragment"
+            app:destination="@id/penawaranDiPorsesSellerFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>

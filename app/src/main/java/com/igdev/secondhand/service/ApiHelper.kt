@@ -3,6 +3,7 @@ package com.igdev.secondhand.service
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
+import com.igdev.secondhand.model.sellerorder.PatchSellerOrderReq
 import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
 import com.igdev.secondhand.model.wishlist.PostWishlistRequest
 import okhttp3.MultipartBody
@@ -64,4 +65,10 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
         page,
         itemsPerPage
     )
+    //seller order patch and delete
+    suspend fun patchSellerOrderId(token: String,id:Int, request: PatchSellerOrderReq) = apiService.patchSellerOrderId(token,id, request)
+
+    suspend fun deleteSellerProduct(token: String,id:Int) = apiService.deleteSellerProductId(token,id)
+    suspend fun getSellerOrderId(token: String,id:Int) = apiService.getSellerOrderId(token,id)
+
 }

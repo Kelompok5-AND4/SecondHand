@@ -84,12 +84,7 @@ class TransaksiSemuaPembelianFragment : Fragment() {
                             val buyerAdapter =
                                 BuyerAdapter(object : BuyerAdapter.OnClickListener {
                                     override fun onClickItem(data: BuyerOrderResponse) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Notif Id = ${data.id}",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                        val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(data.productId)
+                                        val direct = TransaksiSemuaPembelianFragmentDirections.actionTransaksiSemuaPembelianFragmentToDetailProductFragment(data.productId)
                                         findNavController().navigate(direct)
                                     }
                                 })

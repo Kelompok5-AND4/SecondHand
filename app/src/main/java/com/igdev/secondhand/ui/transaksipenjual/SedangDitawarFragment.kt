@@ -18,6 +18,7 @@ import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
 import com.igdev.secondhand.model.local.UserLogin
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
+import com.igdev.secondhand.ui.MainFragmentDirections
 import com.igdev.secondhand.ui.transaction.SellerAdapter
 import com.igdev.secondhand.ui.transaction.TransactionViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,11 +57,8 @@ class SedangDitawarFragment : Fragment() {
         val negoAdapter =
             NegoAdapter(object : NegoAdapter.OnClickListener {
                 override fun onClickItem(data: SellerOrderResponseItem) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Notif Id = ${data.id}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    val direct = SedangDitawarFragmentDirections.actionSedangDitawarFragmentToPenawaranBuyerToSellerFragment(data.id)
+                    findNavController().navigate(direct)
                 }
             })
         val progressDialog = ProgressDialog(requireContext())
