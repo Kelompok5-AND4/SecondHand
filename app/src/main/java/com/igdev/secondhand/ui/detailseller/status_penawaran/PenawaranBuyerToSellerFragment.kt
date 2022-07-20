@@ -1,6 +1,8 @@
 package com.igdev.secondhand.ui.detailseller.status_penawaran
 
+import android.content.Intent
 import android.graphics.Paint
+import android.net.Uri
 import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -33,6 +35,9 @@ class PenawaranBuyerToSellerFragment : Fragment() {
     private var orderId: Int? = null
     private var status: String? = null
     private var token = ""
+    private var phoneNumber = ""
+    private var buyerName = ""
+
 
 
     override fun onCreateView(
@@ -69,11 +74,13 @@ class PenawaranBuyerToSellerFragment : Fragment() {
                     binding.tvNamaProduct.text = it.data?.body()?.product?.name.toString()
                     binding.tvHarga.text = it.data?.body()?.basePrice.toString()
                     binding.tvHargaTawaran.text = it.data?.body()?.price.toString()
+                    phoneNumber = it.data?.body()?.user?.phoneNumber.toString()
                     if (it.data?.body()?.status == "accepted"){
                         binding.btnGroupPending.visibility = View.GONE
                         binding.btnGroupAcc.visibility = View.VISIBLE
                     }
-                    val buyerName = it.data?.body()?.user?.fullName.toString()
+                    val buyer = it.data?.body()?.user?.fullName.toString()
+                    buyerName = buyer
                     val city =it.data?.body()?.user?.city.toString()
                     val productId = it.data?.body()?.productId.toString().toInt()
                     when (it.data?.body()?.status) {
@@ -89,7 +96,7 @@ class PenawaranBuyerToSellerFragment : Fragment() {
                     }
                     binding.btnStatus.setOnClickListener {
                         val bottomFragment = StatusProductFragment(
-                            productId,token,buyerName , city,submit = {req->
+                            productId,token,buyer , city,submit = {req->
                                 viewModel.statusProduct(token,productId,PatchSellerOrderReq(req))
                                 if (req == "seller"){
                                     Toast.makeText(requireContext(),"Produk Berhasil Terjual",Toast.LENGTH_SHORT).show()
@@ -139,8 +146,31 @@ class PenawaranBuyerToSellerFragment : Fragment() {
             status="declined"
         }
         binding.btnHubungi.setOnClickListener {
-
+            val nomor = number(phoneNumber)
+            val text = "Halo $buyerName,Terimakasih Telah Menawar barang yang saya jual, untuk lebih jelasnya apakah ingin lewat chat atau ketemu langsung?"
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(
+                        "https://api.whatsapp.com/send?phone=$nomor&text=$text"
+                    )
+                )
+            )
         }
-
+    }
+    private fun number(nomorPembeli:String): String {
+        return when {
+            nomorPembeli.take(1) == "0" -> {
+                var number = nomorPembeli.drop(1)
+                number = "62$number"
+                number
+            }
+            nomorPembeli.take(2) == "62" -> {
+                nomorPembeli
+            }
+            else -> {
+                "62$nomorPembeli"
+            }
+        }
     }
 }
