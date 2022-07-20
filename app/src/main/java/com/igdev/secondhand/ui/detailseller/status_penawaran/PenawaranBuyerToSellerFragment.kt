@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -58,8 +59,8 @@ class PenawaranBuyerToSellerFragment : Fragment() {
                 Status.SUCCESS -> {
                     orderId = it.data?.body()?.id.toString().toInt()
                     status = it.data?.body()?.status.toString()
-                    binding.tvNamaPembeli.text = it.data?.body()?.product?.user?.fullName.toString()
-                    binding.tvLokasi.text = it.data?.body()?.product?.user?.city.toString()
+                    binding.tvNamaPembeli.text = it.data?.body()?.user?.fullName.toString()
+                    binding.tvLokasi.text = it.data?.body()?.user?.city.toString()
                     Glide.with(this)
                         .load(it.data?.body()?.product?.imageUrl)
                         .centerCrop()
@@ -72,6 +73,9 @@ class PenawaranBuyerToSellerFragment : Fragment() {
                         binding.btnGroupPending.visibility = View.GONE
                         binding.btnGroupAcc.visibility = View.VISIBLE
                     }
+                    val buyerName = it.data?.body()?.user?.fullName.toString()
+                    val city =it.data?.body()?.user?.city.toString()
+                    val productId = it.data?.body()?.productId.toString().toInt()
                     when (it.data?.body()?.status) {
                         "declined" -> {
                             binding.tvHargaTawaran.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
@@ -83,7 +87,21 @@ class PenawaranBuyerToSellerFragment : Fragment() {
                         }
 
                     }
-
+                    binding.btnStatus.setOnClickListener {
+                        val bottomFragment = StatusProductFragment(
+                            productId,token,buyerName , city,submit = {req->
+                                viewModel.statusProduct(token,productId,PatchSellerOrderReq(req))
+                                if (req == "seller"){
+                                    Toast.makeText(requireContext(),"Produk Berhasil Terjual",Toast.LENGTH_SHORT).show()
+                                    findNavController().navigate(R.id.action_penawaranBuyerToSellerFragment_to_endPointDiterimaFragment)
+                                }else{
+                                    Toast.makeText(requireContext(),"Penawaran Telah Ditolak",Toast.LENGTH_SHORT).show()
+                                    findNavController().navigate(R.id.action_penawaranBuyerToSellerFragment_to_endoPointDitolakFragment)
+                                }
+                            }
+                        )
+                        bottomFragment.show(parentFragmentManager, "Bid Price")
+                    }
                 }
                 Status.ERROR -> {
                     Toast.makeText(requireContext(), "Unknown Error", Toast.LENGTH_SHORT).show()
@@ -120,5 +138,9 @@ class PenawaranBuyerToSellerFragment : Fragment() {
             viewModel.statusItem(token,idOrder, PatchSellerOrderReq(status = "accepted"))
             status="declined"
         }
+        binding.btnHubungi.setOnClickListener {
+
+        }
+
     }
 }

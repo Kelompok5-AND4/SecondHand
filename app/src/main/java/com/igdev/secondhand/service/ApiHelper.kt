@@ -67,6 +67,7 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     )
     //seller order patch and delete
     suspend fun patchSellerOrderId(token: String,id:Int, request: PatchSellerOrderReq) = apiService.patchSellerOrderId(token,id, request)
+    suspend fun patchSellerProductId(token: String,id:Int, request: PatchSellerOrderReq) = apiService.statusProduct(token,id, request)
 
     suspend fun deleteSellerProduct(token: String,id:Int) = apiService.deleteSellerProductId(token,id)
     suspend fun getSellerOrderId(token: String,id:Int) = apiService.getSellerOrderId(token,id)

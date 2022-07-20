@@ -20,6 +20,7 @@ import com.igdev.secondhand.model.sellerorder.PatchSellerOrderReq
 import com.igdev.secondhand.model.sellerorder.PatchSellerOrderResponse
 import com.igdev.secondhand.model.sellerorder.SellerOrderIdResponse
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
+import com.igdev.secondhand.model.sellerproduct.PatchSellerProductIdResponse
 import com.igdev.secondhand.model.sellerproduct.SellerProductDetail
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
@@ -152,4 +153,7 @@ interface ApiService {
 
     @GET("seller/order/{id}")
     suspend fun getSellerOrderId(@Header("access_token")token: String,@Path("id")id:Int): Response<SellerOrderIdResponse>
+
+    @PATCH("seller/product/{id}")
+    suspend fun statusProduct(@Header("access_token")token:String,@Path("id")id:Int, @Body request: PatchSellerOrderReq): Response<PatchSellerProductIdResponse>
 }

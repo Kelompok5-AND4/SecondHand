@@ -11,6 +11,7 @@ import com.igdev.secondhand.model.sellerorder.PatchSellerOrderReq
 import com.igdev.secondhand.model.sellerorder.PatchSellerOrderResponse
 import com.igdev.secondhand.model.sellerorder.SellerOrderIdResponse
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
+import com.igdev.secondhand.model.sellerproduct.PatchSellerProductIdResponse
 import com.igdev.secondhand.model.sellerproduct.SellerProductDetail
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.repository.Repository
@@ -84,6 +85,21 @@ class TawaranSellerViewModel @Inject constructor(private val repository: Reposit
                 _status.postValue(response)
             } catch (t: Throwable) {
                 _status.postValue(Resource.error(t.message))
+            }
+        }
+    }
+
+    private val _statusProduct = MutableLiveData<Resource<Response<PatchSellerProductIdResponse>>>()
+    val statusProduct: LiveData<Resource<Response<PatchSellerProductIdResponse>>> get() = _statusProduct
+
+    fun statusProduct(token: String,id:Int,request: PatchSellerOrderReq) {
+        viewModelScope.launch {
+            _statusProduct.postValue(Resource.loading())
+            try {
+                val response = Resource.success(repository.patchSellerProductId(token,id,request))
+                _statusProduct.postValue(response)
+            } catch (t: Throwable) {
+                _statusProduct.postValue(Resource.error(t.message))
             }
         }
     }

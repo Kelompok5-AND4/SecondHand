@@ -309,7 +309,9 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_tawaranSellerFragment_to_penawaranBuyerToSellerFragment"
-            app:destination="@id/penawaranBuyerToSellerFragment" />
+            app:destination="@id/penawaranBuyerToSellerFragment"
+            app:popUpTo="@id/tawaranSellerFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
@@ -361,46 +363,44 @@
         android:label="fragment_terjual"
         tools:layout="@layout/fragment_terjual" />
     <fragment
-        android:id="@+id/penawaranDiPorsesSellerFragment"
-        android:name="com.igdev.secondhand.PenawaranDiPorsesSellerFragment"
-        android:label="fragment_penawaran_di_porses_seller"
-        tools:layout="@layout/fragment_penawaran_di_porses_seller" >
+        android:id="@+id/endPointDiterimaFragment"
+        android:name="com.igdev.secondhand.ui.detailseller.status_penawaran.EndPointDiterimaFragment"
+        android:label="fragment_end_point_diterima"
+        tools:layout="@layout/fragment_end_point_diterima" >
         <action
-            android:id="@+id/action_penawaranDiPorsesSellerFragment_to_statusProductFragment"
-            app:destination="@id/statusProductFragment" />
+            android:id="@+id/action_endPointDiterimaFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/endPointDiterimaFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/endPointDiterimaFragment"
-        android:name="com.igdev.secondhand.EndPointDiterimaFragment"
-        android:label="fragment_end_point_diterima"
-        tools:layout="@layout/fragment_end_point_diterima" />
-    <fragment
         android:id="@+id/endoPointDitolakFragment"
-        android:name="com.igdev.secondhand.EndoPointDitolakFragment"
+        android:name="com.igdev.secondhand.ui.detailseller.status_penawaran.EndoPointDitolakFragment"
         android:label="fragment_endo_point_ditolak"
-        tools:layout="@layout/fragment_endo_point_ditolak" />
-    <fragment
-        android:id="@+id/statusProductFragment"
-        android:name="com.igdev.secondhand.StatusProductFragment"
-        android:label="fragment_status_product"
-        tools:layout="@layout/fragment_status_product" >
+        tools:layout="@layout/fragment_endo_point_ditolak" >
         <action
-            android:id="@+id/action_statusProductFragment_to_endPointDiterimaFragment"
-            app:destination="@id/endPointDiterimaFragment" />
-        <action
-            android:id="@+id/action_statusProductFragment_to_endoPointDitolakFragment"
-            app:destination="@id/endoPointDitolakFragment" />
+            android:id="@+id/action_endoPointDitolakFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/endoPointDitolakFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/penawaranBuyerToSellerFragment"
         android:name="com.igdev.secondhand.ui.detailseller.status_penawaran.PenawaranBuyerToSellerFragment"
         android:label="fragment_penawaran__buyer__to__seller_"
         tools:layout="@layout/fragment_penawaran__buyer__to__seller_" >
-        <action
-            android:id="@+id/action_penawaranBuyerToSellerFragment_to_penawaranDiPorsesSellerFragment"
-            app:destination="@id/penawaranDiPorsesSellerFragment" />
         <argument
             android:name="id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_penawaranBuyerToSellerFragment_to_endPointDiterimaFragment"
+            app:destination="@id/endPointDiterimaFragment"
+            app:popUpTo="@id/penawaranBuyerToSellerFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_penawaranBuyerToSellerFragment_to_endoPointDitolakFragment"
+            app:destination="@id/endoPointDitolakFragment"
+            app:popUpTo="@id/penawaranBuyerToSellerFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
