@@ -51,6 +51,10 @@ class TawaranSellerFragment : Fragment() {
             viewModel.getSellerOrder(it.token)
             viewModel.getDetail(it.token,id)
         }
+        binding.btnEdit.setOnClickListener {
+            val direct = TawaranSellerFragmentDirections.actionTawaranSellerFragmentToEditProductFragment(id)
+            findNavController().navigate(direct)
+        }
         val progressDialog = ProgressDialog(requireContext())
         viewModel.detail.observe(viewLifecycleOwner){detail ->
             when (detail.status) {

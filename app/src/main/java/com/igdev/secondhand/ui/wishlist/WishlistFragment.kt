@@ -16,7 +16,6 @@ import com.igdev.secondhand.model.Resource
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.wishlist.GetWishlistResponse
 import com.igdev.secondhand.model.wishlist.Product
-import com.igdev.secondhand.ui.CategoryFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 
 

@@ -72,4 +72,14 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
     suspend fun deleteSellerProduct(token: String,id:Int) = apiService.deleteSellerProductId(token,id)
     suspend fun getSellerOrderId(token: String,id:Int) = apiService.getSellerOrderId(token,id)
 
+    suspend fun editProduct(
+        token: String,
+        id: Int,
+        file: MultipartBody.Part?,
+        name: RequestBody?,
+        description: RequestBody?,
+        base_price: RequestBody?,
+        categoryIds: List<Int>?,
+        location: RequestBody?,
+    ) = apiService.editProduct(token,id, file, name, description, base_price, categoryIds, location)
 }

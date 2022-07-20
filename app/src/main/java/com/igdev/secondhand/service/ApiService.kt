@@ -156,4 +156,18 @@ interface ApiService {
 
     @PATCH("seller/product/{id}")
     suspend fun statusProduct(@Header("access_token")token:String,@Path("id")id:Int, @Body request: PatchSellerOrderReq): Response<PatchSellerProductIdResponse>
+
+    //Seller Add Product
+    @Multipart
+    @PUT("seller/product/{id}")
+    suspend fun editProduct(
+        @Header("access_token") token: String,
+        @Path("id")id: Int,
+        @Part file: MultipartBody.Part? = null,
+        @Part("name") name: RequestBody?,
+        @Part("description") description: RequestBody?,
+        @Part("base_price") base_price: RequestBody?,
+        @Part("category_ids") categoryIds: List<Int>? = null,
+        @Part("location") location: RequestBody?,
+    ): SellProductResponse
 }
