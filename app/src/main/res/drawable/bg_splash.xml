@@ -1,12 +1,15 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:tools="http://schemas.android.com/tools"
     android:width="360dp"
     android:height="462dp"
     android:viewportWidth="360"
-    android:viewportHeight="462">
+    android:viewportHeight="462"
+    tools:ignore="VectorPath,VectorRaster">
   <group>
     <clip-path
-        android:pathData="M0,0h360v462h-360z"/>
+        android:pathData="M0,0h360v462h-360z"
+        tools:ignore="VectorRaster" />
     <path
         android:pathData="M-21.75,-146.2C-16.59,-146.2 -12.4,-142.02 -12.4,-136.85V-80.57C-12.4,-75.41 -16.59,-71.22 -21.75,-71.22H-25.76C-28.71,-71.22 -31.11,-73.62 -31.11,-76.57V-83.22C-31.11,-86.39 -36.05,-88.37 -38.87,-86.93C-42.08,-85.32 -45.65,-84.52 -49.59,-84.52C-54.25,-84.52 -58.37,-85.54 -61.95,-87.58C-65.52,-89.7 -68.29,-92.72 -70.26,-96.66C-72.23,-100.6 -73.21,-105.23 -73.21,-110.55V-136.91C-73.21,-142.04 -69.05,-146.2 -63.92,-146.2C-58.78,-146.2 -54.62,-142.04 -54.62,-136.91V-113.07C-54.62,-108.98 -53.56,-105.81 -51.45,-103.55C-49.33,-101.29 -46.49,-100.16 -42.92,-100.16C-39.27,-100.16 -36.39,-101.29 -34.28,-103.55C-32.16,-105.81 -31.11,-108.98 -31.11,-113.07V-136.85C-31.11,-142.02 -26.92,-146.2 -21.75,-146.2Z"
         android:fillAlpha="0.08">

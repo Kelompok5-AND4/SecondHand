@@ -12,6 +12,7 @@ import com.igdev.secondhand.datastore.DataStore
 import com.igdev.secondhand.model.PagingProduct.Product
 import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.detail.PostOrderReq
+import com.igdev.secondhand.model.detail.PutOrderReq
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.sellerorder.PatchSellerOrderReq
@@ -110,6 +111,9 @@ class Repository(
         categoryIds: List<Int>?,
         location: RequestBody?,
     ) = apiHelper.editProduct(token,id, file, name, description, base_price, categoryIds, location)
+
+    suspend fun putOrder(token: String,id:Int,requestBody: PutOrderReq)= apiHelper.putOrder(token,id,requestBody)
+    suspend fun deleteOrder(token: String,id: Int) = apiHelper.deleteOrder(token, id)
 
     companion object{
         const val PAGE_SIZE = 20

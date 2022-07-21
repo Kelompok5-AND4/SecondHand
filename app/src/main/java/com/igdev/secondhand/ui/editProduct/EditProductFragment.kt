@@ -49,6 +49,8 @@ class EditProductFragment : Fragment() {
     private var token : String =""
     private var dataUser : UserLogin?=null
     private var dataProduct : ProductPreview?=null
+    private var imageFile: File? = null
+    private var imageUrl = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,6 +85,7 @@ class EditProductFragment : Fragment() {
             binding.etNamaProduk.setText(it.data?.name)
             binding.etHargaProduk.setText(it.data?.basePrice.toString())
             binding.etDeskripsi.setText(it.data?.description)
+            imageUrl = it.data?.imageUrl.toString()
             if (it.data !=null){
                 listCategoryId.clear()
                 listCategory.clear()
@@ -165,11 +168,10 @@ class EditProductFragment : Fragment() {
                 namaProduk,
                 hargaProduk,
                 deskripsiProduk,
-                uri,
                 listCategoryId
             )
             if (validation == "passed") {
-                dataProduct = ProductPreview(namaProduk,hargaProduk,deskripsiProduk,kategoriProduk,uri)
+                dataProduct = ProductPreview(namaProduk,hargaProduk,deskripsiProduk,kategoriProduk,uri?:imageUrl)
                 val data = dataProduct
                 val user = dataUser
                 val direct = EditProductFragmentDirections.actionEditProductFragmentToPreviewFragment(data,user)
@@ -190,7 +192,6 @@ class EditProductFragment : Fragment() {
                 namaProduk,
                 hargaProduk,
                 deskripsiProduk,
-                uri,
                 listCategoryId
             )
             if (validation == "passed") {
@@ -202,7 +203,7 @@ class EditProductFragment : Fragment() {
                     hargaProduk,
                     listCategoryId,
                     dataUser?.address.toString(),
-                    uriToFile(Uri.parse(uri), requireContext())
+                    imageFile
                 )
             }
         }
@@ -240,7 +241,7 @@ class EditProductFragment : Fragment() {
         }
     }
 
-    fun validasi(namaProduk: String, hargaProduk: String, deskripsiProduk: String, uriFoto: String, listCategory: List<Int>): String {
+    fun validasi(namaProduk: String, hargaProduk: String, deskripsiProduk: String,  listCategory: List<Int>): String {
         when {
             namaProduk.isEmpty() -> {
                 binding.tilNamaProduk.error = "Nama Produk tidak boleh kosong"
@@ -257,10 +258,6 @@ class EditProductFragment : Fragment() {
             deskripsiProduk.isEmpty() -> {
                 binding.tilDeskripsi.error = "Deskripsi Produk tidak boleh kosong"
                 return "Deskripsi Produk Kosong!"
-            }
-            uriFoto.isEmpty() -> {
-                Toast.makeText(requireContext(), "Foto Produk Kosong", Toast.LENGTH_SHORT).show()
-                return "Foto Produk Kosong!"
             }
             listCategory.isEmpty() -> {
                 binding.tilKategori.error = "Kategori produk tidak boleh kosong"
@@ -283,6 +280,7 @@ class EditProductFragment : Fragment() {
                     val fileUri = data?.data
                     uri = fileUri.toString()
                     if (fileUri != null) {
+                        imageFile = uriToFile(fileUri, requireContext())
                         loadImage(fileUri)
                     }
                 }

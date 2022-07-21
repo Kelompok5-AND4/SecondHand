@@ -2,7 +2,9 @@
     android:width="323dp"
     android:height="520dp"
     android:viewportWidth="323"
-    android:viewportHeight="520">
+    android:viewportHeight="520"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="VectorPath,VectorRaster">
   <group>
     <clip-path
         android:pathData="M0,0h323v519.49h-323z"/>

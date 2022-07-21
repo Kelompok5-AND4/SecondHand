@@ -3,7 +3,9 @@
     android:width="352dp"
     android:height="400dp"
     android:viewportWidth="352"
-    android:viewportHeight="400">
+    android:viewportHeight="400"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="VectorPath,VectorRaster">
   <path
       android:pathData="M66.42,54L289.58,54A21.42,21.42 0,0 1,311 75.42L311,378.23A21.42,21.42 0,0 1,289.58 399.65L66.42,399.65A21.42,21.42 0,0 1,45 378.23L45,75.42A21.42,21.42 0,0 1,66.42 54z"
       android:fillColor="#ECECEC"/>

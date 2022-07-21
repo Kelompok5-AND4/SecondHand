@@ -82,12 +82,13 @@ class TransaksiSemuaPembelianFragment : Fragment() {
                                 }
                             }
                             val buyerAdapter =
-                                BuyerAdapter(object : BuyerAdapter.OnClickListener {
-                                    override fun onClickItem(data: BuyerOrderResponse) {
-                                        val direct = TransaksiSemuaPembelianFragmentDirections.actionTransaksiSemuaPembelianFragmentToDetailProductFragment(data.productId)
+                                BuyerAdapter(
+                                    onClick = {data->
+                                        val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(data.productId)
                                         findNavController().navigate(direct)
-                                    }
-                                })
+                                    }, onDelete = {
+                                    }, onEdit = {
+                                    })
                             binding.emptyNotif.visibility = View.GONE
                             buyerAdapter.submitData(listBuyer)
                             binding.rvAllProduct.adapter = buyerAdapter

@@ -68,6 +68,16 @@
                         app:iconTint="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_delete"
+                        app:layout_constraintEnd_toStartOf="@id/btn_edit"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:icon="@drawable/ic_delete"
+                        style="@style/Widget.AppCompat.ActionButton"
+                        app:iconTint="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

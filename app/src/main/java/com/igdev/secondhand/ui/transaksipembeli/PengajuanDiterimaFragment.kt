@@ -7,18 +7,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.igdev.secondhand.R
-import com.igdev.secondhand.databinding.FragmentDalamPengajuanBinding
 import com.igdev.secondhand.databinding.FragmentPengajuanDiterimaBinding
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
 import com.igdev.secondhand.model.local.UserLogin
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
 import com.igdev.secondhand.ui.MainFragment
-import com.igdev.secondhand.ui.MainFragmentDirections
 import com.igdev.secondhand.ui.transaction.BuyerAdapter
 import com.igdev.secondhand.ui.transaction.TransactionViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -77,7 +74,7 @@ class PengajuanDiterimaFragment : Fragment() {
                                 }
                             }
                             val buyerAdapter =
-                                BuyerAdapter(object : BuyerAdapter.OnClickListener {
+                                AccDcBuyerOrderAdapter(object : AccDcBuyerOrderAdapter.OnClickListener {
                                     override fun onClickItem(data: BuyerOrderResponse) {
                                         val direct = PengajuanDiterimaFragmentDirections.actionPengajuanDiterimaFragmentToDetailProductFragment(data.productId)
                                         findNavController().navigate(direct)

@@ -103,4 +103,18 @@ class TawaranSellerViewModel @Inject constructor(private val repository: Reposit
             }
         }
     }
+    private val _deleteProduct = MutableLiveData<Resource<Response<Unit>>>()
+    val deleteProduct: LiveData<Resource<Response<Unit>>> get() = _deleteProduct
+
+    fun deleteProduct(token:String,id:Int){
+        viewModelScope.launch {
+            _deleteProduct.postValue(Resource.loading())
+            try {
+                val delete = Resource.success(repository.deleteSellerProductId(token,id))
+                _deleteProduct.postValue(delete)
+            }catch (exception : java.lang.Exception){
+                _deleteProduct.postValue(Resource.error(exception.message?: "Error Occurred"))
+            }
+        }
+    }
 }
