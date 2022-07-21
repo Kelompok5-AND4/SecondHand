@@ -45,16 +45,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
-                <ImageView
-                    android:id="@+id/under_separator"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:background="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/separator"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewPagerBanner"
                     android:layout_width="match_parent"
@@ -65,79 +55,228 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <HorizontalScrollView
-                    android:id="@+id/CategoryScroll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:scrollbars="none"
+                <ImageView
+                    android:id="@+id/btnJual"
+                    android:layout_width="107dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/bg_rounded_birusatu"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/viewPagerBanner">
+                    app:layout_constraintTop_toBottomOf="@id/viewPagerBanner"
+                    app:layout_constraintBottom_toBottomOf="@id/list_menu_dua"/>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                <ImageView
+                    android:id="@+id/btn_text_jual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_sell_text"
+                    android:layout_marginBottom="12dp"
+                    app:layout_constraintStart_toStartOf="@id/btnJual"
+                    app:layout_constraintEnd_toEndOf="@id/btnJual"
+                    app:layout_constraintBottom_toBottomOf="@id/btnJual"/>
+
+                <ImageView
+                    android:layout_width="138dp"
+                    android:layout_height="176dp"
+                    android:layout_marginEnd="6dp"
+                    android:src="@drawable/ic_sell"
+                    app:layout_constraintBottom_toTopOf="@id/btn_text_jual"
+                    app:layout_constraintEnd_toEndOf="@id/btnJual"
+                    app:layout_constraintStart_toStartOf="@id/btnJual" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/list_menu_satu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnJual"
+                    app:layout_constraintTop_toTopOf="@id/btnJual">
+
+                    <!--Otomotif-->
+                    <ImageButton
+                        android:id="@+id/ic_otomotif"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginEnd="14dp"
+                        android:background="@color/transparant"
+                        android:contentDescription="@string/icon"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_otomotif"
+                        app:layout_constraintEnd_toStartOf="@id/ic_elektronik"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/desc_otomotif"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/categoryContainer">
+                        android:text="Otomotif"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@id/ic_otomotif"
+                        app:layout_constraintStart_toStartOf="@id/ic_otomotif"
+                        app:layout_constraintTop_toBottomOf="@id/ic_otomotif" />
 
-                        <ImageView
-                            android:id="@+id/btnJual"
-                            android:layout_width="107dp"
-                            android:layout_height="160dp"
-                            android:layout_marginStart="16dp"
-                            android:background="@drawable/bg_rounded_birusatu"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                    <!--Elektronik-->
+                    <ImageButton
+                        android:id="@+id/ic_elektronik"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginEnd="14dp"
+                        android:background="@color/transparant"
+                        android:contentDescription="@string/icon"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_electronic"
+                        app:layout_constraintEnd_toStartOf="@id/ic_voucher"
+                        app:layout_constraintStart_toEndOf="@id/ic_otomotif"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageView
-                            android:id="@+id/btn_text_jual"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_sell_text"
-                            android:layout_marginBottom="12dp"
-                            app:layout_constraintStart_toStartOf="@id/btnJual"
-                            app:layout_constraintEnd_toEndOf="@id/btnJual"
-                            app:layout_constraintBottom_toBottomOf="@id/btnJual"/>
+                    <TextView
+                        android:id="@+id/dsc_elektronik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Elektronik"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@id/ic_elektronik"
+                        app:layout_constraintStart_toStartOf="@id/ic_elektronik"
+                        app:layout_constraintTop_toBottomOf="@id/ic_elektronik" />
 
-                        <ImageView
-                            android:layout_width="96dp"
-                            android:layout_height="147dp"
-                            android:layout_marginEnd="6dp"
-                            android:src="@drawable/ic_sell"
-                            app:layout_constraintBottom_toTopOf="@id/btn_text_jual"
-                            app:layout_constraintEnd_toEndOf="@id/btnJual"
-                            app:layout_constraintStart_toStartOf="@id/btnJual" />
+                    <!--Voucher-->
+                    <ImageButton
+                        android:id="@+id/ic_voucher"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginEnd="14dp"
+                        android:background="@color/transparant"
+                        android:contentDescription="@string/icon"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_kupon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ic_elektronik"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/dsc_coucher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Voucher"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@id/ic_voucher"
+                        app:layout_constraintStart_toStartOf="@id/ic_voucher"
+                        app:layout_constraintTop_toBottomOf="@id/ic_voucher" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                        <!--Recyclerview untuk kategori-->
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rvCategory"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="28dp"
-                            android:layout_marginTop="16dp"
-                            android:orientation="horizontal"
-                            app:spanCount="2"
-                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                            app:layout_constraintBottom_toBottomOf="@id/btnJual"
-                            app:layout_constraintTop_toTopOf="@id/btnJual"
-                            app:layout_constraintStart_toEndOf="@id/btnJual"
-                            tools:listitem="@layout/category_item" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/list_menu_dua"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnJual"
+                    app:layout_constraintTop_toBottomOf="@id/list_menu_satu">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--Otomotif-->
+                    <ImageButton
+                        android:id="@+id/ic_photography"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginEnd="14dp"
+                        android:background="@color/transparant"
+                        android:contentDescription="@string/icon"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_photography"
+                        app:layout_constraintEnd_toStartOf="@id/ic_kesehatan"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </HorizontalScrollView>
+                    <TextView
+                        android:id="@+id/desc_photography"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Photography"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@id/ic_photography"
+                        app:layout_constraintStart_toStartOf="@id/ic_photography"
+                        app:layout_constraintTop_toBottomOf="@id/ic_photography" />
+
+                    <!--Elektronik-->
+                    <ImageButton
+                        android:id="@+id/ic_kesehatan"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginEnd="14dp"
+                        android:background="@color/transparant"
+                        android:contentDescription="@string/icon"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_kesehatan"
+                        app:layout_constraintEnd_toStartOf="@id/ic_all"
+                        app:layout_constraintStart_toEndOf="@id/ic_photography"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/desc_kesehatan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kesehatan"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@id/ic_kesehatan"
+                        app:layout_constraintStart_toStartOf="@id/ic_kesehatan"
+                        app:layout_constraintTop_toBottomOf="@id/ic_kesehatan" />
+
+                    <!--Voucher-->
+                    <ImageButton
+                        android:id="@+id/ic_all"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginEnd="14dp"
+                        android:background="@color/transparant"
+                        android:contentDescription="@string/icon"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_all_fitur"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ic_kesehatan"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/desc_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Semua Fitur"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@id/ic_all"
+                        app:layout_constraintStart_toStartOf="@id/ic_all"
+                        app:layout_constraintTop_toBottomOf="@id/ic_all" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+               <!--Lelang-->
 
                 <ImageView
                     android:id="@+id/backgroundScrollableSpecial"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="320dp"
                     android:background="@drawable/bg_special_offer"
                     android:scaleType="centerCrop"
+                    android:layout_marginTop="50dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/CategoryScroll"
+                    app:layout_constraintTop_toBottomOf="@id/list_menu_dua"
                     app:layout_constraintBottom_toBottomOf="@id/specialOffer"/>
 
                 <TextView
@@ -172,10 +311,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
-                    android:paddingTop="40dp"
-                    android:paddingBottom="16dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/backgroundScrollableSpecial"
+                    app:layout_constraintTop_toBottomOf="@id/tvSpecialOffer"
                     app:layout_constraintBottom_toBottomOf="@id/backgroundScrollableSpecial">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -220,16 +357,6 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/mini_category_item"/>
 
-                <ImageView
-                    android:id="@+id/ivMiniBanner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:visibility="gone"
-                    android:src="@drawable/mini_banner"
-                    app:layout_constraintTop_toBottomOf="@id/CategoryScroll"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -256,6 +383,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>
+
                     <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/pb_home_product"
                         android:layout_width="wrap_content"
@@ -269,6 +397,16 @@
                         app:lottie_autoPlay="true"
                         app:lottie_loop="true"
                         app:lottie_rawRes="@raw/loading" />
+
+                    <ImageView
+                        android:id="@+id/under_separator"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
