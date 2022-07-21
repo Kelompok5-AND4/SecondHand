@@ -12,16 +12,18 @@ import com.igdev.secondhand.model.UpdateResponse
 import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.addProduct.SellProductResponse
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
-import com.igdev.secondhand.model.detail.GetDetail
-import com.igdev.secondhand.model.detail.PostOrderReq
-import com.igdev.secondhand.model.detail.PostOrderResponse
+import com.igdev.secondhand.model.detail.*
 import com.igdev.secondhand.model.getAuth.ResponseAuth
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.login.LoginResponse
 import com.igdev.secondhand.model.notification.NotifResponseItem
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.register.RegisterResponse
+import com.igdev.secondhand.model.sellerorder.PatchSellerOrderReq
+import com.igdev.secondhand.model.sellerorder.PatchSellerOrderResponse
+import com.igdev.secondhand.model.sellerorder.SellerOrderIdResponse
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
+import com.igdev.secondhand.model.sellerproduct.PatchSellerProductIdResponse
 import com.igdev.secondhand.model.sellerproduct.SellerProductDetail
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.model.settingaccount.SettingAccountRequest
@@ -46,7 +48,7 @@ import retrofit2.Response
 
 
 class RepositoryTest {
-    private val reqPostRegister = RegistReq("aaaa@gmail.com", "123456")
+    private val reqPostRegister = RegistReq("aaaa@gmail.com", "123456", "fsdakjfhsdkjahf")
     private val reqLoginPost = LoginReq("fudinafif56@gmail.com", "123456")
     private val user = User("lfjhsdafhsjadhfjkasd")
     private val token = "jkfhajskdhfjksdhfkldfkhuerh"
@@ -177,14 +179,14 @@ class RepositoryTest {
     }
 
     @Test
-    fun getDatastore() : Unit = runBlocking {
+    fun getDatastore(): Unit = runBlocking {
         val getDatastore = mockk<Flow<User>>()
 
         every {
             runBlocking {
                 dataStore.getToken()
             }
-        }returns getDatastore
+        } returns getDatastore
 
         repository.getDatastore()
 
@@ -196,13 +198,13 @@ class RepositoryTest {
     }
 
     @Test
-    fun deleteToken() : Unit = runBlocking {
+    fun deleteToken(): Unit = runBlocking {
         val deleteToken = mockk<Unit>()
         every {
             runBlocking {
                 dataStore.delete()
             }
-        }returns deleteToken
+        } returns deleteToken
 
         repository.deleteToken()
 
@@ -215,49 +217,49 @@ class RepositoryTest {
     }
 
     @Test
-    fun getDataUser() : Unit = runBlocking {
+    fun getDataUser(): Unit = runBlocking {
         val getDataUser = mockk<ResponseAuth>()
         every {
             runBlocking {
                 apiService.getDataUser(token)
             }
-        }returns getDataUser
+        } returns getDataUser
 
         repository.getDataUser(token)
 
         verify {
-            runBlocking{
+            runBlocking {
                 apiService.getDataUser(token)
             }
         }
     }
 
     @Test
-    fun updateDataUser() : Unit = runBlocking {
+    fun updateDataUser(): Unit = runBlocking {
         val updateDataUser = mockk<UpdateResponse>()
         every {
             runBlocking {
-                apiService.updateDataUser(token,null,null,null,null,null,null)
+                apiService.updateDataUser(token, null, null, null, null, null, null)
             }
-        }returns updateDataUser
+        } returns updateDataUser
 
-        repository.updateDataUser(token,null,null,null,null,null)
+        repository.updateDataUser(token, null, null, null, null, null)
 
         verify {
             runBlocking {
-                apiService.updateDataUser(token, null, null,null,null,null,null)
+                apiService.updateDataUser(token, null, null, null, null, null, null)
             }
         }
     }
 
     @Test
-    fun getNotif() : Unit = runBlocking {
+    fun getNotif(): Unit = runBlocking {
         val getNotif = mockk<List<NotifResponseItem>>()
         every {
             runBlocking {
                 apiService.GetNotif(token)
             }
-        }returns getNotif
+        } returns getNotif
 
         repository.getNotif(token)
 
@@ -269,13 +271,13 @@ class RepositoryTest {
     }
 
     @Test
-    fun getDetail() : Unit = runBlocking {
+    fun getDetail(): Unit = runBlocking {
         val getDetail = mockk<GetDetail>()
         every {
             runBlocking {
                 apiService.getIdProduct(2)
             }
-        }returns getDetail
+        } returns getDetail
 
         repository.getDetail(2)
 
@@ -287,49 +289,49 @@ class RepositoryTest {
     }
 
     @Test
-    fun getSellerDetailProduct() : Unit = runBlocking {
+    fun getSellerDetailProduct(): Unit = runBlocking {
         val getSellerDetail = mockk<SellerProductDetail>()
         every {
             runBlocking {
-                apiService.getSellerProductDetail(token,2)
+                apiService.getSellerProductDetail(token, 2)
             }
-        }returns getSellerDetail
+        } returns getSellerDetail
 
-        repository.getSellerDetailProduct(token,2)
+        repository.getSellerDetailProduct(token, 2)
 
         verify {
             runBlocking {
-                apiService.getSellerProductDetail(token,2)
+                apiService.getSellerProductDetail(token, 2)
             }
         }
     }
 
     @Test
-    fun postProduct() : Unit = runBlocking{
+    fun postProduct(): Unit = runBlocking {
         val postProduct = mockk<SellProductResponse>()
         every {
             runBlocking {
-                apiService.postProduct(token,null,null,null,null,null,null)
+                apiService.postProduct(token, null, null, null, null, null, null)
             }
-        }returns postProduct
-        repository.postProduct(token,null,null,null,null,null,null)
+        } returns postProduct
+        repository.postProduct(token, null, null, null, null, null, null)
 
         verify {
             runBlocking {
-                apiService.postProduct(token,null,null,null,null,null,null)
+                apiService.postProduct(token, null, null, null, null, null, null)
             }
         }
 
     }
 
     @Test
-    fun getBuyerHistory() : Unit = runBlocking{
-        val getBuyerHistory = mockk< List<BuyerOrderResponse>>()
+    fun getBuyerHistory(): Unit = runBlocking {
+        val getBuyerHistory = mockk<List<BuyerOrderResponse>>()
         every {
             runBlocking {
                 apiService.getBuyerHistory(token)
             }
-        }returns getBuyerHistory
+        } returns getBuyerHistory
 
         repository.getBuyerHistory(token)
         verify {
@@ -340,13 +342,13 @@ class RepositoryTest {
     }
 
     @Test
-    fun getSellerProduct() : Unit = runBlocking {
+    fun getSellerProduct(): Unit = runBlocking {
         val getSellerProduct = mockk<List<SellerProductResponseItem>>()
         every {
             runBlocking {
                 apiService.getSellerProduct(token)
             }
-        }returns getSellerProduct
+        } returns getSellerProduct
 
         repository.getSellerProduct(token)
 
@@ -358,13 +360,13 @@ class RepositoryTest {
     }
 
     @Test
-    fun getSellerOrder() : Unit = runBlocking {
+    fun getSellerOrder(): Unit = runBlocking {
         val getSellerOrder = mockk<List<SellerOrderResponseItem>>()
         every {
             runBlocking {
                 apiService.getSellerOrder(token)
             }
-        }returns getSellerOrder
+        } returns getSellerOrder
 
         repository.getSellerOrder(token)
 
@@ -376,31 +378,31 @@ class RepositoryTest {
     }
 
     @Test
-    fun postOrder() : Unit = runBlocking {
+    fun postOrder(): Unit = runBlocking {
         val postOder = mockk<Response<PostOrderResponse>>()
-        val reqPostOrder = PostOrderReq("3","200000")
+        val reqPostOrder = PostOrderReq("3", "200000")
         every {
             runBlocking {
-                apiService.postBuyerOrder(token,reqPostOrder)
+                apiService.postBuyerOrder(token, reqPostOrder)
             }
-        }returns postOder
+        } returns postOder
 
-        repository.postOrder(token,reqPostOrder)
+        repository.postOrder(token, reqPostOrder)
         verify {
             runBlocking {
-                apiService.postBuyerOrder(token,reqPostOrder)
+                apiService.postBuyerOrder(token, reqPostOrder)
             }
         }
     }
 
     @Test
-    fun getSearchHistory() : Unit = runBlocking {
+    fun getSearchHistory(): Unit = runBlocking {
         val getSerchHistory = mockk<List<SearchHistoryEntity>>()
         every {
             runBlocking {
                 dbHelper.getSearchHistory()
             }
-        }returns getSerchHistory
+        } returns getSerchHistory
 
         repository.getSearchHistory()
         verify {
@@ -411,14 +413,14 @@ class RepositoryTest {
     }
 
     @Test
-    fun insertSearchHistory() :Unit = runBlocking {
+    fun insertSearchHistory(): Unit = runBlocking {
         val insertSearchHistory = 1L
-        val searchHisEntity = SearchHistoryEntity(5,"phone")
+        val searchHisEntity = SearchHistoryEntity(5, "phone")
         every {
             runBlocking {
                 dbHelper.insertSearchHistory(searchHisEntity)
             }
-        }returns insertSearchHistory
+        } returns insertSearchHistory
         repository.insertSearchHistory(searchHisEntity)
 
         verify {
@@ -429,32 +431,31 @@ class RepositoryTest {
     }
 
 
-
     @Test
-    fun settingAccount() : Unit = runBlocking {
+    fun settingAccount(): Unit = runBlocking {
         val settingAccount = mockk<SettingAccountResponse>()
-        val reqSettingAccount = SettingAccountRequest("hjkdfhgkjdf","gfghsdhdfh","gfghsdhdfh")
+        val reqSettingAccount = SettingAccountRequest("hjkdfhgkjdf", "gfghsdhdfh", "gfghsdhdfh")
         every {
             runBlocking {
-                apiService.updatePassword(token,reqSettingAccount)
+                apiService.updatePassword(token, reqSettingAccount)
             }
-        }returns settingAccount
-        repository.settingAccount(token,reqSettingAccount)
+        } returns settingAccount
+        repository.settingAccount(token, reqSettingAccount)
         verify {
             runBlocking {
-                apiService.updatePassword(token,reqSettingAccount)
+                apiService.updatePassword(token, reqSettingAccount)
             }
         }
     }
 
     @Test
-    fun getWishlist() : Unit = runBlocking {
+    fun getWishlist(): Unit = runBlocking {
         val getWishlist = mockk<List<GetWishlistResponse>>()
         every {
             runBlocking {
                 apiService.getWishlist(token)
             }
-        }returns getWishlist
+        } returns getWishlist
 
         repository.getWishlist(token)
 
@@ -466,41 +467,163 @@ class RepositoryTest {
     }
 
 
-
     @Test
-    fun postWishlist() : Unit = runBlocking {
+    fun postWishlist(): Unit = runBlocking {
         val postWishlist = mockk<PostWishListResponse>()
         val postWishlistRequest = PostWishlistRequest(2)
         every {
             runBlocking {
-                apiService.postWishlist(token,postWishlistRequest)
+                apiService.postWishlist(token, postWishlistRequest)
             }
-        }returns postWishlist
-        repository.postWishlist(token,postWishlistRequest)
+        } returns postWishlist
+        repository.postWishlist(token, postWishlistRequest)
         verify {
             runBlocking {
-                apiService.postWishlist(token,postWishlistRequest)
+                apiService.postWishlist(token, postWishlistRequest)
             }
         }
     }
 
     @Test
-    fun deleteWishlist() : Unit = runBlocking {
+    fun deleteWishlist(): Unit = runBlocking {
         val deleteWishlist = mockk<DeleteWishlistResponse>()
         every {
             runBlocking {
-                apiService.deleteWishlist(token,2)
+                apiService.deleteWishlist(token, 2)
             }
-        }returns deleteWishlist
+        } returns deleteWishlist
 
-        repository.deleteWishlist(token,2)
+        repository.deleteWishlist(token, 2)
 
         verify {
             runBlocking {
-                apiService.deleteWishlist(token,2)
+                apiService.deleteWishlist(token, 2)
             }
         }
     }
+
+    @Test
+    fun patchSellerOrderId(): Unit = runBlocking {
+        val postSellerOrderId = mockk<Response<PatchSellerOrderResponse>>()
+        val reqPostSellerOrderId = PatchSellerOrderReq("jkaldfklj;f")
+        every {
+            runBlocking {
+                apiService.patchSellerOrderId(token, 2, reqPostSellerOrderId)
+            }
+
+        } returns postSellerOrderId
+        repository.patchSellerOrderId(token, 2, reqPostSellerOrderId)
+        verify {
+            runBlocking {
+                apiService.patchSellerOrderId(token, 2, reqPostSellerOrderId)
+            }
+        }
+    }
+
+    @Test
+    fun patchSellerProsuctId(): Unit = runBlocking {
+        val postSellerProductId = mockk<Response<PatchSellerProductIdResponse>>()
+        val reqPostSellerOrderId = PatchSellerOrderReq("jkaldfklj;f")
+        every {
+            runBlocking {
+                apiService.statusProduct(token, 2, reqPostSellerOrderId)
+            }
+
+        } returns postSellerProductId
+        repository.patchSellerProductId(token, 2, reqPostSellerOrderId)
+        verify {
+            runBlocking {
+                apiService.statusProduct(token, 2, reqPostSellerOrderId)
+            }
+        }
+    }
+
+    @Test
+    fun deleteSellerProductId(): Unit = runBlocking {
+        val deleteSellerProductId = mockk<Response<Unit>>()
+        every {
+            runBlocking {
+                apiService.deleteSellerProductId(token, 2)
+            }
+        } returns deleteSellerProductId
+        repository.deleteSellerProductId(token, 2)
+        verify {
+            runBlocking {
+                apiService.deleteSellerProductId(token, 2)
+            }
+        }
+    }
+
+    @Test
+    fun getSellerOrderId(): Unit = runBlocking {
+        val getSellerOrderId = mockk<Response<SellerOrderIdResponse>>()
+        every {
+            runBlocking {
+                apiService.getSellerOrderId(token, 2)
+            }
+        } returns getSellerOrderId
+        repository.getSellerOrderId(token, 2)
+        verify {
+            runBlocking {
+                apiService.getSellerOrderId(token, 2)
+            }
+        }
+    }
+
+    @Test
+    fun editProduct(): Unit = runBlocking {
+        val editProduct = mockk<SellProductResponse>()
+        every {
+            runBlocking {
+                apiService.editProduct(token, 2, null, null, null, null, null, null)
+            }
+
+
+        } returns editProduct
+        repository.editProduct(token, 2, null, null, null, null, null, null)
+        verify {
+            runBlocking {
+                apiService.editProduct(token, 2, null, null, null, null, null, null)
+            }
+        }
+    }
+
+    @Test
+    fun putOrder() : Unit = runBlocking {
+        val putOrder = mockk<Response<PostOrderResponse>>()
+        val putOrderReq = PutOrderReq("2999999")
+        every {
+            runBlocking {
+                apiService.putBuyerOrder(token,2,putOrderReq)
+            }
+        }returns putOrder
+        repository.putOrder(token,2,putOrderReq)
+        verify {
+            runBlocking {
+                apiService.putBuyerOrder(token,2,putOrderReq)
+            }
+        }
+    }
+
+    @Test
+    fun deleteOrder() : Unit = runBlocking {
+        val deleteOrder = mockk<Response<DeleteBuyerOrder>>()
+        every {
+            runBlocking {
+                apiService.deleteBuyerOrder(token,2)
+            }
+        }returns deleteOrder
+
+        repository.deleteOrder(token,2)
+
+        verify {
+            runBlocking {
+                apiService.deleteBuyerOrder(token,2)
+            }
+        }
+    }
+
+
 
 
 }
