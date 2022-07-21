@@ -69,6 +69,24 @@
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_favorite.xml" value="0.142" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_is_not_wishlist.xml" value="0.1135" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_is_wishlist.xml" value="0.1135" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_location_fix.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_logout.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_lokasi.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_mask_group.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_menu.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_next_blue.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_next_orange.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_non_favorite.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_notif.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_notification.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_outline_go.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_payment.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_plus_circle.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_profie.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_resource_new.xml" value="0.1225" />
+
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_search.xml" value="0.154" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_separator_bottom_sheet.xml" value="0.1" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_splash_screen.xml" value="0.2165" />
@@ -81,6 +99,7 @@
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/font/font.xml" value="0.2324074074074074" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/activity_main.xml" value="0.16944444444444445" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/activity_on_boarding.xml" value="0.209375" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/all_feature_item.xml" value="0.209375" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/banner_item.xml" value="0.1" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/category_bottom_sheet.xml" value="0.209375" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/category_item.xml" value="0.209375" />

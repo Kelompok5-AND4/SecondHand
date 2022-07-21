@@ -59,6 +59,8 @@ class BuyerAdapter(
             binding.apply {
                 when (data.status) {
                     "pending" -> {
+                        binding.btnEdit.visibility = View.VISIBLE
+                        binding.btnDelete.visibility = View.VISIBLE
                         tvMessage.text = "Dalam Pengajuan"
                     }
                     "declined" -> {
@@ -71,8 +73,6 @@ class BuyerAdapter(
                         tvMessage.text = "Produk sudah tidak ada"
                     }
                 }
-                binding.btnEdit.visibility = View.VISIBLE
-                binding.btnDelete.visibility = View.VISIBLE
                 tvProductName.text = data.productName
                 tvHarga.text = rupiah(data.price)
                 Glide.with(binding.root)

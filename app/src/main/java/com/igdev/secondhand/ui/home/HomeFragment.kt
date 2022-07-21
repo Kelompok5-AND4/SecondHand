@@ -206,7 +206,7 @@ class HomeFragment : Fragment() {
                     Status.ERROR -> {
                         Toast.makeText(
                             requireContext(),
-                            "Memasuki Mode Offline",
+                            "Gagal",
                             Toast.LENGTH_SHORT
                         )
                             .show()

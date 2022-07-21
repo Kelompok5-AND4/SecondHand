@@ -8,6 +8,7 @@
     tools:context=".ui.onboarding.screens.FourthScreen">
 
     <ImageView
+        android:src="@drawable/gradient_button"
         android:id="@+id/finish"
         android:layout_width="70dp"
         android:layout_height="61dp"

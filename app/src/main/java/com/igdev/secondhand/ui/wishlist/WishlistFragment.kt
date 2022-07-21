@@ -62,6 +62,7 @@ class WishlistFragment : Fragment() {
                 Status.SUCCESS -> {
                     if (it.data.isNullOrEmpty()) {
                         binding.emptyNotif.visibility = View.VISIBLE
+                        binding.rvDaftarSimpan.visibility = View.GONE
                     } else {
                         listWishlist.clear()
                         val adapter = WishlistAdapter(object : WishlistAdapter.OnClickListener {
@@ -74,6 +75,8 @@ class WishlistFragment : Fragment() {
                         })
                         adapter.submitData(listWishlist)
                         binding.rvDaftarSimpan.adapter = adapter
+                        binding.rvDaftarSimpan.visibility = View.VISIBLE
+                        binding.emptyNotif.visibility=View.GONE
 
 
                         for (data in it.data) {

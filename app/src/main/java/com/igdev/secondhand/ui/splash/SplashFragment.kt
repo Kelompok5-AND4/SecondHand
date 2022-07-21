@@ -11,20 +11,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.igdev.secondhand.R
+import com.igdev.secondhand.databinding.FragmentSettingBinding
+import com.igdev.secondhand.databinding.FragmentSplashBinding
 import com.igdev.secondhand.ui.viewmodel.NotifViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SplashFragment : Fragment() {
-
+    private var _binding: FragmentSplashBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: NotifViewModel by viewModels()
     private var token:String = "def_token"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+        _binding = FragmentSplashBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,7 +36,6 @@ class SplashFragment : Fragment() {
         viewModel.getToken.observe(viewLifecycleOwner){
             token=it.token
         }
-
         Handler(Looper.getMainLooper()).postDelayed({
             if(onBoardingFinished() && token!="def_token"){
                 findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
@@ -48,7 +50,7 @@ class SplashFragment : Fragment() {
     }
 
     private fun onBoardingFinished(): Boolean{
-        val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+        val sharedPref = requireContext().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished", false)
     }
 }
