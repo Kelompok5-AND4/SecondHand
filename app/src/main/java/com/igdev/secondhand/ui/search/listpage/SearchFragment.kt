@@ -15,6 +15,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
+import com.igdev.secondhand.R
 import com.igdev.secondhand.database.SearchHistoryEntity
 import com.igdev.secondhand.databinding.FragmentSearchBinding
 import com.igdev.secondhand.model.Status
@@ -41,11 +42,26 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.viewBackgroundFasion.setOnClickListener {
+
+            val action = SearchFragmentDirections
+                .actionSearchFragmentToSearchResultFragment("sepatu")
+            findNavController().navigate(action)
+        }
+        binding.viewBackgroundSmarthpone.setOnClickListener {
+            val action = SearchFragmentDirections
+                .actionSearchFragmentToSearchResultFragment("handphone")
+            findNavController().navigate(action)
+        }
+        binding.viewBackgroundLelang.setOnClickListener {
+            findNavController().navigate(R.id.action_searchFragment_to_lelangFragment)
         }
 
         binding.etSearch.editText?.requestFocus()
@@ -96,9 +112,10 @@ class SearchFragment : Fragment() {
             true
         }
     }
+
     private fun searchProduct(query: String) {
         //insert data to room
-        if (query.isNotEmpty()){
+        if (query.isNotEmpty()) {
             viewModel.insertSearchHistory(SearchHistoryEntity(searchKeyword = query))
 
             val action = SearchFragmentDirections
@@ -116,6 +133,7 @@ class SearchFragment : Fragment() {
             adapter.submitList(filteredList)
         }
     }
+
     private fun showSearchHistory(data: List<SearchHistoryEntity>?) {
         adapter = SearchHistoryAdapter {
             //onclick item

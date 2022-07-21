@@ -179,6 +179,7 @@ class TransactionFragment : Fragment() {
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
                             binding.tvTotal.text = "00"
+                            binding.emptyNotif2.visibility = View.VISIBLE
                         } else {
                             val sellerAdapter =
                                 SellerAdapter(object : SellerAdapter.OnClickListener {
@@ -187,8 +188,15 @@ class TransactionFragment : Fragment() {
                                         findNavController().navigate(direct)
                                     }
                                 })
-                            sellerAdapter.submitData(it.data)
-                            binding.rvSemuaProduct.adapter = sellerAdapter
+                            val filteredData = it.data.filter {
+                                it.status != "seller"
+                            }
+                            if (filteredData.isEmpty()){
+                                binding.emptyNotif2.visibility = View.VISIBLE
+                            }else{
+                                sellerAdapter.submitData(filteredData)
+                                binding.rvSemuaProduct.adapter = sellerAdapter
+                            }
                             binding.tvTotal.text = "${sellerAdapter.itemCount}"
                         }
                         progressDialog.dismiss()
@@ -230,7 +238,10 @@ class TransactionFragment : Fragment() {
                             binding.tvTotalDitawar.text = "00"
                         }
                         else {
-                            binding.tvTotalDitawar.text = "${it.data.size}"
+                            val filteredData = it.data.filter {
+                                it.status != "declined"
+                            }
+                            binding.tvTotalDitawar.text = "${filteredData.size}"
                         }
                         progressDialog.dismiss()
                     }
@@ -255,7 +266,7 @@ class TransactionFragment : Fragment() {
                         }
                         else {
                             val filteredData = it.data.filter {
-                                it.product.status == "seller"
+                                it.status == "seller"
                             }
                             binding.tvTotalTerjual.text = "${filteredData.size}"
                         }

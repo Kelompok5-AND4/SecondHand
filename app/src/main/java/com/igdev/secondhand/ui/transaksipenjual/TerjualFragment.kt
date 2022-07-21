@@ -15,6 +15,8 @@ import com.igdev.secondhand.databinding.FragmentSedangDitawarBinding
 import com.igdev.secondhand.databinding.FragmentTerjualBinding
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
+import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
+import com.igdev.secondhand.ui.transaction.SellerAdapter
 import com.igdev.secondhand.ui.transaction.TransactionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,7 +46,7 @@ class TerjualFragment : Fragment() {
         viewModel.getToken.observe(viewLifecycleOwner){
             if (it.token=="def_token"){
             }else{
-                viewModel.getSellerOrder(it.token)
+                viewModel.getSellerProduct(it.token)
             }
         }
         binding.btnBack.setOnClickListener {
@@ -53,11 +55,11 @@ class TerjualFragment : Fragment() {
         val progressDialog =ProgressDialog(requireContext())
         progressDialog.setMessage("Please Wait...")
         val negoAdapter =
-            NegoAdapter(object : NegoAdapter.OnClickListener {
-                override fun onClickItem(data: SellerOrderResponseItem) {
+            SellerAdapter(object : SellerAdapter.OnClickListener {
+                override fun onClickItem(data: SellerProductResponseItem) {
                     Toast.makeText(
                         requireContext(),
-                        "Notif Id = ${data.id}",
+                        "Product Telah Terjual",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -74,10 +76,13 @@ class TerjualFragment : Fragment() {
                         }
                         else {
                             val filteredData = it.data.filter {
-                                it.product.status == "seller"
+                                it.status == "seller"
                             }
-                            negoAdapter.submitData(filteredData)
-                            binding.rvKategori.adapter = negoAdapter
+                            if (filteredData.isEmpty()){
+                                binding.emptyNotif.visibility = View.VISIBLE
+                            }else{
+                                negoAdapter.submitData(filteredData)
+                                binding.rvKategori.adapter = negoAdapter}
                         }
                         progressDialog.dismiss()
                     }

@@ -67,7 +67,7 @@
 
             <TextView
                 android:id="@+id/tv_total_ditemukan"
-                android:text="@string/total_pencarian"
+                android:text="Hasil Pencarian Anda :"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/poppins_bold"

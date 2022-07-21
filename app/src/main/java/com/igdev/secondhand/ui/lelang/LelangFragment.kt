@@ -20,7 +20,8 @@ class LelangFragment : Fragment() {
     private var _binding : FragmentLelangBinding? = null
     private val binding get() = _binding!!
     private val viewModel : HomeViewModel by viewModels()
-    private val tokenLelang = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
+    private val tokenLelang =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW44OEBtYWlsLmNvbSIsImlhdCI6MTY1ODQwODM0Nn0.nmyGkOxQgrR39r44TP2RmhY8R9jMn6g4u57gh5GaDtQ"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +36,9 @@ class LelangFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getSellerProduct(tokenLelang)
+        binding.ibIcBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
         viewModel.getAllSellerProduct.observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it.status) {

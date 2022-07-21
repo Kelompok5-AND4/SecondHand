@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:text="Yeay!!! Barang kamu berhasil terjual"
+        android:text="Wah Maaf banget, mungkin belum rezeki, yuk cek penawaran lainnya"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"

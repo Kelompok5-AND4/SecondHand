@@ -31,10 +31,7 @@ import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.MainFragmentDirections
-import com.igdev.secondhand.ui.adapter.BannerAdapter
-import com.igdev.secondhand.ui.adapter.CategoryAdapter
-import com.igdev.secondhand.ui.adapter.MiniCategoryAdapter
-import com.igdev.secondhand.ui.adapter.ProductAdapter
+import com.igdev.secondhand.ui.adapter.*
 import com.igdev.secondhand.ui.home.paging.ProductLoadStateAdapter
 import com.igdev.secondhand.ui.home.paging.ProductPagingAdapter
 import com.igdev.secondhand.ui.transaction.SellerAdapter
@@ -55,7 +52,7 @@ class HomeFragment : Fragment() {
     private lateinit var miniCategoryAdapter: MiniCategoryAdapter
     var category: Int? = null
     private val tokenLelang =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW44OEBtYWlsLmNvbSIsImlhdCI6MTY1ODQwODM0Nn0.nmyGkOxQgrR39r44TP2RmhY8R9jMn6g4u57gh5GaDtQ"
     var topCategory = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -178,7 +175,7 @@ class HomeFragment : Fragment() {
                             binding.rvSpecialOffer.visibility = View.GONE
                         } else {
                             val sellerAdapter =
-                                SellerAdapter(object : SellerAdapter.OnClickListener {
+                                 LelangAdapter(object : LelangAdapter.OnClickListener {
                                     override fun onClickItem(data: SellerProductResponseItem) {
                                         val id = data.id
                                         val toDetail =

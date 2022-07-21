@@ -73,9 +73,18 @@ class SedangDitawarFragment : Fragment() {
                         if (it.data.isNullOrEmpty()) {
                             binding.emptyNotif.visibility = View.GONE
                         } else {
-                            negoAdapter.submitData(it.data)
-                            binding.rvNego.adapter = negoAdapter
-                        }
+                            listNego.clear()
+                            for (res in it.data){
+                                if (res.status == "pending" || res.status == "accepted"){
+                                    listNego.add(res)
+                                }
+                            }
+                            if (listNego.isEmpty()){
+                                binding.emptyNotif.visibility = View.VISIBLE
+                            }else{
+                                negoAdapter.submitData(listNego)
+                                binding.rvNego.adapter = negoAdapter}
+                            }
                         progressDialog.dismiss()
                     }
                     Status.ERROR -> {

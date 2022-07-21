@@ -59,6 +59,17 @@ class PenawarAdapter(
                 tvNamaPembeli.text = data.user.fullName
                 tvLokasi.text = data.user.city
                 tvHargaPenawaran.text = rupiah(data.price)
+                when (data.status) {
+                    "pending" -> {
+                        status.text = "Pending"
+                    }
+                    "accepted" -> {
+                        status.text = "Accepted"
+                    }
+                    "declined" -> {
+                        status.text = "Declined"
+                    }
+                }
                 Glide.with(binding.root)
                     .load( R.drawable.default_rv)
                     .centerCrop()

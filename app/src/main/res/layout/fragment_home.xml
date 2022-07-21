@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
+
         <ImageView
             android:id="@+id/topMenuBackground"
             android:layout_width="match_parent"
@@ -19,6 +20,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedHost"
@@ -35,15 +37,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
                 <ImageView
                     android:id="@+id/separator"
                     android:layout_width="match_parent"
-                    android:layout_height="128dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/top_menu_separator"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewPagerBanner"
@@ -346,7 +350,7 @@
                             app:layout_constraintStart_toEndOf="@id/textLelang"
                             app:layout_constraintTop_toTopOf="@id/textLelang"
                             app:layout_constraintBottom_toBottomOf="@id/textLelang"
-                            tools:listitem="@layout/buyer_history_item" />
+                            tools:listitem="@layout/rv_lelang" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

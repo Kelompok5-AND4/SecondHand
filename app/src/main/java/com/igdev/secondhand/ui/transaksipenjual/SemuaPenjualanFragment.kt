@@ -74,8 +74,16 @@ class SemuaPenjualanFragment : Fragment() {
                                         findNavController().navigate(direct)
                                     }
                                 })
-                            sellerAdapter.submitData(it.data)
-                            binding.rvAllProduct.adapter = sellerAdapter
+                            val filteredData = it.data.filter {
+                                it.status != "seller"
+                            }
+                            if (filteredData.isEmpty()){
+                                binding.emptyNotif.visibility = View.VISIBLE
+                            }else{
+                                sellerAdapter.submitData(filteredData)
+                                binding.rvAllProduct.adapter = sellerAdapter
+
+                            }
                         }
                         progressDialog.dismiss()
                     }

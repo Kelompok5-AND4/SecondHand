@@ -43,7 +43,7 @@ class CategoryAdapter(private val onClick: CategoryAdapter.OnClickListener):Recy
             //https://raw.githubusercontent.com/Kelompok5-AND4/CategoryIconDirectory/master/Electronik.png
             val imageUrl = "https://raw.githubusercontent.com/Kelompok5-AND4/CategoryIconDirectory/master/${data.name}.png"
             binding.tvCategoryName.text = data.name
-            Glide.with(binding.root).load(imageUrl).placeholder(R.drawable.default_rv).into(binding.ivCategory)
+            Glide.with(binding.root).load(imageUrl).error(R.drawable.default_rv).into(binding.ivCategory)
             binding.root.setOnClickListener {
                 onClick.onClickItem(data)
                 index = position

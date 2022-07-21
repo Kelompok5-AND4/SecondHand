@@ -52,6 +52,9 @@ class PenawaranBuyerToSellerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val idOrder = args.id
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
         viewModel.getToken()
         viewModel.getToken.observe(viewLifecycleOwner){
             viewModel.bidder(it.token,idOrder)

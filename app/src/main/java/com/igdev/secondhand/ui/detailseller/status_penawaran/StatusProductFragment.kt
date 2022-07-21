@@ -56,18 +56,6 @@ class StatusProductFragment(
         binding.tvNamaPembeli.text = name
         binding.tvLokasi.text = location
 
-        /*if (binding.radioTerima.isChecked){
-            status = "available"
-        }else if (binding.radioTolak.isChecked){
-            status = "seller"
-        }*/
-        binding.radioGroup.setOnCheckedChangeListener { compoundButton, b ->
-            val id:Int = binding.radioGroup.checkedRadioButtonId
-            if (id!=1){
-                binding.btnKonfirmasi.isEnabled = true
-                binding.btnKonfirmasi.backgroundTintList = requireContext().getColorStateList(R.color.abu_muda)
-            }
-        }
         Log.d("radio","$status")
         binding.btnKonfirmasi.setOnClickListener {
             when(binding.radioGroup.checkedRadioButtonId){
