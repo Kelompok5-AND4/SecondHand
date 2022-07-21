@@ -78,10 +78,10 @@ class EditProductViewModel @Inject constructor(private val repository: Repositor
         hargaProduk: String,
         kategoriProduk: List<Int>,
         alamatPenjual: String,
-        image: File
+        image: File?
     ){
-        val requestFile = reduceImageSize(image).asRequestBody("image/jpg".toMediaTypeOrNull())
-        val gambarProduk = MultipartBody.Part.createFormData("image", image.name, requestFile)
+        val requestFile = image?.let { reduceImageSize(it).asRequestBody("image/jpg".toMediaTypeOrNull()) }
+        val gambarProduk = requestFile?.let { MultipartBody.Part.createFormData("image", image.name, it) }
         val namaRequestBody = namaProduk.toRequestBody("text/plain".toMediaType())
         val deskripsiRequestBody = deskripsiProduk.toRequestBody("text/plain".toMediaType())
         val hargaRequestBody = hargaProduk.toRequestBody("text/plain".toMediaType())
