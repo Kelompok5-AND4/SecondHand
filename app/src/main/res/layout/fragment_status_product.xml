@@ -97,7 +97,6 @@
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/btn_konfirmasi"
                 app:layout_constraintTop_toBottomOf="@id/cv_seller">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -205,8 +204,7 @@
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cv_transaksi"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/cv_transaksi"/>
 
 
 

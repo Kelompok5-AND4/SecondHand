@@ -351,7 +351,11 @@
         android:id="@+id/allFeatureFragment"
         android:name="com.igdev.secondhand.ui.allfeature.AllFeatureFragment"
         android:label="fragment_all_feature"
-        tools:layout="@layout/fragment_all_feature" />
+        tools:layout="@layout/fragment_all_feature" >
+        <action
+            android:id="@+id/action_allFeatureFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
     <fragment
 
         android:id="@+id/wishlistFragment"

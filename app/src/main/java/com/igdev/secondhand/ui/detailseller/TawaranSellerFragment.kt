@@ -63,6 +63,9 @@ class TawaranSellerFragment : Fragment() {
         binding.btnDelete.setOnClickListener {
             viewModel.deleteProduct(token,id)
         }
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
         val progressDialog = ProgressDialog(requireContext())
         viewModel.detail.observe(viewLifecycleOwner){detail ->
             when (detail.status) {
@@ -111,8 +114,15 @@ class TawaranSellerFragment : Fragment() {
                         listPenawar.add(res)
                     }
                 }
-                penawarAdapter.submitData(listPenawar)
-                binding.rvTawar.adapter = penawarAdapter
+                if (listPenawar.isEmpty()){
+                    binding.btnNull.visibility = View.VISIBLE
+                    binding.rvTawar.visibility = View.GONE
+                }else{
+                    binding.rvTawar.visibility = View.VISIBLE
+                    binding.btnNull.visibility = View.GONE
+                    penawarAdapter.submitData(listPenawar)
+                    binding.rvTawar.adapter = penawarAdapter
+                }
             }
         }
     }

@@ -1,60 +1,101 @@
 package com.igdev.secondhand.ui.allfeature
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.igdev.secondhand.R
+import com.igdev.secondhand.databinding.FragmentAllFeatureBinding
+import com.igdev.secondhand.databinding.FragmentLoginBinding
+import com.igdev.secondhand.model.CategoryResponseItem
+import com.igdev.secondhand.model.Status
+import com.igdev.secondhand.ui.adapter.BannerAdapter
+import com.igdev.secondhand.ui.adapter.CategoryAdapter
+import com.igdev.secondhand.ui.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.math.abs
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AllFeatureFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class AllFeatureFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentAllFeatureBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel:AllFeatureViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        _binding = FragmentAllFeatureBinding.inflate(inflater,container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_feature, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AllFeatureFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AllFeatureFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val viewPager2 = binding.viewPager
+        val handler = Handler(Looper.myLooper()!!)
+        val imageList = ArrayList<Int>()
+        imageList.add(R.drawable.bannercuan_1)
+        imageList.add(R.drawable.bannercuan_2)
+        imageList.add(R.drawable.bannercuan_3)
+        imageList.add(R.drawable.bannercuan_4)
+
+
+        val adapter = BannerAdapter(imageList, viewPager2)
+        viewPager2.adapter = adapter
+        viewPager2.offscreenPageLimit = 2
+        viewPager2.clipToPadding = false
+        viewPager2.clipChildren = false
+        viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        val runnable = Runnable {
+            viewPager2.currentItem = viewPager2.currentItem + 1
+        }
+
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                handler.removeCallbacks(runnable)
+                handler.postDelayed(runnable, 5000)
             }
+        })
+        setUpTransformer()
+
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        viewModel.getCategory()
+        viewModel.category.observe(viewLifecycleOwner){
+            if (it.status == Status.SUCCESS){
+                val categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener{
+                    override fun onClickItem(data: CategoryResponseItem) {
+                        val direct = AllFeatureFragmentDirections.actionAllFeatureFragmentToCategoryFragment(data.id)
+                        findNavController().navigate(direct)
+                    }
+                })
+                categoryAdapter.submitData(it.data)
+                binding.rvFeature.adapter = categoryAdapter
+            }
+        }
     }
+    private fun setUpTransformer() {
+        val transformer = CompositePageTransformer()
+        transformer.addTransformer(MarginPageTransformer(40))
+        transformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = 0.85f + r * 0.14f
+        }
+        binding.viewPager.setPageTransformer(transformer)
+    }
+
+
+
 }

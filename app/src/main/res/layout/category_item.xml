@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="8dp"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         app:layout_constraintTop_toTopOf="parent"
@@ -22,8 +21,8 @@
 
             <ImageView
                 android:id="@+id/ivCategory"
-                android:layout_width="53dp"
-                android:layout_height="53dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/default_detail"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -41,9 +40,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
         android:textSize="10sp"
+        android:textAlignment="center"
         android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/item"
+        app:layout_constraintStart_toStartOf="@id/item"
         app:layout_constraintTop_toBottomOf="@id/item"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:text="Category" />
