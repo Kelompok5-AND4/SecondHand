@@ -74,7 +74,7 @@ class PengajuanDitolakFragment : Fragment() {
                             val buyerAdapter =
                                 AccDcBuyerOrderAdapter(object : AccDcBuyerOrderAdapter.OnClickListener {
                                     override fun onClickItem(data: BuyerOrderResponse) {
-                                        val direct = PengajuanDiterimaFragmentDirections.actionPengajuanDiterimaFragmentToDetailProductFragment(data.productId)
+                                        val direct = PengajuanDitolakFragmentDirections.actionPengajuanDitolakFragmentToDetailProductFragment(data.id)
                                         findNavController().navigate(direct)
                                     }
                                 })

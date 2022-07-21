@@ -1,12 +1,15 @@
 package com.igdev.secondhand.ui.detailproduct
 
+import android.app.ActionBar
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +19,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.FragmentDetailProductBinding
@@ -78,9 +82,10 @@ class DetailProductFragment : Fragment() {
             findNavController().popBackStack()
         }
         binding.btnMenu.setOnClickListener {
-            val snackbar = Snackbar.make(requireContext(),binding.root,"Laporkan barang?",Snackbar.LENGTH_LONG)
-            snackbar.setAction("Tidak"){snackbar.dismiss()}
-            snackbar.setAction("Iya"){
+            val snackBarView =
+                Snackbar.make(binding.root,"Apakah anda ingin melaporkan barang ini?", 3000)
+            val layoutParams = ActionBar.LayoutParams(snackBarView.view.layoutParams)
+            snackBarView.setAction("Iya") {
                 val number = "6281252847037"
                 val text = "Saya ingin melaporkan barang ini ..."
                 startActivity(
@@ -92,7 +97,13 @@ class DetailProductFragment : Fragment() {
                     )
                 )
             }
-            snackbar.show()
+            layoutParams.gravity = Gravity.TOP
+            layoutParams.setMargins(32, 150, 32, 0)
+            snackBarView.view.setPadding(24, 16, 0, 16)
+            snackBarView.view.setBackgroundColor(Color.parseColor("#ED1C24"))
+            snackBarView.view.layoutParams = layoutParams
+            snackBarView.animationMode = BaseTransientBottomBar.ANIMATION_MODE_FADE
+            snackBarView.show()
         }
 
 
@@ -120,16 +131,17 @@ class DetailProductFragment : Fragment() {
             if (accepted) {
                 binding.btnNego.setText(R.string.diterima_text)
                 binding.btnNego.isClickable = false
-                binding.btnNego.setBackgroundColor(R.color.hijau)
+                binding.btnNego.setBackgroundColor(Color.parseColor("#01B45F"))
             } else if (pending) {
                 binding.btnNego.setText(R.string.menunggu_text)
                 binding.btnNego.isClickable = false
-                binding.btnNego.setBackgroundColor(R.color.abu_muda)
-                binding.btnNego.setTextColor(R.color.black)
+                binding.btnNego.setTextColor(Color.parseColor("#FF000000"))
+                binding.btnNego.setBackgroundColor(Color.parseColor("#EDFAFF"))
             } else if (decline) {
                 binding.btnNego.setText(R.string.ditolak_text)
                 binding.btnNego.isClickable = false
-                binding.btnNego.setBackgroundColor(R.color.merah)
+                binding.btnNego.setBackgroundColor(Color.parseColor("#ED1C24"))
+
             } else {
                 binding.btnNego.visibility = View.VISIBLE
             }

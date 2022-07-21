@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.facebook.shimmer.Shimmer
+import com.facebook.shimmer.ShimmerDrawable
 import com.igdev.secondhand.R
 import com.igdev.secondhand.databinding.BuyerHistoryItemBinding
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
@@ -75,8 +77,18 @@ class BuyerAdapter(
                 }
                 tvProductName.text = data.productName
                 tvHarga.text = rupiah(data.price)
+                val shimmer = Shimmer.AlphaHighlightBuilder()// The attributes for a ShimmerDrawable is set by this builder
+                    .setDuration(1800) // how long the shimmering animation takes to do one full sweep
+                    .setBaseAlpha(0.7f) //the alpha of the underlying children
+                    .setHighlightAlpha(0.6f) // the shimmer alpha amount
+                    .setDirection(Shimmer.Direction.LEFT_TO_RIGHT)
+                    .setAutoStart(true)
+                    .build()
+                val shimmerDrawable = ShimmerDrawable().apply {
+                    setShimmer(shimmer)
+                }
                 Glide.with(binding.root)
-                    .load(data.product.imageUrl ?: R.drawable.default_rv)
+                    .load(data.product.imageUrl ?: R.drawable.default_rv).placeholder(shimmerDrawable)
                     .centerCrop()
                     .into(ivProduct)
                 root.setOnClickListener{

@@ -3,6 +3,7 @@ package com.igdev.secondhand.ui.transaksipembeli
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
 import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.MainFragmentDirections
 import com.igdev.secondhand.ui.transaction.BuyerAdapter
+import com.igdev.secondhand.ui.transaction.EditOrderFragment
 import com.igdev.secondhand.ui.transaction.TransactionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,6 +55,7 @@ class DalamPengajuanFragment : Fragment() {
             if (it.token=="def_token"){
             }else{
                 viewModel.getBuyerHistory(it.token)
+                it.token
             }
         }
         binding.btnBack.setOnClickListener {
@@ -80,10 +83,21 @@ class DalamPengajuanFragment : Fragment() {
                             val buyerAdapter =
                                 BuyerAdapter(
                                     onClick = {data->
-                                        val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(data.productId)
+                                        val direct = DalamPengajuanFragmentDirections.actionDalamPengajuanFragmentToDetailProductFragment(data.id)
                                         findNavController().navigate(direct)
-                                    }, onDelete = {
-                                    }, onEdit = {
+                                    }, onDelete = { data->
+                                        viewModel.deleteOrder(token,data.id)
+                                    }, onEdit = {data->
+                                        val bottomFragment = EditOrderFragment(
+                                            data.id,data.price.toString(),data.productName,data.basePrice,data.product.imageUrl, submit = {req->
+                                                viewModel.putOrder(token,data.id,req)
+                                                Log.d("price",req.bid_price)
+                                            }
+                                        )
+                                        bottomFragment.show(parentFragmentManager, "Bid Price")
+                                        Log.d("id",data.id.toString())
+                                        Log.d("token",token)
+
                                     })
                             binding.emptyNotif.visibility = View.GONE
                             buyerAdapter.submitData(listBuyer)
