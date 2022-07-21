@@ -52,15 +52,11 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
     private val viewModels: PagingViewModel by viewModels()
-
-    //private lateinit var productAdapter: ProductAdapter
-    //private lateinit var productPagingAdapter: ProductPagingAdapter
-    private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var miniCategoryAdapter: MiniCategoryAdapter
     var category: Int? = null
     private val tokenLelang =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1NzU0NDczOH0.OttWesAu57GikyJRZWVXvzXtGtJKzfTnu8MKt5ZEFAc"
-
+    var topCategory = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -106,6 +102,7 @@ class HomeFragment : Fragment() {
             }
         })
 
+        setUpCategory()
 
         setUpTransformer()
         binding.searchView.setOnClickListener {
@@ -124,14 +121,6 @@ class HomeFragment : Fragment() {
             load = productLoadStateAdapter,
             pagingData = viewModels.getProducts()
         )
-        categoryAdapter = CategoryAdapter(object : CategoryAdapter.OnClickListener {
-            override fun onClickItem(data: CategoryResponseItem) {
-                val toCategory =
-                    MainFragmentDirections.actionMainFragmentToCategoryFragment(data.id)
-                findNavController().navigate(toCategory)
-            }
-        })
-        binding.rvCategory.adapter = categoryAdapter
 
         binding.btnJual.setOnClickListener {
             MainFragment.currentPage = R.id.sellFragment
@@ -223,6 +212,39 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun setUpCategory() {
+
+        binding.icElektronik.setOnClickListener {
+            topCategory = 1
+            val direction = MainFragmentDirections.actionMainFragmentToCategoryFragment(topCategory)
+            findNavController().navigate(direction)
+        }
+        binding.icOtomotif.setOnClickListener {
+            topCategory = 19
+            val direction = MainFragmentDirections.actionMainFragmentToCategoryFragment(topCategory)
+            findNavController().navigate(direction)
+        }
+        binding.icKesehatan.setOnClickListener {
+            topCategory = 8
+            val direction = MainFragmentDirections.actionMainFragmentToCategoryFragment(topCategory)
+            findNavController().navigate(direction)
+        }
+        binding.icPhotography.setOnClickListener {
+            topCategory = 24
+            val direction = MainFragmentDirections.actionMainFragmentToCategoryFragment(topCategory)
+            findNavController().navigate(direction)
+        }
+        binding.icVoucher.setOnClickListener {
+            topCategory = 22
+            val direction = MainFragmentDirections.actionMainFragmentToCategoryFragment(topCategory)
+            findNavController().navigate(direction)
+        }
+        binding.icAll.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_allFeatureFragment)
+        }
+
+    }
+
     private fun setUpPaging(
         adapter: ProductPagingAdapter,
         load: ProductLoadStateAdapter,
@@ -302,7 +324,6 @@ class HomeFragment : Fragment() {
                     progressDialog.show()
                 }
                 Status.SUCCESS -> {
-                    categoryAdapter.submitData(resources.data)
                     miniCategoryAdapter.submitData(resources.data)
                     progressDialog.dismiss()
 

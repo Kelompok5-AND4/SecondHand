@@ -55,216 +55,224 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/btnJual"
-                    android:layout_width="107dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@drawable/bg_rounded_birusatu"
-                    app:layout_constraintStart_toStartOf="parent"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/containerFitur"
                     app:layout_constraintTop_toBottomOf="@id/viewPagerBanner"
-                    app:layout_constraintBottom_toBottomOf="@id/list_menu_dua"/>
-
-                <ImageView
-                    android:id="@+id/btn_text_jual"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_sell_text"
-                    android:layout_marginBottom="12dp"
-                    app:layout_constraintStart_toStartOf="@id/btnJual"
-                    app:layout_constraintEnd_toEndOf="@id/btnJual"
-                    app:layout_constraintBottom_toBottomOf="@id/btnJual"/>
-
-                <ImageView
-                    android:layout_width="138dp"
-                    android:layout_height="176dp"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/ic_sell"
-                    app:layout_constraintBottom_toTopOf="@id/btn_text_jual"
-                    app:layout_constraintEnd_toEndOf="@id/btnJual"
-                    app:layout_constraintStart_toStartOf="@id/btnJual" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/list_menu_satu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/btnJual"
-                    app:layout_constraintTop_toTopOf="@id/btnJual">
-
-                    <!--Otomotif-->
-                    <ImageButton
-                        android:id="@+id/ic_otomotif"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_marginEnd="14dp"
-                        android:background="@color/transparant"
-                        android:contentDescription="@string/icon"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_otomotif"
-                        app:layout_constraintEnd_toStartOf="@id/ic_elektronik"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+                    <ImageView
+                        android:id="@+id/btnJual"
+                        android:layout_width="107dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@drawable/bg_rounded_birusatu"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/list_menu_dua"/>
 
-                    <TextView
-                        android:id="@+id/desc_otomotif"
+                    <ImageView
+                        android:id="@+id/btn_text_jual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Otomotif"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@id/ic_otomotif"
-                        app:layout_constraintStart_toStartOf="@id/ic_otomotif"
-                        app:layout_constraintTop_toBottomOf="@id/ic_otomotif" />
+                        android:src="@drawable/ic_sell_text"
+                        android:layout_marginBottom="12dp"
+                        app:layout_constraintStart_toStartOf="@id/btnJual"
+                        app:layout_constraintEnd_toEndOf="@id/btnJual"
+                        app:layout_constraintBottom_toBottomOf="@id/btnJual"/>
 
-                    <!--Elektronik-->
-                    <ImageButton
-                        android:id="@+id/ic_elektronik"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_marginEnd="14dp"
-                        android:background="@color/transparant"
-                        android:contentDescription="@string/icon"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_electronic"
-                        app:layout_constraintEnd_toStartOf="@id/ic_voucher"
-                        app:layout_constraintStart_toEndOf="@id/ic_otomotif"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:layout_width="138dp"
+                        android:layout_height="176dp"
+                        android:layout_marginEnd="6dp"
+                        android:src="@drawable/ic_sell"
+                        app:layout_constraintBottom_toTopOf="@id/btn_text_jual"
+                        app:layout_constraintEnd_toEndOf="@id/btnJual"
+                        app:layout_constraintStart_toStartOf="@id/btnJual" />
 
-                    <TextView
-                        android:id="@+id/dsc_elektronik"
-                        android:layout_width="wrap_content"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/list_menu_satu"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Elektronik"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@id/ic_elektronik"
-                        app:layout_constraintStart_toStartOf="@id/ic_elektronik"
-                        app:layout_constraintTop_toBottomOf="@id/ic_elektronik" />
-
-                    <!--Voucher-->
-                    <ImageButton
-                        android:id="@+id/ic_voucher"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_marginEnd="14dp"
-                        android:background="@color/transparant"
-                        android:contentDescription="@string/icon"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_kupon"
+                        android:layout_marginHorizontal="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/ic_elektronik"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintStart_toEndOf="@id/btnJual"
+                        app:layout_constraintTop_toTopOf="@id/btnJual">
 
-                    <TextView
-                        android:id="@+id/dsc_coucher"
-                        android:layout_width="wrap_content"
+                        <!--Otomotif-->
+                        <ImageButton
+                            android:id="@+id/ic_otomotif"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginEnd="14dp"
+                            android:background="@color/transparant"
+                            android:contentDescription="@string/icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_otomotif"
+                            app:layout_constraintEnd_toStartOf="@id/ic_elektronik"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/desc_otomotif"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Otomotif"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="@id/ic_otomotif"
+                            app:layout_constraintStart_toStartOf="@id/ic_otomotif"
+                            app:layout_constraintTop_toBottomOf="@id/ic_otomotif" />
+
+                        <!--Elektronik-->
+                        <ImageButton
+                            android:id="@+id/ic_elektronik"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginEnd="14dp"
+                            android:background="@color/transparant"
+                            android:contentDescription="@string/icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_electronic"
+                            app:layout_constraintEnd_toStartOf="@id/ic_voucher"
+                            app:layout_constraintStart_toEndOf="@id/ic_otomotif"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/dsc_elektronik"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Elektronik"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="@id/ic_elektronik"
+                            app:layout_constraintStart_toStartOf="@id/ic_elektronik"
+                            app:layout_constraintTop_toBottomOf="@id/ic_elektronik" />
+
+                        <!--Voucher-->
+                        <ImageButton
+                            android:id="@+id/ic_voucher"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginEnd="14dp"
+                            android:background="@color/transparant"
+                            android:contentDescription="@string/icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_kupon"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/ic_elektronik"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/dsc_coucher"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Voucher"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="@id/ic_voucher"
+                            app:layout_constraintStart_toStartOf="@id/ic_voucher"
+                            app:layout_constraintTop_toBottomOf="@id/ic_voucher" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/list_menu_dua"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Voucher"
+                        android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="6dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@id/ic_voucher"
-                        app:layout_constraintStart_toStartOf="@id/ic_voucher"
-                        app:layout_constraintTop_toBottomOf="@id/ic_voucher" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/btnJual"
+                        app:layout_constraintTop_toBottomOf="@id/list_menu_satu">
+
+                        <!--Otomotif-->
+                        <ImageButton
+                            android:id="@+id/ic_photography"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginEnd="14dp"
+                            android:background="@color/transparant"
+                            android:contentDescription="@string/icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_photography"
+                            app:layout_constraintEnd_toStartOf="@id/ic_kesehatan"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/desc_photography"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Photography"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="@id/ic_photography"
+                            app:layout_constraintStart_toStartOf="@id/ic_photography"
+                            app:layout_constraintTop_toBottomOf="@id/ic_photography" />
+
+                        <!--Elektronik-->
+                        <ImageButton
+                            android:id="@+id/ic_kesehatan"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginEnd="14dp"
+                            android:background="@color/transparant"
+                            android:contentDescription="@string/icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_kesehatan"
+                            app:layout_constraintEnd_toStartOf="@id/ic_all"
+                            app:layout_constraintStart_toEndOf="@id/ic_photography"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/desc_kesehatan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kesehatan"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="@id/ic_kesehatan"
+                            app:layout_constraintStart_toStartOf="@id/ic_kesehatan"
+                            app:layout_constraintTop_toBottomOf="@id/ic_kesehatan" />
+
+                        <!--Voucher-->
+                        <ImageButton
+                            android:id="@+id/ic_all"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginEnd="14dp"
+                            android:background="@color/transparant"
+                            android:contentDescription="@string/icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_all_fitur"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/ic_kesehatan"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/desc_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Semua Fitur"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="@id/ic_all"
+                            app:layout_constraintStart_toStartOf="@id/ic_all"
+                            app:layout_constraintTop_toBottomOf="@id/ic_all" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/list_menu_dua"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="6dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/btnJual"
-                    app:layout_constraintTop_toBottomOf="@id/list_menu_satu">
-
-                    <!--Otomotif-->
-                    <ImageButton
-                        android:id="@+id/ic_photography"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_marginEnd="14dp"
-                        android:background="@color/transparant"
-                        android:contentDescription="@string/icon"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_photography"
-                        app:layout_constraintEnd_toStartOf="@id/ic_kesehatan"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/desc_photography"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Photography"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@id/ic_photography"
-                        app:layout_constraintStart_toStartOf="@id/ic_photography"
-                        app:layout_constraintTop_toBottomOf="@id/ic_photography" />
-
-                    <!--Elektronik-->
-                    <ImageButton
-                        android:id="@+id/ic_kesehatan"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_marginEnd="14dp"
-                        android:background="@color/transparant"
-                        android:contentDescription="@string/icon"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_kesehatan"
-                        app:layout_constraintEnd_toStartOf="@id/ic_all"
-                        app:layout_constraintStart_toEndOf="@id/ic_photography"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/desc_kesehatan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kesehatan"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@id/ic_kesehatan"
-                        app:layout_constraintStart_toStartOf="@id/ic_kesehatan"
-                        app:layout_constraintTop_toBottomOf="@id/ic_kesehatan" />
-
-                    <!--Voucher-->
-                    <ImageButton
-                        android:id="@+id/ic_all"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_marginEnd="14dp"
-                        android:background="@color/transparant"
-                        android:contentDescription="@string/icon"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_all_fitur"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/ic_kesehatan"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/desc_all"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Semua Fitur"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@id/ic_all"
-                        app:layout_constraintStart_toStartOf="@id/ic_all"
-                        app:layout_constraintTop_toBottomOf="@id/ic_all" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                <!--Lelang-->
 
                 <ImageView
@@ -276,8 +284,7 @@
                     android:layout_marginTop="50dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/list_menu_dua"
-                    app:layout_constraintBottom_toBottomOf="@id/specialOffer"/>
+                    app:layout_constraintTop_toBottomOf="@id/containerFitur"/>
 
                 <TextView
                     android:id="@+id/tvSpecialOffer"

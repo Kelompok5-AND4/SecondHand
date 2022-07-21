@@ -66,6 +66,12 @@ class RegisterFragment : Fragment() {
             btnBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+            tvDesc.setOnClickListener {
+                findNavController().popBackStack()
+            }
+            tvMasukDiSini.setOnClickListener {
+                findNavController().popBackStack()
+            }
         }
 
     }
@@ -74,7 +80,7 @@ class RegisterFragment : Fragment() {
         val nama = binding.etNamaLengkap.text.toString()
         val email = binding.etEmail.text.toString()
         val password = binding.etBuatPassword.text.toString()
-        val registerReq = RegistReq(email,password)
+        val registerReq = RegistReq(nama,email,password)
         viewModel.registerPost(registerReq)
         if (nama.isEmpty() || email.isEmpty() || password.isEmpty()){
             Toast.makeText(requireContext(), "lengkapi data", Toast.LENGTH_SHORT).show()
