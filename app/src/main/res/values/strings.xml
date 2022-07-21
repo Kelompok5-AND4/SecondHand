@@ -96,5 +96,6 @@
     <string name="kosong_terjual">Belum Ada Product Terjual</string>
     <string name="kosong_tersimpan">Belum Ada Product Tersimpan</string>
     <string name="onboarding_satu">Selamat datang \ndi CuanCuan</string>
+    <string name="icon">icon</string>
 
 </resources>

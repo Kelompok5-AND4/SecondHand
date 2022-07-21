@@ -132,6 +132,7 @@ class HomeFragment : Fragment() {
             }
         })
         binding.rvCategory.adapter = categoryAdapter
+
         binding.btnJual.setOnClickListener {
             MainFragment.currentPage = R.id.sellFragment
             findNavController().navigate(R.id.mainFragment)
