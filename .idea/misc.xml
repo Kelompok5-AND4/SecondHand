@@ -80,6 +80,7 @@
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_is_not_wishlist.xml" value="0.1135" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_is_wishlist.xml" value="0.1135" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1225" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1225" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_location_fix.xml" value="0.1225" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_logout.xml" value="0.1225" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/drawable/ic_lokasi.xml" value="0.1225" />
@@ -124,6 +125,7 @@
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/font/font.xml" value="0.2324074074074074" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/activity_main.xml" value="0.16944444444444445" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/activity_on_boarding.xml" value="0.209375" />
+        <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/all_feature_item.xml" value="0.209375" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/banner_item.xml" value="0.1" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/buyer_history_item.xml" value="0.209375" />
         <entry key="..\:/Users/Bax/AndroidStudioProjects/SecondHandNotifScreenMerge/app/src/main/res/layout/category_bottom_sheet.xml" value="0.209375" />
