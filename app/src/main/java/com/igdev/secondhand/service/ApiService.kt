@@ -7,9 +7,7 @@ import com.igdev.secondhand.model.PagingProduct.Product
 import com.igdev.secondhand.model.UpdateResponse
 import com.igdev.secondhand.model.addProduct.SellProductResponse
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
-import com.igdev.secondhand.model.detail.GetDetail
-import com.igdev.secondhand.model.detail.PostOrderReq
-import com.igdev.secondhand.model.detail.PostOrderResponse
+import com.igdev.secondhand.model.detail.*
 import com.igdev.secondhand.model.getAuth.ResponseAuth
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.login.LoginResponse
@@ -51,6 +49,11 @@ interface ApiService {
     @POST("buyer/order")
     suspend fun postBuyerOrder(@Header("access_token") token: String,@Body requestBody: PostOrderReq) : Response<PostOrderResponse>
 
+    @PUT("buyer/order/{id}")
+    suspend fun putBuyerOrder(@Header("access_token") token: String,@Path("id")id: Int,@Body requestBody: PutOrderReq) : Response<PostOrderResponse>
+
+    @DELETE("buyer/order/{id}")
+    suspend fun deleteBuyerOrder(@Header("access_token")token: String,@Path("id")id:Int):Response<DeleteBuyerOrder>
     //anwar
     @Multipart
     @PUT("auth/user")

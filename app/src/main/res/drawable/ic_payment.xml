@@ -2,7 +2,9 @@
     android:width="117.691dp"
     android:height="129.326dp"
     android:viewportWidth="117.691"
-    android:viewportHeight="129.326">
+    android:viewportHeight="129.326"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="VectorPath,VectorRaster">
   <path
       android:pathData="M32.316,29.823c2.853,5.633 12.731,6.7 25.047,3.252 21.76,-6.094 35.383,-21.145 52.594,-13.014s0.853,30.377 -2.825,39.991S104.251,74.543 112.476,89.143s-0.767,30.616 -18.034,31.027S83.616,100.238 60.068,96.243s-34.631,9.4 -49.413,0.241 -12.489,-28.749 -3.388,-38.03c7.646,-7.8 -0.308,-23.691 2.977,-31.083S24.8,14.981 32.316,29.823Z"
       android:fillColor="#7bceff"/>

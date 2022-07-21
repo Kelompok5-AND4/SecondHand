@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="196dp"
+    android:layout_width="220dp"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
@@ -15,7 +15,7 @@
         android:layout_marginBottom="4dp"
         app:cardBackgroundColor="@color/abu_muda"
         app:cardCornerRadius="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_edit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -39,6 +39,27 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_edit"
+        app:layout_constraintStart_toEndOf="@id/cardView"
+        app:layout_constraintTop_toTopOf="@id/cardView"
+        app:icon="@drawable/ic_edit_x"
+        style="@style/Widget.AppCompat.ActionButton"
+        android:visibility="gone"
+        app:iconTint="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_delete"
+        app:layout_constraintTop_toBottomOf="@id/btn_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardView"
+        app:icon="@drawable/ic_delet_x"
+        app:iconTint="@color/black"
+        android:visibility="gone"
+        style="@style/Widget.AppCompat.ActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <TextView
         android:layout_marginTop="6dp"
         android:id="@+id/tvMessage"

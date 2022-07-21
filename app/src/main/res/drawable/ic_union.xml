@@ -3,7 +3,9 @@
     android:width="360dp"
     android:height="123dp"
     android:viewportWidth="360"
-    android:viewportHeight="123">
+    android:viewportHeight="123"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="VectorPath,VectorRaster">
   <path
       android:pathData="M0,81V103.81C52.42,115.63 111.71,122.29 174.5,122.29C241.72,122.29 304.94,114.66 360,101.22V81V0H0V0.04V81Z"
       android:fillType="evenOdd">

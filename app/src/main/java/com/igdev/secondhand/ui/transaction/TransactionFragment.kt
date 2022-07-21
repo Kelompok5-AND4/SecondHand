@@ -3,6 +3,7 @@ package com.igdev.secondhand.ui.transaction
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,7 @@ import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
 import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.MainFragmentDirections
+import com.igdev.secondhand.ui.detailproduct.InputPenawaranFragment
 import com.igdev.secondhand.ui.viewmodel.AccountViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -59,6 +61,7 @@ class TransactionFragment : Fragment() {
                 viewModel.getSellerOrder(it.token)
                 binding.notLogin.visibility =View.GONE
                 binding.loggedIn.visibility = View.VISIBLE
+                token = it.token
             }
         }
         binding.btnBack.setOnClickListener {
@@ -114,17 +117,24 @@ class TransactionFragment : Fragment() {
                                 }
                             }
                             val buyerAdapter =
-                                BuyerAdapter(object : BuyerAdapter.OnClickListener {
-                                    override fun onClickItem(data: BuyerOrderResponse) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Notif Id = ${data.id}",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                BuyerAdapter(
+                                    onClick = {data->
                                         val direct = MainFragmentDirections.actionMainFragmentToDetailProductFragment(data.productId)
                                         findNavController().navigate(direct)
-                                    }
-                                })
+                                    }, onDelete = { data->
+                                        viewModel.deleteOrder(token,data.id)
+                                    }, onEdit = {data->
+                                        val bottomFragment = EditOrderFragment(
+                                            data.id,data.price.toString(),data.productName,data.basePrice,data.product.imageUrl, submit = {req->
+                                                viewModel.putOrder(token,data.id,req)
+                                                Log.d("price",req.bid_price)
+                                            }
+                                        )
+                                        bottomFragment.show(parentFragmentManager, "Bid Price")
+                                        Log.d("id",data.id.toString())
+                                        Log.d("token",token)
+
+                                    })
 
                             binding.emptyNotif.visibility = View.GONE
                             buyerAdapter.submitData(listBuyer)
@@ -140,7 +150,6 @@ class TransactionFragment : Fragment() {
                     }
                 }
             }
-
         }
         binding.apply {
             btnSemua.setOnClickListener {
@@ -191,6 +200,22 @@ class TransactionFragment : Fragment() {
                             .show()
                     }
                 }
+            }
+        }
+        viewModel.putOrder.observe(viewLifecycleOwner){
+            if (it.status == Status.SUCCESS){
+                Toast.makeText(requireContext(),"Berhasil Edit Harga Tawar",Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.mainFragment)
+            }else if (it.status == Status.ERROR){
+                Toast.makeText(requireContext(),"Gagal Edit Harga Tawar",Toast.LENGTH_SHORT).show()
+            }
+        }
+        viewModel.deleteOrder.observe(viewLifecycleOwner){
+            if (it.status == Status.SUCCESS){
+                Toast.makeText(requireContext(),"Berhasil Menghapus Orderan",Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.mainFragment)
+            }else if (it.status == Status.ERROR){
+                Toast.makeText(requireContext(),"Gagal Menghapus Orderan",Toast.LENGTH_SHORT).show()
             }
         }
 

@@ -1,6 +1,7 @@
 package com.igdev.secondhand.service
 
 import com.igdev.secondhand.model.detail.PostOrderReq
+import com.igdev.secondhand.model.detail.PutOrderReq
 import com.igdev.secondhand.model.login.LoginReq
 import com.igdev.secondhand.model.register.RegistReq
 import com.igdev.secondhand.model.sellerorder.PatchSellerOrderReq
@@ -82,4 +83,7 @@ class ApiHelper @Inject constructor(private val apiService: ApiService) {
         categoryIds: List<Int>?,
         location: RequestBody?,
     ) = apiService.editProduct(token,id, file, name, description, base_price, categoryIds, location)
+
+    suspend fun putOrder(token: String,id:Int,requestBody: PutOrderReq)= apiService.putBuyerOrder(token,id,requestBody)
+    suspend fun deleteOrder(token: String,id: Int) = apiService.deleteBuyerOrder(token, id)
 }

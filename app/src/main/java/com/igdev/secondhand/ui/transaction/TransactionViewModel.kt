@@ -7,6 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.igdev.secondhand.model.Resource
 import com.igdev.secondhand.model.User
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
+import com.igdev.secondhand.model.detail.DeleteBuyerOrder
+import com.igdev.secondhand.model.detail.PostOrderReq
+import com.igdev.secondhand.model.detail.PostOrderResponse
+import com.igdev.secondhand.model.detail.PutOrderReq
 import com.igdev.secondhand.model.notification.NotifResponseItem
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
 import com.igdev.secondhand.model.sellerproduct.SellerProductResponseItem
@@ -14,6 +18,7 @@ import com.igdev.secondhand.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
@@ -71,5 +76,35 @@ class TransactionViewModel @Inject constructor(private val repository: Repositor
             }
         }
     }
+
+    private val _putOrder = MutableLiveData<Resource<Response<PostOrderResponse>>>()
+    val putOrder : LiveData<Resource<Response<PostOrderResponse>>> get()= _putOrder
+    
+    fun putOrder(token: String,id:Int,requestBody : PutOrderReq) {
+        viewModelScope.launch {
+            _putOrder.postValue(Resource.loading())
+            try {
+                _putOrder.postValue(Resource.success(repository.putOrder(token,id,requestBody)))
+            } catch (exception: Exception) {
+                _putOrder.postValue(Resource.error(exception.message ?: "Error"))
+            }
+        }
+    }
+
+    private val _deleteOrder = MutableLiveData<Resource<Response<DeleteBuyerOrder>>>()
+    val deleteOrder : LiveData<Resource<Response<DeleteBuyerOrder>>> get()= _deleteOrder
+
+    fun deleteOrder(token: String,id:Int) {
+        viewModelScope.launch {
+            _deleteOrder.postValue(Resource.loading())
+            try {
+                _deleteOrder.postValue(Resource.success(repository.deleteOrder(token,id)))
+            } catch (exception: Exception) {
+                _deleteOrder.postValue(Resource.error(exception.message ?: "Error"))
+            }
+        }
+    }
+
+
 
 }

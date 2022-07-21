@@ -1,8 +1,7 @@
-package com.igdev.secondhand.ui.transaction
+package com.igdev.secondhand.ui.transaksipembeli
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -13,12 +12,10 @@ import com.igdev.secondhand.databinding.BuyerHistoryItemBinding
 import com.igdev.secondhand.model.buyerorder.BuyerOrderResponse
 import com.igdev.secondhand.rupiah
 
-class BuyerAdapter(
-    private val onClick: (BuyerOrderResponse) -> Unit,
-    private val onDelete: (BuyerOrderResponse) -> Unit,
-    private val onEdit: (BuyerOrderResponse) -> Unit,
+class AccDcBuyerOrderAdapter(
+    private val onItemClick : OnClickListener
 ) :
-    RecyclerView.Adapter<BuyerAdapter.ViewHolder>() {
+    RecyclerView.Adapter<AccDcBuyerOrderAdapter.ViewHolder>() {
     private val diffCallBack = object : DiffUtil.ItemCallback<BuyerOrderResponse>(){
         override fun areItemsTheSame(
             oldItem: BuyerOrderResponse,
@@ -71,25 +68,20 @@ class BuyerAdapter(
                         tvMessage.text = "Produk sudah tidak ada"
                     }
                 }
-                binding.btnEdit.visibility = View.VISIBLE
-                binding.btnDelete.visibility = View.VISIBLE
                 tvProductName.text = data.productName
-                tvHarga.text = rupiah(data.price)
+                tvHarga.text = rupiah(data.basePrice.toString().toInt())
                 Glide.with(binding.root)
                     .load(data.product.imageUrl ?: R.drawable.default_rv)
                     .centerCrop()
                     .into(ivProduct)
                 root.setOnClickListener{
-                    onClick(data)
-                }
-                btnDelete.setOnClickListener{
-                    onDelete(data)
-                }
-                btnEdit.setOnClickListener{
-                    onEdit(data)
+                    onItemClick.onClickItem(data)
                 }
             }
         }
     }
 
+    interface OnClickListener{
+        fun onClickItem(data: BuyerOrderResponse)
+    }
 }
