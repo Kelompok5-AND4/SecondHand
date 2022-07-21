@@ -221,16 +221,7 @@ class DetailProductFragment : Fragment() {
                         } else {
                             binding.btnLove.setImageResource(R.drawable.ic_is_not_wishlist)
                         }
-                        binding.btnLove.setOnClickListener {
-                            val req = PostWishlistRequest(id)
-                            if (isWishlist) {
-                                viewModel.deleteWishlist(token, idWishlist)
-                                isWishlist = false
-                            } else {
-                                viewModel.postWishlist(token, req)
-                                isWishlist =true
-                            }
-                        }
+
 
 
                     }
@@ -241,7 +232,16 @@ class DetailProductFragment : Fragment() {
                 }
             }
         }
-
+        binding.btnLove.setOnClickListener {
+            val req = PostWishlistRequest(id)
+            if (isWishlist) {
+                viewModel.deleteWishlist(token, idWishlist)
+                isWishlist = false
+            } else {
+                viewModel.postWishlist(token, req)
+                isWishlist =true
+            }
+        }
         viewModel.postWishlist.observe(viewLifecycleOwner) {
             when (it.status){
                 Status.LOADING ->{
