@@ -190,12 +190,8 @@ class HomeFragment : Fragment() {
                         }
                     }
                     Status.ERROR -> {
-                        Toast.makeText(
-                            requireContext(),
-                            "Gagal",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
+                        binding.bgLelang.visibility =View.GONE
+                        binding.specialOffer.visibility =View.GONE
                     }
                 }
             }
