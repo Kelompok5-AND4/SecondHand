@@ -97,6 +97,9 @@ class AccountFragment : Fragment() {
 
             }
         }
+        binding.tvAboutus.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_aboutUsFragment)
+        }
         binding.bgSectionEdit.setOnClickListener {
             val data = dataUser
             val direct = MainFragmentDirections.actionMainFragmentToEditAccountFragment(data)

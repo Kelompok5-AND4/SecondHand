@@ -195,6 +195,9 @@
         <action
             android:id="@+id/action_mainFragment_to_terjualFragment"
             app:destination="@id/terjualFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
