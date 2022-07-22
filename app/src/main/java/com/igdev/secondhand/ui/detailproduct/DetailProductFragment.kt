@@ -131,6 +131,7 @@ class DetailProductFragment : Fragment() {
             if (accepted) {
                 binding.btnNego.setText(R.string.diterima_text)
                 binding.btnNego.isClickable = false
+                binding.btnNego.setTextColor(Color.parseColor("#FFFFFF"))
                 binding.btnNego.setBackgroundColor(Color.parseColor("#01B45F"))
             } else if (pending) {
                 binding.btnNego.setText(R.string.menunggu_text)
@@ -141,6 +142,7 @@ class DetailProductFragment : Fragment() {
                 binding.btnNego.setText(R.string.ditolak_text)
                 binding.btnNego.isClickable = false
                 binding.btnNego.setBackgroundColor(Color.parseColor("#ED1C24"))
+                binding.btnNego.setTextColor(Color.parseColor("#FFFFFF"))
 
             } else {
                 binding.btnNego.visibility = View.VISIBLE
