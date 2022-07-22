@@ -21,7 +21,7 @@ class LelangFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel : HomeViewModel by viewModels()
     private val tokenLelang =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW44OEBtYWlsLmNvbSIsImlhdCI6MTY1ODQwODM0Nn0.nmyGkOxQgrR39r44TP2RmhY8R9jMn6g4u57gh5GaDtQ"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1ODQ3OTg3MH0.yxkRJ5mJMv1IUiQkJVuKJNxa9wyjd4u7u8R6MlaPGWg"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
