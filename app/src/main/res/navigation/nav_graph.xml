@@ -437,4 +437,9 @@
             android:id="@+id/action_editProductFragment_to_previewFragment"
             app:destination="@id/previewFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.igdev.secondhand.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 </navigation>
