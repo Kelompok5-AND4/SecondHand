@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
     private lateinit var miniCategoryAdapter: MiniCategoryAdapter
     var category: Int? = null
     private val tokenLelang =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW44OEBtYWlsLmNvbSIsImlhdCI6MTY1ODQwODM0Nn0.nmyGkOxQgrR39r44TP2RmhY8R9jMn6g4u57gh5GaDtQ"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1YW43N0BtYWlsLmNvbSIsImlhdCI6MTY1ODQ3OTg3MH0.yxkRJ5mJMv1IUiQkJVuKJNxa9wyjd4u7u8R6MlaPGWg"
     var topCategory = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
