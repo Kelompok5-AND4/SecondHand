@@ -56,6 +56,14 @@ class NegoAdapter(
         @SuppressLint("SetTextI18n")
         fun bind(data: SellerOrderResponseItem){
             binding.apply {
+                when(data.status){
+                    "accepted"->{
+                        tvMessage.text = "accepted"
+                    }
+                    "pending"->{
+                        tvMessage.text = "pending"
+                    }
+                }
                 tvProductName.text = data.productName
                 tvHarga.text = rupiah(data.basePrice.toString().toInt())
                 Glide.with(binding.root)
