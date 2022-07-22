@@ -72,6 +72,7 @@ class TransaksiSemuaPembelianFragment : Fragment() {
                             binding.emptyNotif.visibility = View.VISIBLE
                             binding.rvAllProduct.visibility = View.GONE
                         } else {
+                            listBuyer.clear()
                             for (data in it.data) {
                                 if (data.imageProduct.isNullOrEmpty() &&
                                     data.product != null &&
@@ -84,10 +85,11 @@ class TransaksiSemuaPembelianFragment : Fragment() {
                                     listBuyer.add(data)
                                 }
                             }
+
                             val buyerAdapter =
                                 BuyerAdapter(
                                     onClick = {data->
-                                        val direct = TransaksiSemuaPembelianFragmentDirections.actionTransaksiSemuaPembelianFragmentToDetailProductFragment(data.id)
+                                        val direct = TransaksiSemuaPembelianFragmentDirections.actionTransaksiSemuaPembelianFragmentToDetailProductFragment(data.productId)
                                         findNavController().navigate(direct)
                                     }, onDelete = { data->
                                         viewModel.deleteOrder(token,data.id)
@@ -103,9 +105,16 @@ class TransaksiSemuaPembelianFragment : Fragment() {
                                         Log.d("token",token)
 
                                     })
-                            binding.emptyNotif.visibility = View.GONE
-                            buyerAdapter.submitData(listBuyer)
-                            binding.rvAllProduct.adapter = buyerAdapter
+                            if (listBuyer.isEmpty()){
+                                binding.emptyNotif.visibility =View.VISIBLE
+                                binding.rvAllProduct.visibility = View.GONE
+                            }else{
+                                binding.rvAllProduct.visibility = View.VISIBLE
+                                binding.emptyNotif.visibility = View.GONE
+                                buyerAdapter.submitData(listBuyer)
+                                binding.rvAllProduct.adapter = buyerAdapter
+                            }
+
                         }
                         progressDialog.dismiss()
                     }

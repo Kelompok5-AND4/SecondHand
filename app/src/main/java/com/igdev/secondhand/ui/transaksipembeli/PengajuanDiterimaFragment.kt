@@ -67,6 +67,7 @@ class PengajuanDiterimaFragment : Fragment() {
                             binding.emptyNotif.visibility = View.VISIBLE
                             binding.rvAccepted.visibility = View.GONE
                         } else {
+                            listBuyer.clear()
                             for (data in it.data) {
                                 if (data.status == "accepted"
                                 ) {

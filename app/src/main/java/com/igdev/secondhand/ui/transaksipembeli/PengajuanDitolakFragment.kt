@@ -66,6 +66,7 @@ class PengajuanDitolakFragment : Fragment() {
                             binding.emptyNotif.visibility = View.VISIBLE
                             binding.rvDitolak.visibility = View.GONE
                         } else {
+                            listBuyer.clear()
                             for (data in it.data) {
                                 if (data.status == "declined"
                                 ) {listBuyer.add(data)
@@ -74,7 +75,7 @@ class PengajuanDitolakFragment : Fragment() {
                             val buyerAdapter =
                                 AccDcBuyerOrderAdapter(object : AccDcBuyerOrderAdapter.OnClickListener {
                                     override fun onClickItem(data: BuyerOrderResponse) {
-                                        val direct = PengajuanDitolakFragmentDirections.actionPengajuanDitolakFragmentToDetailProductFragment(data.id)
+                                        val direct = PengajuanDitolakFragmentDirections.actionPengajuanDitolakFragmentToDetailProductFragment(data.productId)
                                         findNavController().navigate(direct)
                                     }
                                 })

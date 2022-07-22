@@ -74,6 +74,7 @@ class DalamPengajuanFragment : Fragment() {
                             binding.emptyNotif.visibility = View.VISIBLE
                             binding.rvDalamPengajuan.visibility = View.GONE
                         } else {
+                            listBuyer.clear()
                             for (data in it.data) {
                                 if (data.status == "pending"
                                 ) {
@@ -83,7 +84,7 @@ class DalamPengajuanFragment : Fragment() {
                             val buyerAdapter =
                                 BuyerAdapter(
                                     onClick = {data->
-                                        val direct = DalamPengajuanFragmentDirections.actionDalamPengajuanFragmentToDetailProductFragment(data.id)
+                                        val direct = DalamPengajuanFragmentDirections.actionDalamPengajuanFragmentToDetailProductFragment(data.productId)
                                         findNavController().navigate(direct)
                                     }, onDelete = { data->
                                         viewModel.deleteOrder(token,data.id)
