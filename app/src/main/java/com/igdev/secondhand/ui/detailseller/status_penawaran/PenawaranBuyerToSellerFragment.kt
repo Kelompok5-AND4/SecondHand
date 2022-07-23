@@ -21,6 +21,7 @@ import com.igdev.secondhand.databinding.FragmentPenawaranBuyerToSellerBinding
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.sellerorder.PatchSellerOrderReq
 import com.igdev.secondhand.model.sellerorder.SellerOrderResponseItem
+import com.igdev.secondhand.ui.detailseller.BottomSheetWAFragment
 import com.igdev.secondhand.ui.detailseller.TawaranSellerFragmentArgs
 import com.igdev.secondhand.ui.detailseller.TawaranSellerViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,8 +36,12 @@ class PenawaranBuyerToSellerFragment : Fragment() {
     private var orderId: Int? = null
     private var status: String? = null
     private var token = ""
+    private var city = ""
+    private var bid = ""
+    private var base = ""
     private var phoneNumber = ""
     private var buyerName = ""
+    private var productName = ""
 
 
 
@@ -78,13 +83,17 @@ class PenawaranBuyerToSellerFragment : Fragment() {
                     binding.tvHarga.text = it.data?.body()?.basePrice.toString()
                     binding.tvHargaTawaran.text = it.data?.body()?.price.toString()
                     phoneNumber = it.data?.body()?.user?.phoneNumber.toString()
+                    base = it.data?.body()?.product?.basePrice.toString()
+                    bid = it.data?.body()?.price.toString()
+                    productName = it.data?.body()?.productName.toString()
                     if (it.data?.body()?.status == "accepted"){
                         binding.btnGroupPending.visibility = View.GONE
                         binding.btnGroupAcc.visibility = View.VISIBLE
                     }
                     val buyer = it.data?.body()?.user?.fullName.toString()
                     buyerName = buyer
-                    val city =it.data?.body()?.user?.city.toString()
+                    val citya =it.data?.body()?.user?.city.toString()
+                    city = citya
                     val productId = it.data?.body()?.productId.toString().toInt()
                     when (it.data?.body()?.status) {
                         "declined" -> {
@@ -146,19 +155,40 @@ class PenawaranBuyerToSellerFragment : Fragment() {
 
         binding.btnTerima.setOnClickListener {
             viewModel.statusItem(token,idOrder, PatchSellerOrderReq(status = "accepted"))
-            status="declined"
+            status="accepted"
+            val bottomFragment = BottomSheetWAFragment(
+                buyerName , city,phoneNumber,base.toInt(),bid.toInt(),productName,submit = {
+                    val nomor = number(phoneNumber)
+                    val text = "Halo $buyerName,Terimakasih Telah Menawar barang yang saya jual, untuk lebih jelasnya apakah ingin lewat chat atau ketemu langsung?"
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse(
+                                "https://api.whatsapp.com/send?phone=$nomor&text=$text"
+                            )
+                        )
+                    )
+                }
+            )
+            bottomFragment.show(parentFragmentManager, "Bid Price")
+
         }
         binding.btnHubungi.setOnClickListener {
-            val nomor = number(phoneNumber)
-            val text = "Halo $buyerName,Terimakasih Telah Menawar barang yang saya jual, untuk lebih jelasnya apakah ingin lewat chat atau ketemu langsung?"
-            startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse(
-                        "https://api.whatsapp.com/send?phone=$nomor&text=$text"
+            val bottomFragment = BottomSheetWAFragment(
+                buyerName , city,phoneNumber,base.toInt(),bid.toInt(),productName,submit = {
+                    val nomor = number(phoneNumber)
+                    val text = "Halo $buyerName,Terimakasih Telah Menawar barang yang saya jual, untuk lebih jelasnya apakah ingin lewat chat atau ketemu langsung?"
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse(
+                                "https://api.whatsapp.com/send?phone=$nomor&text=$text"
+                            )
+                        )
                     )
-                )
+                }
             )
+            bottomFragment.show(parentFragmentManager, "Bid Price")
         }
     }
     private fun number(nomorPembeli:String): String {
