@@ -61,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="lagi mau cari apa nich?"
+            android:background="@drawable/round_white"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:maxLines="1"
