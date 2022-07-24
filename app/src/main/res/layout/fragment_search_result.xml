@@ -7,7 +7,7 @@
     tools:context=".ui.search.result.SearchResultFragment">
     <View
         android:id="@+id/view_bg_biru_searchbar"
-        android:background="@color/biru_muda"
+        android:background="@drawable/gradasi_biru"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         app:layout_constraintStart_toStartOf="parent"
