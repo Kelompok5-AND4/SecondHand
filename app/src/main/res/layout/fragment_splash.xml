@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/biru_muda"
+    android:background="@drawable/gradasi_biru"
     tools:context=".ui.splash.SplashFragment">
 
     <ImageView
@@ -44,7 +44,7 @@
         android:layout_width="195dp"
         android:layout_height="45.35dp"
         android:layout_marginBottom="80dp"
-        android:src="@drawable/logo_develop"
+        android:src="@drawable/logo_by"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

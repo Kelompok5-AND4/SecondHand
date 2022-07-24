@@ -44,10 +44,9 @@ class AllFeatureFragment : Fragment() {
         val viewPager2 = binding.viewPager
         val handler = Handler(Looper.myLooper()!!)
         val imageList = ArrayList<Int>()
-        imageList.add(R.drawable.bannercuan_1)
-        imageList.add(R.drawable.bannercuan_2)
-        imageList.add(R.drawable.bannercuan_3)
-        imageList.add(R.drawable.bannercuan_4)
+        imageList.add(R.drawable.banner_h1)
+        imageList.add(R.drawable.banner_h2)
+        imageList.add(R.drawable.banner_h3)
 
 
         val adapter = BannerAdapter(imageList, viewPager2)

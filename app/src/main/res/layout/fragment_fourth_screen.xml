@@ -3,20 +3,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ob4"
+    android:background="@drawable/gradasi_biru"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.onboarding.screens.FourthScreen">
 
     <ImageView
-        android:id="@+id/finish"
-        android:layout_width="70dp"
-        android:layout_height="61dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="35dp"
-        android:text="Finish"
-        android:textColor="@color/biru"
-        android:textSize="22sp"
-        android:textStyle="bold"
+        android:id="@+id/iv_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_splash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:text="Ikut Lelang Mingguan dari 0 Rupiah Loh!!!!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="40dp"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/iv_slider"/>
+
+    <ImageView
+        android:id="@+id/iv_slider"
+        android:src="@drawable/ic_slider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/iv_white_bg"/>
+
+
+    <ImageView
+        android:id="@+id/iv_white_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/top_menu_separator"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_desc" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:text="Tiap minggu ada lelang dari 0 rupiah loh, yang kami kelola langsung, kamu bisa dapet barang impian kamu di harga yang murah!!!"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintStart_toStartOf="@id/btn_back"
+        app:layout_constraintEnd_toEndOf="@id/ic_next"
+        app:layout_constraintBottom_toTopOf="@id/ic_next"/>
+
+    <ImageView
+        android:id="@+id/ic_next"
+        android:src="@drawable/ic_next_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/btn_back"
+        android:text="Back"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:textColor="@color/abu_muda_dua"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ic_next"
+        app:layout_constraintBottom_toBottomOf="@id/ic_next"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

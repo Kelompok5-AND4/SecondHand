@@ -26,7 +26,7 @@ class FourthScreen : Fragment() {
         _binding = FragmentFourthScreenBinding.inflate(inflater,container,false)
         val viewPager =  activity?.findViewById<ViewPager2>(R.id.viewPager)
 
-        binding.finish.setOnClickListener {
+        binding.icNext.setOnClickListener {
             findNavController().navigate(R.id.action_onBoardingFragment_to_startFragment)
             onBoardingFinished()
         }

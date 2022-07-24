@@ -28,8 +28,11 @@ class ThirdFragment : Fragment() {
         _binding = FragmentThirdBinding.inflate(inflater,container,false)
         val viewPager =  activity?.findViewById<ViewPager2>(R.id.viewPager)
 
-        binding.next3.setOnClickListener {
+        binding.icNext.setOnClickListener {
             viewPager?.currentItem = 3
+        }
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
         return binding.root
     }
