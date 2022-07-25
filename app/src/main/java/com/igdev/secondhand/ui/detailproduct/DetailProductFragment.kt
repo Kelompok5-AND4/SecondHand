@@ -50,6 +50,7 @@ class DetailProductFragment : Fragment() {
     private var pending = false
     private var accepted = false
     private var decline = false
+    private var notLogin = false
     private lateinit var categoryAdapter: DetailCategoryAdapter
     private var token = ""
     private var imageProduct = ""
@@ -70,9 +71,18 @@ class DetailProductFragment : Fragment() {
 
         viewModel.getToken()
         viewModel.getToken.observe(viewLifecycleOwner) {
-            viewModel.getAllWishlist(it.token)
-            viewModel.getBuyerHistory(it.token)
-            token = it.token
+            if (it.token == "def_token"){
+                binding.btnNego.setText(R.string.not_login)
+                binding.btnNego.setTextColor(Color.parseColor("#FF000000"))
+                binding.btnNego.setBackgroundColor(Color.parseColor("#EDFAFF"))
+                token = "def_token"
+                notLogin = true
+            }else{
+                viewModel.getAllWishlist(it.token)
+                viewModel.getBuyerHistory(it.token)
+                token = it.token
+                notLogin = false
+            }
         }
 
         setupObserverWishlist()
@@ -197,12 +207,16 @@ class DetailProductFragment : Fragment() {
         }
 
         binding.btnNego.setOnClickListener {
-            val bottomFragment = InputPenawaranFragment(
-                id, productName, productPrice, imageProduct, submit = {
-                }
-            )
-            bottomFragment.show(parentFragmentManager, "Bid Price")
+            if (notLogin){
+                findNavController().navigate(R.id.action_detailProductFragment_to_loginFragment)
+            }else{
+                val bottomFragment = InputPenawaranFragment(
+                    id, productName, productPrice, imageProduct, submit = {
+                    }
+                )
+                bottomFragment.show(parentFragmentManager, "Bid Price")
 
+            }
         }
 
 

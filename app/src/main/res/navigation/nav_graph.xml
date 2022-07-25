@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -119,6 +122,9 @@
             app:destination="@id/penawaranTerkirimFragment"
             app:popUpTo="@id/detailProductFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_detailProductFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/editAccountFragment"

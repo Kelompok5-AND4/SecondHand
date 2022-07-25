@@ -70,6 +70,7 @@
     <string name="terjual">Product \nTerjual</string>
     <string name="semua_product">Semua Product</string>
     <string name="diterima_text">Pengajuan diterima, kamu akan segera di hubungi oleh seller</string>
+    <string name="not_login">Anda Belum login silahkan login terlebih dahulu</string>
     <string name="ditolak_text">Pengajuan Kamu Di Tolak :(</string>
     <string name="menunggu_text">Menunggu Respon Penjual</string>
     <string name="ilustrasi">Ilustrasi</string>
