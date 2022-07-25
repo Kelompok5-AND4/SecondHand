@@ -40,10 +40,9 @@ class CategoryAdapter(private val onClick: CategoryAdapter.OnClickListener):Recy
     }
     inner class ViewHolder(private val binding: CategoryItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind (data: CategoryResponseItem, position: Int){
-            //https://raw.githubusercontent.com/Kelompok5-AND4/CategoryIconDirectory/master/Electronik.png
             val imageUrl = "https://raw.githubusercontent.com/Kelompok5-AND4/CategoryIconDirectory/master/${data.name}.png"
             binding.tvCategoryName.text = data.name
-            Glide.with(binding.root).load(imageUrl).error(R.drawable.default_rv).into(binding.ivCategory)
+            Glide.with(binding.root).load(R.drawable.ic_category).error(R.drawable.ic_category).into(binding.ivCategory)
             binding.root.setOnClickListener {
                 onClick.onClickItem(data)
                 index = position
