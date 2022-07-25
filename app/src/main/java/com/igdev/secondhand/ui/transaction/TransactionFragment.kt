@@ -178,7 +178,7 @@ class TransactionFragment : Fragment() {
                     }
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
-                            binding.tvTotal.text = "00"
+                            binding.tvTotal.text = "0"
                             binding.emptyNotif2.visibility = View.VISIBLE
                         } else {
                             val sellerAdapter =
@@ -235,7 +235,7 @@ class TransactionFragment : Fragment() {
                     }
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
-                            binding.tvTotalDitawar.text = "00"
+                            binding.tvTotalDitawar.text = "0"
                         }
                         else {
                             val filteredData = it.data.filter {
@@ -262,7 +262,7 @@ class TransactionFragment : Fragment() {
                     }
                     Status.SUCCESS -> {
                         if (it.data.isNullOrEmpty()) {
-                            binding.tvTotalTerjual.text = "00"
+                            binding.tvTotalTerjual.text = "0"
                         }
                         else {
                             val filteredData = it.data.filter {

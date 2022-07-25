@@ -51,6 +51,7 @@ class BottomSheetCategory(private val submit: ()-> Unit):BottomSheetDialogFragme
                 Status.SUCCESS -> {
                     progressDialog.dismiss()
                     if(it.data != null){
+                        listCategory.clear()
                         val adapter = BottomSheetCategoryAdapter(
                             selected = { selected ->
                                 listCategory.add(selected.name)

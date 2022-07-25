@@ -19,6 +19,7 @@ import com.igdev.secondhand.databinding.CategoryBottomSheetBinding
 import com.igdev.secondhand.databinding.FragmentInputPenawaranBinding
 import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.detail.PostOrderReq
+import com.igdev.secondhand.rupiah
 import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,7 +57,7 @@ class InputPenawaranFragment(
         val progressDialog = ProgressDialog(requireContext())
         progressDialog.setMessage("Please Wait...")
         binding.tvNamaProduct.text = name
-        binding.tvHarga.text = price
+        binding.tvHarga.text = rupiah(price.toInt())
         Glide.with(binding.root).load(image).into(binding.ivFotoProduct)
         binding.btnKirim.setOnClickListener {
             progressDialog.show()

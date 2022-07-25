@@ -20,6 +20,7 @@ import com.igdev.secondhand.model.Status
 import com.igdev.secondhand.model.detail.PostOrderReq
 import com.igdev.secondhand.model.detail.PostOrderResponse
 import com.igdev.secondhand.model.detail.PutOrderReq
+import com.igdev.secondhand.rupiah
 import com.igdev.secondhand.ui.MainFragment
 import com.igdev.secondhand.ui.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,7 +58,7 @@ class EditOrderFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvNamaProduct.text = name
-        binding.tvHarga.text = price
+        binding.tvHarga.text = rupiah(price.toInt())
         binding.etTawar.setText(priceOrder)
         Glide.with(binding.root).load(image).into(binding.ivFotoProduct)
         binding.btnKirim.setOnClickListener {
