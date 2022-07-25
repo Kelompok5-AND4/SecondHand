@@ -447,7 +447,8 @@
                     android:id="@+id/tvEmpty2"
                     android:layout_gravity="center_horizontal"
                     android:textColor="@color/biru"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
+                    android:layout_marginHorizontal="16dp"
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/kosong_barang"/>
             </LinearLayout>
@@ -481,28 +482,28 @@
         android:layout_width="match_parent"
         android:layout_height="132dp" />
 
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
         android:id="@+id/btn_back"
-        app:icon="@drawable/ic_baseline_keyboard_arrow_left"
-        style="@style/Widget.AppCompat.ActionButton"
+        android:src="@drawable/ic_back"
+        android:backgroundTint="@color/transparant"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="14dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        app:layout_constraintEnd_toStartOf="@id/btn_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/btn_back"
-        android:text="@string/transaksi"
-        android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="Transaksi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/white"
-        android:textSize="24sp"
-        android:layout_marginTop="32dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_back"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

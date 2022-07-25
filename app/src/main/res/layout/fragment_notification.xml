@@ -30,7 +30,8 @@
             android:id="@+id/tvLogin"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/biru"
-            android:textSize="20sp"
+            android:textSize="16sp"
+            android:paddingHorizontal="16dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Anda Harus Login Terlebih Dahulu !"/>
         <Button
