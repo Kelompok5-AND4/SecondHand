@@ -46,30 +46,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
         android:id="@+id/btn_back"
-        app:icon="@drawable/ic_baseline_keyboard_arrow_left"
-        style="@style/Widget.AppCompat.ActionButton"
+        android:src="@drawable/ic_back"
+        android:backgroundTint="@color/transparant"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="14dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        app:layout_constraintEnd_toStartOf="@id/btn_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/btn_back"
-        android:text="@string/pengajuan_diterima"
-        android:gravity="center_horizontal"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="Pengajuan Diterima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/white"
-        android:textSize="24sp"
-        android:layout_marginTop="32dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_back"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_accepted"

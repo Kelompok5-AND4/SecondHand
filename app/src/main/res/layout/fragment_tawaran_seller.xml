@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/biru_muda"
+    android:background="@drawable/gradasi_biru"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.detailseller.TawaranSellerFragment">
 
@@ -20,6 +20,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_header"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +28,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="48dp"
                 android:layout_marginHorizontal="16dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -135,7 +136,7 @@
                 android:id="@+id/cv_deskripsi"
                 android:layout_marginTop="24dp"
                 android:layout_marginHorizontal="16dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="24dp"
                 android:layout_marginBottom="125dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
